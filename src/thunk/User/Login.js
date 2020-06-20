@@ -7,11 +7,10 @@ import {
 } from "../../actions/UserAction";
 export const LoginThunk = (data) => {
   return async (dispatch, getState) => {
-      console.log("asdasdasd")
     dispatch(loginLoading(true));
 
     const login = await LoginService(data);
-    console.log(login)
+    console.log(login);
     if (login === false) {
       dispatch(userLoginFail(false));
       dispatch(loginLoading(false));
@@ -22,6 +21,7 @@ export const LoginThunk = (data) => {
         status: true,
         admin: login.admin,
       };
+
       dispatch(loginLoading(false));
       dispatch(userLoginSuccess(data));
       setToken(login.accessToken);

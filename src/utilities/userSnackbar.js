@@ -4,7 +4,7 @@ export const snackBarCheckLogin = (admin) => {
     if (admin === false) {
       return { text: "Login Success!", type: "success" , redirect:'/'};
     } else {
-      return { text: "Login Success!", type: "success" , redirect:"/admin"};
+      return { text: "Login Success!", type: "success" , redirect:"/dashboard"};
     }
   } else {
     return { text: "Login Fail!, Please try Again", type: "error" };
