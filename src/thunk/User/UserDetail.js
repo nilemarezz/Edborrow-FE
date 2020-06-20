@@ -1,4 +1,4 @@
-import UserDetail from "../../services/UserDetail";
+import UserDetail from "../../services/UserService/UserDetail";
 import {
   loginLoading,
   userLoginSuccess,
@@ -9,7 +9,6 @@ export const UserDetailThunk = (data) => {
     dispatch(loginLoading(true));
 
     const detail = await UserDetail(data.token);
-    console.log(detail)
     const datares = {
       userToken: data.token,
       user: detail.data.firstName,

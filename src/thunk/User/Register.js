@@ -1,4 +1,4 @@
-import RegisterService from "../../services/Register";
+import RegisterService from "../../services/UserService/Register";
 import {
   loginLoading,
   registerSuccess,
@@ -10,7 +10,6 @@ export const RegisterThunk = (data) => {
     const register = await RegisterService(data);
     console.log(register);
     if (register.result === "false") {
-      console.log("asdasdasd");
 
       await dispatch(registerFail());
       await dispatch(loginLoading(false));

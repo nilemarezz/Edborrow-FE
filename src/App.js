@@ -14,6 +14,7 @@ import { UserDetailThunk } from "./thunk/User/UserDetail";
 import { checkToken, getToken } from "./utilities/checkToken";
 import Home from "./containers/Home";
 import Dashboard from "./containers/Dashboard";
+import WithLoading from "./utilities/WithLoading";
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
@@ -29,6 +30,7 @@ const App = (props) => {
       ref={notistackRef}
       action={(key) => <Button onClick={onClickDismiss(key)}>Dismiss</Button>}
     >
+      <WithLoading loading={props.user.loading} />
       <Router>
         <Route path="/login" component={Login} exact strict />
         <Route path="/register" component={Register} exact strict />
