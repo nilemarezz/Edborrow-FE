@@ -11,7 +11,7 @@ export const LoginThunk = (data) => {
 
     const login = await LoginService(data);
     console.log(login);
-    if (login === false) {
+    if (login.result === "false") {
       dispatch(userLoginFail(false));
       dispatch(loginLoading(false));
     } else {

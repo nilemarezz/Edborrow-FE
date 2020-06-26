@@ -9,13 +9,10 @@ export const userLoginSuccess = (data) => {
   return { type: LOGIN_SUCCESS, payload: data };
 };
 export const userLoginFail = (data) => {
-  return { type: LOGIN_FAIL , payload:data};
+  return { type: LOGIN_FAIL, payload: data };
 };
 export const loginLoading = (data) => {
   return { type: LOGIN_LOADING, payload: data };
-};
-export const setToken = (token) => {
-  return { type: SET_TOKEN, payload: token };
 };
 export const logoutSuccess = () => {
   return { type: LOGOUT_SUCCESS };

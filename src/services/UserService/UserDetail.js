@@ -7,6 +7,7 @@ const UserDetail = async (token) => {
       },
     });
     const data = await res.json();
+
     return data;
   } catch (err) {
     return false;

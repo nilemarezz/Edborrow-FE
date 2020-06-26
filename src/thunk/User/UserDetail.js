@@ -9,14 +9,13 @@ export const UserDetailThunk = (data) => {
     dispatch(loginLoading(true));
 
     const detail = await UserDetail(data.token);
-    const datares = {
-      userToken: data.token,
-      user: detail.data.firstName,
-      status: true,
-      admin: detail.data.admin,
-    };
-
     if (data.type === "login") {
+      const datares = {
+        userToken: data.token,
+        user: detail.data.firstName,
+        status: true,
+        admin: detail.data.admin,
+      };
       dispatch(loginLoading(false));
       dispatch(userLoginSuccess(datares));
     } else {

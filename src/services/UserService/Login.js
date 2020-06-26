@@ -9,14 +9,10 @@ const LoginService = async (user) => {
       body: JSON.stringify({ userId: user.username, password: user.password }),
     });
     const datares = await res.json();
-    if (datares.result === "false") {
-      return false;
-    } else {
-      return datares;
-    }
+
+    return datares;
   } catch (err) {
-    console.log(err);
-    return err;
+    return false;
   }
 };
 export default LoginService;
