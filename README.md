@@ -1,5 +1,5 @@
 ## EdBorrow Front-End
-**This Project is the main project that refactor code from EdBorrow-React Repository ([](https://gitlab.com/nilemarezz/edborrow-react)) **
+**This Project is the main project that refactor code from EdBorrow-React Repository ([https://gitlab.com/nilemarezz/edborrow-react](url)) **
 
 To Install poject run:
 ### `yarn`
