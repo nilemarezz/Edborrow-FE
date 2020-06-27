@@ -4,7 +4,7 @@ import {
   Redirect,
   HashRouter as Router,
   Switch,
-  Route,
+  Route,withRouter
 } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Login from "./containers/Login";
@@ -15,11 +15,14 @@ import { checkToken, getToken } from "./utilities/checkToken";
 import Home from "./containers/Home";
 import Dashboard from "./containers/Dashboard";
 import WithLoading from "./utilities/WithLoading";
+import Item from "./containers/Item";
+import NavbarContiner from './containers/Nav/NavContainer'
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
 const notistackRef = React.createRef();
 const App = (props) => {
+  
   useEffect(() => {
     if (checkToken())
       props.UserDetailThunk({ token: getToken(), type: "login" });
@@ -32,6 +35,11 @@ const App = (props) => {
     >
       <WithLoading loading={props.user.loading} />
       <Router>
+        <NavbarContiner/>
+        <Switch>
+        <PrivateRoute path="/" exact strict>
+          <Item />
+        </PrivateRoute>
         <Route path="/login" component={Login} exact strict />
         <Route path="/register" component={Register} exact strict />
         <PrivateRoute>
@@ -40,6 +48,7 @@ const App = (props) => {
         <PrivateAdminRoute admin={props.user.admin}>
           <Route path="/dashboard" component={Dashboard} exact strict />
         </PrivateAdminRoute>
+        </Switch>
       </Router>
     </SnackbarProvider>
   );

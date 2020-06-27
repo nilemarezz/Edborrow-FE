@@ -8,7 +8,6 @@ export const RegisterThunk = (data) => {
   return async (dispatch, getState) => {
     dispatch(loginLoading(true));
     const register = await RegisterService(data);
-    console.log(register);
     if (register.result === "false") {
 
       await dispatch(registerFail());

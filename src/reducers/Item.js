@@ -31,7 +31,7 @@ export default function (state = initialState, action) {
         R.filter(isMatchById(action.payload), state.Cart)
       )(state);
     case ADD_ITEM_TO_CART:
-      return R.assocPath(["Cart"], R.append(action.payload, state.Cart))
+      return R.assocPath(["Cart"], R.append(action.payload, state.Cart))(state)
     default:
       return state;
   }

@@ -12,7 +12,6 @@ export const snackBarCheckLogin = (admin) => {
 };
 
 export const snackBarRegister= (type) => {
-  console.log(type)
   if(type === false){
     return { text: "Email is already exist!", type: "error" };
   }
