@@ -4,6 +4,7 @@ export const ITEM_LOADING = "ITEM_LOADING";
 export const CLEAR_ITEM_INCART = "CLEAR_ITEM_INCART";
 export const DELETE_ITEM_INCART = "DELETE_ITEM_INCART";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
+export const SEARCH_ITEM_SUCCESS = "SEARCH_ITEM_SUCCESS ";
 export const getAllItemSuccess = (data) => {
   return { type: GETALL_ITEM_SUCCESS, payload: data };
 };
@@ -24,4 +25,8 @@ export const deleteItemInCart = (itemId) => {
 
 export const addItemToCart = (item) => {
   return { type: ADD_ITEM_TO_CART, payload: item };
+};
+
+export const searchItem = (item) => {
+  return { type: SEARCH_ITEM_SUCCESS, payload: item };
 };

@@ -18,20 +18,20 @@ class ItemTable extends React.Component {
     this.props.history.push(`/cart`);
   };
   render() {
-    const { item } = this.props;
+    const { item , Items , loading , Cart} = this.props;
     const columns = ItemColumns(
       this.redirectToDetailPage,
-      item.Cart,
+      Cart,
       this.props.addItemToCart,
       this.redirectToCartPage
     );
     return (
       <React.Fragment>
         
-        <WithLoading loading={item.loading}/>
+        <WithLoading loading={loading}/>
         <MUIDataTable
           title={"ITEMS"}
-          data={item.Items}
+          data={Items}
           columns={columns}
           options={OptionItemTable}
         />

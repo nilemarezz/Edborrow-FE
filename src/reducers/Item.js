@@ -4,13 +4,15 @@ import {
   ITEM_LOADING,
   CLEAR_ITEM_INCART,
   DELETE_ITEM_INCART,
-  ADD_ITEM_TO_CART
+  ADD_ITEM_TO_CART,
+  SEARCH_ITEM_SUCCESS
 } from "../actions/ItemAction";
 import * as R from "ramda";
 const initialState = {
   Items: [],
   Cart: [],
   loading: null,
+  filter : [],
 };
 const isMatchById = (data) => {
   return (item) => item.id !== data.id;
@@ -32,6 +34,8 @@ export default function (state = initialState, action) {
       )(state);
     case ADD_ITEM_TO_CART:
       return R.assocPath(["Cart"], R.append(action.payload, state.Cart))(state)
+    case SEARCH_ITEM_SUCCESS :
+      return R.pipe(R.assocPath(["filter"], action.payload))(state);
     default:
       return state;
   }
