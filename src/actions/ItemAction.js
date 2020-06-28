@@ -5,6 +5,7 @@ export const CLEAR_ITEM_INCART = "CLEAR_ITEM_INCART";
 export const DELETE_ITEM_INCART = "DELETE_ITEM_INCART";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const SEARCH_ITEM_SUCCESS = "SEARCH_ITEM_SUCCESS ";
+export const CLEAR_FILTER = "CLEAR_FILTER";
 export const getAllItemSuccess = (data) => {
   return { type: GETALL_ITEM_SUCCESS, payload: data };
 };
@@ -30,3 +31,7 @@ export const addItemToCart = (item) => {
 export const searchItem = (item) => {
   return { type: SEARCH_ITEM_SUCCESS, payload: item };
 };
+export const clearFilter = () =>{
+  console.log('asdasdsad')
+  return {type : CLEAR_FILTER}
+}

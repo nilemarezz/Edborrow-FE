@@ -5,6 +5,7 @@ import {
 } from "../../actions/ItemAction";
 export const searchItem = (value) => {
   return async (dispatch, getState) => {
+    console.log(value)
     dispatch(itemLoading(true));
     const item = await FilterItemService(value);
     if (item.result === "false") {
