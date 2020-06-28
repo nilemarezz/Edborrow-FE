@@ -1,6 +1,7 @@
+import env from '../../env'
 const RegisterService = async (value) => {
   try {
-    const data = await fetch("https://edborrow.ga/api/users/register", {
+    const data = await fetch(`${env.url}users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

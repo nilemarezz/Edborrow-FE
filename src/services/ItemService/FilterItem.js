@@ -1,3 +1,4 @@
+import env from '../../env'
 export const FilterItemService = async (value) => {
   let {
     name,
@@ -7,7 +8,7 @@ export const FilterItemService = async (value) => {
     borrowDate,
     returnDate,
   } = value;
-  const url = `https://edborrow.ga/api/items/search?searchInput=${name}&searchCategory=${category}&searchDepartment=${department}&searchAvailability=${avalibility}&searchBorrowDate=${borrowDate}&searchReturnDate=${returnDate}`;
+  const url = `${env.url}items/search?searchInput=${name}&searchCategory=${category}&searchDepartment=${department}&searchAvailability=${avalibility}&searchBorrowDate=${borrowDate}&searchReturnDate=${returnDate}`;
   console.log(url);
   const res = await fetch(url, {
     headers: {

@@ -1,5 +1,6 @@
+import env from '../env'
 const getAutoComplete = async (body) =>{
-    const res = await fetch("https://edborrow.ga/api/items/getColumn", {
+    const res = await fetch(`${env.url}items/getColumn`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
