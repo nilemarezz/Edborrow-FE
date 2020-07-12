@@ -31,7 +31,6 @@ export const addItemToCart = (item) => {
 export const searchItem = (item) => {
   return { type: SEARCH_ITEM_SUCCESS, payload: item };
 };
-export const clearFilter = () =>{
-  console.log('asdasdsad')
-  return {type : CLEAR_FILTER}
+export const clearFilter = () => {
+  return { type: CLEAR_FILTER }
 }
