@@ -10,6 +10,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "chart.js": "^2.9.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "mui-datatables": "^3.0.1",
     "notistack": "^0.9.17",
     "ramda": "^0.27.0",
@@ -29,7 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage" : "yarn test --coverage --watchAll",
+    "test:coverage": "yarn test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

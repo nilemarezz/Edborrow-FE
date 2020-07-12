@@ -1,6 +1,6 @@
 import React from "react";
 import Chip from "@material-ui/core/Chip";
-import{ color as themeColor} from '../data/color'
+import { color as themeColor } from '../data/color'
 export const renderDepartment = (department, owner) => {
   if (department === null) {
     return owner;
@@ -25,16 +25,16 @@ export const renderStatus = (value) => {
   return (
     <div>
       {" "}
-      <Chip label={label} style={{ backgroundColor: bgcolor, color: color }} />
+      <Chip className="status" label={label} style={{ backgroundColor: bgcolor, color: color }} />
     </div>
   );
 };
 
 
-export const renderCategory = (value) =>{
-  if(value === 1){
+export const renderCategory = (value) => {
+  if (value === 1) {
     return "General"
-  }else{
+  } else {
     return "Electronic"
   }
 }

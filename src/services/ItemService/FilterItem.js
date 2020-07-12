@@ -8,13 +8,17 @@ export const FilterItemService = async (value) => {
     borrowDate,
     returnDate,
   } = value;
-  const url = `${env.url}items/search?searchInput=${name}&searchCategory=${category}&searchDepartment=${department}&searchAvailability=${avalibility}&searchBorrowDate=${borrowDate}&searchReturnDate=${returnDate}`;
-  console.log(url);
-  const res = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
-  return data;
+  try {
+    const url = `${env.url}items/search?searchInput=${name}&searchCategory=${category}&searchDepartment=${department}&searchAvailability=${avalibility}&searchBorrowDate=${borrowDate}&searchReturnDate=${returnDate}`;
+    console.log(url);
+    const res = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    return false
+  }
 };

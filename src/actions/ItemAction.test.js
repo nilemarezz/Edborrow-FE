@@ -35,4 +35,36 @@ describe("Test Item Action Creators", () => {
       expect(Items.clearItemInCart()).toEqual(expectedAction);
     });
   });
+  describe("DELETE_ITEM_INCART", () => {
+    it("should dcreate action delete item in cart", () => {
+      const expectedAction = {
+        type: Items.DELETE_ITEM_INCART,
+      };
+      expect(Items.deleteItemInCart()).toEqual(expectedAction);
+    });
+  });
+  describe("ADD_ITEM_TO_CART", () => {
+    it("should create action add item to cart", () => {
+      const expectedAction = {
+        type: Items.ADD_ITEM_TO_CART,
+      };
+      expect(Items.addItemToCart()).toEqual(expectedAction);
+    });
+  });
+  describe("SEARCH_ITEM_SUCCESS", () => {
+    it("should create action search item in cart", () => {
+      const expectedAction = {
+        type: Items.SEARCH_ITEM_SUCCESS,
+      };
+      expect(Items.searchItem()).toEqual(expectedAction);
+    });
+  });
+  describe("clearFilter", () => {
+    it("should create action clear item in cart", () => {
+      const expectedAction = {
+        type: Items.CLEAR_FILTER,
+      };
+      expect(Items.clearFilter()).toEqual(expectedAction);
+    });
+  });
 });
