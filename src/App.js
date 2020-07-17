@@ -16,12 +16,14 @@ import Dashboard from "./containers/Dashboard";
 import WithLoading from "./utilities/WithLoading";
 import Item from "./containers/Item";
 import NavbarContiner from './containers/Nav/NavContainer'
+import ErrorPage from './containers/ErrorPage/ErrorPage'
+import Cart from './containers/Cart'
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
 const notistackRef = React.createRef();
 const App = (props) => {
-  
+
   useEffect(() => {
     if (checkToken())
       props.UserDetailThunk({ token: getToken(), type: "login" });
@@ -34,17 +36,19 @@ const App = (props) => {
     >
       <WithLoading loading={props.user.loading} />
       <Router>
-        <NavbarContiner/>
+        <NavbarContiner />
         <Switch>
-        <PrivateRoute path="/" exact strict>
-          <Item />
-        </PrivateRoute>
-        <Route path="/login" component={Login} exact strict />
-        <Route path="/register" component={Register} exact strict />
-        
-        <PrivateAdminRoute admin={props.user.admin}>
-          <Route path="/dashboard" component={Dashboard} exact strict />
-        </PrivateAdminRoute>
+          <Route path="/login" component={Login} exact strict />
+          <Route path="/register" component={Register} exact strict />
+          <PrivateRoute path="/" exact strict>
+            <Item />
+          </PrivateRoute>
+          <Route path="/cart" component={Cart} exact strict />
+          <PrivateAdminRoute admin={props.user.admin}>
+            <Route path="/dashboard" component={Dashboard} exact strict />
+          </PrivateAdminRoute>
+          <Route path="/error" component={ErrorPage} exact strict />
+
         </Switch>
       </Router>
     </SnackbarProvider>
@@ -59,12 +63,12 @@ function PrivateRoute({ children, ...rest }) {
         localStorage.getItem("userToken") !== null ? (
           children
         ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-            }}
-          />
-        )
+            <Redirect
+              to={{
+                pathname: "/login",
+              }}
+            />
+          )
       }
     />
   );
