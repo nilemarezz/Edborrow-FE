@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -8,12 +7,14 @@ import getSteps from '../components/Cart/getStepperHeader'
 import getStepsContent from '../components/Cart/getStepperContent'
 import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components'
-
+import { connect } from 'react-redux'
+import { isCompletedForm } from '../utilities/check/isCompletedForm'
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     padding-right: 50px;
+    padding-top:50px;
 `
 const Container = styled.div`
     width: 100%;
@@ -22,7 +23,7 @@ const BackButton = styled(Button)`
     margin-right : 10px;
 `
 
-export default function Cart() {
+const Cart = (props) => {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
@@ -35,7 +36,7 @@ export default function Cart() {
     };
     return (
         <Container>
-            <Stepper activeStep={activeStep} alternativeLabel>
+            <Stepper activeStep={activeStep} alternativeLabel style={{ background: 'none' }}>
                 {steps.map((label) => (
                     <Step key={label}>
                         <StepLabel>{label}</StepLabel>
@@ -60,7 +61,7 @@ export default function Cart() {
                     >
                         Back
               </BackButton>
-                    <Button variant="contained" color="primary" onClick={handleNext}>
+                    <Button variant="contained" color="primary" onClick={handleNext} disabled={!isCompletedForm(activeStep, props.form, props.cart)}>
                         {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                     </Button>
                 </div>
@@ -70,3 +71,9 @@ export default function Cart() {
 
     );
 }
+
+const mapStateToProps = (state) => {
+    return { form: state.Form, cart: state.Item.Cart };
+};
+
+export default connect(mapStateToProps, null)(Cart)

@@ -4,7 +4,7 @@ import {
   userLoginSuccess,
   userLoginFail,
 } from "../../actions/UserAction";
-import ErrorPage from '../../containers/ErrorPage/ErrorPage'
+
 export const UserDetailThunk = (data) => {
   return async (dispatch, getState) => {
     try {
@@ -23,7 +23,7 @@ export const UserDetailThunk = (data) => {
       } else {
       }
     } catch (err) {
-      ErrorPage()
+      console.log(err)
     }
 
   };

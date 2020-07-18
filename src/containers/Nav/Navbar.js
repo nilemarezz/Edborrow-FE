@@ -26,8 +26,8 @@ import { logoutSuccess } from "../../actions/UserAction";
 import AddIcon from "@material-ui/icons/Add";
 import HelpIcon from "@material-ui/icons/Help";
 import Modal from "../../components/Modal";
-import {instruction} from '../../utilities/data/instruction'
-import {clearToken} from '../../utilities/checkToken'
+import { instruction } from '../../utilities/data/instruction'
+import { clearToken } from '../../utilities/check/checkToken'
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
@@ -224,16 +224,16 @@ const Nav = (props) => {
           <p>{props.User.user}</p>
         </MenuItem>
       ) : (
-        // </Link>
-        <Link to="/login" className={classes.link}>
-          <MenuItem onClick={handleMenuClose}>
-            <IconButton aria-label="show 11 new notifications" color="inherit">
-              <ExitToAppIcon />
-            </IconButton>
-            <p>Login</p>
-          </MenuItem>
-        </Link>
-      )}
+          // </Link>
+          <Link to="/login" className={classes.link}>
+            <MenuItem onClick={handleMenuClose}>
+              <IconButton aria-label="show 11 new notifications" color="inherit">
+                <ExitToAppIcon />
+              </IconButton>
+              <p>Login</p>
+            </MenuItem>
+          </Link>
+        )}
     </Menu>
   );
   return (
@@ -295,15 +295,15 @@ const Nav = (props) => {
                 </span>
               </Button>
             ) : (
-              <MenuItem>
-                <Link
-                  to="/login"
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  LOGIN
+                <MenuItem>
+                  <Link
+                    to="/login"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    LOGIN
                 </Link>
-              </MenuItem>
-            )}
+                </MenuItem>
+              )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -333,7 +333,7 @@ const Nav = (props) => {
         </Fab>
       </ScrollTop>
       <Modal open={open} handleClose={() => setOpen(false)}>
-            <h2 id="transition-modal-title">{instruction.head}</h2>
+        <h2 id="transition-modal-title">{instruction.head}</h2>
         <p id="transition-modal-description">{instruction.no1}</p>
         <p id="transition-modal-description">
           {instruction.no2}
@@ -354,8 +354,8 @@ const mapStateToProps = (state) => {
 };
 
 export const mapDispatchToProps = (dispatch, ownProps) => ({
-    Logout: async (item) => {
-      clearToken();
+  Logout: async (item) => {
+    clearToken();
     dispatch(logoutSuccess());
   },
 });

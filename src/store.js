@@ -2,7 +2,7 @@
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import rootReducer from './reducers/RootReducer'
-import { createStore, applyMiddleware,compose } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 // import thunk from "redux-thunk";
 // import RootSaga from "./sagas/RootSaga";
 // import createSagaMiddleware from "redux-saga";
@@ -12,13 +12,13 @@ const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOO
 const persistConfig = {
   key: 'data',
   storage,
-  whitelist: ['Request']
+  whitelist: ['Item']
 }
 // const sagaMiddleware = createSagaMiddleware();
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export default () => {
-  let store = createStore(persistedReducer,composeEnhancers(applyMiddleware(thunk)))
+  let store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)))
   let persistor = persistStore(store)
   // sagaMiddleware.run(RootSaga);
   return { store, persistor }
