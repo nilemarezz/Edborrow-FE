@@ -3,9 +3,10 @@ import {
     SET_FORM_ID, SET_FORM_NAME, SET_FORM_SURNAME,
     SET_FORM_EMAIL, SET_FORM_TELNO, SET_FORM_ADVISOR,
     SET_FORM_BORROWDATE, SET_FORM_RETURNDATE,
-    SET_FORM_PURPOSE
+    SET_FORM_PURPOSE, RESET_FORM, LOADING_SUBMIT_FORM
 } from '../actions/ApplicationFormAction'
 const initialState = {
+    loading: false,
     id: "",
     name: "",
     surname: "",
@@ -19,6 +20,8 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case LOADING_SUBMIT_FORM:
+            return R.assocPath(["loading"], action.payload)(state);
         case SET_FORM_ID:
             return R.assocPath(["id"], action.payload)(state);
         case SET_FORM_NAME:
@@ -37,6 +40,8 @@ export default function (state = initialState, action) {
             return R.assocPath(["returnDate"], action.payload)(state);
         case SET_FORM_PURPOSE:
             return R.assocPath(["purpose"], action.payload)(state);
+        case RESET_FORM:
+            return R.assocPath(["id"], "")(state);
         default:
             return state
     }

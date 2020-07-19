@@ -15,7 +15,7 @@ export const isCompletedForm = (step, field, cart) => {
             || field.email === "" || field.id === ""
             || field.telNo === "" || field.advisor === ""
             || field.purpose === "") {
-            return false
+            return true
         } else {
             return true
         }

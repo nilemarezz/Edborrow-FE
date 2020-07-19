@@ -7,7 +7,8 @@ export const SET_FORM_BORROWDATE = "SET_FORM_BORROWDATE"
 export const SET_FORM_NAME = "SET_FORM_NAME"
 export const SET_FORM_RETURNDATE = "SET_FORM_RETURNDATE"
 export const SET_FORM_PURPOSE = "SET_FORM_PURPOSE"
-
+export const RESET_FORM = "RESET_FORM"
+export const LOADING_SUBMIT_FORM = "LOADING_SUBMIT_FORM"
 export const setFormID = (data) => {
     return { type: SET_FORM_ID, payload: data };
 };
@@ -35,3 +36,9 @@ export const setFormReturnDate = (data) => {
 export const setFormPurpose = (data) => {
     return { type: SET_FORM_PURPOSE, payload: data };
 };
+export const resetForm = () => {
+    return { type: RESET_FORM };
+};
+export const loadingSubmitForm = (data) => {
+    return { type: LOADING_SUBMIT_FORM, payload: data }
+}
