@@ -10,3 +10,5 @@ In the project directory, you can run:
 To test the project run:
 ### `yarn test`
 
+To test coverage run:
+### `yarn test:coverage`
