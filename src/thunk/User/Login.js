@@ -1,5 +1,5 @@
 import LoginService from "../../services/UserService/Login";
-import { setToken } from "../../utilities/checkToken";
+import { setToken } from "../../utilities/check/checkToken";
 import {
   loginLoading,
   userLoginSuccess,

@@ -110,7 +110,6 @@ class AdvanceSearch extends React.Component {
               >
                 Search
               </Button>
-
               <Button
                 variant="contained"
                 color="secondary"
@@ -132,7 +131,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   clearFilterProps: async () => {
     dispatch(clearFilterAction());
   },
-  searchItem : async (data) => dispatch(searchItemThunk(data))
-  
+  searchItem: async (data) => dispatch(searchItemThunk(data))
+
 });
 export default connect(null, mapDispatchToProps)(AdvanceSearch);

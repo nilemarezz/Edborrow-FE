@@ -21,7 +21,7 @@ class Item extends React.Component {
       <ItemContainer className="item-table-cotainer">
         <AdvanceSearch />
         <TableContainer>
-          <ItemTable Items={ item.filter.length > 0 ? item.filter : item.Items} item = {item} loading={item.loading} Cart={item.Cart}/>
+          <ItemTable Items={item.filter.length > 0 ? item.filter : item.Items} item={item} loading={item.loading} Cart={item.Cart} />
         </TableContainer>
       </ItemContainer>
     );
