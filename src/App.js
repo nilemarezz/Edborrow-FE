@@ -12,13 +12,12 @@ import Register from "./containers/Register";
 import { connect } from "react-redux";
 import { UserDetailThunk } from "./thunk/User/UserDetail";
 import { checkToken, getToken } from "./utilities/check/checkToken";
-import Dashboard from "./containers/Dashboard";
-import WithLoading from "./utilities/WithLoading";
-import Item from "./containers/Item";
 import NavbarContiner from './containers/Nav/NavContainer'
-import Cart from './containers/Cart'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import AdminRoute from './routes/AdminRoute';
+import UserRoute from './routes/UserRoute'
+import DetailRoute from './routes/DetailRoute'
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
@@ -42,65 +41,15 @@ const App = (props) => {
           <Switch>
             <Route path="/login" component={Login} exact strict />
             <Route path="/register" component={Register} exact strict />
-            <PrivateRoute path="/" exact strict>
-              <Item />
-            </PrivateRoute>
-            <Route path="/cart" component={Cart} exact strict />
-            <PrivateAdminRoute admin={props.user.admin}>
-              <Route path="/dashboard" component={Dashboard} exact strict />
-            </PrivateAdminRoute>
-
+            <Route path="/user/:section" component={UserRoute} exact strict />
+            <Route path="/admin/:section" component={AdminRoute} exact strict />
+            <Route path="/detail/:section/:id" component={DetailRoute} exact strict />
           </Switch>
         </Router>
       </SnackbarProvider>
     </MuiPickersUtilsProvider>
   );
 };
-
-function PrivateRoute({ children, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        localStorage.getItem("userToken") !== null ? (
-          children
-        ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-              }}
-            />
-          )
-      }
-    />
-  );
-}
-
-function PrivateAdminRoute({ admin, children, ...rest }) {
-  const render = () => {
-    if (localStorage.getItem("userToken") === null) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/login",
-          }}
-        />
-      );
-    } else {
-      if (admin === false) {
-        return (
-          <Redirect
-            to={{
-              pathname: "/",
-            }}
-          />
-        );
-      }
-      return children;
-    }
-  };
-  return <Route {...rest} render={({ location }) => render()} />;
-}
 
 const mapStateToProps = (state) => {
   return { user: state.User };

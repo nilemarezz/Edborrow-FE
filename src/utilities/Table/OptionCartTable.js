@@ -6,7 +6,7 @@ import { color } from "../data/color";
 import * as R from 'ramda'
 import { CartItem } from '../data/refactorMUIdata'
 import { ItemTable } from '../../systemdata/Item'
-export const OptionItemTable = {
+export const OptionCartTable = {
   selectableRows: false,
   filterType: "textField",
   selectableRowsOnClick: true,
@@ -14,40 +14,9 @@ export const OptionItemTable = {
   download: false,
   print: false,
 };
-
-
-export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCartPage) => {
-  let disable = false;
-
-  if (tableMeta.rowData[4] === 1) {
-    disable = false;
-  } else {
-    disable = true;
-  }
-  var found = R.contains(CartItem(tableMeta.rowData), cart);
-  return (
-    <Button
-      color="primary"
-      variant="contained"
-      size="small"
-      onClick={() =>
-        found
-          ? redirectToCartPage()
-          : AddItemToCarts(tableMeta.rowData)
-      }
-      disabled={disable}
-      style={{ marginLeft: 10 }}
-    >
-      {found ? "Cart" : "Add"}
-    </Button>
-  );
-};
-
-export const ItemColumns = (
+export const CartColumns = (
   redirectToDetailPage,
-  cart,
-  AddItemToCarts,
-  redirectToCartPage
+  deleteItemInCart
 ) => [
     { name: ItemTable.itemId.name, label: ItemTable.itemId.label },
     { name: ItemTable.itemName.name, label: ItemTable.itemName.label },
@@ -75,16 +44,8 @@ export const ItemColumns = (
       label: ItemTable.departmentName.label,
       options: {
         customBodyRender: (value, tableMeta) => {
-          return <span>{renderDepartment(value, tableMeta.rowData[6])}</span>;
+          return <span>{renderDepartment(value, tableMeta.rowData[5])}</span>;
         },
-      },
-    },
-
-    {
-      name: ItemTable.itemAvailability.name,
-      label: ItemTable.itemAvailability.label,
-      options: {
-        customBodyRender: (value) => renderStatus(value),
       },
     },
     {
@@ -96,16 +57,24 @@ export const ItemColumns = (
         sort: false,
         download: false,
         customBodyRender: (value, tableMeta) => (
-          <div>
-            {renderItemButton(tableMeta, cart, AddItemToCarts, redirectToCartPage)}
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            {/* {renderItemButton(tableMeta, cart, AddItemToCarts, redirectToCartPage)} */}
             <Button
               color={color.secondary}
               variant="contained"
               size="small"
               onClick={() => redirectToDetailPage(value)}
-              style={{ marginLeft: 10 }}
             >
               Detail
+          </Button>
+            <Button
+              color={color.secondary}
+              variant="contained"
+              size="small"
+              onClick={() => deleteItemInCart(value)}
+              style={{ marginLeft: 10 }}
+            >
+              Delete
           </Button>
           </div>
         ),

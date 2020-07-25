@@ -1,34 +1,34 @@
 import React from 'react'
 import MUIDataTable from "mui-datatables";
-
-const columns = ["Name", "Company", "City", "State"];
-
-const data = [
-    ["Joe James", "Test Corp", "Yonkers", "NY"],
-    ["John Walsh", "Test Corp", "Hartford", "CT"],
-    ["Bob Herm", "Test Corp", "Tampa", "FL"],
-    ["James Houston", "Test Corp", "Dallas", "TX"],
-];
-
-const options = {
-    filterType: 'checkbox',
-    download: false,
-    print: false
-};
-
+import { OptionCartTable, CartColumns } from '../../utilities/Table/OptionCartTable'
+import { deleteItemInCart } from '../../actions/ItemAction'
+import { connect } from 'react-redux'
+import { route } from '../../systemdata/route'
+import { withRouter } from "react-router-dom";
 class CartTable extends React.Component {
+    redirectToDetailPage = (value) => {
+        this.props.history.push(`${route.user.itemDetail}${value}`);
+    };
     render() {
+
+        const columns = CartColumns(this.redirectToDetailPage, this.props.deleteItem)
         return (
             <div style={{ marginTop: 20 }}>
                 <MUIDataTable
                     title={"Cart"}
-                    data={data}
+                    data={this.props.cart}
                     columns={columns}
-                    options={options}
+                    options={OptionCartTable}
                 />
             </div>
         )
     }
 }
 
-export default CartTable
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+    deleteItem: async (value) => {
+        dispatch(deleteItemInCart(value));
+    }
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(CartTable))
