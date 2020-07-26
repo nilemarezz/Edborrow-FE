@@ -316,17 +316,17 @@ const Nav = (props) => {
       {renderMobileMenu}
       {renderMenu}
       <Toolbar id="back-to-top-anchor" />
-
-      <ScrollTop {...props}>
+      {/* Close Feature Flag  */}
+      {/* <ScrollTop {...props} style={{ zIndex: 9999 }}>
         <Fab
           color="secondary"
           size="small"
           aria-label="scroll back to top"
-          style={{ zIndex: "-1" }}
+          style={{ zIndex: 9999 }}
         >
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUpIcon style={{ zIndex: 9999 }} />
         </Fab>
-      </ScrollTop>
+      </ScrollTop> */}
       <Modal open={open} handleClose={() => setOpen(false)}>
         <h2 id="transition-modal-title">{instruction.head}</h2>
         <p id="transition-modal-description">{instruction.no1}</p>

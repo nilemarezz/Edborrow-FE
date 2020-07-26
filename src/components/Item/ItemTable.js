@@ -27,7 +27,7 @@ class ItemTable extends React.Component {
       this.redirectToCartPage
     );
     return (
-      <React.Fragment>
+      <div style={{ padding: '0px 20px' }}>
 
         <WithLoading loading={loading} />
         <MUIDataTable
@@ -36,7 +36,7 @@ class ItemTable extends React.Component {
           columns={columns}
           options={OptionItemTable}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
