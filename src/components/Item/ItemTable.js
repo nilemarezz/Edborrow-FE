@@ -13,10 +13,10 @@ import WithLoading from "../../utilities/WithLoading";
 import { route } from '../../systemdata/route'
 class ItemTable extends React.Component {
   redirectToDetailPage = (value) => {
-    this.props.history.push(`${route.user.itemDetail}${value}`);
+    this.props.history.push(`${route.detail.itemDetail}/${value}`);
   };
   redirectToCartPage = (value) => {
-    this.props.history.push(route.user.cart);
+    this.props.history.push(route.detail.cart);
   };
   render() {
     const { item, Items, loading, Cart } = this.props;

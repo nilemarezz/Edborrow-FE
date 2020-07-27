@@ -7,6 +7,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ItemDetailAccordion from './ItemDetailAccordion'
+import UserDetailAccordian from './UserDetailAccordion'
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -34,7 +36,7 @@ class ControlledExpansionPanels extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, item } = this.props;
     const { expanded } = this.state;
 
     return (
@@ -44,7 +46,7 @@ class ControlledExpansionPanels extends React.Component {
             <Typography className={classes.heading}>Item Detail</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <ItemDetailAccordion />
+            <ItemDetailAccordion item={item} />
 
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -53,10 +55,7 @@ class ControlledExpansionPanels extends React.Component {
             <Typography className={classes.heading}>Owner Detail</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
-              Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-              diam eros in elit. Pellentesque convallis laoreet laoreet.
-            </Typography>
+            <UserDetailAccordian item={item} />
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div >

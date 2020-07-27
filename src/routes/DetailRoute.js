@@ -8,13 +8,13 @@ import {
 import { connect } from "react-redux";
 import { route } from '../systemdata/route'
 import ItemDetail from '../containers/ItemDetail'
-
+import ApplicationDetail from '../containers/ApplicationDetail'
 const DetailRoute = () => {
   return (
     <Router>
       <Switch>
-        <Route path={route.detail.itemDetail} exact strict component={ItemDetail} />
-        <Route path={route.detail.applicationDetail} exact strict component={ItemDetail} />
+        <Route path={`${route.detail.itemDetail}/:id`} exact strict component={ItemDetail} />
+        <Route path={`${route.detail.applicationDetail}/:id`} exact strict component={ApplicationDetail} />
       </Switch>
     </Router>
 

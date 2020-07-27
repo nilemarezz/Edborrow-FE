@@ -13,13 +13,14 @@ const StyledTextField = withStyles({
 })(TextField);
 class ItemDetailAccordion extends React.Component {
   render() {
+    const { itemBrand, itemModel, itemType, itemdescription, BuyDate } = this.props.item
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
           <StyledTextField
             id="standard-full-width"
             label="Brand"
-            value={"Asus"}
+            value={itemBrand || "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -32,7 +33,7 @@ class ItemDetailAccordion extends React.Component {
           <StyledTextField
             id="standard-full-width"
             label="Model"
-            value={"KF-4521"}
+            value={itemModel || "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -45,7 +46,7 @@ class ItemDetailAccordion extends React.Component {
           <StyledTextField
             id="standard-full-width"
             label="Type"
-            value={"Electronic"}
+            value={itemType || "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -59,7 +60,7 @@ class ItemDetailAccordion extends React.Component {
             id="outlined-multiline-static"
             label="Buy Date"
             multiline
-            value="09/01/2020"
+            value={BuyDate || "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -74,7 +75,7 @@ class ItemDetailAccordion extends React.Component {
             label="Description"
             multiline
             rows={4}
-            value="Liverpool Football Club is a professional football club in Liverpool, England, that competes in the Premier League, the top tier of English football. "
+            value={itemdescription || "-"}
             variant="outlined"
             disabled
             fullWidth
