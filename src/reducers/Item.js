@@ -13,7 +13,7 @@ const initialState = {
   Items: [],
   Cart: [],
   loading: null,
-  filter : [],
+  filter: [],
 };
 const isMatchById = (data) => {
   return (item) => item.id !== data.id;
@@ -31,13 +31,13 @@ export default function (state = initialState, action) {
     case DELETE_ITEM_INCART:
       return R.assocPath(
         ["Cart"],
-        R.filter(isMatchById(action.payload), state.Cart)
+        R.reject(R.propEq('itemId', action.payload))(state.Cart)
       )(state);
     case ADD_ITEM_TO_CART:
       return R.assocPath(["Cart"], R.append(action.payload, state.Cart))(state)
-    case SEARCH_ITEM_SUCCESS :
+    case SEARCH_ITEM_SUCCESS:
       return R.pipe(R.assocPath(["filter"], action.payload))(state);
-    case CLEAR_FILTER :
+    case CLEAR_FILTER:
       return R.assocPath(["filter"], [])(state);
     default:
       return state;

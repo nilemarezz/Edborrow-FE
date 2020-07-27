@@ -45,7 +45,6 @@ class AdvanceSearch extends React.Component {
   };
   render() {
     const { name, category, department, avalibility } = this.state;
-    console.log(this.props.clearFilterProps);
     return (
       <Card>
         <CardContent>

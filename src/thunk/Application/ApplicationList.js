@@ -2,7 +2,6 @@ import { getApplicationList, loadingApplicationList } from '../../actions/Applic
 import GetApplicationListService from '../../services/ApplicationService/GetApplicationList'
 export const GetApplicationList = (value) => {
   return async (dispatch, getState) => {
-    console.log(value)
     dispatch(loadingApplicationList(true));
     const item = await GetApplicationListService()
     dispatch(getApplicationList(item))

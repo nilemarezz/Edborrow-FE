@@ -4,11 +4,14 @@ import Grid from '@material-ui/core/Grid'
 import Accordion from '../components/ItemDetail/Accordion'
 import styled from 'styled-components'
 import { renderStatus } from '../utilities/Table/renderItemTable'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 import GetItemDetail from '../services/ItemService/GetItemDetail'
 import WithLoading from '../utilities/WithLoading'
 import { connect } from 'react-redux'
 import { addItemToCart } from '../actions/ItemAction'
+import * as R from 'ramda'
+import { withRouter } from 'react-router-dom'
+import { route } from '../systemdata/route'
 const Image = styled.img`
   max-width:90%;
   max-height:90%;
@@ -23,10 +26,8 @@ class ItemDetail extends React.Component {
   state = { item: {}, loading: false }
 
   getDetail = async () => {
-    console.log('asdasd')
     this.setState({ loading: true })
     const item = await GetItemDetail(this.props.match.params.id);
-    console.log(item)
     this.setState({ item: item })
     this.setState({ loading: false })
   }
@@ -36,7 +37,19 @@ class ItemDetail extends React.Component {
   addItem = () => {
     this.props.addItemToCart(this.state.item)
   }
-
+  isItemInCart = () => {
+    let item = {
+      itemId: this.state.item.itemId,
+      itemName: this.state.item.itemName,
+      itemImage: this.state.item.itemImage,
+      departmentName: this.state.item.departmentName,
+    };
+    var found = R.contains(item, this.props.cart);
+    return found
+  }
+  redirectToCart = () => {
+    this.props.history.push(route.user.cart)
+  }
   render() {
     const id = this.props.match.params.id
     return (
@@ -53,8 +66,8 @@ class ItemDetail extends React.Component {
                 <h1>{this.state.item.itemName} </h1>
                 <div style={{ marginLeft: 20 }}>{renderStatus(1)}</div>
               </Container>
-              <Button variant="contained" color="primary" onClick={() => this.addItem()}>
-                Add
+              <Button variant="contained" color="primary" onClick={() => this.isItemInCart() ? this.redirectToCart() : this.addItem()}>
+                {this.isItemInCart() ? "Cart" : "Add"}
               </Button>
             </Container>
             <Accordion item={this.state.item} />
@@ -75,4 +88,8 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(addItemToCart(data));
   },
 });
-export default connect(null, mapDispatchToProps)(ItemDetail)
+
+export const mapStateToProps = (state) => {
+  return { cart: state.Item.Cart }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ItemDetail))

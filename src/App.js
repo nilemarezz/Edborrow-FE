@@ -4,7 +4,7 @@ import {
   Redirect,
   HashRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Login from "./containers/Login";
