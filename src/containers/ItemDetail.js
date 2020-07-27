@@ -7,7 +7,8 @@ import { renderStatus } from '../utilities/Table/renderItemTable'
 import Button from '@material-ui/core/Button';
 import GetItemDetail from '../services/ItemService/GetItemDetail'
 import WithLoading from '../utilities/WithLoading'
-
+import { connect } from 'react-redux'
+import { addItemToCart } from '../actions/ItemAction'
 const Image = styled.img`
   max-width:90%;
   max-height:90%;
@@ -32,6 +33,9 @@ class ItemDetail extends React.Component {
   componentDidMount() {
     this.getDetail()
   }
+  addItem = () => {
+    this.props.addItemToCart(this.state.item)
+  }
 
   render() {
     const id = this.props.match.params.id
@@ -41,7 +45,7 @@ class ItemDetail extends React.Component {
         <Title title={`Item ID : ${id}`} />
         <Grid container style={{ padding: '0px 30px' }}>
           <Grid item xs={12} sm={5}>
-            <Image src="https://equipment-image.s3-ap-southeast-1.amazonaws.com/160351_2.jpg" alt="itemImage" />
+            <Image src={this.state.item.itemImage} alt="itemImage" />
           </Grid>
           <Grid item xs={12} sm={7}>
             <Container>
@@ -49,7 +53,7 @@ class ItemDetail extends React.Component {
                 <h1>{this.state.item.itemName} </h1>
                 <div style={{ marginLeft: 20 }}>{renderStatus(1)}</div>
               </Container>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={() => this.addItem()}>
                 Add
               </Button>
             </Container>
@@ -60,5 +64,15 @@ class ItemDetail extends React.Component {
     )
   }
 }
-
-export default ItemDetail
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+  addItemToCart: async ({ itemId, itemName, itemImage, departmentName }) => {
+    let data = {
+      itemId,
+      itemName,
+      itemImage,
+      departmentName,
+    };
+    dispatch(addItemToCart(data));
+  },
+});
+export default connect(null, mapDispatchToProps)(ItemDetail)

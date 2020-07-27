@@ -13,14 +13,14 @@ const StyledTextField = withStyles({
 })(TextField);
 class UserDetailAccordian extends React.Component {
   render() {
-    const { departmantName, departmentEmail, telephoneNo, Building, Floor, Room } = this.props.item
+    const { departmentName, departmentEmail, telephoneNo, Building, Floor, Room } = this.props.item
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
           <StyledTextField
             id="standard-full-width"
             label="Name"
-            value={departmantName || "-"}
+            value={departmentName || "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{

@@ -1,13 +1,15 @@
 {
   "result": "success",
   "data": {
+    "itemId" : 10002,
     "itemName" : "Asus Predator",
+    "itemImage" : "https://equipment-image.s3-ap-southeast-1.amazonaws.com/160351_2.jpg",
     "itemBrand" : "ASUS",
     "itemModel" : "KF-4567",
     "itemType" : "Electronic",
     "BuyDate" : "10/10/11",
     "itemdescription" : "Liverpool Football Club is a professional football club in Liverpool, England, that competes in the Premier League, the top tier of English football. ",
-    "departmantName" : "Infrastructure",
+    "departmentName" : "Infrastructure",
     "departmentEmail" : "nilenon@gmail.com",
     "telephoneNo" : "0999999999",
     "Building" : "SIT",
