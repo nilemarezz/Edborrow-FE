@@ -12,12 +12,13 @@ import Register from "./containers/Register";
 import { connect } from "react-redux";
 import { UserDetailThunk } from "./thunk/User/UserDetail";
 import { checkToken, getToken } from "./utilities/check/checkToken";
-import NavbarContiner from './containers/Nav/NavContainer'
+import MockNav from './containers/Nav/MockNavBar'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import AdminRoute from './routes/AdminRoute';
 import UserRoute from './routes/UserRoute'
 import DetailRoute from './routes/DetailRoute'
+
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
@@ -37,7 +38,7 @@ const App = (props) => {
       >
         {/* <WithLoading loading={props.user.loading} /> */}
         <Router>
-          <NavbarContiner />
+          <MockNav />
           <Switch>
             <Route path="/login" component={Login} exact strict />
             <Route path="/register" component={Register} exact strict />

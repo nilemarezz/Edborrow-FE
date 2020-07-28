@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { route } from '../systemdata/route'
 import ItemDetail from '../containers/ItemDetail'
 import ApplicationDetail from '../containers/ApplicationDetail'
+import Nav from '../containers/Nav/Navbar'
 const DetailRoute = () => {
   return (
     <Router>

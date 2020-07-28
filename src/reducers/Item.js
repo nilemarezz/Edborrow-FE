@@ -15,9 +15,7 @@ const initialState = {
   loading: null,
   filter: [],
 };
-const isMatchById = (data) => {
-  return (item) => item.id !== data.id;
-};
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case GETALL_ITEM_SUCCESS:

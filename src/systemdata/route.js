@@ -6,7 +6,11 @@ export const route = {
     itemDetail: '/user/itemdetail'
   },
   admin: {
-    dashboard: "/admin/dashboard"
+    dashboard: "/admin/dashboard",
+    applicationList: '/admin/applicationlist',
+    items: '/admin/items',
+    additem: '/admin/additem'
+
   },
   auth: {
     login: "/login",

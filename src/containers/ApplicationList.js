@@ -3,7 +3,6 @@ import Title from '../components/Title'
 import ApplicationTable from '../components/ApplicationList/AplicationTable'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { GetApplicationList } from '../thunk/Application/ApplicationList'
 import { route } from '../systemdata/route'
 import WithLoading from '../utilities/WithLoading'
 class ApplicationList extends React.Component {
@@ -29,4 +28,4 @@ const mapStateToProps = (state) => {
   return { applicationList: state.ApplicationList };
 };
 
-export default connect(mapStateToProps, { GetApplicationList })(withRouter(ApplicationList))
+export default connect(mapStateToProps, null)(withRouter(ApplicationList))

@@ -46,17 +46,17 @@ export const renderApproveStatus = (value) => {
   let tool;
   if (value === 2) {
     label = "Waiting";
-    bgcolor = "#ffa000";
+    bgcolor = themeColor.yellow;
     color = "white";
     tool = "Please wait for your advisor Approve"
   } else if (value === 1) {
     label = "Approve";
-    bgcolor = "#689f38";
+    bgcolor = themeColor.green;
     color = "white";
     tool = "Please click see more the view the status"
   } else {
     label = "Not Approve";
-    bgcolor = "#d32f2f";
+    bgcolor = themeColor.red;
     color = "white";
     tool = "Your Advisor not Approve , Please try again"
   }

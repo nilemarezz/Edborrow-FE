@@ -5,15 +5,20 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Dashboard from '../containers/Dashboard'
+import Dashboard from '../containers/Dashboard.admin'
 import { connect } from "react-redux";
 import { route } from '../systemdata/route'
+import AdminNav from '../containers/Nav/AdminNav'
+import ApplicationList from '../containers/ApplicationList.admin'
 
 const Admin = (props) => {
   return (
     <Router>
       <Switch>
-        <Route path={route.admin.dashboard} component={Dashboard} exact strict />
+        <AdminNav>
+          <Route path={route.admin.dashboard} component={Dashboard} exact strict />
+          <Route path={route.admin.applicationList} component={ApplicationList} exact strict />
+        </AdminNav>
       </Switch>
     </Router>
 

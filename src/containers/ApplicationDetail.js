@@ -1,5 +1,7 @@
 import React from 'react'
 import Title from '../components/Title'
+import { connect } from 'react-redux'
+import { GetApplicationList } from '../thunk/Application/ApplicationList.admin'
 class ApplicationDeatail extends React.Component {
   render() {
     return (
@@ -7,5 +9,9 @@ class ApplicationDeatail extends React.Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return { applicationList: state.ADMIN_ApplicationList };
+};
 
-export default ApplicationDeatail
+
+export default connect(mapStateToProps, { GetApplicationList })(ApplicationDeatail)

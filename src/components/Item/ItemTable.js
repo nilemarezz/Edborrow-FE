@@ -16,7 +16,8 @@ class ItemTable extends React.Component {
     this.props.history.push(`${route.detail.itemDetail}/${value}`);
   };
   redirectToCartPage = (value) => {
-    this.props.history.push(route.detail.cart);
+    console.log('asdasd')
+    this.props.history.push(route.user.cart);
   };
   render() {
     const { item, Items, loading, Cart } = this.props;
