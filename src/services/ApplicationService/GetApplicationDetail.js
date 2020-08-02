@@ -1,7 +1,7 @@
 import env from '../../env'
-import ApplicationList from '../../__mock__/RequestList.json'
-const GetApplicationList = async () => {
-  // const response = await fetch(`${env}request`, {
+import ApplicationList from '../../__mock__/RequestDetail.json'
+const GetApplicationDetail = async (value) => {
+  // const response = await fetch(`${env}request/detail/${value}`, {
   //   headers: {
   //     "Content-Type": "application/json",
   //     Authorization: `Bearer ${localStorage.getItem("userToken")}`,
@@ -11,4 +11,4 @@ const GetApplicationList = async () => {
   return ApplicationList.data
 }
 
-export default GetApplicationList
+export default GetApplicationDetail

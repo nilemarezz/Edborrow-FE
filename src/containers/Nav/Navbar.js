@@ -315,7 +315,6 @@ const Nav = (props) => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <Toolbar id="back-to-top-anchor" />
       {/* Close Feature Flag  */}
       {/* <ScrollTop {...props} style={{ zIndex: 9999 }}>
         <Fab

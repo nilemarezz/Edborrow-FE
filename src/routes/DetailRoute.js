@@ -13,6 +13,7 @@ import Nav from '../containers/Nav/Navbar'
 const DetailRoute = () => {
   return (
     <Router>
+      <Nav />
       <Switch>
         <Route path={`${route.detail.itemDetail}/:id`} exact strict component={ItemDetail} />
         <Route path={`${route.detail.applicationDetail}/:id`} exact strict component={ApplicationDetail} />

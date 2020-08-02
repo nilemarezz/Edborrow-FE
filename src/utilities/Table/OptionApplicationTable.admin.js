@@ -6,7 +6,7 @@ import { ApplicationTable } from '../../systemdata/Application'
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import Grid from "@material-ui/core/Grid";
-
+import { RefactorDate } from '../data/refactorDate'
 export const ApplicationOptions = (userId, name, location, purpose, transactiondate) => {
   return {
     filterType: "textField",
@@ -27,6 +27,7 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
 
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1;
+      console.log(rowData)
       return (
         <TableRow>
           <TableCell colSpan={colSpan}>
@@ -43,9 +44,9 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
                     </Grid>
                     <Grid item sm={6} xs={3}>
                       <div style={{ paddingLeft: 20 }}>
-                        <p>: &nbsp;&nbsp;{userId || "-"}</p>
-                        <p>: &nbsp;&nbsp;{name || ""}</p>
-                        <p>: &nbsp;&nbsp;{location || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[7] || "-"}</p>
+                        <p>: &nbsp;&nbsp;{name || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[8] || "-"}</p>
                       </div>
                     </Grid>
                   </Grid>
@@ -58,10 +59,10 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
                         <p>Transaction Date</p>
                       </div>
                     </Grid>
-                    <Grid item sm={6} xs={3}>
+                    <Grid item sm={9} xs={6}>
                       <div style={{ paddingLeft: 20 }}>
-                        <p>: &nbsp;&nbsp;{purpose || "-"}</p>
-                        <p>: &nbsp;&nbsp;{transactiondate || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[9] || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[10] || "-"}</p>
                         {/* <h4>
                         : {rowData[10].substring(0, 10)}{" "}
                         {rowData[10].substring(11, 19)}
@@ -77,56 +78,57 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
       );
     },
     onRowsExpand: (curExpanded, allExpanded) =>
-      console.log(curExpanded, allExpanded),
+      null
   }
 }
 
-export const ApplicationColumn = (redirectToDetail) => [
+export const ApplicationColumn = () => [
+  { name: ApplicationTable.requestId.name, label: ApplicationTable.requestId.label },
   {
-    name: ApplicationTable.requestId.name,
-    label: ApplicationTable.requestId.label,
+    name: ApplicationTable.itemId.name,
+    label: ApplicationTable.itemId.label,
     options: {
-      filter: true,
-      sort: true,
-    },
-
-  },
-  {
-    name: ApplicationTable.transactionDate.name,
-    label: ApplicationTable.transactionDate.label,
-    options: {
-      filter: true,
-      sort: true,
-      sortDirection: 'des',
+      display: false,
     },
   },
+  { name: ApplicationTable.itemName.name, label: ApplicationTable.itemName.label },
   {
-    name: ApplicationTable.requestApprove.name,
-    label: ApplicationTable.requestApprove.label,
-    options: {
-      filter: true,
-      sort: true,
-      customBodyRender: (value, tableMeta, updateValue) =>
-        renderApproveStatus(value),
-    },
-  },
-  {
-    name: ApplicationTable.requestId.name,
-    options: {
-      filter: true,
-      sort: true,
+    name: ApplicationTable.borrowDate.name, label: ApplicationTable.borrowDate.label, options: {
       customBodyRender: (value, tableMeta) => (
         <div>
-          <Button
-            color={color.secondary}
-            variant="contained"
-            size="small"
-            onClick={() => redirectToDetail(value)}
-            style={{ marginLeft: 10 }}
-          >
-            Detail
-        </Button>
+          {RefactorDate(value)}
         </div>
       ),
     }
-  }]
+  },
+  {
+    name: ApplicationTable.returnDate.name, label: ApplicationTable.returnDate.label, options: {
+      customBodyRender: (value, tableMeta) => (RefactorDate(value)
+      ),
+    }
+  },
+  { name: ApplicationTable.itemApprove.name, label: ApplicationTable.itemApprove.label },
+  { name: ApplicationTable.itemBorrowingStatusId.name, label: ApplicationTable.itemBorrowingStatusId.label },
+  {
+    name: ApplicationTable.userId.name, label: ApplicationTable.userId.label, options: {
+      display: false,
+    },
+  },
+  {
+    name: ApplicationTable.usePlace.name, label: ApplicationTable.usePlace.label, options: {
+      display: false,
+    },
+  },
+  {
+    name: ApplicationTable.borrowPurpose.name, label: ApplicationTable.borrowPurpose.label, options: {
+      display: false,
+    },
+  },
+  {
+    name: ApplicationTable.transactionDate.name, label: ApplicationTable.transactionDate.label, options: {
+      display: false,
+      customBodyRender: (value, tableMeta) => (RefactorDate(value)
+      ),
+    }
+  },
+]

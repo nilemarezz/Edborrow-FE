@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-    margin-top :40px;
     margin-left : 40px;
     line-height : 1.5;
     border-left : 4px solid #3f51b5;
@@ -12,14 +11,14 @@ const Title = styled.h1`
 `
 
 class TitleComponent extends React.Component {
-    render() {
-        return (
+  render() {
+    return (
 
-            <Container >
-                <Title style={{ paddingLeft: 20 }}>{this.props.title}</Title>
-            </Container>
-        )
-    }
+      <Container >
+        <Title style={{ paddingLeft: 20 }}>{this.props.title}</Title>
+      </Container>
+    )
+  }
 }
 
 export default TitleComponent

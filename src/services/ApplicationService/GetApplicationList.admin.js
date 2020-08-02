@@ -1,5 +1,5 @@
 import env from '../../env'
-import ApplicationList from '../../__mock__/Application.admin.json'
+import ApplicationList from '../../__mock__/RequestAdmin.json'
 const GetApplicationList = async () => {
   // let res = await fetch(`${env}request/admin`, {
   //     headers: {

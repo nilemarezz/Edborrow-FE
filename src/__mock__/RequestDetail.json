@@ -1,0 +1,51 @@
+{
+  "result": "success",
+  "data": [
+    {
+      "borrowDate": "2020-08-12T00:00:00.000Z",
+      "buyDate": null,
+      "categoryId": 2,
+      "createDate": "2020-08-02T09:35:37.000Z",
+      "departmentId": 2,
+      "itemApprove": 2,
+      "itemAvailability": 0,
+      "itemBorrowable": 1,
+      "itemBorrowingStatusId": 4,
+      "itemBrand": "Apex",
+      "itemDescription": "For using in event",
+      "itemId": 20016,
+      "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/white-table1.jpg",
+      "itemModel": "ATFS-60120",
+      "itemName": "White Table",
+      "itemStatusId": 1,
+      "rejectPurpose": null,
+      "requestId": 316,
+      "returnDate": "2020-08-22T00:00:00.000Z",
+      "transactionDate": "2020-08-02T09:35:37.000Z",
+      "userId": null
+    },
+    {
+      "borrowDate": "2020-08-12T00:00:00.000Z",
+      "buyDate": null,
+      "categoryId": 1,
+      "createDate": "2020-08-02T09:35:37.000Z",
+      "departmentId": 3,
+      "itemApprove": 2,
+      "itemAvailability": 0,
+      "itemBorrowable": 1,
+      "itemBorrowingStatusId": 4,
+      "itemBrand": "Oculus",
+      "itemDescription": "For using in VR work",
+      "itemId": 20020,
+      "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/oculus_quest_64gb_all_in_one_vr_with_controller_1.jpg",
+      "itemModel": "Oculus Quest",
+      "itemName": "VR with Controller",
+      "itemStatusId": 3,
+      "rejectPurpose": null,
+      "requestId": 316,
+      "returnDate": "2020-08-22T00:00:00.000Z",
+      "transactionDate": "2020-08-02T09:35:37.000Z",
+      "userId": null
+    }
+  ]
+}

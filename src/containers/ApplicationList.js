@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { route } from '../systemdata/route'
 import WithLoading from '../utilities/WithLoading'
+import { GetApplicationList } from '../thunk/Application/ApplicationList'
+
 class ApplicationList extends React.Component {
   redirectToDetailPage = (value) => {
     this.props.history.push(`${route.detail.applicationDetail}/${value}`)
@@ -28,4 +30,4 @@ const mapStateToProps = (state) => {
   return { applicationList: state.ApplicationList };
 };
 
-export default connect(mapStateToProps, null)(withRouter(ApplicationList))
+export default connect(mapStateToProps, { GetApplicationList })(withRouter(ApplicationList))

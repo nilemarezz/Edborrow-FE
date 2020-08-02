@@ -53,7 +53,7 @@ export const ApplicationColumn = (redirectToDetail) => [
             variant="contained"
             size="small"
             onClick={() => redirectToDetail(value)}
-            style={{ marginLeft: 10 }}
+
           >
             Detail
         </Button>

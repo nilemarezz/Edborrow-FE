@@ -1,25 +1,25 @@
 {
-    "result": "success",
-    "data": [
-        {
-            "itemId": 20011,
-            "itemName": "Asus Headphones",
-            "itemBrand": null,
-            "itemModel": null,
-            "departmentName": "SRM",
-            "ownerName": null,
-            "itemAvailability": 0,
-            "itemImage": null
-        },
-        {
-            "itemId": 20015,
-            "itemName": "Cooler Stainless Steel",
-            "itemBrand": "Igloo",
-            "itemModel": "Igloo Stainless Steel Cooler",
-            "departmentName": "SRM",
-            "ownerName": null,
-            "itemAvailability": 1,
-            "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/160351_2.jpg"
-        }
-    ]
+  "result": "success",
+  "data": [
+    {
+      "itemId": 20011,
+      "itemName": "Asus Headphones",
+      "itemBrand": null,
+      "itemModel": null,
+      "departmentName": "SRM",
+      "ownerName": null,
+      "itemAvailability": 0,
+      "itemImage": null
+    },
+    {
+      "itemId": 20015,
+      "itemName": "Cooler Stainless Steel",
+      "itemBrand": "asd",
+      "itemModel": "Igloo Stainless Steel Cooler",
+      "departmentName": "SRM",
+      "ownerName": null,
+      "itemAvailability": 1,
+      "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/160351_2.jpg"
+    }
+  ]
 }

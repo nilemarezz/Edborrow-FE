@@ -77,3 +77,89 @@ export const renderApproveStatus = (value) => {
     // </Grid>
   );
 };
+
+export const renderItemStatus = (value) => {
+  let label;
+  let color;
+  let bgcolor;
+  let tool;
+  if (value === 1) {
+    label = "Avaliable";
+    bgcolor = themeColor.blue;
+    color = "white";
+    tool = "Item are on use";
+  } else if (value === 2) {
+    label = "Returned";
+    bgcolor = themeColor.green;
+    color = "white";
+    tool = "You already return this item";
+  } else if (value === 3) {
+    label = "Late";
+    bgcolor = themeColor.red
+    color = "white";
+    tool = "You not return this item on time";
+  } else if (value === 4) {
+    label = "Waiting for Approve";
+    bgcolor = themeColor.yellow;
+    color = "white";
+    tool = "Waitng for the Item Owner Approve";
+  } else if (value === 6) {
+    label = "Not Pickup";
+    bgcolor = themeColor.grey;
+    color = "white";
+    tool = "You can pick up the item from the owner";
+  } else if (value === 7) {
+    label = "Advisor Reject";
+    bgcolor = themeColor.darkgrey;
+    color = "white";
+    tool = "Your Advisor not approve , Please contact your advisor";
+  } else {
+    label = "Not Aprove";
+    bgcolor = themeColor.red;
+    color = "white";
+    tool = "The Owner Not Approve";
+  }
+
+  return (
+    <Chip
+      label={label}
+      style={{ backgroundColor: bgcolor, color: color }}
+    />
+  )
+};
+
+
+
+export const renderItemDetailApplicationStatus = (value) => {
+  let label;
+  let color;
+  let bgcolor;
+  let tool;
+  if (value === 2) {
+    label = "Waiting";
+    bgcolor = "#ffa000";
+    color = "white";
+    tool = "Waitng for the Item Owner Approve";
+  } else if (value === 0) {
+    label = "Not Approve";
+    bgcolor = "#d32f2f";
+    color = "white";
+    tool = "Item Owner not approve the request";
+  } else if (value === 3) {
+    label = "Advisor Reject";
+    bgcolor = "#616161";
+    color = "white";
+    tool = "Item Owner not approve the request";
+  } else {
+    label = "Approve";
+    bgcolor = "#689f38";
+    color = "white";
+    tool = "Item Owner approve the request";
+  }
+  return (
+    <Chip
+      label={label}
+      style={{ backgroundColor: bgcolor, color: color }}
+    />
+  );
+};

@@ -1,19 +1,28 @@
 {
   "result": "success",
-  "data": {
-    "itemId" : 10002,
-    "itemName" : "Asus Predator",
-    "itemImage" : "https://equipment-image.s3-ap-southeast-1.amazonaws.com/160351_2.jpg",
-    "itemBrand" : "ASUS",
-    "itemModel" : "KF-4567",
-    "itemType" : "Electronic",
-    "BuyDate" : "10/10/11",
-    "itemdescription" : "Liverpool Football Club is a professional football club in Liverpool, England, that competes in the Premier League, the top tier of English football. ",
-    "departmentName" : "Infrastructure",
-    "departmentEmail" : "nilenon@gmail.com",
-    "telephoneNo" : "0999999999",
-    "Building" : "SIT",
-    "Floor" : 2,
-    "Room" : null
+  "data": [
+  {
+  "itemId": 20011,
+  "itemBrand": null,
+  "itemModel": null,
+  "itemName": "Asus Headphones",
+  "createDate": "2020-05-21T03:15:09.000Z",
+  "buyDate": null,
+  "categoryId": 2,
+  "departmentId": 2,
+  "userId": null,
+  "itemStatusId": 2,
+  "itemImage": null,
+  "itemDescription": null,
+  "itemBorrowable": 1,
+  "itemAvailability": 0,
+  "departmentName": "SRM",
+  "departmentTelNo": "0999999992",
+  "departmentEmail": "equipmentproject63@gmail.com",
+  "placeId": 2,
+  "placeBuilding": "SIT",
+  "placeFloor": 3,
+  "placeRoom": "202"
   }
-}
+  ]
+  }
