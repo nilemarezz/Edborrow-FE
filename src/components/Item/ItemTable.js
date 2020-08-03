@@ -10,15 +10,16 @@ import {
 import { addItemToCart } from "../../actions/ItemAction";
 import { CartItem } from "../../utilities/data/refactorMUIdata";
 import WithLoading from "../../utilities/WithLoading";
+import { route } from '../../systemdata/route'
 class ItemTable extends React.Component {
   redirectToDetailPage = (value) => {
-    this.props.history.push(`/detail/${value}`);
+    this.props.history.push(`${route.detail.itemDetail}/${value}`);
   };
   redirectToCartPage = (value) => {
-    this.props.history.push(`/cart`);
+    this.props.history.push(route.user.cart);
   };
   render() {
-    const { item , Items , loading , Cart} = this.props;
+    const { item, Items, loading, Cart } = this.props;
     const columns = ItemColumns(
       this.redirectToDetailPage,
       Cart,
@@ -26,16 +27,16 @@ class ItemTable extends React.Component {
       this.redirectToCartPage
     );
     return (
-      <React.Fragment>
-        
-        <WithLoading loading={loading}/>
+      <div style={{ padding: '0px 20px' }}>
+
+        <WithLoading loading={loading} />
         <MUIDataTable
           title={"ITEMS"}
           data={Items}
           columns={columns}
           options={OptionItemTable}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }

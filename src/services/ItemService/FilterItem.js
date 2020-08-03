@@ -10,7 +10,6 @@ export const FilterItemService = async (value) => {
   } = value;
   try {
     const url = `${env.url}items/search?searchInput=${name}&searchCategory=${category}&searchDepartment=${department}&searchAvailability=${avalibility}&searchBorrowDate=${borrowDate}&searchReturnDate=${returnDate}`;
-    console.log(url);
     const res = await fetch(url, {
       headers: {
         "Content-Type": "application/json",

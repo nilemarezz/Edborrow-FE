@@ -1,10 +1,11 @@
 import { checkToken } from "./check/checkToken";
+import { route } from '../systemdata/route'
 export const snackBarCheckLogin = (admin) => {
   if (checkToken()) {
     if (admin === false) {
-      return { text: "Login Success!", type: "success", redirect: '/' };
+      return { text: "Login Success!", type: "success", redirect: route.user.home };
     } else {
-      return { text: "Login Success!", type: "success", redirect: "/dashboard" };
+      return { text: "Login Success!", type: "success", redirect: route.admin.dashboard };
     }
   } else {
     return { text: "Login Fail!, Please try Again", type: "error" };

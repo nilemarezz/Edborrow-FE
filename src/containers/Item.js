@@ -4,6 +4,8 @@ import { GetAllItemThunk } from "../thunk/Item/GetAllItem";
 import { connect } from "react-redux";
 import AdvanceSearch from "../components/Item/AdvanceSearch";
 import styled from "styled-components";
+import Title from '../components/Title'
+
 const ItemContainer = styled.div`
   padding: 20px;
 `;
@@ -18,12 +20,16 @@ class Item extends React.Component {
   render() {
     const { item } = this.props;
     return (
-      <ItemContainer className="item-table-cotainer">
-        <AdvanceSearch />
-        <TableContainer>
-          <ItemTable Items={item.filter.length > 0 ? item.filter : item.Items} item={item} loading={item.loading} Cart={item.Cart} />
-        </TableContainer>
-      </ItemContainer>
+      <>
+        <Title title="Items" />
+        <ItemContainer className="item-table-cotainer">
+          {/* Close Feature Flag */}
+          {/* <AdvanceSearch /> */}
+          <TableContainer>
+            <ItemTable Items={item.filter.length > 0 ? item.filter : item.Items} item={item} loading={item.loading} Cart={item.Cart} />
+          </TableContainer>
+        </ItemContainer>
+      </>
     );
   }
 }

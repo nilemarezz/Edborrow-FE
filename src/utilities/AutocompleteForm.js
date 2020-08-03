@@ -63,7 +63,7 @@ const AutocompleteForm = (props) => {
   }, [open]);
 
   return (
-    <Grid item sm = {4} xs={12}>
+    <Grid item sm={4} xs={12}>
       <Autocomplete
         id="standard-basic"
         label="Name"
@@ -80,7 +80,6 @@ const AutocompleteForm = (props) => {
         loading={loading}
         onChange={(event, newValue) => {
           if (newValue) {
-            console.log(newValue)
             props.setValue(newValue.item);
           } else {
             props.setValue("");
@@ -88,7 +87,7 @@ const AutocompleteForm = (props) => {
         }}
         renderInput={(params) => (
           <TextField
-          style={{ minWidth: 400 }}
+            style={{ minWidth: 400 }}
             id="standard-basic"
             value={props.value}
             {...params}

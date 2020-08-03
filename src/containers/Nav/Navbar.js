@@ -26,8 +26,10 @@ import { logoutSuccess } from "../../actions/UserAction";
 import AddIcon from "@material-ui/icons/Add";
 import HelpIcon from "@material-ui/icons/Help";
 import Modal from "../../components/Modal";
-import { instruction } from '../../utilities/data/instruction'
+import { instruction } from '../../systemdata/instruction'
 import { clearToken } from '../../utilities/check/checkToken'
+import { route } from '../../systemdata/route'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
@@ -78,9 +80,6 @@ const useStyles = makeStyles((theme) => ({
 function ScrollTop(props) {
   const { children, window } = props;
   const classes = useStyles();
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
@@ -108,16 +107,12 @@ function ScrollTop(props) {
 
 ScrollTop.propTypes = {
   children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
 const Nav = (props) => {
 
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -152,10 +147,10 @@ const Nav = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to="/profile" className={classes.link}>
+      <Link to="/user/profile" className={classes.link}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
-      <Link to="/request" className={classes.link}>
+      <Link to="/user/request" className={classes.link}>
         <MenuItem onClick={handleMenuClose}>Request</MenuItem>
       </Link>
       <MenuItem
@@ -183,7 +178,7 @@ const Nav = (props) => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <Link to={"/addItem"} style={{ textDecoration: "none", color: "black" }}>
+      <Link to={"/user/addItem"} style={{ textDecoration: "none", color: "black" }}>
         <MenuItem onClick={handleMenuClose}>
           <IconButton aria-label="show 4 new mails" color="inherit">
             <AddIcon />
@@ -199,7 +194,7 @@ const Nav = (props) => {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <Link to={"/cart"} style={{ textDecoration: "none", color: "black" }}>
+      <Link to={route.user.cart} style={{ textDecoration: "none", color: "black" }}>
         <MenuItem onClick={handleMenuClose}>
           <IconButton aria-label="show 11 new notifications" color="inherit">
             <Badge badgeContent={props.Item.Cart.length} color="secondary">
@@ -225,7 +220,7 @@ const Nav = (props) => {
         </MenuItem>
       ) : (
           // </Link>
-          <Link to="/login" className={classes.link}>
+          <Link to={route.auth.login} className={classes.link}>
             <MenuItem onClick={handleMenuClose}>
               <IconButton aria-label="show 11 new notifications" color="inherit">
                 <ExitToAppIcon />
@@ -241,7 +236,7 @@ const Nav = (props) => {
       <CssBaseline />
       <AppBar position="fixed">
         <Toolbar>
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link to={route.user.home} style={{ textDecoration: "none", color: "white" }}>
             <Typography variant="h6" noWrap>
               EdBorrow
             </Typography>
@@ -260,7 +255,7 @@ const Nav = (props) => {
             </IconButton>
 
             <Link
-              to={"/addItem"}
+              to={"/user/addItem"}
               style={{ textDecoration: "none", color: "white" }}
             >
               <IconButton aria-label="add" color="inherit">
@@ -272,7 +267,7 @@ const Nav = (props) => {
                 <MailIcon />
               </Badge>
             </IconButton> */}
-            <Link to="/cart" style={{ textDecoration: "none", color: "white" }}>
+            <Link to={route.user.cart} style={{ textDecoration: "none", color: "white" }}>
               <IconButton
                 aria-label="show 17 new notifications"
                 color="inherit"
@@ -297,7 +292,7 @@ const Nav = (props) => {
             ) : (
                 <MenuItem>
                   <Link
-                    to="/login"
+                    to={route.auth.login}
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     LOGIN
@@ -320,18 +315,17 @@ const Nav = (props) => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      <Toolbar id="back-to-top-anchor" />
-
-      <ScrollTop {...props}>
+      {/* Close Feature Flag  */}
+      {/* <ScrollTop {...props} style={{ zIndex: 9999 }}>
         <Fab
           color="secondary"
           size="small"
           aria-label="scroll back to top"
-          style={{ zIndex: "-1" }}
+          style={{ zIndex: 9999 }}
         >
-          <KeyboardArrowUpIcon />
+          <KeyboardArrowUpIcon style={{ zIndex: 9999 }} />
         </Fab>
-      </ScrollTop>
+      </ScrollTop> */}
       <Modal open={open} handleClose={() => setOpen(false)}>
         <h2 id="transition-modal-title">{instruction.head}</h2>
         <p id="transition-modal-description">{instruction.no1}</p>
