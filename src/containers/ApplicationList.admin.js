@@ -12,11 +12,9 @@ class ApplicationList extends React.Component {
     this.props.GetApplicationList()
   }
   changeApproveStatus = (itemId, requestId, value) => {
-    console.log('change approve', itemId, requestId, value)
     this.props.ChangeApproveStatus(itemId, requestId, value)
   }
   changeBorrowingStatus = (itemId, requestId, value) => {
-    console.log('change borrowing', itemId, requestId, value)
     this.props.ChangeBorrowingStatus(itemId, requestId, value)
   }
 

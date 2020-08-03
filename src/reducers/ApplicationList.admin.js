@@ -1,9 +1,38 @@
 import * as R from 'ramda'
-import { ADMIN_GET_APPLICATION_LIST, ADMIN_LOADING_APPLICATION_LIST, ADMIN_CHANGE_APPROVE_STATUS } from '../actions/ApplicationList.admin'
+import {
+  ADMIN_GET_APPLICATION_LIST, ADMIN_LOADING_APPLICATION_LIST,
+  ADMIN_CHANGE_BORROWING_STATUS,
+  ADMIN_CHANGE_APPROVE_STATUS
+} from '../actions/ApplicationList.admin'
 
 const initialState = {
   applicationList: [],
   loading: false
+}
+
+function updateApproveStatus({ itemId, requestId, value }, list) {
+  const newList = list;
+  newList.forEach(item => {
+    if (item.requestId === requestId && item.itemId === itemId) {
+
+      item.itemApprove = value
+    }
+
+  });
+  console.log(newList)
+  return newList
+}
+function updateBorrowingStatus({ itemId, requestId, value }, list) {
+  const newList = list;
+  newList.forEach(item => {
+    if (item.requestId === requestId && item.itemId === itemId) {
+
+      item.itemBorrowingStatusId = value
+    }
+
+  });
+  console.log(newList)
+  return newList
 }
 
 export default function (state = initialState, action) {
@@ -13,7 +42,9 @@ export default function (state = initialState, action) {
     case ADMIN_LOADING_APPLICATION_LIST:
       return R.assocPath(["loading"], action.payload)(state);
     case ADMIN_CHANGE_APPROVE_STATUS:
-      return state
+      return R.assocPath(["applicationList"], updateApproveStatus(action.payload, state.applicationList))(state);
+    case ADMIN_CHANGE_BORROWING_STATUS:
+      return R.assocPath(["applicationList"], updateBorrowingStatus(action.payload, state.applicationList))(state);
     default:
       return state
   }

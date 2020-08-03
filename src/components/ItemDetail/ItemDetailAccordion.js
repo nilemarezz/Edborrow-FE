@@ -16,7 +16,6 @@ const StyledTextField = withStyles({
 class ItemDetailAccordion extends React.Component {
   render() {
     const { itemBrand, itemModel, categoryId, itemDescription, createDate } = this.props.item
-    console.log(this.props.item)
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>

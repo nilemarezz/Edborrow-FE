@@ -10,7 +10,6 @@ const ChangeApproveStatus = async (value) => {
     body: JSON.stringify(value),
   });
   const data = await response.json();
-  console.log(data);
   return true;
 }
 

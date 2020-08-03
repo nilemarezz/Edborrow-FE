@@ -12,6 +12,8 @@ const ItemApproveToogle = (props) => {
   const { value, tableMeta, changeApproveStatus } = props
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
+  const itemApprove = tableMeta.rowData[4]
+  const disabled = itemApprove === 1 || itemApprove === 0 ? true : false
   return (
     <>
       <ToggleButtonGroup
@@ -30,6 +32,7 @@ const ItemApproveToogle = (props) => {
             backgroundColor: value === 2 ? color.yellow : "",
             color: value === 2 ? "white" : "",
           }}
+          disabled={disabled}
         >
           <p>Waiting</p>
         </ToggleButton>
@@ -40,6 +43,7 @@ const ItemApproveToogle = (props) => {
             backgroundColor: value === 1 ? color.green : "",
             color: value === 1 ? "white" : "",
           }}
+          disabled={disabled}
         >
           <p>Approve</p>
         </ToggleButton>
@@ -50,6 +54,7 @@ const ItemApproveToogle = (props) => {
             backgroundColor: value === 0 ? color.red : "",
             color: value === 0 ? "white" : "",
           }}
+          disabled={disabled}
         >
           <p>Reject</p>
         </ToggleButton>
@@ -64,7 +69,7 @@ const ItemStatusToogle = (props) => {
   const itemApprove = tableMeta.rowData[4]
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
-  const disabled = itemApprove === 2 ? false : true
+  const disabled = itemApprove === 2 || itemApprove === 0 ? true : false
   return (
     <>
       <ToggleButtonGroup
@@ -91,7 +96,7 @@ const ItemStatusToogle = (props) => {
           value={1}
           aria-label="centered"
           style={{
-            backgroundColor: value === 1 ? color.green : "",
+            backgroundColor: value === 1 ? color.blue : "",
             color: value === 1 ? "white" : "",
           }}
           disabled={disabled}
@@ -102,7 +107,7 @@ const ItemStatusToogle = (props) => {
           value={0}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === 0 ? color.red : "",
+            backgroundColor: value === 0 ? color.green : "",
             color: value === 0 ? "white" : "",
           }}
           disabled={disabled}
@@ -113,8 +118,8 @@ const ItemStatusToogle = (props) => {
           value={3}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === 0 ? color.red : "",
-            color: value === 0 ? "white" : "",
+            backgroundColor: value === 3 ? color.red : "",
+            color: value === 3 ? "white" : "",
           }}
           disabled={disabled}
         >
@@ -146,7 +151,6 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
 
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1;
-      console.log(rowData)
       return (
         <TableRow>
           <TableCell colSpan={colSpan}>
