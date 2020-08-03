@@ -18,18 +18,17 @@ import DateFnsUtils from '@date-io/date-fns';
 import AdminRoute from './routes/AdminRoute';
 import UserRoute from './routes/UserRoute'
 import DetailRoute from './routes/DetailRoute'
-
+import { useLocation } from 'react-router-dom'
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
 const notistackRef = React.createRef();
-const App = (props) => {
 
+const App = (props) => {
   useEffect(() => {
     if (checkToken())
       props.UserDetailThunk({ token: getToken(), type: "login" });
   }, []);
-
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <SnackbarProvider
@@ -40,6 +39,7 @@ const App = (props) => {
         <Router>
           <MockNav />
           <Switch>
+            {/* <Redirect exact from="/" to="/user/items" /> */}
             <Route path="/login" component={Login} exact strict />
             <Route path="/register" component={Register} exact strict />
             <Route path="/user/:section" component={UserRoute} exact strict />
@@ -51,6 +51,7 @@ const App = (props) => {
     </MuiPickersUtilsProvider>
   );
 };
+
 
 const mapStateToProps = (state) => {
   return { user: state.User };

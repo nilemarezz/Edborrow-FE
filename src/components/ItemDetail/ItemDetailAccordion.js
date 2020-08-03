@@ -2,6 +2,8 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from "@material-ui/core/styles";
+import { renderCategory } from '../../utilities/data/getCategory'
+import { RefactorDate } from '../../utilities/data/refactorDate'
 
 const StyledTextField = withStyles({
   root: {
@@ -13,7 +15,8 @@ const StyledTextField = withStyles({
 })(TextField);
 class ItemDetailAccordion extends React.Component {
   render() {
-    const { itemBrand, itemModel, itemType, itemdescription, BuyDate } = this.props.item
+    const { itemBrand, itemModel, categoryId, itemDescription, createDate } = this.props.item
+    console.log(this.props.item)
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
@@ -46,7 +49,7 @@ class ItemDetailAccordion extends React.Component {
           <StyledTextField
             id="standard-full-width"
             label="Type"
-            value={itemType || "-"}
+            value={renderCategory(categoryId) || "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -60,7 +63,7 @@ class ItemDetailAccordion extends React.Component {
             id="outlined-multiline-static"
             label="Buy Date"
             multiline
-            value={BuyDate || "-"}
+            value={createDate ? RefactorDate(createDate) : "-"}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -75,7 +78,7 @@ class ItemDetailAccordion extends React.Component {
             label="Description"
             multiline
             rows={4}
-            value={itemdescription || "-"}
+            value={itemDescription || "-"}
             variant="outlined"
             disabled
             fullWidth

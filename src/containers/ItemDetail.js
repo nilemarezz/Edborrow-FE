@@ -12,6 +12,8 @@ import { addItemToCart } from '../actions/ItemAction'
 import * as R from 'ramda'
 import { withRouter } from 'react-router-dom'
 import { route } from '../systemdata/route'
+import { renderImage } from '../utilities/getImage'
+
 const Image = styled.img`
   max-width:90%;
   max-height:90%;
@@ -58,7 +60,7 @@ class ItemDetail extends React.Component {
         <Title title={`Item ID : ${id}`} />
         <Grid container style={{ padding: '0px 30px' }}>
           <Grid item xs={12} sm={5}>
-            <Image src={this.state.item.itemImage} alt="itemImage" />
+            <Image src={renderImage(this.state.item.itemImage)} alt="itemImage" style={{ marginTop: 20 }} />
           </Grid>
           <Grid item xs={12} sm={7}>
             <Container>

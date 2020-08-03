@@ -17,10 +17,18 @@ const UserRoute = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route path={route.user.home} exact strict component={Item} />
+        {/* <Route path={route.user.home} exact strict component={Item} />
         <Route path={route.user.cart} component={Cart} exact strict />
-        <Route path={route.user.applicationList} component={ApplicationList} exact strict />
-
+        <Route path={route.user.applicationList} component={ApplicationList} exact strict /> */}
+        <PrivateRoute path={route.user.home} exact strict>
+          <Item />
+        </PrivateRoute>
+        <PrivateRoute path={route.user.cart} exact strict>
+          <Cart />
+        </PrivateRoute>
+        <PrivateRoute path={route.user.applicationList} exact strict>
+          <ApplicationList />
+        </PrivateRoute>
       </Switch>
     </Router>
 
