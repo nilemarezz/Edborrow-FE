@@ -19,7 +19,6 @@ function updateApproveStatus({ itemId, requestId, value }, list) {
     }
 
   });
-  console.log(newList)
   return newList
 }
 function updateBorrowingStatus({ itemId, requestId, value }, list) {
@@ -31,7 +30,6 @@ function updateBorrowingStatus({ itemId, requestId, value }, list) {
     }
 
   });
-  console.log(newList)
   return newList
 }
 

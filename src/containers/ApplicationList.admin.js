@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MUIDataTable from "mui-datatables";
 import { connect } from 'react-redux'
 import { GetApplicationList } from '../thunk/Application/ApplicationList.admin'
 import { ChangeApproveStatus } from '../thunk/Application/ChangeApproveStatus.admin'
 import { ChangeBorrowingStatus } from '../thunk/Application/ChangeBorrowingStatus.admin'
+import { RejectApproveStatus } from '../thunk/Application/RejectApproveStatus.admin'
 import { ApplicationOptions, ApplicationColumn } from '../utilities/Table/OptionApplicationTable.admin'
 import WithLoading from '../utilities/WithLoading'
 import Modal from '../components/Modal'
@@ -21,11 +22,13 @@ class ApplicationList extends React.Component {
   componentDidMount() {
     this.props.GetApplicationList()
   }
-  changeApproveStatus = (itemId, requestId, value) => {
-    this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
+  changeApproveStatus = (text) => {
     if (this.state.value === 1) {
-      console.log('change borrow')
+      this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
       this.props.ChangeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
+    } else if (this.state.value === 0) {
+      this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
+      this.props.RejectApproveStatus(text, this.state.itemId, this.state.requestId, this.state.value)
     }
     this.setState({ modal: false })
   }
@@ -64,6 +67,7 @@ class ApplicationList extends React.Component {
 }
 
 const ConfirmModal = (props) => {
+  const [text, setText] = useState()
   const { value, changeApproveStatus, handleClose } = props
   return (
     <Dialog open={true} aria-labelledby="form-dialog-title">
@@ -81,15 +85,15 @@ const ConfirmModal = (props) => {
             label="Reason why you reject"
             type="email"
             fullWidth
-          // value={rejectText}
-          // onChange={(e)=>setRejectText(e.target.value)}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         ) : (
             ""
           )}
       </DialogContent>
       <DialogActions>
-        <Button onClick={changeApproveStatus} color="primary">
+        <Button onClick={() => changeApproveStatus(text)} color="primary">
           Confirm
           </Button>
         <Button onClick={handleClose} color="primary">
@@ -103,4 +107,4 @@ const mapStateToProps = (state) => {
   return { applicationList: state.ADMIN_ApplicationList.applicationList, loading: state.ADMIN_ApplicationList.loading };
 };
 
-export default connect(mapStateToProps, { GetApplicationList, ChangeApproveStatus, ChangeBorrowingStatus })(ApplicationList)
+export default connect(mapStateToProps, { GetApplicationList, ChangeApproveStatus, ChangeBorrowingStatus, RejectApproveStatus })(ApplicationList)

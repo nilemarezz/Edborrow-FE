@@ -1,15 +1,16 @@
 import { loadingApplicationList, changeApproveStatus } from '../../actions/ApplicationList.admin'
-import ChangeApproveStatusService from '../../services/ApplicationService/ChangeApproveStatus.admin'
-export const ChangeApproveStatus = (itemId, requestId, value) => {
+import RejectApproveStatusService from '../../services/ApplicationService/RejectApproveStatus.admin'
+export const RejectApproveStatus = (text, itemId, requestId, value) => {
   return async (dispatch, getState) => {
     dispatch(loadingApplicationList(true));
-    const data = await ChangeApproveStatusService({
+    const data = await RejectApproveStatusService({
+      text: text,
       requestId: requestId,
       itemId: itemId,
-      itemApprove: value
+      type: "departmant"
+
     })
-    if (data === true) {
-      dispatch(changeApproveStatus({ itemId, requestId, value }))
+    if (data === "true") {
       dispatch(loadingApplicationList(false));
       return true
     } else {
