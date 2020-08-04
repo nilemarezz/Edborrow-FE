@@ -36,7 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "yarn test --coverage --watchAll",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev" : "REACT_APP_ENV=development react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"

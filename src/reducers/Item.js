@@ -6,7 +6,8 @@ import {
   DELETE_ITEM_INCART,
   ADD_ITEM_TO_CART,
   SEARCH_ITEM_SUCCESS,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  CLEAR_CART
 } from "../actions/ItemAction";
 import * as R from "ramda";
 const initialState = {
@@ -37,6 +38,8 @@ export default function (state = initialState, action) {
       return R.pipe(R.assocPath(["filter"], action.payload))(state);
     case CLEAR_FILTER:
       return R.assocPath(["filter"], [])(state);
+    case CLEAR_CART:
+      return R.assocPath(["Cart"], [])(state);
     default:
       return state;
   }

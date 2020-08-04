@@ -10,7 +10,6 @@ const LoginService = async (user) => {
       body: JSON.stringify({ userId: user.username, password: user.password }),
     });
     const datares = await res.json();
-
     return datares;
   } catch (err) {
     return false;

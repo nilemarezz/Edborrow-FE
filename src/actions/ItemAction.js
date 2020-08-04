@@ -6,12 +6,16 @@ export const DELETE_ITEM_INCART = "DELETE_ITEM_INCART";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const SEARCH_ITEM_SUCCESS = "SEARCH_ITEM_SUCCESS ";
 export const CLEAR_FILTER = "CLEAR_FILTER";
+export const CLEAR_CART = "CLEAR_CART"
+
 export const getAllItemSuccess = (data) => {
   return { type: GETALL_ITEM_SUCCESS, payload: data };
 };
+
 export const getAllItemFail = () => {
   return { type: GETALL_ITEM_FAIL };
 };
+
 export const itemLoading = (data) => {
   return { type: ITEM_LOADING, payload: data };
 };
@@ -31,6 +35,10 @@ export const addItemToCart = (item) => {
 export const searchItem = (item) => {
   return { type: SEARCH_ITEM_SUCCESS, payload: item };
 };
+
 export const clearFilter = () => {
   return { type: CLEAR_FILTER }
+}
+export const clearCart = () => {
+  return { type: CLEAR_CART }
 }

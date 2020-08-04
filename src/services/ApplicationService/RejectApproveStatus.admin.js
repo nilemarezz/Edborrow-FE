@@ -1,21 +1,25 @@
 import env from '../../env'
 
 const RejectApproveStatus = async (value) => {
-  const response = await fetch(
-    `https://edborrow.ga/api/request/rejectpurpose`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "PUT",
-      body: JSON.stringify(value),
+  if (process.env.REACT_APP_ENV === "production") {
+    const response = await fetch(
+      `https://edborrow.ga/api/request/rejectpurpose`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify(value),
+      }
+    );
+    const data = await response.json();
+    if (data.result === "false") {
+      return false
+    } else {
+      return true;
     }
-  );
-  const data = await response.json();
-  if (data.result === "false") {
-    return false
   } else {
-    return true;
+    return true
   }
 }
 

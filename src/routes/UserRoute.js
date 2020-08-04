@@ -20,15 +20,25 @@ const UserRoute = () => {
         {/* <Route path={route.user.home} exact strict component={Item} />
         <Route path={route.user.cart} component={Cart} exact strict />
         <Route path={route.user.applicationList} component={ApplicationList} exact strict /> */}
-        <PrivateRoute path={route.user.home} exact strict>
-          <Item />
-        </PrivateRoute>
-        <PrivateRoute path={route.user.cart} exact strict>
-          <Cart />
-        </PrivateRoute>
-        <PrivateRoute path={route.user.applicationList} exact strict>
-          <ApplicationList />
-        </PrivateRoute>
+        {process.env.REACT_APP_ENV === "production" ?
+          <>
+            <PrivateRoute path={route.user.home} exact strict>
+              <Item />
+            </PrivateRoute>
+            <PrivateRoute path={route.user.cart} exact strict>
+              <Cart />
+            </PrivateRoute>
+            <PrivateRoute path={route.user.applicationList} exact strict>
+              <ApplicationList />
+            </PrivateRoute>
+          </>
+          :
+          <>
+            <Route path={route.user.home} exact strict component={Item} />
+            <Route path={route.user.cart} component={Cart} exact strict />
+            <Route path={route.user.applicationList} component={ApplicationList} exact strict />
+          </>
+        }
       </Switch>
     </Router>
 

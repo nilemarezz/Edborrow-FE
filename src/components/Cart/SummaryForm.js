@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
 import SummaryItemTable from './SummaryItemTable'
+import { RefactorDateJS } from '../../utilities/data/RefactorDateJS'
+
 const StyledPaper = styled(Paper)`
     margin-top:10px;
 `
@@ -19,7 +21,10 @@ const FormContent = styled(Grid)`
 `
 
 class SummaryForm extends React.Component {
+
   render() {
+    const { form, cart } = this.props
+    console.log(cart)
     return (
       <StyledPaper>
         <Container>
@@ -32,45 +37,42 @@ class SummaryForm extends React.Component {
             </Typography>
             <FormContent container spacing={3}>
               <Grid item xs={12} sm={4}>
-                <TextField id="id" label="ID" value={"60130500073"} fullWidth disabled />
+                <TextField id="id" label="ID" value={form.id} fullWidth disabled />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <TextField id="name" label="Name - Surname" value={"Matas Paosriwong"} fullWidth disabled />
+                <TextField id="name" label="Name - Surname" value={`${form.name} ${form.surname}`} fullWidth disabled />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <TextField id="email" label="Email" value={"nilenon@gmail.com"} fullWidth disabled />
+                <TextField id="email" label="Email" value={form.email} fullWidth disabled />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <TextField id="phone" label="Telephone No." value={"0940035373"} fullWidth disabled />
+                <TextField id="phone" label="Telephone No." value={form.telNo} fullWidth disabled />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <TextField id="advisor" label="Aadvisor" value={"DR. Olarn"} fullWidth disabled />
+                <TextField id="advisor" label="Advisor" value={form.advisor} fullWidth disabled />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <TextField id="purpose" label="Purpose" variant="outlined" value={"For Activity and education in wip camp 12"} fullWidth rows={4} multiline disabled />
+                <TextField id="purpose" label="Purpose" variant="outlined" value={form.purpose} fullWidth rows={4} multiline disabled />
               </Grid>
-
             </FormContent>
-
-
           </ContentContainer>
           <Typography variant="h6" component="h6">
             Borrow {"&"} Return Date :
             </Typography>
           <FormContent container spacing={3}>
             <Grid item xs={12} sm={5}>
-              <TextField id="borrow date" label="Borrow Date" value={"DR. Olarn"} fullWidth disabled />
+              <TextField id="borrow date" label="Borrow Date" value={RefactorDateJS(form.borrowDate)} fullWidth disabled />
             </Grid>
             <span style={{ marginTop: 20 }}> <strong> _ </strong></span>
             <Grid item xs={12} sm={5}>
-              <TextField id="return date" label="Return Date" value={"DR. Olarn"} fullWidth disabled />
+              <TextField id="return date" label="Return Date" value={RefactorDateJS(form.returnDate)} fullWidth disabled />
             </Grid>
           </FormContent>
 
           <Typography variant="h6" component="h6" style={{ marginTop: 30 }}>
             Items :
             </Typography>
-          <SummaryItemTable />
+          <SummaryItemTable cart={cart} />
         </Container>
       </StyledPaper>
     )

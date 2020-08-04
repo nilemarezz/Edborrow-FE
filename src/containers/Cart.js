@@ -77,7 +77,7 @@ const Cart = (props) => {
           <Grid container>
             <Grid item xs={1} />
             <Grid item xs={10}>
-              {getStepsContent(activeStep, props.cart)}
+              {getStepsContent(activeStep, props.cart, props.form)}
             </Grid>
             <Grid item xs={1} />
 
