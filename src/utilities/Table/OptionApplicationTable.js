@@ -3,6 +3,8 @@ import { renderApproveStatus } from './renderItemTable'
 import Button from "@material-ui/core/Button";
 import { color } from "../data/color";
 import { ApplicationTable } from '../../systemdata/Application'
+import { RefactorDate } from '../../utilities/data/refactorDate'
+
 export const OptionApplicationTable = {
   selectableRows: false,
   filterType: "textField",
@@ -29,6 +31,8 @@ export const ApplicationColumn = (redirectToDetail) => [
       filter: true,
       sort: true,
       sortDirection: 'des',
+      customBodyRender: (value, tableMeta, updateValue) =>
+        RefactorDate(value),
     },
   },
   {

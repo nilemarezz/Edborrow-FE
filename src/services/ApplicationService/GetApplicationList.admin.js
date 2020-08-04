@@ -9,6 +9,8 @@ const GetApplicationList = async () => {
   // });
   // let data = await res.json();
   // return data.data
+
+
   return ApplicationList.data
 }
 

@@ -20,10 +20,12 @@ const ItemApproveToogle = (props) => {
         exclusive
         aria-label="text alignment"
         value={value}
-        size="small"
+
         onChange={(event, newAlignment) => {
           changeApproveStatus(itemId, requestId, newAlignment)
         }}
+        size="small"
+        style={{ height: 40 }}
       >
         <ToggleButton
           value={2}
@@ -80,6 +82,7 @@ const ItemStatusToogle = (props) => {
         onChange={(event, newAlignment) => {
           changeBorrowingStatus(itemId, requestId, newAlignment)
         }}
+        style={{ height: 40 }}
       >
         <ToggleButton
           value={6}
@@ -98,8 +101,10 @@ const ItemStatusToogle = (props) => {
           style={{
             backgroundColor: value === 1 ? color.blue : "",
             color: value === 1 ? "white" : "",
+            width: 70
           }}
           disabled={disabled}
+
         >
           <p>In use</p>
         </ToggleButton>
@@ -109,8 +114,10 @@ const ItemStatusToogle = (props) => {
           style={{
             backgroundColor: value === 0 ? color.green : "",
             color: value === 0 ? "white" : "",
+            width: 70
           }}
           disabled={disabled}
+
         >
           <p>Return</p>
         </ToggleButton>
@@ -120,6 +127,7 @@ const ItemStatusToogle = (props) => {
           style={{
             backgroundColor: value === 3 ? color.red : "",
             color: value === 3 ? "white" : "",
+            width: 70
           }}
           disabled={disabled}
         >
@@ -135,10 +143,9 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
   return {
     filterType: "textField",
     selectableRows: false,
-    responsive: "scrollMaxHeight",
-
     expandableRows: true,
-
+    rowsPerPage: 5,
+    rowsPerPageOptions: [5, 10, 20, 50],
     isRowExpandable: (dataIndex, expandedRows) => {
       // Prevent expand/collapse of any row if there are 4 rows expanded already (but allow those already expanded to be collapsed)
       if (

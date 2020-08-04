@@ -7,7 +7,7 @@ export const ChangeBorrowingStatus = (itemId, requestId, value) => {
     // await ChangeBorrowingStatusService({
     //   requestId: requestId,
     //   itemId: itemId,
-    //   itemApprove: value
+    //   itemBorrowingStatusId: value
     // })
     dispatch(changeBorrowingStatus({ itemId, requestId, value }))
     dispatch(loadingApplicationList(false));

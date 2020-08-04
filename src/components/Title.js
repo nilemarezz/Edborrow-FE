@@ -5,6 +5,7 @@ const Container = styled.div`
     margin-left : 40px;
     line-height : 1.5;
     border-left : 4px solid #3f51b5;
+    margin-top: 50px;
 `
 const Title = styled.h1`
     padding-left:20px;

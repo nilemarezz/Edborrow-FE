@@ -1,6 +1,7 @@
 import env from '../../env'
 
 const ChangeApproveStatus = async (value) => {
+  console.log(value)
   const response = await fetch(`${env.url}request/approve`, {
     method: "POST",
     headers: {
@@ -10,7 +11,13 @@ const ChangeApproveStatus = async (value) => {
     body: JSON.stringify(value),
   });
   const data = await response.json();
-  return true;
+  console.log(data)
+  if (data.result === "false") {
+    return false
+  } else {
+    return true;
+  }
+
 }
 
 export default ChangeApproveStatus

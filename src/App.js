@@ -39,7 +39,7 @@ const App = (props) => {
         <Router>
           <MockNav />
           <Switch>
-            {/* <Redirect exact from="/" to="/user/items" /> */}
+            <Redirect exact from="/" to="/user/items" />
             <Route path="/login" component={Login} exact strict />
             <Route path="/register" component={Register} exact strict />
             <Route path="/user/:section" component={UserRoute} exact strict />

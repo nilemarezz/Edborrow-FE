@@ -4,11 +4,21 @@ export const ChangeApproveStatus = (itemId, requestId, value) => {
   return async (dispatch, getState) => {
     dispatch(loadingApplicationList(true));
     // call service
-    // await ChangeApproveStatusService({
+    // const data = await ChangeApproveStatusService({
     //   requestId: requestId,
     //   itemId: itemId,
-    //   itemBorrowingStatusId: value
+    //   itemApprove: value
+
     // })
+    // const data = true
+    // if (data === "true") {
+    //   dispatch(changeApproveStatus({ itemId, requestId, value }))
+    //   dispatch(loadingApplicationList(false));
+    //   return true
+    // } else {
+    //   dispatch(loadingApplicationList(false));
+    //   return false
+    // }
     dispatch(changeApproveStatus({ itemId, requestId, value }))
     dispatch(loadingApplicationList(false));
     return true
