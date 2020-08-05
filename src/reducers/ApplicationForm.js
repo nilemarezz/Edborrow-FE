@@ -3,7 +3,8 @@ import {
   SET_FORM_ID, SET_FORM_NAME, SET_FORM_SURNAME,
   SET_FORM_EMAIL, SET_FORM_TELNO, SET_FORM_ADVISOR,
   SET_FORM_BORROWDATE, SET_FORM_RETURNDATE,
-  SET_FORM_PURPOSE, RESET_FORM, LOADING_SUBMIT_FORM
+  SET_FORM_PURPOSE, RESET_FORM, LOADING_SUBMIT_FORM,
+  SET_FORM_USEPLACE
 } from '../actions/ApplicationFormAction'
 const initialState = {
   loading: false,
@@ -15,7 +16,8 @@ const initialState = {
   advisor: "",
   borrowDate: new Date(),
   returnDate: new Date(),
-  purpose: ""
+  purpose: "",
+  usePlace: "",
 };
 
 export default function (state = initialState, action) {
@@ -40,12 +42,14 @@ export default function (state = initialState, action) {
       return R.assocPath(["returnDate"], action.payload)(state);
     case SET_FORM_PURPOSE:
       return R.assocPath(["purpose"], action.payload)(state);
+    case SET_FORM_USEPLACE:
+      return R.assocPath(["usePlace"], action.payload)(state);
     case RESET_FORM:
       return (
         R.pipe(R.assocPath(["id"], ""), R.assocPath(["name"], ""), R.assocPath(["surname"], ""),
           R.assocPath(["email"], ""), R.assocPath(["telNo"], ""), R.assocPath(["advisor"], ""),
           R.assocPath(["borrowDate"], new Date()), R.assocPath(["returnDate"], new Date()),
-          R.assocPath(["purpose"], ""))(state)
+          R.assocPath(["purpose"], ""), R.assocPath(["usePlace"], ""))(state)
       )
     default:
       return state

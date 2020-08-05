@@ -6,6 +6,8 @@ import { color } from "../data/color";
 import * as R from 'ramda'
 import { CartItem } from '../data/refactorMUIdata'
 import { ItemTable } from '../../systemdata/Item'
+import { ItemStatus } from '../../systemdata/ItemStatus'
+
 export const OptionItemTable = {
   selectableRows: false,
   filterType: "textField",
@@ -19,7 +21,7 @@ export const OptionItemTable = {
 export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCartPage) => {
   let disable = false;
 
-  if (tableMeta.rowData[4] === 1) {
+  if (tableMeta.rowData[4] === ItemStatus.Avaliable.id) {
     disable = false;
   } else {
     disable = true;
@@ -36,7 +38,6 @@ export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCart
           : AddItemToCarts(tableMeta.rowData)
       }
       disabled={disable}
-      style={{ marginLeft: 10 }}
     >
       {found ? "Cart" : "Add"}
     </Button>

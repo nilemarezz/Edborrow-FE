@@ -4,11 +4,11 @@ export const ChangeBorrowingStatus = (itemId, requestId, value) => {
   return async (dispatch, getState) => {
     dispatch(loadingApplicationList(true));
     // call service
-    // await ChangeBorrowingStatusService({
-    //   requestId: requestId,
-    //   itemId: itemId,
-    //   itemBorrowingStatusId: value
-    // })
+    await ChangeBorrowingStatusService({
+      requestId: requestId,
+      itemId: itemId,
+      itemBorrowingStatusId: value
+    })
     dispatch(changeBorrowingStatus({ itemId, requestId, value }))
     dispatch(loadingApplicationList(false));
     return true

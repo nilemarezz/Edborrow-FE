@@ -1,11 +1,36 @@
 import { loadingSubmitForm, resetForm } from '../../actions/ApplicationFormAction'
 import { clearCart } from '../../actions/ItemAction'
-export const submitForm = (value) => {
+import { RefactorDateJS } from '../../utilities/data/RefactorDateJS'
+import SendApplicationService from '../../services/ApplicationService/SendApplication'
+export const submitForm = (form, cart) => {
   return async (dispatch, getState) => {
     dispatch(loadingSubmitForm(true));
-    dispatch(resetForm())
-    dispatch(clearCart())
-    dispatch(loadingSubmitForm(false));
-    return true
+    const item = [];
+    cart.forEach((itemid) => {
+      item.push({ itemId: itemid.itemId });
+    });
+    const summaryForm = {
+      items: item,
+      personalInformation: {
+        borrowDate: RefactorDateJS(form.borrowDate),
+        borrowPurpose: form.purpose,
+        name: `${form.name} ${form.surname}`,
+        returnDate: RefactorDateJS(form.returnDate),
+        transactionDate: new Date().toJSON().slice(0, 10).replace(/-/g, "-"),
+        usePlace: form.usePlace,
+        userId: form.id,
+      }
+    }
+    const sendSuccess = await SendApplicationService(summaryForm);
+    console.log(sendSuccess)
+    if (sendSuccess) {
+      dispatch(resetForm())
+      dispatch(clearCart())
+      dispatch(loadingSubmitForm(false));
+      return true
+    } else {
+      dispatch(loadingSubmitForm(false));
+      return false
+    }
   };
 };

@@ -1,6 +1,11 @@
 import React from "react";
 import Chip from "@material-ui/core/Chip";
 import { color as themeColor } from '../data/color'
+import { BorrowingStatus } from '../../systemdata/BorrowingStatus'
+import { ApproveStatus } from '../../systemdata/ApproveStatus'
+import { OwnerApproveStatus } from '../../systemdata/OwnerApproveStatus'
+import { ItemStatus } from '../../systemdata/ItemStatus'
+
 export const renderDepartment = (department, owner) => {
   if (department === null) {
     return owner;
@@ -10,22 +15,19 @@ export const renderDepartment = (department, owner) => {
 };
 export const renderStatus = (value) => {
   let label;
-  let color;
   let bgcolor;
 
-  if (value === 1) {
-    label = "Avaliable";
-    bgcolor = themeColor.green;
-    color = themeColor.white;
+  if (value === ItemStatus.Avaliable.id) {
+    label = ItemStatus.Avaliable.label;
+    bgcolor = ItemStatus.Avaliable.color
   } else {
-    label = "Not Avaliable";
-    bgcolor = themeColor.red;
-    color = themeColor.white;
+    label = ItemStatus.NotAvaliable.label;
+    bgcolor = ItemStatus.NotAvaliable.color
   }
   return (
     <div>
       {" "}
-      <Chip className="status" label={label} style={{ backgroundColor: bgcolor, color: color }} />
+      <Chip className="status" label={label} style={{ backgroundColor: bgcolor, color: "white" }} />
     </div>
   );
 };
@@ -41,30 +43,26 @@ export const renderCategory = (value) => {
 
 export const renderApproveStatus = (value) => {
   let label;
-  let color;
   let bgcolor;
   let tool;
-  if (value === 2) {
-    label = "Waiting";
-    bgcolor = themeColor.yellow;
-    color = "white";
-    tool = "Please wait for your advisor Approve"
-  } else if (value === 1) {
-    label = "Approve";
-    bgcolor = themeColor.green;
-    color = "white";
-    tool = "Please click see more the view the status"
+  if (value === ApproveStatus.Waiting.id) {
+    label = ApproveStatus.Waiting.label;
+    bgcolor = ApproveStatus.Waiting.color
+    tool = ApproveStatus.Waiting.tool
+  } else if (value === ApproveStatus.Approve.id) {
+    label = ApproveStatus.Approve.label;
+    bgcolor = ApproveStatus.Approve.color
+    tool = ApproveStatus.Approve.tool
   } else {
-    label = "Not Approve";
-    bgcolor = themeColor.red;
-    color = "white";
-    tool = "Your Advisor not Approve , Please try again"
+    label = ApproveStatus.Reject.label;
+    bgcolor = ApproveStatus.Reject.color
+    tool = ApproveStatus.Reject.tool
   }
   return (
 
     <Chip
       label={label}
-      style={{ backgroundColor: bgcolor, color: color }}
+      style={{ backgroundColor: bgcolor, color: "white" }}
     />
     // </Grid>
     // <Grid item xs={3} sm={3}>
@@ -80,50 +78,42 @@ export const renderApproveStatus = (value) => {
 
 export const renderItemStatus = (value) => {
   let label;
-  let color;
   let bgcolor;
   let tool;
-  if (value === 1) {
-    label = "Avaliable";
-    bgcolor = themeColor.blue;
-    color = "white";
-    tool = "Item are on use";
-  } else if (value === 2) {
-    label = "Returned";
-    bgcolor = themeColor.green;
-    color = "white";
-    tool = "You already return this item";
-  } else if (value === 3) {
-    label = "Late";
-    bgcolor = themeColor.red
-    color = "white";
-    tool = "You not return this item on time";
-  } else if (value === 4) {
-    label = "Waiting for Approve";
-    bgcolor = themeColor.yellow;
-    color = "white";
-    tool = "Waitng for the Item Owner Approve";
-  } else if (value === 6) {
-    label = "Not Pickup";
-    bgcolor = themeColor.grey;
-    color = "white";
-    tool = "You can pick up the item from the owner";
-  } else if (value === 7) {
-    label = "Advisor Reject";
-    bgcolor = themeColor.darkgrey;
-    color = "white";
-    tool = "Your Advisor not approve , Please contact your advisor";
+  if (value === BorrowingStatus.InUse.id) {
+    label = BorrowingStatus.InUse.label;
+    bgcolor = BorrowingStatus.InUse.label;
+    tool = BorrowingStatus.InUse.tool;
+  } else if (value === BorrowingStatus.Return.id) {
+    label = BorrowingStatus.Return.label;
+    bgcolor = BorrowingStatus.Return.color;
+    tool = BorrowingStatus.Return.tool;
+  } else if (value === BorrowingStatus.Late.id) {
+    label = BorrowingStatus.Late.label;
+    bgcolor = BorrowingStatus.Late.color;
+    tool = BorrowingStatus.Late.tool;
+  } else if (value === BorrowingStatus.WaitForApprove.id) {
+    label = BorrowingStatus.WaitForApprove.label;
+    bgcolor = BorrowingStatus.WaitForApprove.color;
+    tool = BorrowingStatus.WaitForApprove.tool;
+  } else if (value === BorrowingStatus.NotPickUp.id) {
+    label = BorrowingStatus.NotPickUp.label;
+    bgcolor = BorrowingStatus.NotPickUp.color;
+    tool = BorrowingStatus.NotPickUp.tool;
+  } else if (value === BorrowingStatus.AdvisorReject.id) {
+    label = BorrowingStatus.AdvisorReject.label;
+    bgcolor = BorrowingStatus.AdvisorReject.color;
+    tool = BorrowingStatus.AdvisorReject.tool;
   } else {
-    label = "Not Aprove";
-    bgcolor = themeColor.red;
-    color = "white";
-    tool = "The Owner Not Approve";
+    label = BorrowingStatus.OwnerReject.label;
+    bgcolor = BorrowingStatus.OwnerReject.color;
+    tool = BorrowingStatus.OwnerReject.tool;
   }
 
   return (
     <Chip
       label={label}
-      style={{ backgroundColor: bgcolor, color: color }}
+      style={{ backgroundColor: bgcolor, color: "white" }}
     />
   )
 };
@@ -132,34 +122,29 @@ export const renderItemStatus = (value) => {
 
 export const renderItemDetailApplicationStatus = (value) => {
   let label;
-  let color;
   let bgcolor;
   let tool;
-  if (value === 2) {
-    label = "Waiting";
-    bgcolor = "#ffa000";
-    color = "white";
-    tool = "Waitng for the Item Owner Approve";
-  } else if (value === 0) {
-    label = "Not Approve";
-    bgcolor = "#d32f2f";
-    color = "white";
-    tool = "Item Owner not approve the request";
-  } else if (value === 3) {
-    label = "Advisor Reject";
-    bgcolor = "#616161";
-    color = "white";
-    tool = "Item Owner not approve the request";
+  if (value === OwnerApproveStatus.Waiting.id) {
+    label = OwnerApproveStatus.Waiting.label;
+    bgcolor = OwnerApproveStatus.Waiting.color
+    tool = OwnerApproveStatus.Waiting.tool
+  } else if (value === OwnerApproveStatus.Reject.id) {
+    label = OwnerApproveStatus.Reject.label;
+    bgcolor = OwnerApproveStatus.Reject.color
+    tool = OwnerApproveStatus.Reject.tool
+  } else if (value === OwnerApproveStatus.AdvisorReject.id) {
+    label = OwnerApproveStatus.AdvisorReject.label;
+    bgcolor = OwnerApproveStatus.AdvisorReject.color
+    tool = OwnerApproveStatus.AdvisorReject.tool
   } else {
-    label = "Approve";
-    bgcolor = "#689f38";
-    color = "white";
-    tool = "Item Owner approve the request";
+    label = OwnerApproveStatus.Approve.label;
+    bgcolor = OwnerApproveStatus.Approve.color
+    tool = OwnerApproveStatus.Approve.tool
   }
   return (
     <Chip
       label={label}
-      style={{ backgroundColor: bgcolor, color: color }}
+      style={{ backgroundColor: bgcolor, color: "white" }}
     />
   );
 };

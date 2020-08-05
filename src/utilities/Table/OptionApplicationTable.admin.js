@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import { RefactorDate } from '../data/refactorDate'
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import { BorrowingStatus } from '../../systemdata/BorrowingStatus'
+import { ApproveStatus } from '../../systemdata/ApproveStatus'
 
 const ItemApproveToogle = (props) => {
   const { value, tableMeta, changeApproveStatus } = props
@@ -28,37 +30,37 @@ const ItemApproveToogle = (props) => {
         style={{ height: 40 }}
       >
         <ToggleButton
-          value={2}
+          value={ApproveStatus.Waiting.id}
           aria-label="left aligned"
           style={{
-            backgroundColor: value === 2 ? color.yellow : "",
-            color: value === 2 ? "white" : "",
+            backgroundColor: value === ApproveStatus.Waiting.id ? ApproveStatus.Waiting.color : "",
+            color: value === ApproveStatus.Waiting.id ? "white" : "",
           }}
           disabled={disabled}
         >
-          <p>Waiting</p>
+          <p>{ApproveStatus.Waiting.label}</p>
         </ToggleButton>
         <ToggleButton
-          value={1}
+          value={ApproveStatus.Approve.id}
           aria-label="centered"
           style={{
-            backgroundColor: value === 1 ? color.green : "",
-            color: value === 1 ? "white" : "",
+            backgroundColor: value === ApproveStatus.Approve.id ? ApproveStatus.Approve.color : "",
+            color: value === ApproveStatus.Approve.id ? "white" : "",
           }}
           disabled={disabled}
         >
-          <p>Approve</p>
+          <p>{ApproveStatus.Approve.label}</p>
         </ToggleButton>
         <ToggleButton
-          value={0}
+          value={ApproveStatus.Reject.id}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === 0 ? color.red : "",
-            color: value === 0 ? "white" : "",
+            backgroundColor: value === ApproveStatus.Reject.id ? ApproveStatus.Reject.color : "",
+            color: value === ApproveStatus.Reject.id ? "white" : "",
           }}
           disabled={disabled}
         >
-          <p>Reject</p>
+          <p>{ApproveStatus.Reject.label}</p>
         </ToggleButton>
       </ToggleButtonGroup>
 
@@ -72,6 +74,7 @@ const ItemStatusToogle = (props) => {
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
   const disabled = itemApprove === 2 || itemApprove === 0 ? true : false
+  console.log(value)
   return (
     <>
       <ToggleButtonGroup
@@ -85,53 +88,53 @@ const ItemStatusToogle = (props) => {
         style={{ height: 40 }}
       >
         <ToggleButton
-          value={6}
+          value={BorrowingStatus.NotPickUp.id}
           aria-label="left aligned"
           style={{
-            backgroundColor: value === 2 ? color.yellow : "",
-            color: value === 2 ? "white" : "",
+            backgroundColor: value === BorrowingStatus.NotPickUp.id ? BorrowingStatus.NotPickUp.color : "",
+            color: value === BorrowingStatus.NotPickUp.id ? "white" : "",
           }}
           disabled={disabled}
         >
-          <p>Not Pick Up</p>
+          <p>{BorrowingStatus.NotPickUp.label}</p>
         </ToggleButton>
         <ToggleButton
-          value={1}
+          value={BorrowingStatus.InUse.id}
           aria-label="centered"
           style={{
-            backgroundColor: value === 1 ? color.blue : "",
-            color: value === 1 ? "white" : "",
+            backgroundColor: value === BorrowingStatus.InUse.id ? BorrowingStatus.InUse.color : "",
+            color: value === BorrowingStatus.InUse.id ? "white" : "",
             width: 70
           }}
           disabled={disabled}
 
         >
-          <p>In use</p>
+          <p>{BorrowingStatus.InUse.label}</p>
         </ToggleButton>
         <ToggleButton
-          value={0}
+          value={BorrowingStatus.Return.id}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === 0 ? color.green : "",
-            color: value === 0 ? "white" : "",
+            backgroundColor: value === BorrowingStatus.Return.id ? BorrowingStatus.Return.color : "",
+            color: value === BorrowingStatus.Return.id ? "white" : "",
             width: 70
           }}
           disabled={disabled}
 
         >
-          <p>Return</p>
+          <p>{BorrowingStatus.Return.label}</p>
         </ToggleButton>
         <ToggleButton
-          value={3}
+          value={BorrowingStatus.Late.id}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === 3 ? color.red : "",
-            color: value === 3 ? "white" : "",
+            backgroundColor: value === BorrowingStatus.Late.id ? BorrowingStatus.Late.color : "",
+            color: value === BorrowingStatus.Late.id ? "white" : "",
             width: 70
           }}
           disabled={disabled}
         >
-          <p>Late</p>
+          <p>{BorrowingStatus.Late.label}</p>
         </ToggleButton>
       </ToggleButtonGroup>
 
@@ -224,6 +227,8 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
   { name: ApplicationTable.itemName.name, label: ApplicationTable.itemName.label },
   {
     name: ApplicationTable.transactionDate.name, label: ApplicationTable.transactionDate.label, options: {
+      sort: true,
+      sortDirection: 'asc',
       customBodyRender: (value, tableMeta) => (RefactorDate(value)
       ),
     }

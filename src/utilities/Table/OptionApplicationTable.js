@@ -30,7 +30,7 @@ export const ApplicationColumn = (redirectToDetail) => [
     options: {
       filter: true,
       sort: true,
-      sortDirection: 'des',
+      sortDirection: 'asc',
       customBodyRender: (value, tableMeta, updateValue) =>
         RefactorDate(value),
     },
@@ -47,6 +47,7 @@ export const ApplicationColumn = (redirectToDetail) => [
   },
   {
     name: ApplicationTable.requestId.name,
+    label: " ",
     options: {
       filter: true,
       sort: true,

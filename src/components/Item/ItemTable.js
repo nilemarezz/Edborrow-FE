@@ -11,6 +11,8 @@ import { addItemToCart } from "../../actions/ItemAction";
 import { CartItem } from "../../utilities/data/refactorMUIdata";
 import WithLoading from "../../utilities/WithLoading";
 import { route } from '../../systemdata/route'
+import { withSnackbar } from "notistack";
+import { compose } from 'recompose'
 class ItemTable extends React.Component {
   redirectToDetailPage = (value) => {
     this.props.history.push(`${route.detail.itemDetail}/${value}`);
@@ -18,12 +20,18 @@ class ItemTable extends React.Component {
   redirectToCartPage = (value) => {
     this.props.history.push(route.user.cart);
   };
+  addItem = (item) => {
+    this.props.addItemToCart(item)
+    this.props.enqueueSnackbar('Add Item Success', {
+      variant: 'success',
+    });
+  }
   render() {
     const { item, Items, loading, Cart } = this.props;
     const columns = ItemColumns(
       this.redirectToDetailPage,
       Cart,
-      this.props.addItemToCart,
+      this.addItem,
       this.redirectToCartPage
     );
     return (
@@ -47,4 +55,4 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(addItemToCart(data));
   },
 });
-export default connect(null, mapDispatchToProps)(withRouter(ItemTable));
+export default compose(connect(null, mapDispatchToProps), withRouter, withSnackbar)(ItemTable);

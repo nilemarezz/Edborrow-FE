@@ -150,7 +150,7 @@ const Nav = (props) => {
       <Link to="/user/profile" className={classes.link}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
-      <Link to="/user/request" className={classes.link}>
+      <Link to={route.user.applicationList} className={classes.link}>
         <MenuItem onClick={handleMenuClose}>Request</MenuItem>
       </Link>
       <MenuItem

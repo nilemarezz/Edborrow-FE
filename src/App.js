@@ -18,7 +18,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import AdminRoute from './routes/AdminRoute';
 import UserRoute from './routes/UserRoute'
 import DetailRoute from './routes/DetailRoute'
-import { useLocation } from 'react-router-dom'
+
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };

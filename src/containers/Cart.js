@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -15,6 +15,9 @@ import WithLoading from "../utilities/WithLoading";
 import { withRouter } from 'react-router-dom'
 import { useSnackbar } from "notistack";
 import Title from '../components/Title'
+import UserDetailService from '../services/UserService/UserDetail'
+import { getToken } from '../utilities/check/checkToken'
+import { setFormID, setFormSurname, setFormName } from '../actions/ApplicationFormAction'
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -35,6 +38,20 @@ const Cart = (props) => {
   const [modalConfirm, setModalConfirm] = React.useState(false)
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
+  const getUserData = async () => {
+    const userData = await UserDetailService(getToken())
+    console.log(userData)
+    props.setId(userData.data.userId)
+    props.setName(userData.data.firstName)
+    props.setSurname(userData.data.lastName)
+  }
+
+  useEffect(() => {
+    if (getToken()) {
+      getUserData()
+    }
+  }, [])
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -44,7 +61,7 @@ const Cart = (props) => {
   };
 
   const submitForm = async () => {
-    const res = await props.submitForm()
+    const res = await props.submit(props.form, props.cart)
     closeModal()
     if (res) {
       props.history.push('/user/applicationList')
@@ -111,6 +128,17 @@ const Cart = (props) => {
 const mapStateToProps = (state) => {
   return { form: state.Form, cart: state.Item.Cart };
 };
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+  submit: async (form, cart) => dispatch(submitForm(form, cart)),
+  setId: async (value) => {
+    dispatch(setFormID(value));
+  },
+  setName: async (value) => {
+    dispatch(setFormName(value));
+  },
+  setSurname: async (value) => {
+    dispatch(setFormSurname(value));
+  },
+});
 
-
-export default connect(mapStateToProps, { submitForm })(withRouter(Cart))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Cart))

@@ -36,6 +36,7 @@ class ApplicationList extends React.Component {
     this.setState({ modal: true, itemId: itemId, requestId: requestId, value: value })
   }
   changeBorrowingStatus = (itemId, requestId, value) => {
+    console.log(itemId, requestId, value)
     this.props.ChangeBorrowingStatus(itemId, requestId, value)
   }
   handleClose = () => {
