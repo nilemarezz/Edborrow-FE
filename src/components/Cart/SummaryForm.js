@@ -24,7 +24,6 @@ class SummaryForm extends React.Component {
 
   render() {
     const { form, cart } = this.props
-    console.log(cart)
     return (
       <StyledPaper>
         <Container>

@@ -74,7 +74,6 @@ const ItemStatusToogle = (props) => {
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
   const disabled = itemApprove === 2 || itemApprove === 0 ? true : false
-  console.log(value)
   return (
     <>
       <ToggleButtonGroup

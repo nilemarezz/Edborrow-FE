@@ -40,7 +40,6 @@ const Cart = (props) => {
 
   const getUserData = async () => {
     const userData = await UserDetailService(getToken())
-    console.log(userData)
     props.setId(userData.data.userId)
     props.setName(userData.data.firstName)
     props.setSurname(userData.data.lastName)
@@ -65,6 +64,9 @@ const Cart = (props) => {
     closeModal()
     if (res) {
       props.history.push('/user/applicationList')
+      enqueueSnackbar("Submit Form Success", {
+        variant: "success",
+      });
     } else {
       enqueueSnackbar("Submit Form fail, Please Try again", {
         variant: "error",

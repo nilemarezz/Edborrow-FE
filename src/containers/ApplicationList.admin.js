@@ -15,7 +15,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-
+import { compose } from 'recompose'
+import { withSnackbar } from "notistack";
 class ApplicationList extends React.Component {
   state = { modal: false, itemId: null, requestId: null, value: null }
 
@@ -23,21 +24,27 @@ class ApplicationList extends React.Component {
     this.props.GetApplicationList()
   }
   changeApproveStatus = (text) => {
+    this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
     if (this.state.value === 1) {
-      this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
+      console.log('asd')
       this.props.ChangeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
+
     } else if (this.state.value === 0) {
-      this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
       this.props.RejectApproveStatus(text, this.state.itemId, this.state.requestId, this.state.value)
     }
     this.setState({ modal: false })
+    this.props.enqueueSnackbar('Change Approve status Success', {
+      variant: 'success',
+    });
   }
   openConfirmModal = (itemId, requestId, value) => {
     this.setState({ modal: true, itemId: itemId, requestId: requestId, value: value })
   }
   changeBorrowingStatus = (itemId, requestId, value) => {
-    console.log(itemId, requestId, value)
     this.props.ChangeBorrowingStatus(itemId, requestId, value)
+    this.props.enqueueSnackbar('Change Borrowing status Success', {
+      variant: 'success',
+    });
   }
   handleClose = () => {
     this.setState({ modal: false })
@@ -108,4 +115,6 @@ const mapStateToProps = (state) => {
   return { applicationList: state.ADMIN_ApplicationList.applicationList, loading: state.ADMIN_ApplicationList.loading };
 };
 
-export default connect(mapStateToProps, { GetApplicationList, ChangeApproveStatus, ChangeBorrowingStatus, RejectApproveStatus })(ApplicationList)
+export default compose(
+  connect(mapStateToProps, { GetApplicationList, ChangeApproveStatus, ChangeBorrowingStatus, RejectApproveStatus })
+  , withSnackbar)(ApplicationList)

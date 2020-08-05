@@ -22,7 +22,6 @@ export const submitForm = (form, cart) => {
       }
     }
     const sendSuccess = await SendApplicationService(summaryForm);
-    console.log(sendSuccess)
     if (sendSuccess) {
       dispatch(resetForm())
       dispatch(clearCart())
