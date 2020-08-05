@@ -10,16 +10,13 @@ import Item from "../containers/Item";
 import Cart from '../containers/Cart'
 import ApplicationList from '../containers/ApplicationList'
 import { route } from '../systemdata/route'
-import ItemDetail from '../containers/ItemDetail'
 import Navbar from '../containers/Nav/Navbar'
+
 const UserRoute = () => {
   return (
     <Router>
       <Navbar />
       <Switch>
-        {/* <Route path={route.user.home} exact strict component={Item} />
-        <Route path={route.user.cart} component={Cart} exact strict />
-        <Route path={route.user.applicationList} component={ApplicationList} exact strict /> */}
         {process.env.REACT_APP_ENV === "production" ?
           <>
             <PrivateRoute path={route.user.items} exact strict>

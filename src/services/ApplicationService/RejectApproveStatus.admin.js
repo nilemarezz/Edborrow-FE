@@ -3,7 +3,7 @@ import env from '../../env'
 const RejectApproveStatus = async (value) => {
   if (process.env.REACT_APP_ENV === "production") {
     const response = await fetch(
-      `https://edborrow.ga/api/request/rejectpurpose`,
+      `${env.url}request/rejectpurpose`,
       {
         headers: {
           "Content-Type": "application/json",

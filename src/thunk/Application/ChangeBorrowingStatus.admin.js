@@ -3,7 +3,6 @@ import ChangeBorrowingStatusService from '../../services/ApplicationService/Chan
 export const ChangeBorrowingStatus = (itemId, requestId, value) => {
   return async (dispatch, getState) => {
     dispatch(loadingApplicationList(true));
-    // call service
     await ChangeBorrowingStatusService({
       requestId: requestId,
       itemId: itemId,

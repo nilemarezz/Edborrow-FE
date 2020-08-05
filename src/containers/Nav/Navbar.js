@@ -206,7 +206,6 @@ const Nav = (props) => {
         </MenuItem>
       </Link>
       {localStorage.getItem("userToken") ? (
-        // <Link to="/history" style={{textDecoration:'none',color:"black"}}>
         <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton
             aria-label="account of current user"
@@ -219,7 +218,6 @@ const Nav = (props) => {
           <p>{props.User.user}</p>
         </MenuItem>
       ) : (
-          // </Link>
           <Link to={route.auth.login} className={classes.link}>
             <MenuItem onClick={handleMenuClose}>
               <IconButton aria-label="show 11 new notifications" color="inherit">

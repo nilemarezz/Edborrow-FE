@@ -149,7 +149,6 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
     rowsPerPage: 5,
     rowsPerPageOptions: [5, 10, 20, 50],
     isRowExpandable: (dataIndex, expandedRows) => {
-      // Prevent expand/collapse of any row if there are 4 rows expanded already (but allow those already expanded to be collapsed)
       if (
         expandedRows.data.length > 4 &&
         expandedRows.data.filter((d) => d.dataIndex === dataIndex).length === 0

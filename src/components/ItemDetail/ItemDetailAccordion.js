@@ -9,7 +9,7 @@ const StyledTextField = withStyles({
   root: {
     margin: '0px 8px',
     "& .MuiInputBase-root.Mui-disabled": {
-      color: "black" // (default alpha is 0.38)
+      color: "black"
     }
   }
 })(TextField);

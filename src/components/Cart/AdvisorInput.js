@@ -22,7 +22,7 @@ export default function Asynchronous(props) {
 
     (async () => {
       const response = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
-      await sleep(1e3); // For demo purposes.
+      await sleep(1e3);
       const countries = await response.json();
 
       if (active) {

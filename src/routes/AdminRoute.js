@@ -42,8 +42,6 @@ const Admin = (props) => {
     <Router>
       <Switch>
         <AdminNav>
-          {/* <Route path={route.admin.dashboard} component={Dashboard} exact strict />
-          <Route path={route.admin.applicationList} component={ApplicationList} exact strict /> */}
           {process.env.REACT_APP_ENV === "production" ?
             <>
               <PrivateAdminRoute path={route.admin.applicationList} exact strict >
@@ -59,7 +57,6 @@ const Admin = (props) => {
               <Route path={route.admin.applicationList} component={ApplicationList} exact strict />
             </>
           }
-
         </AdminNav>
       </Switch>
     </Router>

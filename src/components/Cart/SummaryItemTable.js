@@ -11,12 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import { renderDepartment } from "../../utilities/Table/renderItemTable";
 
 const columns = ["ID", "Name", "Picture", "Owner", "Number"]
-const items = [{
-  itemId: "0001",
-  itemName: "Mac Book Poro 13' ",
-  itemImage: "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP775/sp775-mbp13touch-silver.jpeg",
-  departmentId: "Infrastructure",
-}]
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -82,7 +76,7 @@ export default function StickyHeadTable(props) {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25, 100]}
         component="div"
-        count={items.length}
+        count={props.cart.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

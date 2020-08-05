@@ -34,7 +34,6 @@ export const CartColumns = (
             src={renderImage(value)}
             alt="default"
             style={{ width: 50, height: 50 }}
-          // onClick={() => getimage(value)}
           />
         ),
       },

@@ -59,20 +59,10 @@ export const renderApproveStatus = (value) => {
     tool = ApproveStatus.Reject.tool
   }
   return (
-
     <Chip
       label={label}
       style={{ backgroundColor: bgcolor, color: "white" }}
     />
-    // </Grid>
-    // <Grid item xs={3} sm={3}>
-    //   <Tooltip title={tool} >
-    //     <HelpIcon
-    //       style={{ marginLeft: 20, width: 20, height: 20, marginTop: 5 }}
-    //     />
-    //   </Tooltip>
-    // </Grid>
-    // </Grid>
   );
 };
 

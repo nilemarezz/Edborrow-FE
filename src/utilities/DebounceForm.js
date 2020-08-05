@@ -6,7 +6,7 @@ const DarkerDisabledTextField = withStyles({
   root: {
     marginRight: 8,
     "& .MuiInputBase-root.Mui-disabled": {
-      color: "rgba(0, 0, 0, 0.8)" // (default alpha is 0.38)
+      color: "rgba(0, 0, 0, 0.8)"
     }
   }
 })(TextField);
@@ -17,7 +17,7 @@ class TextArea extends React.Component {
   }
 
 
-  updateFoo = _.debounce((value) => { // this can also dispatch a redux action
+  updateFoo = _.debounce((value) => {
     this.props.setText(value)
     this.setState({ foo: value });
   }, 300);

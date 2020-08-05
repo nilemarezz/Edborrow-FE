@@ -27,8 +27,6 @@ class ApplicationList extends React.Component {
     this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
     if (this.state.value === 1) {
       this.changeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
-      // this.props.ChangeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
-
     } else if (this.state.value === 0) {
       this.props.RejectApproveStatus(text, this.state.itemId, this.state.requestId, this.state.value)
     }
