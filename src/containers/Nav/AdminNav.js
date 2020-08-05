@@ -16,7 +16,12 @@ import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import { withRouter } from 'react-router-dom'
 import { route } from '../../systemdata/route'
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AccessibilityIcon from '@material-ui/icons/Accessibility';
+import { logoutSuccess } from "../../actions/UserAction";
+import { clearToken } from '../../utilities/check/checkToken'
+import { useSnackbar } from "notistack";
+import { connect } from 'react-redux'
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +48,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AdminNav = (props) => {
+  const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
   const Redirect = (path) => {
     props.history.push(path)
+  }
+  const Logout = () => {
+    props.Logout();
+    enqueueSnackbar("Logout Success!", {
+      variant: "success",
+    });
+    props.history.push(route.auth.login);
   }
   return (
     <div className={classes.root}>
@@ -83,6 +96,16 @@ const AdminNav = (props) => {
               <ListItemIcon><PostAddIcon /> </ListItemIcon>
               <ListItemText primary={"Add Items"} />
             </ListItem>
+            <Divider />
+            <ListItem button onClick={() => Redirect(route.user.items)}>
+              <ListItemIcon><AccessibilityIcon /> </ListItemIcon>
+              <ListItemText primary={"User View"} />
+            </ListItem>
+
+            <ListItem button onClick={() => Logout()}>
+              <ListItemIcon><ExitToAppIcon /> </ListItemIcon>
+              <ListItemText primary={"Logout"} />
+            </ListItem>
           </List>
           <Divider />
         </div>
@@ -94,4 +117,11 @@ const AdminNav = (props) => {
   );
 }
 
-export default withRouter(AdminNav)
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+  Logout: async () => {
+    clearToken();
+    dispatch(logoutSuccess());
+  },
+});
+
+export default connect(null, mapDispatchToProps)(withRouter(AdminNav))

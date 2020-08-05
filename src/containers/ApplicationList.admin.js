@@ -26,8 +26,8 @@ class ApplicationList extends React.Component {
   changeApproveStatus = (text) => {
     this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)
     if (this.state.value === 1) {
-      console.log('asd')
-      this.props.ChangeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
+      this.changeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
+      // this.props.ChangeBorrowingStatus(this.state.itemId, this.state.requestId, 6)
 
     } else if (this.state.value === 0) {
       this.props.RejectApproveStatus(text, this.state.itemId, this.state.requestId, this.state.value)
@@ -53,6 +53,7 @@ class ApplicationList extends React.Component {
   render() {
     const options = ApplicationOptions()
     const columns = ApplicationColumn(this.openConfirmModal, this.changeBorrowingStatus)
+    console.log(this.props.applicationList)
     return (
       <>
         <WithLoading loading={this.props.loading} />

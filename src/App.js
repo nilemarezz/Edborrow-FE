@@ -18,6 +18,10 @@ import DateFnsUtils from '@date-io/date-fns';
 import AdminRoute from './routes/AdminRoute';
 import UserRoute from './routes/UserRoute'
 import DetailRoute from './routes/DetailRoute'
+import WithLoading from './utilities/WithLoading'
+import ErrorPage from './components/OtherPage/404'
+import ApproveNoti from './components/OtherPage/ApproveNoti'
+import HandleRedirect from './routes/HandleRedirect'
 
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
@@ -35,16 +39,18 @@ const App = (props) => {
         ref={notistackRef}
         action={(key) => <Button onClick={onClickDismiss(key)}>Dismiss</Button>}
       >
-        {/* <WithLoading loading={props.user.loading} /> */}
+        <WithLoading loading={props.user.loading} />
         <Router>
           <MockNav />
           <Switch>
-            <Redirect exact from="/" to="/user/items" />
+            <Route path="/" component={HandleRedirect} exact strict />
             <Route path="/login" component={Login} exact strict />
             <Route path="/register" component={Register} exact strict />
             <Route path="/user/:section" component={UserRoute} exact strict />
             <Route path="/admin/:section" component={AdminRoute} exact strict />
             <Route path="/detail/:section/:id" component={DetailRoute} exact strict />
+            <Route path="/approve/type/:type" component={ApproveNoti} exact strict />
+            <Route component={ErrorPage} />
           </Switch>
         </Router>
       </SnackbarProvider>

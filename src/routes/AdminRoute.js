@@ -28,7 +28,7 @@ const Admin = (props) => {
           return (
             <Redirect
               to={{
-                pathname: route.user.home,
+                pathname: route.user.items,
               }}
             />
           );

@@ -236,7 +236,7 @@ const Nav = (props) => {
       <CssBaseline />
       <AppBar position="fixed">
         <Toolbar>
-          <Link to={route.user.home} style={{ textDecoration: "none", color: "white" }}>
+          <Link to={route.home} style={{ textDecoration: "none", color: "white" }}>
             <Typography variant="h6" noWrap>
               EdBorrow
             </Typography>

@@ -1,6 +1,7 @@
 export const route = {
+  home: "/",
   user: {
-    home: "/user/items",
+    items: "/user/items",
     cart: "/user/cart",
     applicationList: '/user/applicationlist',
     itemDetail: '/user/itemdetail'

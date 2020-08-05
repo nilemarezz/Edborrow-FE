@@ -3,7 +3,7 @@ import { route } from '../systemdata/route'
 export const snackBarCheckLogin = (admin) => {
   if (checkToken()) {
     if (admin === false) {
-      return { text: "Login Success!", type: "success", redirect: route.user.home };
+      return { text: "Login Success!", type: "success", redirect: route.user.items };
     } else {
       return { text: "Login Success!", type: "success", redirect: route.admin.dashboard };
     }

@@ -1,8 +1,9 @@
 import env from '../../env'
 
-const ChangeApproveStatus = async (text, id, itemId, type) => {
+const AdvisorRejectPurpose = async (text, id, itemId, type) => {
   if (process.env.REACT_APP_ENV === "production") {
-    const response = await fetch(`${env.url}request/rejectpurpose`, {
+    console.log(text, id, itemId, type)
+    const response = await fetch(`${env.url}request/approve`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,14 +17,11 @@ const ChangeApproveStatus = async (text, id, itemId, type) => {
       }),
     });
     const data = await response.json();
-    if (data.result === "false") {
-      return false
-    } else {
-      return true;
-    }
+    console.log(data)
+    return true
   } else {
     return true
   }
 }
 
-export default ChangeApproveStatus
+export default AdvisorRejectPurpose
