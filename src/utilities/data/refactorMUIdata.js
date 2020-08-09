@@ -3,7 +3,7 @@ export const CartItem = (item) => {
     itemId: item[0],
     itemName: item[1],
     itemImage: item[2],
-    departmentName: item[3],
+    departmentId: item[3],
   };
   return data
 }
