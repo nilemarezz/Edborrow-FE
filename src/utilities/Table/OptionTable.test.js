@@ -15,27 +15,27 @@ describe("OptionTable.js", () => {
         expect(ItemColumns()[1]['name']).toEqual(ItemTable.itemName.name);
       })
     })
-    describe("first row is itemImage", () => {
+    describe("third row is itemImage", () => {
       it("should return itemImage", () => {
         expect(ItemColumns()[2]['name']).toEqual(ItemTable.itemImage.name);
       })
     })
-    describe("first row is departmentName", () => {
+    describe("fourth row is departmentName", () => {
       it("should return departmentName", () => {
         expect(ItemColumns()[3]['name']).toEqual(ItemTable.departmentName.name);
       })
     })
-    describe("first row is itemAvailability", () => {
+    describe("fifth row is itemAvailability", () => {
       it("should return itemAvailability", () => {
         expect(ItemColumns()[4]['name']).toEqual(ItemTable.itemAvailability.name);
       })
     })
-    describe("first row is itemId", () => {
+    describe("sixth row is itemId", () => {
       it("should return itemId", () => {
         expect(ItemColumns()[5]['name']).toEqual(ItemTable.itemId.name);
       })
     })
-    describe("first row is ownerName", () => {
+    describe("seventh row is ownerName", () => {
       it("should return ownerName", () => {
         expect(ItemColumns()[6]['name']).toEqual(ItemTable.ownerName.name);
       })
