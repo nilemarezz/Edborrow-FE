@@ -67,4 +67,12 @@ describe("Test Item Action Creators", () => {
       expect(Items.clearFilter()).toEqual(expectedAction);
     });
   });
+  describe("clearCart", () => {
+    it("should create action clear item in cart", () => {
+      const expectedAction = {
+        type: Items.CLEAR_CART,
+      };
+      expect(Items.clearCart()).toEqual(expectedAction);
+    });
+  });
 });
