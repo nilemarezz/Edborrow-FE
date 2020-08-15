@@ -88,7 +88,7 @@ const AdminNav = (props) => {
               <ListItemIcon><AssignmentIcon /> </ListItemIcon>
               <ListItemText primary={"Application List"} />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => Redirect(route.admin.items)}>
               <ListItemIcon><FeaturedPlayListIcon /> </ListItemIcon>
               <ListItemText primary={"Items"} />
             </ListItem>

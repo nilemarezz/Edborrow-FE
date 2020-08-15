@@ -176,7 +176,7 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
                     <Grid item sm={6} xs={3}>
                       <div style={{ paddingLeft: 20 }}>
                         <p>: &nbsp;&nbsp;{rowData[6] || "-"}</p>
-                        <p>: &nbsp;&nbsp;{name || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[11] || "-"}</p>
                         <p>: &nbsp;&nbsp;{rowData[7] || "-"}</p>
                       </div>
                     </Grid>
@@ -188,7 +188,7 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
                       <div style={{ float: "right" }}>
                         <p>Purpose</p>
                         <p>Borrow Date</p>
-                        <p>Retuen Date</p>
+                        <p>Return Date</p>
                       </div>
                     </Grid>
                     <Grid item sm={9} xs={6}>
@@ -270,6 +270,11 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
       customBodyRender: (value, tableMeta) => (RefactorDate(value)
       ),
     }
+  },
+  {
+    name: "Name", label: "Name", options: {
+      display: false,
+    },
   },
 
 ]

@@ -2,22 +2,23 @@
   "result": "success",
   "data": [
     {
-      "buyDate": null,
-      "categoryId": 1,
-      "createDate": "2020-05-21T03:15:09.000Z",
-      "departmentId": 1,
       "departmentName": "IT Infrastructure",
       "itemAvailability": 0,
-      "itemBorrowable": 1,
       "itemBrand": "Canon",
-      "itemDescription": "For taking picture zaza",
       "itemId": 20018,
       "itemImage": "https://equipment-image.s3.ap-southeast-1.amazonaws.com/camera-1588084189147.jpg",
       "itemModel": "EOS 80D DSLR 1",
-      "itemName": "DSLR Camera II",
-      "itemStatusId": 2,
-      "ownerName": null,
-      "userId": null,
+      "itemName": "DSLR Camera II"
+    },
+    {
+      "departmentName": "IT Infrastructure",
+      "itemAvailability": 0,
+      "itemBrand": "Yaesu",
+      "itemId": 20017,
+      "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/unnamed.jpg",
+      "itemModel": "FT-259",
+      "itemName": "Radio Communication",
+      "ownerName": null
     }
   ]
 }

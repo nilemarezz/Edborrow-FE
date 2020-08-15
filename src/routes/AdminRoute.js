@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { route } from '../systemdata/route'
 import AdminNav from '../containers/Nav/AdminNav'
 import ApplicationList from '../containers/ApplicationList.admin'
-
+import Items from '../containers/Item.admin'
 
 const Admin = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
@@ -50,11 +50,15 @@ const Admin = (props) => {
               <PrivateAdminRoute path={route.admin.dashboard} exact strict >
                 <Dashboard />
               </PrivateAdminRoute >
+              <PrivateAdminRoute path={route.admin.items} exact strict >
+                <Items />
+              </PrivateAdminRoute >
             </>
             :
             <>
               <Route path={route.admin.dashboard} component={Dashboard} exact strict />
               <Route path={route.admin.applicationList} component={ApplicationList} exact strict />
+              <Route path={route.admin.items} component={Items} exact strict />
             </>
           }
         </AdminNav>
