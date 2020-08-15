@@ -14,7 +14,7 @@ import Items from '../containers/Item.admin'
 import ItemDetail from '../containers/ItemDetail.admin'
 import AddItem from '../containers/AddItem.admin'
 
-const Admin = (props) => {
+const AdminDetail = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
       if (localStorage.getItem("userToken") === null) {
@@ -46,27 +46,13 @@ const Admin = (props) => {
         <AdminNav>
           {process.env.REACT_APP_ENV === "production" ?
             <>
-              <PrivateAdminRoute path={route.admin.applicationList} exact strict >
-                <ApplicationList />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={route.admin.dashboard} exact strict >
-                <Dashboard />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={route.admin.items} exact strict >
-                <Items />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={route.admin.additem} exact strict >
-                <AddItem />
+              <PrivateAdminRoute path={route.adminDetail.itemDetailAdmin} exact strict >
+                <ItemDetail />
               </PrivateAdminRoute >
             </>
             :
             <>
-
-              <Route path={route.admin.dashboard} component={Dashboard} exact strict />
-              <Route path={route.admin.applicationList} component={ApplicationList} exact strict />
-              <Route path={route.admin.items} component={Items} exact strict />
-              <Route path={route.admin.additem} component={AddItem} exact strict />
-
+              <Route path={`${route.adminDetail.itemDetailAdmin}/:id`} component={ItemDetail} exact strict />
             </>
           }
         </AdminNav>
@@ -80,4 +66,4 @@ const mapStateToProps = (state) => {
   return { user: state.User };
 };
 
-export default connect(mapStateToProps, null)(Admin);
+export default connect(mapStateToProps, null)(AdminDetail);

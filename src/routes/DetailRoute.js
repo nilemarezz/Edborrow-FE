@@ -10,6 +10,7 @@ import { route } from '../systemdata/route'
 import ItemDetail from '../containers/ItemDetail'
 import ApplicationDetail from '../containers/ApplicationDetail'
 import Nav from '../containers/Nav/Navbar'
+import ItemDetailAdmin from '../containers/ItemDetail.admin'
 const DetailRoute = () => {
   return (
     <Router>

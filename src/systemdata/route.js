@@ -10,8 +10,7 @@ export const route = {
     dashboard: "/admin/dashboard",
     applicationList: '/admin/applicationlist',
     items: '/admin/items',
-    additem: '/admin/additem'
-
+    additem: '/admin/additem',
   },
   auth: {
     login: "/login",
@@ -20,5 +19,8 @@ export const route = {
   detail: {
     itemDetail: "/detail/itemdetail",
     applicationDetail: "/detail/application"
+  },
+  adminDetail: {
+    itemDetailAdmin: "/admin/detail/itemdetail"
   }
 }
