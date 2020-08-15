@@ -9,6 +9,7 @@ export const submitForm = (form, cart) => {
     cart.forEach((itemid) => {
       item.push({ itemId: itemid.itemId });
     });
+    console.log(form)
     const summaryForm = {
       items: item,
       personalInformation: {
@@ -19,6 +20,7 @@ export const submitForm = (form, cart) => {
         transactionDate: new Date().toJSON().slice(0, 10).replace(/-/g, "-"),
         usePlace: form.usePlace,
         userId: form.id,
+        advisorEmail: form.advisor
       }
     }
     const sendSuccess = await SendApplicationService(summaryForm);

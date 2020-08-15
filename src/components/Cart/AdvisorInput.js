@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import GetAdvisorList from '../../services/UserService/GetAdvisorList'
 function sleep(delay = 0) {
   return new Promise((resolve) => {
     setTimeout(resolve, delay);
@@ -21,12 +21,18 @@ export default function Asynchronous(props) {
     }
 
     (async () => {
-      const response = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
-      await sleep(1e3);
-      const countries = await response.json();
 
+      // const advisor = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
+      // await sleep(1e3);
+      // const countries = await advisor.json();
+      // console.log(countries)
+      const res = await GetAdvisorList()
+      await sleep(1e3);
+
+      const advisorData = res.data
+      console.log(advisorData)
       if (active) {
-        setOptions(Object.keys(countries).map((key) => countries[key].item[0]));
+        setOptions(advisorData);
       }
     })();
 
@@ -52,13 +58,13 @@ export default function Asynchronous(props) {
       onClose={() => {
         setOpen(false);
       }}
-      getOptionSelected={(option, value) => option.name === value.name}
-      getOptionLabel={(option) => option.name}
+      getOptionSelected={(option, value) => option.Name === value.Name}
+      getOptionLabel={(option) => option.Name}
       options={options}
       loading={loading}
       onChange={(event, newValue) => {
         if (newValue) {
-          props.setAdvisor(newValue.name);
+          props.setAdvisor(newValue.email);
         } else {
           props.setAdvisor("");
         }

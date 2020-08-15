@@ -1,0 +1,10 @@
+{
+  "result": "success",
+  "data": [
+      {
+          "userId": "testAdvisor",
+          "Name": "Advisor Test",
+          "email": "nilenon@gmail.com"
+      }
+  ]
+}

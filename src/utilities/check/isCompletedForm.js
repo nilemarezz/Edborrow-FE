@@ -9,7 +9,7 @@ export const isCompletedForm = (step, field, cart) => {
     if (field.name === "" || field.surname === ""
       || field.email === "" || field.id === ""
       || field.telNo === "" || field.advisor === ""
-      || field.purpose === "") {
+      || field.purpose === "" || field.usePlace === "") {
       return false
     } else {
       return true
