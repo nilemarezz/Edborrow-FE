@@ -51,7 +51,6 @@ class ApplicationList extends React.Component {
   render() {
     const options = ApplicationOptions()
     const columns = ApplicationColumn(this.openConfirmModal, this.changeBorrowingStatus)
-    console.log(this.props.applicationList)
     return (
       <>
         <WithLoading loading={this.props.loading} />

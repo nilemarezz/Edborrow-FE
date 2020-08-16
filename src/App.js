@@ -31,10 +31,10 @@ const onClickDismiss = (key) => () => {
 const notistackRef = React.createRef();
 
 const App = (props) => {
-  useEffect(() => {
-    if (checkToken())
-      props.UserDetailThunk({ token: getToken(), type: "login" });
-  }, []);
+  // useEffect(() => {
+  //   if (checkToken())
+  //     props.UserDetailThunk({ token: getToken(), type: "login" });
+  // }, []);
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <SnackbarProvider

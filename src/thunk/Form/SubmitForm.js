@@ -9,7 +9,6 @@ export const submitForm = (form, cart) => {
     cart.forEach((itemid) => {
       item.push({ itemId: itemid.itemId });
     });
-    console.log(form)
     const summaryForm = {
       items: item,
       personalInformation: {
