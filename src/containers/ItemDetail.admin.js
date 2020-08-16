@@ -11,29 +11,47 @@ import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import EditItem from '../components/ItemDetail/EditItemForm.admin'
 import GetItemDetailService from '../services/ItemService/GetItemDetail'
+import { EditItemThunk } from '../thunk/Item/EditItem.admin'
+import { itemLoading } from '../actions/ItemAction.admin'
+import { withSnackbar } from "notistack";
+import { compose } from 'recompose'
+
+const initailFormState = {
+  itemDescription: null,
+  itemModel: null,
+  itemBrand: null,
+  itemName: null,
+  itemBorrowable: null,
+  itemImage: null,
+  itemCategoryId: null
+}
 class ItemDetail extends React.Component {
   constructor(props) {
     super(props);
     this.inputFile = React.createRef();
     this.state = {
       Showimage: null,
-      Form: {
-        itemId: this.props.match.params.id,
-        itemDescription: null,
-        itemModel: null,
-        itemBrand: null,
-        itemName: null,
-        itemBorrowable: null,
-        itemImage: null,
-        itemCategoryId: null
-      },
+      Form: initailFormState,
       EnableEdit: false
     };
   }
   sendData = () => {
-    console.log(this.state.Form)
+    const editRes = this.props.editItem(this.state.Form)
+    if (editRes) {
+      this.props.enqueueSnackbar("Edit Item Success", {
+        variant: 'success',
+      });
+      this.setForm()
+      this.setState({ EnableEdit: false })
+    } else {
+      this.props.enqueueSnackbar("Add Item Fail", {
+        variant: 'danger',
+      });
+    }
+
   }
   setForm = async () => {
+    this.props.onLoad(true)
     const detail = await GetItemDetailService(this.props.match.params.id)
     this.setState({
       Form: {
@@ -47,6 +65,7 @@ class ItemDetail extends React.Component {
         itemCategoryId: detail.categoryId
       }
     })
+    this.props.onLoad(false)
   }
   componentDidMount() {
     this.setForm()
@@ -134,5 +153,11 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   getDetail: async (value) => {
     dispatch(GetItemDetail(value));
   },
+  editItem: async (value) => {
+    dispatch(EditItemThunk(value))
+  },
+  onLoad: async (value) => {
+    dispatch(itemLoading(value))
+  }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ItemDetail))
+export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter, withSnackbar)(ItemDetail)

@@ -8,28 +8,43 @@ import Grid from '@material-ui/core/Grid'
 import { renderImage } from '../utilities/getImage'
 import Button from '@material-ui/core/Button';
 import EditItem from '../components/ItemDetail/EditItemForm.admin'
+import { AddItemThunk } from '../thunk/Item/AddItem.admin'
+import { withSnackbar } from "notistack";
+import { compose } from 'recompose'
+
+const initailFormState = {
+  itemDescription: "",
+  itemModel: "",
+  itemBrand: "",
+  itemName: "",
+  itemBorrowable: 1,
+  itemImage: "",
+  itemCategoryId: ""
+}
 class AddItem extends React.Component {
   constructor(props) {
     super(props);
     this.inputFile = React.createRef();
     this.state = {
       Showimage: null,
-      Form: {
-        itemId: this.props.match.params.id,
-        itemDescription: null,
-        itemModel: null,
-        itemBrand: null,
-        itemName: null,
-        itemBorrowable: 1,
-        itemImage: null,
-        itemCategoryId: null
-      },
+      Form: initailFormState,
       EnableEdit: false
     };
   }
   sendData = () => {
-    console.log('send')
-    console.log(this.state.Form)
+    const addRes = this.props.addItem(this.state.Form)
+    if (addRes) {
+      this.props.enqueueSnackbar("Add Item Success", {
+        variant: 'success',
+      });
+      this.setState({ Form: initailFormState })
+
+    } else {
+      this.props.enqueueSnackbar("Add Item Fail", {
+        variant: 'danger',
+      });
+    }
+
   }
   handleChange = async (event) => {
     this.setState({ EnableEdit: event.target.checked })
@@ -96,5 +111,8 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   getDetail: async (value) => {
     dispatch(GetItemDetail(value));
   },
+  addItem: async (value) => {
+    dispatch(AddItemThunk(value))
+  }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddItem))
+export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter, withSnackbar)(AddItem)
