@@ -7,7 +7,8 @@ import * as R from 'ramda'
 import { CartItem } from '../data/refactorMUIdata'
 import { ItemTable } from '../../systemdata/Item'
 import { ItemStatus } from '../../systemdata/ItemStatus'
-
+import { Link } from 'react-router-dom'
+import { route } from '../../systemdata/route'
 export const OptionItemTable = {
   selectableRows: false,
   filterType: "textField",
@@ -44,7 +45,7 @@ export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCart
   );
 };
 
-export const ItemColumns = (redirect) => [
+export const ItemColumns = () => [
   { name: ItemTable.itemId.name, label: ItemTable.itemId.label },
   { name: ItemTable.itemName.name, label: ItemTable.itemName.label },
 
@@ -91,14 +92,16 @@ export const ItemColumns = (redirect) => [
       sort: false,
       download: false,
       customBodyRender: (value, tableMeta) => (
-        <Button
-          color={color.secondary}
-          variant="contained"
-          size="small"
-          onClick={() => redirect(value)}
-        >
-          Detail
+        <Link to={`${route.adminDetail.itemDetailAdmin}/${value}`} style={{ textDecoration: 'none' }}>
+          <Button
+            color={color.secondary}
+            variant="contained"
+            size="small"
+
+          >
+            Detail
         </Button>
+        </Link>
       ),
     },
   },

@@ -70,32 +70,38 @@ describe("reducers/Item", () => {
         });
       });
 
-      // describe("ADMIN_CHANGE_APPROVE_STATUS", () => {
-      //   it("should return the state with admin change the approve status", () => {
-      //     expect(
-      //       reducer(undefined, {
-      //         type: types.ADMIN_CHANGE_APPROVE_STATUS,
-      //         payload: { itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 4},
-      //       })
-      //     ).toEqual({
-      //       applicationList: [{ itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 4}],
-      //       loading: false
-      //     });
-      //   });
-      // });
+      describe("ADMIN_CHANGE_APPROVE_STATUS", () => {
+        it("should return the state with admin change the approve status", () => {
+          expect(
+            reducer( {
+              applicationList: [{ itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 4}],
+              loading: false
+            }, {
+              type: types.ADMIN_CHANGE_APPROVE_STATUS,
+              payload: { itemId : 1, requestId : 2, value : 5 },
+            })
+          ).toEqual({
+            applicationList: [{ itemId: 1, requestId: 2, itemApprove: 5, itemBorrowingStatusId: 4}],
+            loading: false
+          });
+        });
+      });
 
-      // describe("ADMIN_CHANGE_BORROWING_STATUS", () => {
-      //   it("should return the state with admin change the borrowing status", () => {
-      //     expect(
-      //       reducer(undefined, {
-      //         type: types.ADMIN_CHANGE_BORROWING_STATUS,
-      //         payload: { itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 4},
-      //       })
-      //     ).toEqual({
-      //       applicationList: [{ itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 4}],
-      //       loading: false
-      //     });
-      //   });
-      // });
+      describe("ADMIN_CHANGE_BORROWING_STATUS", () => {
+        it("should return the state with admin change the borrowing status", () => {
+          expect(
+            reducer({
+              applicationList: [{ itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 4}],
+              loading: false
+            }, {
+              type: types.ADMIN_CHANGE_BORROWING_STATUS,
+              payload: { itemId : 1, requestId : 2, value : 5 },
+            })
+          ).toEqual({
+            applicationList: [{ itemId: 1, requestId: 2, itemApprove: 4, itemBorrowingStatusId: 5}],
+            loading: false
+          });
+        });
+      });
 
 })

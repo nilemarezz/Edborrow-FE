@@ -2,13 +2,14 @@ import React from "react";
 import ItemTable from "../components/Item/ItemTable";
 import { GetAllItemThunk } from "../thunk/Item/GetAllItem.admin";
 import { connect } from "react-redux";
-import AdvanceSearch from "../components/Item/AdvanceSearch";
+import { route } from '../systemdata/route'
 import styled from "styled-components";
 import {
   OptionItemTable,
   ItemColumns,
 } from "../utilities/Table/OptionTable.admin";
-
+import { withRouter } from "react-router-dom";
+import { compose } from 'recompose'
 const ItemContainer = styled.div`
   padding: 20px;
 `;
@@ -19,20 +20,17 @@ class Item extends React.Component {
   componentDidMount() {
     this.props.GetAllItemThunk();
   }
-  redirectToDetail(value) {
-    console.log(value)
-  }
   render() {
     const { item } = this.props;
-    const columns = ItemColumns(this.redirectToDetail)
+    const columns = ItemColumns()
     return (
       <>
         <ItemContainer className="item-table-cotainer">
           {/* Close Feature Flag */}
           {/* <AdvanceSearch /> */}
           <TableContainer>
-            <ItemTable Items={item.filter.length > 0 ? item.filter : item.Items}
-              item={item} loading={item.loading} Cart={item.Cart}
+            <ItemTable Items={item.Items}
+              loading={item.loading}
               columns={columns} options={OptionItemTable} />
           </TableContainer>
         </ItemContainer>
@@ -42,6 +40,7 @@ class Item extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { item: state.Item };
+  return { item: state.ADMIN_Item };
 };
-export default connect(mapStateToProps, { GetAllItemThunk })(Item);
+export default compose(connect(mapStateToProps, { GetAllItemThunk }), withRouter)(Item);
+

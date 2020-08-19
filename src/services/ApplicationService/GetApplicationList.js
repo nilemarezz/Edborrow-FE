@@ -11,7 +11,6 @@ const GetApplicationList = async () => {
     const data = await response.json();
     return data.data
   } else {
-    console.log('in')
     return ApplicationList.data
   }
 }

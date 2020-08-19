@@ -46,7 +46,7 @@ const Admin = (props) => {
         <AdminNav>
           {process.env.REACT_APP_ENV === "production" ?
             <>
-              <PrivateAdminRoute path={route.admin.applicationList} exact strict >
+              {/* <PrivateAdminRoute path={route.admin.applicationList} exact strict >
                 <ApplicationList />
               </PrivateAdminRoute >
               <PrivateAdminRoute path={route.admin.dashboard} exact strict >
@@ -57,7 +57,11 @@ const Admin = (props) => {
               </PrivateAdminRoute >
               <PrivateAdminRoute path={route.admin.additem} exact strict >
                 <AddItem />
-              </PrivateAdminRoute >
+              </PrivateAdminRoute > */}
+              <Route path={route.admin.dashboard} component={Dashboard} exact strict />
+              <Route path={route.admin.applicationList} component={ApplicationList} exact strict />
+              <Route path={route.admin.items} component={Items} exact strict />
+              <Route path={route.admin.additem} component={AddItem} exact strict />
             </>
             :
             <>

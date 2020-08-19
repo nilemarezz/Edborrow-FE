@@ -21,16 +21,10 @@ export default function Asynchronous(props) {
     }
 
     (async () => {
-
-      // const advisor = await fetch('https://country.register.gov.uk/records.json?page-size=5000');
-      // await sleep(1e3);
-      // const countries = await advisor.json();
-      // console.log(countries)
       const res = await GetAdvisorList()
       await sleep(1e3);
 
       const advisorData = res.data
-      console.log(advisorData)
       if (active) {
         setOptions(advisorData);
       }

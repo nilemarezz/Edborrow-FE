@@ -7,7 +7,7 @@ import { ApplicationTable } from "../../systemdata/Application";
 describe("OptionApplicationTable.admin.js", () => {
   describe("ApplicationColumn()", () => {
     it("should return 11 row", () => {
-      expect(ApplicationColumn().length).toEqual(11);
+      expect(ApplicationColumn().length).toEqual(12);
     });
     describe("first row is requestId", () => {
       it("should return requestId", () => {

@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 const HandleRedirect = (props) => {
   const admin = props.user.admin
-  console.log(admin)
   if (admin) {
     return <Redirect to={route.admin.dashboard} />
   } else {

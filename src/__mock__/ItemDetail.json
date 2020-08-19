@@ -1,28 +1,31 @@
 {
   "result": "success",
   "data": [
-  {
-  "itemId": 20011,
-  "itemBrand": null,
-  "itemModel": null,
-  "itemName": "Asus Headphones",
-  "createDate": "2020-05-21T03:15:09.000Z",
-  "buyDate": null,
-  "categoryId": 2,
-  "departmentId": 2,
-  "userId": null,
-  "itemStatusId": 2,
-  "itemImage": null,
-  "itemDescription": null,
-  "itemBorrowable": 1,
-  "itemAvailability": 0,
-  "departmentName": "SRM",
-  "departmentTelNo": "0999999992",
-  "departmentEmail": "equipmentproject63@gmail.com",
-  "placeId": 2,
-  "placeBuilding": "SIT",
-  "placeFloor": 3,
-  "placeRoom": "202"
-  }
+    {
+      "Name": "Infra Staff",
+      "buyDate": null,
+      "categoryId": 1,
+      "createDate": "2020-08-17T09:42:02.000Z",
+      "departmentEmail": null,
+      "departmentId": null,
+      "departmentName": null,
+      "departmentTelNo": null,
+      "email": "",
+      "itemAvailability": 1,
+      "itemBorrowable": 1,
+      "itemBrand": "test1",
+      "itemDescription": "test1",
+      "itemId": 20047,
+      "itemImage": "https://equipment-image.s3.ap-southeast-1.amazonaws.com/test-clip-art-cpa-school-test-1597682522689.png",
+      "itemModel": "test1",
+      "itemName": "test1",
+      "itemStatusId": 1,
+      "placeBuilding": null,
+      "placeFloor": null,
+      "placeId": null,
+      "placeRoom": null,
+      "userId": "infrastaff",
+      "userTelNo": ""
+    }
   ]
-  }
+}
