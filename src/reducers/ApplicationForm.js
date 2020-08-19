@@ -14,8 +14,8 @@ const initialState = {
   email: "",
   telNo: "",
   advisor: "",
-  borrowDate: new Date(),
-  returnDate: new Date(),
+  borrowDate: "",
+  returnDate: "",
   purpose: "",
   usePlace: "",
 };
@@ -48,7 +48,7 @@ export default function (state = initialState, action) {
       return (
         R.pipe(R.assocPath(["id"], ""), R.assocPath(["name"], ""), R.assocPath(["surname"], ""),
           R.assocPath(["email"], ""), R.assocPath(["telNo"], ""), R.assocPath(["advisor"], ""),
-          R.assocPath(["borrowDate"], new Date()), R.assocPath(["returnDate"], new Date()),
+          R.assocPath(["borrowDate"], ""), R.assocPath(["returnDate"], ""),
           R.assocPath(["purpose"], ""), R.assocPath(["usePlace"], ""))(state)
       )
     default:
