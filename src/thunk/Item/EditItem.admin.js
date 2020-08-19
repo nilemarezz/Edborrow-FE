@@ -5,6 +5,7 @@ export const EditItemThunk = (value) => {
   return async (dispatch, getState) => {
     dispatch(itemLoading(true));
     const formData = new FormData();
+    formData.append("itemId", value.itemId);
     formData.append("image", value.itemImage);
     formData.append("itemName", value.itemName);
     formData.append("itemBrand", value.itemBrand === "" ? null : value.itemBrand);
@@ -18,10 +19,8 @@ export const EditItemThunk = (value) => {
     formData.append("categoryId", value.itemCategoryId === "" ? null : value.itemCategoryId);
     formData.append("itemDescription", value.itemDescription === "" ? null : value.itemDescription);
     try {
-      const edit = await EditItemService(FormData);
-      console.log(edit)
+      const edit = await EditItemService(formData);
       if (edit === false) {
-        console.error('Cannot connect to server')
         dispatch(itemLoading(false));
         return false
       } else {

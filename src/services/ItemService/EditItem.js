@@ -2,14 +2,21 @@
 const AddItem = async (formData) => {
   if (process.env.REACT_APP_ENV === "production") {
     try {
-      await fetch(`${process.env.REACT_APP_URL}items`, {
+      const edit = await fetch(`${process.env.REACT_APP_URL}items`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
         body: formData,
       });
-      return true
+      const editJson = await edit.json()
+      if (editJson.result === "false") {
+        console.log(editJson.msg)
+        return false
+      } else {
+        return true
+      }
+
     } catch (err) {
       return false
     }

@@ -35,8 +35,9 @@ class ItemDetail extends React.Component {
       EnableEdit: false
     };
   }
-  sendData = () => {
-    const editRes = this.props.editItem(this.state.Form)
+  sendData = async () => {
+    const editRes = await this.props.editItem(this.state.Form)
+    console.log(editRes)
     if (editRes) {
       this.props.enqueueSnackbar("Edit Item Success", {
         variant: 'success',
@@ -44,8 +45,8 @@ class ItemDetail extends React.Component {
       this.setForm()
       this.setState({ EnableEdit: false })
     } else {
-      this.props.enqueueSnackbar("Add Item Fail", {
-        variant: 'danger',
+      this.props.enqueueSnackbar("It not your item or something went wrong.", {
+        variant: 'error',
       });
     }
 
@@ -88,7 +89,6 @@ class ItemDetail extends React.Component {
   render() {
     const { item } = this.props
     this.myRef = React.createRef();
-    console.log(this.state.Form)
     return (
       <>
         <WithLoading loading={item.loading} />
@@ -154,7 +154,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(GetItemDetail(value));
   },
   editItem: async (value) => {
-    dispatch(EditItemThunk(value))
+    const isEditSuccess = dispatch(EditItemThunk(value))
+    return isEditSuccess
+
   },
   onLoad: async (value) => {
     dispatch(itemLoading(value))

@@ -17,7 +17,6 @@ class EditItem extends React.Component {
     this.props.sendData()
   }
   render() {
-    console.log(this.props.item.itemCategoryId)
     return (
       <form onSubmit={this.submit}>
         <TextField label="Name"

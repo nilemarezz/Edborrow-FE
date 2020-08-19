@@ -19,7 +19,6 @@ export const GetItemDetail = (value) => {
         itemCategoryId: items.categoryId,
         itemImage: items.itemImage,
       }
-      console.log(items)
       dispatch(getItemDetail(reObject));
       dispatch(itemLoading(false));
     }

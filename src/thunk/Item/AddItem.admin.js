@@ -17,7 +17,7 @@ export const AddItemThunk = (value) => {
     );
     formData.append("categoryId", value.itemCategoryId === "" ? null : value.itemCategoryId);
     formData.append("itemDescription", value.itemDescription === "" ? null : value.itemDescription);
-    const add = await AddItemService(FormData);
+    const add = await AddItemService(formData);
     if (add === false) {
       console.error('Cannot connect to server')
       dispatch(itemLoading(false));

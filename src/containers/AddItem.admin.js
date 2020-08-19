@@ -37,7 +37,7 @@ class AddItem extends React.Component {
       this.props.enqueueSnackbar("Add Item Success", {
         variant: 'success',
       });
-      this.setState({ Form: initailFormState })
+      this.setState({ Form: initailFormState, Showimage: null })
 
     } else {
       this.props.enqueueSnackbar("Add Item Fail", {

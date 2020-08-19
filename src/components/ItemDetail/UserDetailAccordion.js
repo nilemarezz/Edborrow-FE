@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from "@material-ui/core/styles";
-
+import { checkName, checkEmail, checkTelNo } from '../../utilities/check/itemIsDepartment'
 const StyledTextField = withStyles({
   root: {
     margin: '0px 8px',
@@ -13,14 +13,16 @@ const StyledTextField = withStyles({
 })(TextField);
 class UserDetailAccordian extends React.Component {
   render() {
-    const { departmentName, departmentEmail, departmentTelNo, placeBuilding, placeFloor, placeRoom } = this.props.item
+    const { departmentName, departmentEmail, departmentTelNo, placeBuilding, placeFloor, placeRoom,
+      departmentId, userId, userTelNo, email, Name
+    } = this.props.item
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
           <StyledTextField
             id="standard-full-width"
             label="Name"
-            value={departmentName || "-"}
+            value={checkName(departmentId, departmentName, userId, Name)}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -33,7 +35,7 @@ class UserDetailAccordian extends React.Component {
           <StyledTextField
             id="standard-full-width"
             label="Email"
-            value={departmentEmail || "-"}
+            value={checkEmail(departmentId, departmentEmail, userId, email)}
             fullWidth
             margin="normal"
             InputLabelProps={{
@@ -46,7 +48,7 @@ class UserDetailAccordian extends React.Component {
           <StyledTextField
             id="standard-full-width"
             label="Telephone No."
-            value={departmentTelNo || "-"}
+            value={checkTelNo(departmentId, departmentTelNo, userId, userTelNo)}
             fullWidth
             margin="normal"
             InputLabelProps={{
