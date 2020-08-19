@@ -10,7 +10,7 @@ const initialState = {
   loading: false
 }
 
-function updateApproveStatus({ itemId, requestId, value }, list) {
+export function updateApproveStatus({ itemId, requestId, value }, list) {
   const newList = list;
   newList.forEach(item => {
     if (item.requestId === requestId && item.itemId === itemId) {
@@ -21,7 +21,7 @@ function updateApproveStatus({ itemId, requestId, value }, list) {
   });
   return newList
 }
-function updateBorrowingStatus({ itemId, requestId, value }, list) {
+export function updateBorrowingStatus({ itemId, requestId, value }, list) {
   const newList = list;
   newList.forEach(item => {
     if (item.requestId === requestId && item.itemId === itemId) {

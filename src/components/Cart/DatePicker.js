@@ -10,13 +10,16 @@ class KeyboardDatePickerExample extends React.Component {
             <KeyboardDatePicker
                 clearable
                 value={value}
-                placeholder="10/10/2018"
+                placeholder={"Date"}
                 onChange={date => setTime(date)}
                 minDate={new Date()}
                 format="MM/dd/yyyy"
                 variant="inline"
                 inputVariant="outlined"
                 label={this.props.label}
+                InputLabelProps = {{
+                    shrink: true,
+                }}
                 fullWidth
                 required
             />
