@@ -21,7 +21,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 `
 class Dashboard extends React.Component {
-  state = { loading: false, data: { lastestBorrow: [], mostBorrow: {} } }
+  state = { loading: false, data: { lastestBorrow: [], mostBorrow: {}, countmonth: [], waiting: 0, items: 0, late: 0 } }
   componentDidMount() {
     this.getDashboardData()
   }
@@ -40,12 +40,12 @@ class Dashboard extends React.Component {
         <Container>
           <DashboardBox title="Waiting for Approve" unit="Application"
             color={color.red}
-            icon={<QueryBuilderIcon style={{ width: 50, height: 50, color: 'white' }} />} value={5} />
-          <DashboardBox title="Items" unit="items" color={color.green} icon={<LibraryBooksIcon style={{ width: 50, height: 50, color: 'white' }} />} value={20} />
-          <DashboardBox title="Return Late" unit="items" color={color.yellow} icon={<WarningIcon style={{ width: 50, height: 50, color: 'white' }} />} value={2} />
+            icon={<QueryBuilderIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.state.data.waiting} />
+          <DashboardBox title="Return Late" unit="items" color={color.yellow} icon={<WarningIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.state.data.late} />
+          <DashboardBox title="Items" unit="items" color={color.green} icon={<LibraryBooksIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.state.data.items} />
           <Grid container style={{ marginTop: 20 }} spacing={3}>
             <Grid item xs={12} sm={8}>
-              <LineChart title="Borrow Request Frequency" />
+              <LineChart title="Borrow Request Frequency" data={this.state.data.countmonth} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <RecentItem data={this.state.data.lastestBorrow} />
