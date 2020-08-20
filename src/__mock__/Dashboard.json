@@ -1,0 +1,38 @@
+{
+  "result": "success",
+  "data": {
+      "lastestBorrow": [
+          {
+              "transactionDate": "2020-08-05T03:32:20.000Z",
+              "itemName": "DSLR Camera III",
+              "itemImage": "https://equipment-image.s3.ap-southeast-1.amazonaws.com/camera-1588084189147.jpg"
+          },
+          {
+              "transactionDate": "2020-08-04T05:47:41.000Z",
+              "itemName": "DSLR Camera III",
+              "itemImage": "https://equipment-image.s3.ap-southeast-1.amazonaws.com/camera-1588084189147.jpg"
+          },
+          {
+              "transactionDate": "2020-08-04T05:42:15.000Z",
+              "itemName": "DSLR Camera III",
+              "itemImage": "https://equipment-image.s3.ap-southeast-1.amazonaws.com/camera-1588084189147.jpg"
+          }
+      ],
+      "mostBorrow": {
+          "itemName": [
+              "DSLR Camera III",
+              "Asus Headphones",
+              "test1",
+              "VR with Controller",
+              "VR with Controller"
+          ],
+          "borrowTime": [
+              4,
+              1,
+              1,
+              1,
+              1
+          ]
+      }
+  }
+}

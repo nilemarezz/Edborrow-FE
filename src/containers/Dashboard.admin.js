@@ -11,6 +11,8 @@ import Grid from '@material-ui/core/Grid'
 import RecentItem from '../components/Chart/RecentItem'
 import Barchart from '../components/Chart/Bar'
 import Doughnut from '../components/Chart/Doughnut'
+import WithLoading from '../utilities/WithLoading'
+import GetDashboardService from '../services/DataService/GetDashboard'
 
 const Container = styled.div`
   display: flex;
@@ -19,9 +21,22 @@ const Container = styled.div`
   flex-wrap: wrap;
 `
 class Dashboard extends React.Component {
+  state = { loading: false, data: { lastestBorrow: [], mostBorrow: {} } }
+  componentDidMount() {
+    this.getDashboardData()
+  }
+  getDashboardData = async () => {
+    this.setState({ loading: true })
+    const data = await GetDashboardService()
+    this.setState({ data: data })
+    this.setState({ loading: false })
+  }
+
   render() {
+    console.log(this.state.data)
     return (
       <>
+        <WithLoading loading={this.state.loading} />
         <Container>
           <DashboardBox title="Waiting for Approve" unit="Application"
             color={color.red}
@@ -33,19 +48,16 @@ class Dashboard extends React.Component {
               <LineChart title="Borrow Request Frequency" />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <RecentItem />
+              <RecentItem data={this.state.data.lastestBorrow} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Doughnut />
             </Grid>
             <Grid item xs={12} sm={8}>
-              <Barchart />
+              <Barchart data={this.state.data.mostBorrow} />
             </Grid>
           </Grid>
-
-
         </Container>
-
       </>
     );
   }

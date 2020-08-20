@@ -13,6 +13,7 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import { renderImage } from "../../utilities/getImage";
+import { RefactorDate } from '../../utilities/data/refactorDate'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -34,35 +35,27 @@ const LatestProducts = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
-
-  const [items] = useState([
-    { id: 1, date: "Mar 22 2020", image: null },
-    { id: 1, date: "Mar 22 2020", image: null },
-    { id: 1, date: "Mar 22 2020", image: null },
-  ]);
-
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
       <CardHeader
-        subtitle={`${items.length} in total`}
         title="Latest Borrow"
       />
       <Divider />
       <CardContent className={classes.content}>
         <List>
-          {items.map((item, i) => (
+          {props.data.length > 0 && props.data.map((item, i) => (
             <>
               <ListItem divider={i < item.length - 1} key={item.id}>
                 <ListItemAvatar>
                   <img
                     alt="Product"
                     className={classes.image}
-                    src={renderImage(item.image)}
+                    src={renderImage(item.itemImage)}
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={`Item: ${item.itemsId}`}
-                  secondary={item.date}
+                  primary={`Item: ${item.itemName}`}
+                  secondary={RefactorDate(item.transactionDate)}
                 />
               </ListItem>
               <Divider />
