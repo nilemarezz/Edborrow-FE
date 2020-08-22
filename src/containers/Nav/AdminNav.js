@@ -92,10 +92,11 @@ const AdminNav = (props) => {
               <ListItemIcon><FeaturedPlayListIcon /> </ListItemIcon>
               <ListItemText primary={"Items"} />
             </ListItem >
-            <ListItem button onClick={() => Redirect(route.admin.additem)}>
+            {props.user.department === true ? null : <ListItem button onClick={() => Redirect(route.admin.additem)}>
               <ListItemIcon><PostAddIcon /> </ListItemIcon>
               <ListItemText primary={"Add Items"} />
             </ListItem>
+            }
             <Divider />
             <ListItem button onClick={() => Redirect(route.user.items)}>
               <ListItemIcon><AccessibilityIcon /> </ListItemIcon>
@@ -124,4 +125,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(AdminNav))
+export const mapStateToProps = (state) => {
+  return { user: state.User }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminNav))

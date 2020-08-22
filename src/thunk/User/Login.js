@@ -8,23 +8,28 @@ import {
 export const LoginThunk = (data) => {
   return async (dispatch, getState) => {
     dispatch(loginLoading(true));
+    try {
+      const login = await LoginService(data);
+      if (login.result === "false") {
+        dispatch(userLoginFail(false));
+        dispatch(loginLoading(false));
+      } else {
+        const data = {
+          userToken: login.accessToken,
+          user: login.user,
+          status: true,
+          admin: login.admin,
+        };
 
-    const login = await LoginService(data);
-    if (login.result === "false") {
-      dispatch(userLoginFail(false));
+        dispatch(loginLoading(false));
+        dispatch(userLoginSuccess(data));
+        setToken(login.accessToken);
+        return data;
+      }
+    } catch (err) {
       dispatch(loginLoading(false));
-    } else {
-      const data = {
-        userToken: login.accessToken,
-        user: login.user,
-        status: true,
-        admin: login.admin,
-      };
+      return false
 
-      dispatch(loginLoading(false));
-      dispatch(userLoginSuccess(data));
-      setToken(login.accessToken);
-      return data;
     }
   };
 };

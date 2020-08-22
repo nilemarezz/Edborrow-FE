@@ -31,9 +31,17 @@ const onClickDismiss = (key) => () => {
 const notistackRef = React.createRef();
 
 const App = (props) => {
+
+  const checkUser = async () => {
+    if (checkToken()) {
+      const user = await props.UserDetailThunk({ token: getToken(), type: "login" });
+      if (user === false) {
+        return <Redirect to="/error" />
+      }
+    }
+  }
   useEffect(() => {
-    if (checkToken())
-      props.UserDetailThunk({ token: getToken(), type: "login" });
+    checkUser()
   }, []);
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>

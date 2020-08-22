@@ -13,6 +13,7 @@ import Barchart from '../components/Chart/Bar'
 import Doughnut from '../components/Chart/Doughnut'
 import WithLoading from '../utilities/WithLoading'
 import GetDashboardService from '../services/DataService/GetDashboard'
+import io from 'socket.io-client'
 
 const Container = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ const Container = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 `
+
 class Dashboard extends React.Component {
   state = { loading: false, data: { lastestBorrow: [], mostBorrow: {}, countmonth: [], waiting: 0, items: 0, late: 0 } }
   componentDidMount() {
@@ -33,7 +35,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.state.data)
     return (
       <>
         <WithLoading loading={this.state.loading} />

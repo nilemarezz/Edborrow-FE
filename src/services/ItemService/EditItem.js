@@ -11,7 +11,6 @@ const AddItem = async (formData) => {
       });
       const editJson = await edit.json()
       if (editJson.result === "false") {
-        console.log(editJson.msg)
         return false
       } else {
         return true

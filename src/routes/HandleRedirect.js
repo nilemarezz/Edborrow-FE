@@ -4,8 +4,7 @@ import { route } from '../systemdata/route'
 import { connect } from 'react-redux'
 
 const HandleRedirect = (props) => {
-  const admin = props.user.admin
-  if (admin) {
+  if (props.user.staff || props.user.department) {
     return <Redirect to={route.admin.dashboard} />
   } else {
     return <Redirect to={route.user.items} />

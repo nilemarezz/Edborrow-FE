@@ -12,7 +12,8 @@ const initialState = {
   userToken: null,
   status: null,
   user: null,
-  admin: null,
+  department: null,
+  staff: null,
   loading: null,
   register: false,
 };
@@ -23,7 +24,8 @@ export default function (state = initialState, action) {
         R.assocPath(["userToken"], action.payload.userToken),
         R.assocPath(["status"], action.payload.status),
         R.assocPath(["user"], action.payload.user),
-        R.assocPath(["admin"], action.payload.admin)
+        R.assocPath(["department"], action.payload.department),
+        R.assocPath(["staff"], action.payload.staff)
       )(state);
     case LOGIN_FAIL:
       return R.assocPath(["status"], action.payload)(state);

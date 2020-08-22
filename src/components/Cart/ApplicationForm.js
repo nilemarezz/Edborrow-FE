@@ -45,7 +45,7 @@ class ApplicationForm extends React.Component {
               <DebounceForm label="Surname" placeholder="Enter your Surname" value={surname} setText={setSurname} disabled={true} />
             </Grid>
             <Grid item sm={4} xs={12}>
-              <DebounceForm label="Email" placeholder="Enter your Email" value={email} setText={setEmail} />
+              <DebounceForm label="Email" placeholder="Enter your Email" type="email" value={email} setText={setEmail} />
             </Grid>
             <Grid item sm={4} xs={12}>
               <DebounceForm label="Telephone No." placeholder="Enter your Tel.No" value={telNo} setText={setTelNo} />

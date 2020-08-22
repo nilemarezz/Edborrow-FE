@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 
 
 const Bar = (props) => {
-  console.log(props)
   const data = {
     labels: props.data.itemName,
     datasets: [

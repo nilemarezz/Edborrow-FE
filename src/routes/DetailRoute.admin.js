@@ -26,7 +26,7 @@ const AdminDetail = (props) => {
           />
         );
       } else {
-        if (props.user.admin === false) {
+        if (props.user.staff === false && props.user.department === false) {
           return (
             <Redirect
               to={{
