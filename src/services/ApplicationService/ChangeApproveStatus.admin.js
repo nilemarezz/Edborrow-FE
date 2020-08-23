@@ -1,18 +1,17 @@
 import env from '../../env'
 
-const ChangeApproveStatus = async (text, id, itemId, type) => {
+const ChangeApproveStatus = async (item) => {
   if (process.env.REACT_APP_ENV === "production") {
-    const response = await fetch(`${env.url}request/rejectpurpose`, {
+    const response = await fetch(`${env.url}request/approve`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("userToken")}`,
       },
       body: JSON.stringify({
-        text: text,
-        requestId: id,
-        itemId: itemId,
-        type: type,
+        requestId: item.requestId,
+        itemId: item.itemId,
+        itemApprove: item.itemApprove
       }),
     });
     const data = await response.json();

@@ -153,6 +153,11 @@ const Nav = (props) => {
       <Link to={route.user.applicationList} className={classes.link}>
         <MenuItem onClick={handleMenuClose}>Request</MenuItem>
       </Link>
+
+      {props.User.department === true || props.User.staff === true ?
+        <Link to={route.admin.dashboard} className={classes.link}>
+          <MenuItem onClick={handleMenuClose}>Dashboard</MenuItem>
+        </Link> : null}
       <MenuItem
         onClick={() => {
           handleMenuClose();
@@ -275,6 +280,7 @@ const Nav = (props) => {
                 </Badge>
               </IconButton>
             </Link>
+
             {localStorage.getItem("userToken") ? (
               <Button
                 aria-label="show 17 new notifications"

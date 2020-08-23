@@ -1,12 +1,13 @@
 import Getallitem from "./GetAllItem";
-import { MockAPISuccess, MockAPIFail } from '../../__test__/MockAPI'
+import Item from '../../__mock__/Item.json'
 
 describe("Test Item Service", () => {
   describe("GetAllItem service", () => {
     it("should return the item with lenght more than 1", async () => {
-      MockAPISuccess({ result: "success" });
+
       const data = await Getallitem();
-      expect(data.result).toBe("success");
+      console.log(data)
+      expect(data).toBe(Item);
     });
   });
 });
