@@ -16,6 +16,7 @@ const initialState = {
   staff: null,
   loading: null,
   register: false,
+  admin: false
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -25,7 +26,8 @@ export default function (state = initialState, action) {
         R.assocPath(["status"], action.payload.status),
         R.assocPath(["user"], action.payload.user),
         R.assocPath(["department"], action.payload.department),
-        R.assocPath(["staff"], action.payload.staff)
+        R.assocPath(["staff"], action.payload.staff),
+        R.assocPath(["admin"], action.payload.admin)
       )(state);
     case LOGIN_FAIL:
       return R.assocPath(["status"], action.payload)(state);

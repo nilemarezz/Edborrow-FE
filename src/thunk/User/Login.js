@@ -19,6 +19,8 @@ export const LoginThunk = (data) => {
           user: login.user,
           status: true,
           admin: login.admin,
+          staff: login.staff,
+          department: login.department
         };
 
         dispatch(loginLoading(false));

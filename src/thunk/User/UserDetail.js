@@ -19,6 +19,7 @@ export const UserDetailThunk = (data) => {
           status: true,
           department: detail.data.department,
           staff: detail.data.staff,
+          admin: detail.data.admin
         };
         dispatch(loginLoading(false));
         dispatch(userLoginSuccess(datares));
