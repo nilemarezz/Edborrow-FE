@@ -1,9 +1,12 @@
 import { checkToken } from "./check/checkToken";
 import { route } from '../systemdata/route'
-export const snackBarCheckLogin = (admin) => {
+import { props } from "ramda";
+export const snackBarCheckLogin = (user) => {
   if (checkToken()) {
-    if (admin === false) {
+    if (user.admin === false && user.department === false && user.staff === false) {
       return { text: "Login Success!", type: "success", redirect: route.user.items };
+    } else if (user.admin === true) {
+      return { text: "Login Success!", type: "success", redirect: route.systemadmin.addItem };
     } else {
       return { text: "Login Success!", type: "success", redirect: route.admin.dashboard };
     }

@@ -48,7 +48,7 @@ class Login extends React.Component {
   };
 
   redirectPage = () => {
-    const snackLogin = snackBarCheckLogin(this.props.user.admin);
+    const snackLogin = snackBarCheckLogin(this.props.user);
     this.props.enqueueSnackbar(snackLogin.text, {
       variant: snackLogin.type,
     });

@@ -4,8 +4,11 @@ import { route } from '../systemdata/route'
 import { connect } from 'react-redux'
 
 const HandleRedirect = (props) => {
+  console.log(props)
   if (props.user.staff || props.user.department) {
     return <Redirect to={route.admin.dashboard} />
+  } else if (props.user.admin === true) {
+    return <Redirect to={route.systemadmin.addItem} />
   } else {
     return <Redirect to={route.user.items} />
   }

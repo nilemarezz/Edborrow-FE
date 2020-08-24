@@ -1,0 +1,17 @@
+{
+  "result": "success",
+  "data": [
+      {
+          "departmentId": 1,
+          "departmentName": "IT Infrastructure"
+      },
+      {
+          "departmentId": 2,
+          "departmentName": "SRM"
+      },
+      {
+          "departmentId": 3,
+          "departmentName": "LAB"
+      }
+  ]
+}

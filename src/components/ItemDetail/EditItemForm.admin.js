@@ -11,6 +11,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { ItemCategory } from '../../systemdata/ItemCategory'
+import DepartmentForm from '../DepartmentFetchForm'
 class EditItem extends React.Component {
   submit = (e) => {
     e.preventDefault()
@@ -65,6 +66,7 @@ class EditItem extends React.Component {
             </FormControl>
           </Grid>
         </Grid>
+
         <TextField
           id="outlined-multiline-static"
           label="Description"
@@ -80,6 +82,10 @@ class EditItem extends React.Component {
           onChange={(e) => this.props.changeDescription(e.target.value)}
           disabled={this.props.disabled}
         />
+        {
+          this.props.admin ? <Grid item xs={12} sm={4} style={{ marginTop: 20 }}>
+            <DepartmentForm changeDepartmentId={this.props.changeDepartmentId} />
+          </Grid> : null}
         <FormControlLabel
           style={{ marginTop: 10 }}
           control={
@@ -95,6 +101,7 @@ class EditItem extends React.Component {
           }
           label="Borrowable"
         />
+
         <Button type="submit" disabled={this.props.disabled} color="primary" variant="contained">Submit</Button>
       </form>
     )

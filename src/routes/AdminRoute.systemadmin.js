@@ -8,13 +8,13 @@ import {
 import Dashboard from '../containers/Dashboard.admin'
 import { connect } from "react-redux";
 import { route } from '../systemdata/route'
-import AdminNav from '../containers/Nav/AdminNav'
+import AdminNav from '../containers/Nav/SystemAdminNav'
 import ApplicationList from '../containers/ApplicationList.admin'
 import Items from '../containers/Item.admin'
 import ItemDetail from '../containers/ItemDetail.admin'
-import AddItem from '../containers/AddItem.admin'
+import AddItem from '../containers/AddItem.systemadmin'
 
-const AdminDetail = (props) => {
+const SystemAdminRoute = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
       if (localStorage.getItem("userToken") === null) {
@@ -26,20 +26,11 @@ const AdminDetail = (props) => {
           />
         );
       } else {
-        if (props.user.staff === false && props.user.department === false) {
+        if (props.user.staff === false && props.user.department === false && props.user.admin === false) {
           return (
             <Redirect
               to={{
                 pathname: route.user.items,
-              }}
-            />
-          );
-        }
-        else if (props.user.admin === true) {
-          return (
-            <Redirect
-              to={{
-                pathname: route.systemadmin.addItem,
               }}
             />
           );
@@ -55,13 +46,13 @@ const AdminDetail = (props) => {
         <AdminNav>
           {process.env.REACT_APP_ENV === "production" ?
             <>
-              <PrivateAdminRoute path={`${route.adminDetail.itemDetailAdmin}/:id`} exact strict >
-                <ItemDetail />
+              <PrivateAdminRoute path={`${route.systemadmin.addItem}`} exact strict >
+                <AddItem />
               </PrivateAdminRoute >
             </>
             :
             <>
-              <Route path={`${route.adminDetail.itemDetailAdmin}/:id`} component={ItemDetail} exact strict />
+              <Route path={`${route.systemadmin.addItem}`} component={AddItem} exact strict />
             </>
           }
         </AdminNav>
@@ -75,4 +66,4 @@ const mapStateToProps = (state) => {
   return { user: state.User };
 };
 
-export default connect(mapStateToProps, null)(AdminDetail);
+export default connect(mapStateToProps, null)(SystemAdminRoute);

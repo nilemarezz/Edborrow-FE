@@ -24,7 +24,7 @@ import ApproveNoti from './components/OtherPage/ApproveNoti'
 import HandleRedirect from './routes/HandleRedirect'
 import ItemDetail from './containers/ItemDetail.admin'
 import AdminDetail from './routes/DetailRoute.admin'
-
+import SystemAdminRoute from './routes/AdminRoute.systemadmin'
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
@@ -60,6 +60,7 @@ const App = (props) => {
             <Route path="/admin/:section" component={AdminRoute} exact strict />
             <Route path="/detail/:section/:id" component={DetailRoute} exact strict />
             <Route path="/admin/detail/:section/:id" component={AdminDetail} exact strict />
+            <Route path="/systemadmin/:section" component={SystemAdminRoute} exact strict />
             <Route path="/approve/type/:type" component={ApproveNoti} exact strict />
             <Route component={ErrorPage} />
           </Switch>

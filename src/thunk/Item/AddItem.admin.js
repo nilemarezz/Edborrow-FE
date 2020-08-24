@@ -3,6 +3,7 @@ import { itemLoading } from "../../actions/ItemAction.admin";
 
 export const AddItemThunk = (value) => {
   return async (dispatch, getState) => {
+    console.log(value)
     dispatch(itemLoading(true));
     const formData = new FormData();
     formData.append("image", value.itemImage);
@@ -17,6 +18,7 @@ export const AddItemThunk = (value) => {
     );
     formData.append("categoryId", value.itemCategoryId === "" ? null : value.itemCategoryId);
     formData.append("itemDescription", value.itemDescription === "" ? null : value.itemDescription);
+    formData.append("departmentId", value.departmentId === "" ? null : value.departmentId);
     const add = await AddItemService(formData);
     if (add === false) {
       console.error('Cannot connect to server')

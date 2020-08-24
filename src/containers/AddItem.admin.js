@@ -19,7 +19,8 @@ const initailFormState = {
   itemName: "",
   itemBorrowable: 1,
   itemImage: "",
-  itemCategoryId: ""
+  itemCategoryId: "",
+  departmentId: ""
 }
 class AddItem extends React.Component {
   constructor(props) {
@@ -96,6 +97,7 @@ class AddItem extends React.Component {
               changeDescription={(value) => this.setState({ Form: { ...this.state.Form, itemDescription: value } })}
               changeBorrowable={(value) => this.setState({ Form: { ...this.state.Form, itemBorrowable: value } })}
               changeCategoryId={(value) => this.setState({ Form: { ...this.state.Form, itemCategoryId: value } })}
+              admin={false}
             />
           </Grid>
         </Grid>
@@ -105,7 +107,7 @@ class AddItem extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { item: state.ADMIN_Item }
+  return { item: state.ADMIN_Item, user: state.User }
 }
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   getDetail: async (value) => {
