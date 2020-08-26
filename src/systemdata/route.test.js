@@ -26,6 +26,9 @@ describe("get instruction correct", () => {
       },
       adminDetail: {
         itemDetailAdmin: "/admin/detail/itemdetail"
+      },
+      systemadmin: {
+        addItem: "/systemadmin/additem"
       }
     }
     expect(route).toEqual(expectedroute);
