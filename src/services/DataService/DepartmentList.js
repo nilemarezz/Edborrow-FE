@@ -8,7 +8,6 @@ const GetDashboard = async (formData) => {
         method: "GET",
       });
       const data = await res.json()
-      console.log(data)
       return data.data
     } catch (err) {
       return false

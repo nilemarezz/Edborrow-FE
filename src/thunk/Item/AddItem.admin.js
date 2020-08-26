@@ -3,7 +3,6 @@ import { itemLoading } from "../../actions/ItemAction.admin";
 
 export const AddItemThunk = (value) => {
   return async (dispatch, getState) => {
-    console.log(value)
     dispatch(itemLoading(true));
     const formData = new FormData();
     formData.append("image", value.itemImage);

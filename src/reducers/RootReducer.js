@@ -5,6 +5,7 @@ import ApplicationForm from './ApplicationForm';
 import ApplicationList from './ApplicationList'
 import ApplicationListAdmin from './ApplicationList.admin'
 import ItemAdmin from './Item.admin'
+import AddDepartment from './AddDepartmentForm.systemadmin'
 export default combineReducers({
   User: UserReducer,
   Item: ItemReducer,
@@ -12,4 +13,6 @@ export default combineReducers({
   ApplicationList: ApplicationList,
   ADMIN_ApplicationList: ApplicationListAdmin,
   ADMIN_Item: ItemAdmin,
+  SYSTEM_ADMIN_AddDepartment: AddDepartment,
+
 });

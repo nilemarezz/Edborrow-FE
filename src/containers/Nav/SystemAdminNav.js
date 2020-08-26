@@ -22,6 +22,7 @@ import { logoutSuccess } from "../../actions/UserAction";
 import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
+import BusinessIcon from '@material-ui/icons/Business';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -84,8 +85,11 @@ const SystemAdmin = (props) => {
               <ListItemIcon><BarChartIcon /> </ListItemIcon>
               <ListItemText primary={"Add Item"} />
             </ListItem>
-
-
+            <ListItem button onClick={() => Redirect(route.systemadmin.addDepartment)}>
+              <ListItemIcon><BusinessIcon /> </ListItemIcon>
+              <ListItemText primary={"Add Department"} />
+            </ListItem>
+            <Divider />
             <ListItem button onClick={() => Logout()}>
               <ListItemIcon><ExitToAppIcon /> </ListItemIcon>
               <ListItemText primary={"Logout"} />

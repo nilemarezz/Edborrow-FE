@@ -36,7 +36,6 @@ class ItemDetail extends React.Component {
     };
   }
   sendData = async () => {
-    console.log('sendData')
     const editRes = await this.props.editItem(this.state.Form)
     if (editRes) {
       this.props.enqueueSnackbar("Edit Item Success", {

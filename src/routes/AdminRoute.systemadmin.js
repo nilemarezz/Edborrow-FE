@@ -5,15 +5,11 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Dashboard from '../containers/Dashboard.admin'
 import { connect } from "react-redux";
 import { route } from '../systemdata/route'
 import AdminNav from '../containers/Nav/SystemAdminNav'
-import ApplicationList from '../containers/ApplicationList.admin'
-import Items from '../containers/Item.admin'
-import ItemDetail from '../containers/ItemDetail.admin'
 import AddItem from '../containers/AddItem.systemadmin'
-
+import AddDepartment from '../containers/AddDepartment.systemadmin'
 const SystemAdminRoute = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
@@ -49,10 +45,14 @@ const SystemAdminRoute = (props) => {
               <PrivateAdminRoute path={`${route.systemadmin.addItem}`} exact strict >
                 <AddItem />
               </PrivateAdminRoute >
+              <PrivateAdminRoute path={`${route.systemadmin.addDepartment}`} exact strict >
+                <AddDepartment />
+              </PrivateAdminRoute >
             </>
             :
             <>
               <Route path={`${route.systemadmin.addItem}`} component={AddItem} exact strict />
+              <Route path={`${route.systemadmin.addDepartment}`} component={AddDepartment} exact strict />
             </>
           }
         </AdminNav>
