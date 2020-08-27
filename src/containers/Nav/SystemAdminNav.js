@@ -11,18 +11,16 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
-import PostAddIcon from '@material-ui/icons/PostAdd';
 import { withRouter } from 'react-router-dom'
 import { route } from '../../systemdata/route'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import { logoutSuccess } from "../../actions/UserAction";
 import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
 import BusinessIcon from '@material-ui/icons/Business';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -88,6 +86,10 @@ const SystemAdmin = (props) => {
             <ListItem button onClick={() => Redirect(route.systemadmin.addDepartment)}>
               <ListItemIcon><BusinessIcon /> </ListItemIcon>
               <ListItemText primary={"Add Department"} />
+            </ListItem>
+            <ListItem button onClick={() => Redirect(route.systemadmin.items)}>
+              <ListItemIcon><FeaturedPlayListIcon /> </ListItemIcon>
+              <ListItemText primary={"Items"} />
             </ListItem>
             <Divider />
             <ListItem button onClick={() => Logout()}>

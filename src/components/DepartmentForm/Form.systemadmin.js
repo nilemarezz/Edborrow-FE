@@ -122,6 +122,7 @@ class Form extends React.Component {
                 fullWidth
                 required
                 type="number"
+                min="0"
                 value={placeFloor}
                 onChange={(e) => setDepartmentFloor(e.target.value)}
               />
