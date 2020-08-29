@@ -22,5 +22,11 @@ export const route = {
   },
   adminDetail: {
     itemDetailAdmin: "/admin/detail/itemdetail"
+  },
+  systemadmin: {
+    addItem: "/systemadmin/additem",
+    addDepartment: "/systemadmin/adddepartment",
+    items: "/systemadmin/items",
+    departmentList: "/systemadmin/departmentlist"
   }
 }

@@ -29,20 +29,20 @@
           ]
       },
       "countmonth": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           5,
-          null,
-          null,
-          null,
-          null
+          0,
+          0,
+          0,
+          0
       ],
-      "waiting": 0,
+      "waiting": 2,
       "late": 0,
       "items": 2
   }

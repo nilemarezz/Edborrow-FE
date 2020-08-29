@@ -11,7 +11,6 @@ import EditItem from '../components/ItemDetail/EditItemForm.admin'
 import { AddItemThunk } from '../thunk/Item/AddItem.admin'
 import { withSnackbar } from "notistack";
 import { compose } from 'recompose'
-
 const initailFormState = {
   itemDescription: "",
   itemModel: "",
@@ -20,7 +19,7 @@ const initailFormState = {
   itemBorrowable: 1,
   itemImage: "",
   itemCategoryId: "",
-  departmentId: ""
+  departmentId: "",
 }
 class AddItem extends React.Component {
   constructor(props) {
@@ -97,7 +96,8 @@ class AddItem extends React.Component {
               changeDescription={(value) => this.setState({ Form: { ...this.state.Form, itemDescription: value } })}
               changeBorrowable={(value) => this.setState({ Form: { ...this.state.Form, itemBorrowable: value } })}
               changeCategoryId={(value) => this.setState({ Form: { ...this.state.Form, itemCategoryId: value } })}
-              admin={false}
+              changeDepartmentId={(value) => this.setState({ Form: { ...this.state.Form, departmentId: value } })}
+              admin={true}
             />
           </Grid>
         </Grid>

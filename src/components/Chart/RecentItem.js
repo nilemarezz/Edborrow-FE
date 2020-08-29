@@ -35,6 +35,7 @@ const LatestProducts = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
+  console.log(props.data)
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
       <CardHeader

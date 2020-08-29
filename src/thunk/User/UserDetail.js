@@ -9,9 +9,7 @@ export const UserDetailThunk = (data) => {
   return async (dispatch, getState) => {
     try {
       dispatch(loginLoading(true));
-
       const detail = await UserDetail(data.token);
-      console.log(detail)
       if (data.type === "login") {
         const datares = {
           userToken: data.token,

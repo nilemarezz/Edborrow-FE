@@ -19,7 +19,7 @@ class ApplicationList extends React.Component {
     return (
       <div>
         <WithLoading loading={this.props.applicationList.loading} />
-        <Title title="Application List" />
+        <Title title="Request" />
         <ApplicationTable applicationList={this.props.applicationList.applicationList} redirectToDetailPage={this.redirectToDetailPage} />
       </div>
     )

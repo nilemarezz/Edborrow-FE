@@ -11,19 +11,16 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import AssignmentIcon from '@material-ui/icons/Assignment';
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
-import PostAddIcon from '@material-ui/icons/PostAdd';
 import { withRouter } from 'react-router-dom'
 import { route } from '../../systemdata/route'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import { logoutSuccess } from "../../actions/UserAction";
 import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
-import Chip from '@material-ui/core/Chip';
-
+import BusinessIcon from '@material-ui/icons/Business';
+import ListIcon from '@material-ui/icons/List';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AdminNav = (props) => {
+const SystemAdmin = (props) => {
   const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
   const Redirect = (path) => {
@@ -62,7 +59,6 @@ const AdminNav = (props) => {
     });
     props.history.push(route.auth.login);
   }
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -83,30 +79,23 @@ const AdminNav = (props) => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem button onClick={() => Redirect(route.admin.dashboard)}>
+            <ListItem button onClick={() => Redirect(route.systemadmin.addItem)}>
               <ListItemIcon><BarChartIcon /> </ListItemIcon>
-              <ListItemText primary={"Dashboard"} />
+              <ListItemText primary={"Add Item"} />
             </ListItem>
-            <ListItem button onClick={() => Redirect(route.admin.applicationList)}>
-              <ListItemIcon><AssignmentIcon /> </ListItemIcon>
-              <ListItemText primary={"Request"} />
-              <Chip label={props.dashboard.waiting} color="primary" size="small" />
+            <ListItem button onClick={() => Redirect(route.systemadmin.addDepartment)}>
+              <ListItemIcon><BusinessIcon /> </ListItemIcon>
+              <ListItemText primary={"Add Department"} />
             </ListItem>
-            <ListItem button onClick={() => Redirect(route.admin.items)}>
+            <ListItem button onClick={() => Redirect(route.systemadmin.items)}>
               <ListItemIcon><FeaturedPlayListIcon /> </ListItemIcon>
               <ListItemText primary={"Items"} />
-            </ListItem >
-            {props.user.department === true ? null : <ListItem button onClick={() => Redirect(route.admin.additem)}>
-              <ListItemIcon><PostAddIcon /> </ListItemIcon>
-              <ListItemText primary={"Add Items"} />
             </ListItem>
-            }
+            <ListItem button onClick={() => Redirect(route.systemadmin.departmentList)}>
+              <ListItemIcon><ListIcon /> </ListItemIcon>
+              <ListItemText primary={"Department List"} />
+            </ListItem>
             <Divider />
-            <ListItem button onClick={() => Redirect(route.user.items)}>
-              <ListItemIcon><AccessibilityIcon /> </ListItemIcon>
-              <ListItemText primary={"User Mode"} />
-            </ListItem>
-
             <ListItem button onClick={() => Logout()}>
               <ListItemIcon><ExitToAppIcon /> </ListItemIcon>
               <ListItemText primary={"Logout"} />
@@ -130,6 +119,6 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export const mapStateToProps = (state) => {
-  return { user: state.User, dashboard: state.Dashboard.Data }
+  return { user: state.User }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminNav))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SystemAdmin))

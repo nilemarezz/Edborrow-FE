@@ -26,11 +26,19 @@ const Admin = (props) => {
           />
         );
       } else {
-        if (props.user.staff === false && props.user.department === false) {
+        if (props.user.staff === false && props.user.department === false && props.user.admin === false) {
           return (
             <Redirect
               to={{
                 pathname: route.user.items,
+              }}
+            />
+          );
+        } else if (props.user.admin === true) {
+          return (
+            <Redirect
+              to={{
+                pathname: route.systemadmin.addItem,
               }}
             />
           );

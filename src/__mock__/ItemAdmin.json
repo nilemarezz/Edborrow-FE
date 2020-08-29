@@ -8,6 +8,7 @@
       "itemId": 20018,
       "itemImage": "https://equipment-image.s3.ap-southeast-1.amazonaws.com/camera-1588084189147.jpg",
       "itemModel": "EOS 80D DSLR 1",
+      "createDate":"2020-08-18T08:21:39.000Z",
       "itemName": "DSLR Camera II"
     },
     {
@@ -18,6 +19,7 @@
       "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/unnamed.jpg",
       "itemModel": "FT-259",
       "itemName": "Radio Communication",
+      "createDate":"2020-08-18T08:21:39.000Z",
       "ownerName": null
     }
   ]

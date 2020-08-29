@@ -8,22 +8,26 @@ describe("reducers/User", () => {
         userToken: null,
         status: null,
         user: null,
-        admin: null,
+        department: null,
+        staff: null,
         loading: null,
         register: false,
+        admin: false
       });
     });
   });
 
   describe("LOGIN_SUCCESS", () => {
     it("should return the state with info", () => {
-      expect(reducer(undefined, { type: types.LOGIN_SUCCESS, payload: { userToken: "userToken", status: true, user: "user", admin: true } })).toEqual({
+      expect(reducer(undefined, { type: types.LOGIN_SUCCESS, payload: { userToken: "userToken", status: true, user: "user", department: "department", staff: "staff", admin: true } })).toEqual({
         userToken: "userToken",
         status: true,
         user: "user",
-        admin: true,
+        department: "department",
+        staff: "staff",
         loading: null,
         register: false,
+        admin: true
       });
     })
   })
@@ -34,9 +38,11 @@ describe("reducers/User", () => {
         userToken: null,
         status: false,
         user: null,
-        admin: null,
+        department: null,
+        staff: null,
         loading: null,
         register: false,
+        admin: false
       });
     })
   })
@@ -47,9 +53,11 @@ describe("reducers/User", () => {
         userToken: null,
         status: null,
         user: null,
-        admin: null,
+        department: null,
+        staff: null,
         loading: null,
         register: false,
+        admin: false
       });
     })
   })
@@ -60,22 +68,11 @@ describe("reducers/User", () => {
         userToken: null,
         status: null,
         user: null,
-        admin: null,
+        department: null,
+        staff: null,
         loading: true,
         register: false,
-      });
-    })
-  })
-
-  describe("LOGIN_LOADING", () => {
-    it("should return the state with login loading", () => {
-      expect(reducer(undefined, { type: types.LOGIN_LOADING, payload: true })).toEqual({
-        userToken: null,
-        status: null,
-        user: null,
-        admin: null,
-        loading: true,
-        register: false,
+        admin: false
       });
     })
   })
@@ -86,9 +83,11 @@ describe("reducers/User", () => {
         userToken: null,
         status: null,
         user: null,
-        admin: null,
+        department: null,
+        staff: null,
         loading: null,
         register: true,
+        admin: false
       });
     })
   })
@@ -99,9 +98,11 @@ describe("reducers/User", () => {
         userToken: null,
         status: null,
         user: null,
-        admin: null,
+        department: null,
+        staff: null,
         loading: null,
         register: false,
+        admin: false
       });
     })
   })

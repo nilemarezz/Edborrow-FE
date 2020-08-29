@@ -35,6 +35,15 @@ const AdminDetail = (props) => {
             />
           );
         }
+        else if (props.user.admin === true) {
+          return (
+            <Redirect
+              to={{
+                pathname: route.systemadmin.addItem,
+              }}
+            />
+          );
+        }
         return children;
       }
     };
