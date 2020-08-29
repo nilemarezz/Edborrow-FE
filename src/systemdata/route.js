@@ -26,6 +26,7 @@ export const route = {
   systemadmin: {
     addItem: "/systemadmin/additem",
     addDepartment: "/systemadmin/adddepartment",
-    items: "/systemadmin/items"
+    items: "/systemadmin/items",
+    departmentList: "/systemadmin/departmentlist"
   }
 }

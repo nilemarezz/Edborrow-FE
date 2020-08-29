@@ -11,7 +11,20 @@ export const SET_DEPARTMENT_FORM_DEPARTMENTROOM = "SET_DEPARTMENT_FORM_DEPARTMEN
 export const SEND_DEPARTMENT_FORM = "SEND_DEPARTMENT_FORM"
 export const RESET_DEPARTMENT_FORM = "RESET_DEPARTMENT_FORM"
 export const LOADING_DEPARTMENT_FORM = "LOADING_DEPARTMENT_FORM"
+export const GET_DEPARTMENT_LIST_SYSTEMDATA = "GET_DEPARTMENT_LIST_SYSTEMDATA"
+export const DELETE_DEPARTMENT_SYSTEMDATA = "DELETE_DEPARTMENT_SYSTEMDATA"
+export const LOADING_DEPARTMENT_SYSTEMDATA = "LOADING_DEPARTMENT_SYSTEMDATA"
 
+
+export const loadingDepartmentList = (data) => {
+  return { type: LOADING_DEPARTMENT_SYSTEMDATA, payload: data };
+};
+export const deleteDepartment = (data) => {
+  return { type: DELETE_DEPARTMENT_SYSTEMDATA, payload: data };
+};
+export const getDepartmentList = (data) => {
+  return { type: GET_DEPARTMENT_LIST_SYSTEMDATA, payload: data };
+};
 export const setFormID = (data) => {
   return { type: SET_DEPARTMENT_FORM_ID, payload: data };
 };

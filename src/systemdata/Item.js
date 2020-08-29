@@ -9,7 +9,7 @@ export const ItemTable = {
   },
   itemImage: {
     name: "itemImage",
-    label: "Name"
+    label: "Image"
   },
   departmentName: {
     name: "departmentName",
@@ -30,7 +30,8 @@ export const ItemTable = {
     name: "itemModel"
   },
   createDate: {
-    name: "createDate"
+    name: "createDate",
+    label: "Create Date"
   },
   itemDescription: {
     name: "itemDescription"

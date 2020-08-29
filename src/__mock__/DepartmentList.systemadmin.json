@@ -1,0 +1,38 @@
+{
+  "result": "success",
+  "data": [
+      {
+          "departmentId": 1,
+          "departmentName": "IT Infrastructure",
+          "departmentEmail": "game.chawisa@gmail.com",
+          "departmentTelNo": "0999999991",
+          "placeBuilding": "SIT",
+          "placeFloor": 2,
+          "placeRoom": "404",
+          "userId": "infrastaff",
+          "Name": "Infra Staff"
+      },
+      {
+          "departmentId": 2,
+          "departmentName": "SRM",
+          "departmentEmail": "equipmentproject63@gmail.com",
+          "departmentTelNo": "0999999992",
+          "placeBuilding": "SIT",
+          "placeFloor": 3,
+          "placeRoom": "202",
+          "userId": "srmstaff",
+          "Name": "SRM Staff"
+      },
+      {
+          "departmentId": 3,
+          "departmentName": "LAB",
+          "departmentEmail": "pentorework@gmail.com",
+          "departmentTelNo": "0999999993",
+          "placeBuilding": "SIT",
+          "placeFloor": 1,
+          "placeRoom": "101",
+          "userId": "labstaff",
+          "Name": "Lab Staff"
+      }
+  ]
+}

@@ -22,6 +22,8 @@ import { logoutSuccess } from "../../actions/UserAction";
 import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
+import Chip from '@material-ui/core/Chip';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -60,6 +62,7 @@ const AdminNav = (props) => {
     });
     props.history.push(route.auth.login);
   }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -86,7 +89,8 @@ const AdminNav = (props) => {
             </ListItem>
             <ListItem button onClick={() => Redirect(route.admin.applicationList)}>
               <ListItemIcon><AssignmentIcon /> </ListItemIcon>
-              <ListItemText primary={"Application List"} />
+              <ListItemText primary={"Request"} />
+              <Chip label={props.dashboard.waiting} color="primary" size="small" />
             </ListItem>
             <ListItem button onClick={() => Redirect(route.admin.items)}>
               <ListItemIcon><FeaturedPlayListIcon /> </ListItemIcon>
@@ -100,7 +104,7 @@ const AdminNav = (props) => {
             <Divider />
             <ListItem button onClick={() => Redirect(route.user.items)}>
               <ListItemIcon><AccessibilityIcon /> </ListItemIcon>
-              <ListItemText primary={"User View"} />
+              <ListItemText primary={"User Mode"} />
             </ListItem>
 
             <ListItem button onClick={() => Logout()}>
@@ -126,6 +130,6 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export const mapStateToProps = (state) => {
-  return { user: state.User }
+  return { user: state.User, dashboard: state.Dashboard.Data }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminNav))

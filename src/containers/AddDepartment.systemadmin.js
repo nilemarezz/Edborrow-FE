@@ -56,7 +56,7 @@ class AddDepartment extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { form: state.SYSTEM_ADMIN_AddDepartment };
+  return { form: state.SYSTEM_ADMIN_Department };
 };
 
 export const mapDispatchToProps = (dispatch, ownProps) => ({

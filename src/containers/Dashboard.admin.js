@@ -13,7 +13,9 @@ import Barchart from '../components/Chart/Bar'
 import Doughnut from '../components/Chart/Doughnut'
 import WithLoading from '../utilities/WithLoading'
 import GetDashboardService from '../services/DataService/GetDashboard'
-import io from 'socket.io-client'
+import { connect } from 'react-redux'
+
+
 
 const Container = styled.div`
   display: flex;
@@ -25,43 +27,60 @@ const Container = styled.div`
 class Dashboard extends React.Component {
   state = { loading: false, data: { lastestBorrow: [], mostBorrow: {}, countmonth: [], waiting: 0, items: 0, late: 0 } }
   componentDidMount() {
-    this.getDashboardData()
+
+    this.props.getData()
   }
-  getDashboardData = async () => {
-    this.setState({ loading: true })
-    const data = await GetDashboardService()
-    this.setState({ data: data })
-    this.setState({ loading: false })
-  }
+  // getDashboardData = async () => {
+  //   this.setState({ loading: true })
+  //   const data = await GetDashboardService()
+  //   this.setState({ data: data })
+  //   this.setState({ loading: false })
+  // }
 
   render() {
-    return (
-      <>
-        <WithLoading loading={this.state.loading} />
-        <Container>
-          <DashboardBox title="Waiting for Approve" unit="Application"
-            color={color.red}
-            icon={<QueryBuilderIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.state.data.waiting} />
-          <DashboardBox title="Return Late" unit="items" color={color.yellow} icon={<WarningIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.state.data.late} />
-          <DashboardBox title="Items" unit="items" color={color.green} icon={<LibraryBooksIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.state.data.items} />
-          <Grid container style={{ marginTop: 20 }} spacing={3}>
-            <Grid item xs={12} sm={8}>
-              <LineChart title="Borrow Request Frequency" data={this.state.data.countmonth} />
+    if (this.props.dashboard.Data === null) {
+      return null
+    } else {
+      return (
+        <>
+          <WithLoading loading={this.props.dashboard.loading} />
+          <Container>
+            <DashboardBox title="Waiting for Approve" unit="Application"
+              color={color.red}
+              icon={<QueryBuilderIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.props.dashboard.Data.waiting} />
+            <DashboardBox title="Return Late" unit="items" color={color.yellow} icon={<WarningIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.props.dashboard.Data.late} />
+            <DashboardBox title="Items" unit="items" color={color.green} icon={<LibraryBooksIcon style={{ width: 50, height: 50, color: 'white' }} />} value={this.props.dashboard.Data.items} />
+            <Grid container style={{ marginTop: 20 }} spacing={3}>
+              <Grid item xs={12} sm={8}>
+                <LineChart title="Borrow Request Frequency" data={this.props.dashboard.Data.countmonth} />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <RecentItem data={this.props.dashboard.Data.lastestBorrow} />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <Doughnut />
+              </Grid>
+              <Grid item xs={12} sm={8}>
+                <Barchart data={this.props.dashboard.Data.mostBorrow} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={4}>
-              <RecentItem data={this.state.data.lastestBorrow} />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Doughnut />
-            </Grid>
-            <Grid item xs={12} sm={8}>
-              <Barchart data={this.state.data.mostBorrow} />
-            </Grid>
-          </Grid>
-        </Container>
-      </>
-    );
+          </Container>
+        </>
+      );
+    }
   }
-}
 
-export default Dashboard;
+}
+const mapStateToProps = (state) => {
+  return { dashboard: state.Dashboard };
+};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  getData: async (value) => {
+    dispatch({ type: "LOADING_DASHBOARD", payload: true })
+    const data = await GetDashboardService()
+    dispatch({ type: "GET_DASHBOARD", payload: data })
+    dispatch({ type: "LOADING_DASHBOARD", payload: false })
+
+  }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
