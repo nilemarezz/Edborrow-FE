@@ -1,0 +1,53 @@
+{
+    "result": "success",
+    "data": [
+        {
+            "logId": 1,
+            "userId": "test123",
+            "userAction": "Change Password",
+            "transactionDate": "2020-08-26T00:38:23.000Z",
+            "toComplete": 1,
+            "description": null
+        },
+        {
+            "logId": 3,
+            "userId": "infrastaff",
+            "userAction": "Update Item",
+            "transactionDate": "2020-08-26T03:57:51.000Z",
+            "toComplete": 1,
+            "description": null
+        },
+        {
+            "logId": 4,
+            "userId": "admin",
+            "userAction": "Add department",
+            "transactionDate": "2020-08-28T04:27:12.000Z",
+            "toComplete": 0,
+            "description": null
+        },
+        {
+            "logId": 13,
+            "userId": "admin",
+            "userAction": "Change password",
+            "transactionDate": "2020-08-28T06:15:38.000Z",
+            "toComplete": 0,
+            "description": "password not correct"
+        },
+        {
+            "logId": 14,
+            "userId": "admin",
+            "userAction": "Change password",
+            "transactionDate": "2020-08-28T06:17:02.000Z",
+            "toComplete": 1,
+            "description": "Success"
+        },
+        {
+            "logId": 15,
+            "userId": "admin",
+            "userAction": "Change password",
+            "transactionDate": "2020-08-28T06:24:03.000Z",
+            "toComplete": 1,
+            "description": "Success"
+        }
+    ]
+}

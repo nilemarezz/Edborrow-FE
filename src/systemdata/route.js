@@ -27,6 +27,7 @@ export const route = {
     addItem: "/systemadmin/additem",
     addDepartment: "/systemadmin/adddepartment",
     items: "/systemadmin/items",
-    departmentList: "/systemadmin/departmentlist"
+    departmentList: "/systemadmin/departmentlist",
+    syetemLog: "/systemadmin/systemlog",
   }
 }

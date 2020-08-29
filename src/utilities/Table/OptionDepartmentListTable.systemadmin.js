@@ -9,7 +9,6 @@ import EditIcon from '@material-ui/icons/Edit';
 export const OptionDrpartmentTable = {
   selectableRows: false,
   selectableRowsOnClick: true,
-  responsive: "scrollMaxHeight",
   expandableRows: true,
   rowsPerPage: 5,
   rowsPerPageOptions: [5, 10, 20, 50],

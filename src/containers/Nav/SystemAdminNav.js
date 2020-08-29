@@ -20,6 +20,9 @@ import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
 import ListIcon from '@material-ui/icons/List';
+import PermDataSettingIcon from '@material-ui/icons/PermDataSetting';
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -85,6 +88,10 @@ const SystemAdmin = (props) => {
             <ListItem button onClick={() => Redirect(route.systemadmin.departmentList)}>
               <ListItemIcon><ListIcon /> </ListItemIcon>
               <ListItemText primary={"Department List"} />
+            </ListItem>
+            <ListItem button onClick={() => Redirect(route.systemadmin.syetemLog)}>
+              <ListItemIcon><PermDataSettingIcon /> </ListItemIcon>
+              <ListItemText primary={"System Logs"} />
             </ListItem>
             <Divider />
             <ListItem button onClick={() => Logout()}>
