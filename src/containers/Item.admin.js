@@ -19,6 +19,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { withSnackbar } from "notistack"
+import Title from '../components/Title'
+import AddIcon from '@material-ui/icons/Add';
 
 
 const ItemContainer = styled.div`
@@ -62,6 +64,17 @@ class Item extends React.Component {
     const columns = ItemColumns(this.props.user.department, this.handleModalOpen)
     return (
       <>
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ marginTop: -20, }}>
+            <Title title="Items" />
+          </div>
+          {this.props.user.department === true ? null :
+            <div style={{ marginRight: 40 }}>
+              <Button variant="contained" color="primary" onClick={() => this.props.history.push(route.admin.additem)}>
+                <AddIcon />Items</Button>
+            </div>
+          }
+        </div>
         <ItemContainer className="item-table-cotainer">
           {/* Close Feature Flag */}
           {/* <AdvanceSearch /> */}

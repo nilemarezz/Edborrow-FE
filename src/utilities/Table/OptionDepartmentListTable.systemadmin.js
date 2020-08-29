@@ -69,7 +69,7 @@ export const OptionDrpartmentTable = {
 }
 
 
-export const DepartmentTable = () => [
+export const DepartmentTable = (deleteDepartment) => [
   { name: department.departmentId.name, label: department.departmentId.label },
   { name: department.departmentName.name, label: department.departmentName.label },
   { name: department.departmentEmail.name, label: department.departmentEmail.label },
@@ -113,7 +113,7 @@ export const DepartmentTable = () => [
           <Button variant="contained" color="primary" >
             <EditIcon />
           </Button>
-          <Button variant="contained" color="secondary" >
+          <Button variant="contained" color="secondary" onClick={() => deleteDepartment(value)}>
             <DeleteForeverIcon />
           </Button>
 

@@ -19,7 +19,6 @@ import { logoutSuccess } from "../../actions/UserAction";
 import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
-import BusinessIcon from '@material-ui/icons/Business';
 import ListIcon from '@material-ui/icons/List';
 const drawerWidth = 240;
 
@@ -79,14 +78,6 @@ const SystemAdmin = (props) => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem button onClick={() => Redirect(route.systemadmin.addItem)}>
-              <ListItemIcon><BarChartIcon /> </ListItemIcon>
-              <ListItemText primary={"Add Item"} />
-            </ListItem>
-            <ListItem button onClick={() => Redirect(route.systemadmin.addDepartment)}>
-              <ListItemIcon><BusinessIcon /> </ListItemIcon>
-              <ListItemText primary={"Add Department"} />
-            </ListItem>
             <ListItem button onClick={() => Redirect(route.systemadmin.items)}>
               <ListItemIcon><FeaturedPlayListIcon /> </ListItemIcon>
               <ListItemText primary={"Items"} />

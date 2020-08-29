@@ -12,7 +12,36 @@ import ApplicationList from '../containers/ApplicationList'
 import { route } from '../systemdata/route'
 import Navbar from '../containers/Nav/Navbar'
 
-const UserRoute = () => {
+const UserRoute = (props) => {
+  function PrivateRoute({ children, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={({ location }) => {
+          if (localStorage.getItem("userToken") !== null) {
+            if (props.user.admin === false) {
+              return children
+            } else {
+              return <Redirect
+                to={{
+                  pathname: route.systemadmin.items
+                }}
+              />
+            }
+
+          } else {
+            return <Redirect
+              to={{
+                pathname: route.auth.login
+              }}
+            />
+          }
+        }
+
+        }
+      />
+    );
+  }
   return (
     <Router>
       <Navbar />
@@ -42,24 +71,7 @@ const UserRoute = () => {
   );
 };
 
-function PrivateRoute({ children, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        localStorage.getItem("userToken") !== null ? (
-          children
-        ) : (
-            <Redirect
-              to={{
-                pathname: route.auth.login
-              }}
-            />
-          )
-      }
-    />
-  );
-}
+
 
 
 const mapStateToProps = (state) => {

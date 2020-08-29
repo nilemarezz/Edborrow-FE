@@ -14,7 +14,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
+import Title from '../components/Title'
+import AddIcon from '@material-ui/icons/Add';
+import { withRouter } from 'react-router-dom'
+import { route } from '../systemdata/route'
 class Items extends React.Component {
   state = { modal: false, item: null }
   componentDidMount() {
@@ -49,6 +52,15 @@ class Items extends React.Component {
     const columns = ItemColumns(this.handleModalOpen)
     return (
       <>
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ marginTop: -20, marginLeft: -37 }}>
+            <Title title="Items" />
+          </div>
+          <div style={{ marginRight: 5 }}>
+            <Button variant="contained" color="primary" onClick={() => this.props.history.push(route.systemadmin.addItem)}>
+              <AddIcon />Item</Button>
+          </div>
+        </div>
         <WithLoading loading={this.props.loading} />
         <MUIDataTable
           title={"Items"}
@@ -101,4 +113,4 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
 export const mapStateToProps = (state) => {
   return { items: state.SYSTEM_ADMIN_Items.Items, loading: state.SYSTEM_ADMIN_Items.loading }
 }
-export default compose(connect(mapStateToProps, mapDispatchToProps), withSnackbar)(Items)
+export default compose(connect(mapStateToProps, mapDispatchToProps), withSnackbar, withRouter)(Items)
