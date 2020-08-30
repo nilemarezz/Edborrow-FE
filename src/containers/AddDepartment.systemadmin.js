@@ -13,7 +13,7 @@ import { AddDepartment as AddDepartmentThunk } from '../thunk/Form/addDepartment
 import { withSnackbar } from "notistack";
 
 class AddDepartment extends React.Component {
-  sendData = () => {
+  sendData = async () => {
     const value = {
       userId: this.props.form.userId,
       firstName: this.props.form.firstName,
@@ -26,15 +26,15 @@ class AddDepartment extends React.Component {
       placeFloor: this.props.form.placeFloor,
       placeRoom: this.props.form.placeRoom,
     }
-    console.log(value)
-    const sendSuccess = this.props.addDepartment(value)
+    const sendSuccess = await this.props.addDepartment(value)
+    console.log(sendSuccess)
     if (sendSuccess) {
       this.props.enqueueSnackbar("Add Department Success", {
         variant: 'success',
       });
     } else {
-      this.props.enqueueSnackbar("Add Department Success", {
-        variant: 'fail',
+      this.props.enqueueSnackbar("Add Department Fail", {
+        variant: 'error',
       });
     }
 
@@ -91,7 +91,8 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(setFormDepartmentRoom(value));
   },
   addDepartment: async (value) => {
-    dispatch(AddDepartmentThunk(value))
+    const issuccess = await dispatch(AddDepartmentThunk(value))
+    return issuccess
   }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withSnackbar(AddDepartment))

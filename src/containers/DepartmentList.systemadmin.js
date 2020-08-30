@@ -23,9 +23,9 @@ class DeparmentList extends React.Component {
 
     this.props.GetDepartment()
   }
-  handleModalOpen = (id) => {
+  handleModalOpen = (id, userId) => {
     this.setState({ modal: true })
-    this.setState({ department: id })
+    this.setState({ department: { departmentId: id, userId: userId } })
 
   }
   handleModalClose = (id) => {
@@ -34,15 +34,15 @@ class DeparmentList extends React.Component {
 
   }
   deleteDepartment = () => {
-
-    const deletesuccess = this.props.DeleteDepartmnetThunk({ departmentId: this.state.department })
+    console.log(this.state.department)
+    const deletesuccess = this.props.DeleteDepartmnetThunk(this.state.department)
     if (deletesuccess) {
       this.props.enqueueSnackbar('Delete Item Success', {
         variant: 'success',
       });
     } else {
       this.props.enqueueSnackbar('Delete Item Fail', {
-        variant: 'danger',
+        variant: 'error',
       });
     }
     this.setState({ department: null })

@@ -42,7 +42,7 @@ class AddItem extends React.Component {
 
     } else {
       this.props.enqueueSnackbar("Add Item Fail", {
-        variant: 'danger',
+        variant: 'error',
       });
     }
 

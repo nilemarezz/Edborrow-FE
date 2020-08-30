@@ -14,7 +14,7 @@ class SystemLogs extends React.Component {
     else {
       this.setState({ loading: false })
       this.props.enqueueSnackbar('Something wrong', {
-        variant: 'danger',
+        variant: 'error',
       });
     }
   }

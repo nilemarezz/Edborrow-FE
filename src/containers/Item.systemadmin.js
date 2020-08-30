@@ -42,7 +42,7 @@ class Items extends React.Component {
       });
     } else {
       this.props.enqueueSnackbar('Delete Item Fail', {
-        variant: 'danger',
+        variant: 'error',
       });
     }
     this.setState({ item: null })

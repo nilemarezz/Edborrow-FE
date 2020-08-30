@@ -112,7 +112,7 @@ export const DepartmentTable = (deleteDepartment) => [
           <Button variant="contained" color="primary" >
             <EditIcon />
           </Button>
-          <Button variant="contained" color="secondary" onClick={() => deleteDepartment(value)}>
+          <Button variant="contained" color="secondary" onClick={() => deleteDepartment(value, tableMeta.rowData[3])}>
             <DeleteForeverIcon />
           </Button>
 

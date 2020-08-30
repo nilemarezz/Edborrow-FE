@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
     case DELETE_DEPARTMENT_SYSTEMDATA:
       return R.assocPath(
         ["departmentList"],
-        R.reject(R.propEq('departmentId', action.payload.departmentId))(state.departmentList)
+        R.reject(R.propEq('departmentId', action.payload))(state.departmentList)
       )(state);
     case SET_DEPARTMENT_FORM_ID:
       return R.assocPath(["userId"], action.payload)(state);

@@ -3,13 +3,13 @@ import AddDepartmentService from '../../services/DepartmentService/AddDepartment
 export const AddDepartment = (value) => {
   return async (dispatch, getState) => {
     dispatch(loadingSubmitForm(true));
-    console.log(value)
     const sentData = await AddDepartmentService(value)
-    if (sentData) {
+    console.log(sentData)
+    if (sentData === true) {
       dispatch(sendDepartmentForm())
-      dispatch(loadingSubmitForm(false));
-      dispatch(resetForm())
 
+      dispatch(resetForm())
+      dispatch(loadingSubmitForm(false));
       return true
     } else {
       dispatch(loadingSubmitForm(false));
