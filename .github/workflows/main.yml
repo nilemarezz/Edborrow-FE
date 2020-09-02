@@ -90,6 +90,19 @@ jobs:
         run: |
           yarn
           yarn run test-connection
+  
+  test-unit:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name : test-connection
+        run: |
+          yarn
+          yarn test
 
   deploy:
     runs-on: ubuntu-latest 
