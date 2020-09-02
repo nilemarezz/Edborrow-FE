@@ -25,9 +25,6 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - name : test-unit
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           yarn
           yarn test
