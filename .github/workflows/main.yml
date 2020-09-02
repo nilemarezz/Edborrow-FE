@@ -18,5 +18,5 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           yarn
-          yarn build
+          CI=false yarn build
           npx netlify-cli deploy --dir=public --prod
