@@ -4,6 +4,9 @@ on:
   push:
     paths-ignore:
       - ".github/**"
+    branch:
+      - master
+  pull_request:
 
 jobs:
   build:

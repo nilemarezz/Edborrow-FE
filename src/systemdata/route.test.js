@@ -28,7 +28,11 @@ describe("get instruction correct", () => {
         itemDetailAdmin: "/admin/detail/itemdetail"
       },
       systemadmin: {
-        addItem: "/systemadmin/additem"
+        addItem: "/systemadmin/additem",
+        addDepartment: "/systemadmin/adddepartment",
+        items: "/systemadmin/items",
+        departmentList: "/systemadmin/departmentlist",
+        syetemLog: "/systemadmin/systemlog",
       }
     }
     expect(route).toEqual(expectedroute);
