@@ -1,71 +1,30 @@
 name : Action WorkFlow
+
 on:
   push:
     paths-ignore:
       - ".github/**"
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-node@v1
-#         with:
-#           node-version: 12
-#           registry-url: https://registry.npmjs.org/
-#       - name : build
-#         run: |
-#           yarn
-#           CI=false yarn build
 
-#   test:
-#     runs-on: ubuntu-latest 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-node@v1
-#         with:
-#           node-version: 12
-#           registry-url: https://registry.npmjs.org/
-#       - name : test-unit
-#         run: |
-#           yarn
-#           yarn test
-
-#   deploy:
-#     runs-on: ubuntu-latest 
-#     steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-node@v1
-#         with:
-#           node-version: 12
-#           registry-url: https://registry.npmjs.org/
-#        - name : deploy
-#         env:
-#           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-#           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-#         run: |
-#           yarn
-#           CI=false yarn build
-#           npx netlify-cli deploy --dir=public --prod
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
-        - run: yarn
-        - run: CI=false yarn build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - run: CI=false yarn build
           
-    test:
-      needs: build
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
-        - run: yarn 
-        - run: yarn test
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn 
+      - run: yarn test
