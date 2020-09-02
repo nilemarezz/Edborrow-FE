@@ -62,8 +62,13 @@
 name : Action WorkFlow
 on:
   push:
+    branches:
+      - master
     paths-ignore:
       - ".github/**"
+  pull_request:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest 
