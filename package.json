@@ -38,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "yarn test --coverage --watchAll",
-    "test-connection" : "yran test ",
+    "test-connection" : "yarn test -- connection.test.js",
     "eject": "react-scripts eject",
     "dev": "REACT_APP_ENV=development react-scripts start"
   },
