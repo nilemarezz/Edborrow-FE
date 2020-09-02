@@ -43,3 +43,21 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn 
       - run: yarn test
+  
+  deploy:
+    needs: build
+    needs: test-connection
+    needs: test-unit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - run: yarn 
+      - run: CI=false yarn build
+      - run: npx netlify-cli deploy --dir=public --prod
