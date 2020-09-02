@@ -8,7 +8,7 @@ const MockNavBar = () => {
     <AppBar position="static">
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h6">EdBorrow-Test</Typography>
+        <Typography variant="h6">EdBorrow</Typography>
       </Toolbar>
     </AppBar>
   )
