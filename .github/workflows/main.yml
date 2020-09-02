@@ -16,6 +16,7 @@ jobs:
         run: |
           yarn
           CI=false yarn build
+
   test:
     runs-on: ubuntu-latest 
     steps:
@@ -28,6 +29,7 @@ jobs:
         run: |
           yarn
           yarn test
+          
   deploy:
     runs-on: ubuntu-latest 
     steps:
