@@ -69,6 +69,8 @@ on:
   pull_request:
     branches:
       - master
+      - develop
+
 jobs:
   build:
     runs-on: ubuntu-latest 
