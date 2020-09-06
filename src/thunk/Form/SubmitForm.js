@@ -6,22 +6,23 @@ export const submitForm = (form, cart) => {
   return async (dispatch, getState) => {
     dispatch(loadingSubmitForm(true));
     const item = [];
-    cart.forEach((itemid) => {
-      item.push({ itemId: itemid.itemId });
+    cart.forEach((cartItem) => {
+      item.push({ itemId: cartItem.itemId, borrowDate: cartItem.date.from, returnDate: cartItem.date.to });
     });
     const summaryForm = {
       items: item,
       personalInformation: {
-        borrowDate: RefactorDateJS(form.borrowDate),
+        borrowDate: form.borrowDate,
         borrowPurpose: form.purpose,
         name: `${form.name} ${form.surname}`,
-        returnDate: RefactorDateJS(form.returnDate),
+        returnDate: form.returnDate,
         transactionDate: new Date().toJSON().slice(0, 10).replace(/-/g, "-"),
         usePlace: form.usePlace,
         userId: form.id,
         advisorEmail: form.advisor
       }
     }
+    console.log(summaryForm)
     const sendSuccess = await SendApplicationService(summaryForm);
     if (sendSuccess) {
       dispatch(resetForm())

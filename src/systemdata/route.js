@@ -29,5 +29,6 @@ export const route = {
     items: "/systemadmin/items",
     departmentList: "/systemadmin/departmentlist",
     syetemLog: "/systemadmin/systemlog",
+    systemos: "/systemadmin/osdata",
   }
 }

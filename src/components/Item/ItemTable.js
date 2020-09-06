@@ -1,6 +1,6 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
-import { addItemToCart } from "../../actions/ItemAction";
+import { AddItemToCart } from "../../thunk/Item/AddItemToCart";
 import { CartItem } from "../../utilities/data/refactorMUIdata";
 import WithLoading from "../../utilities/WithLoading";
 class ItemTable extends React.Component {
@@ -22,10 +22,4 @@ class ItemTable extends React.Component {
   }
 }
 
-export const mapDispatchToProps = (dispatch, ownProps) => ({
-  addItemToCart: async (item) => {
-    let data = CartItem(item);
-    dispatch(addItemToCart(data));
-  },
-});
 export default ItemTable;

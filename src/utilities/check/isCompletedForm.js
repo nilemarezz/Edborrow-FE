@@ -15,5 +15,13 @@ export const isCompletedForm = (step, field, cart) => {
       return true
     }
   }
+}
 
+export const checkDateInput = (cart) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].date.from === null || cart[i].date.to === null) {
+      return false
+    }
+  }
+  return true
 }

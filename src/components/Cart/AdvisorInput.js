@@ -58,7 +58,7 @@ export default function Asynchronous(props) {
       loading={loading}
       onChange={(event, newValue) => {
         if (newValue) {
-          props.setAdvisor(newValue.email);
+          props.setAdvisor(props.getId ? newValue.userId : newValue.email);
         } else {
           props.setAdvisor("");
         }
@@ -73,7 +73,7 @@ export default function Asynchronous(props) {
             shrink: true,
           }}
           variant="outlined"
-          helperText="* Choose Advisor in Project Proposal (If have)"
+          helperText={props.getId ? null : "* Choose Advisor in Project Proposal (If have)"}
           value={props.value}
           required
           InputProps={{

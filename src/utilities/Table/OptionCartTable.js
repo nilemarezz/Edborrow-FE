@@ -6,6 +6,7 @@ import { color } from "../data/color";
 import * as R from 'ramda'
 import { CartItem } from '../data/refactorMUIdata'
 import { ItemTable } from '../../systemdata/Item'
+import DateInputRange from '../../components/Cart/DateInputRange'
 export const OptionCartTable = {
   selectableRows: false,
   filterType: "textField",
@@ -46,6 +47,13 @@ export const CartColumns = (
           return <span>{renderDepartment(value, tableMeta.rowData[5])}</span>;
         },
       },
+    },
+    {
+      name: ItemTable.itemId.name, label: "Borrow-Return", options: {
+        customBodyRender: (value, tableMeta) => (
+          <DateInputRange />
+        )
+      }
     },
     {
       name: ItemTable.itemId.name,

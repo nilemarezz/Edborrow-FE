@@ -27,7 +27,6 @@ class AddDepartment extends React.Component {
       placeRoom: this.props.form.placeRoom,
     }
     const sendSuccess = await this.props.addDepartment(value)
-    console.log(sendSuccess)
     if (sendSuccess) {
       this.props.enqueueSnackbar("Add Department Success", {
         variant: 'success',

@@ -4,7 +4,6 @@ export const AddDepartment = (value) => {
   return async (dispatch, getState) => {
     dispatch(loadingSubmitForm(true));
     const sentData = await AddDepartmentService(value)
-    console.log(sentData)
     if (sentData === true) {
       dispatch(sendDepartmentForm())
 

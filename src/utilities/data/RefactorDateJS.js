@@ -1,6 +1,6 @@
 export const RefactorDateJS = (value) => {
   if (value) {
-    return value.getUTCFullYear() + "-" + (value.getUTCMonth() + 1) + "-" + value.getUTCDate();
+    return value.getFullYear() + "-" + (value.getMonth() + 1) + "-" + value.getDate();
   } else {
     return null
   }

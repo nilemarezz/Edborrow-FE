@@ -3,9 +3,7 @@ import DepartmentListService from '../../services/DepartmentService/GetDepartmen
 export const GetDepartment = (value) => {
   return async (dispatch, getState) => {
     dispatch(loadingDepartmentList(true));
-    console.log(value)
     const department = await DepartmentListService()
-    console.log(department)
     if (department) {
       dispatch(getDepartmentList(department))
       dispatch(loadingDepartmentList(false));

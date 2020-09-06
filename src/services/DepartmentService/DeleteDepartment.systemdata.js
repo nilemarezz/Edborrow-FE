@@ -10,7 +10,6 @@ const DeleteDepartment = async (userId, departmentId) => {
         body: JSON.stringify({ userId, departmentId }),
       });
       const data = await res.json();
-      console.log(data)
       if (data.result === 'false') {
         return false
       } else {

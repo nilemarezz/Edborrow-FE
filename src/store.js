@@ -7,7 +7,7 @@ const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOO
 const persistConfig = {
   key: 'data',
   storage,
-  whitelist: ['Item']
+  whitelist: ['Item', 'Form']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

@@ -10,7 +10,6 @@ const AddDepartment = async (value) => {
         body: JSON.stringify(value),
       });
       const data = await res.json();
-      console.log(data)
       if (data.result === 'false') {
         return false
       } else {

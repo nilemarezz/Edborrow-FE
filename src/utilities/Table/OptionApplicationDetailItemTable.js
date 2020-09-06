@@ -2,7 +2,7 @@ import React from 'react'
 import { ApplicationTable } from '../../systemdata/Application'
 import { renderImage } from '../../utilities/getImage'
 import { renderItemStatus, renderItemDetailApplicationStatus } from '../../utilities/Table/renderItemTable'
-
+import { RefactorDate } from '../../utilities/data/refactorDate'
 export const OptionApplicationDetailTable = {
   filterType: "checkbox",
   selectableRows: false,
@@ -62,6 +62,27 @@ export const ApplicationDetailColumn = () => [
         renderItemStatus(value),
     },
   },
+  {
+    name: ApplicationTable.borrowDate.name,
+    label: "Borrow",
+    options: {
+      filter: true,
+      sort: true,
+      customBodyRender: (value, tableMeta, updateValue) =>
+        RefactorDate(value),
+    },
+  },
+  {
+    name: ApplicationTable.returnDate.name,
+    label: "Return",
+    options: {
+      filter: true,
+      sort: true,
+      customBodyRender: (value, tableMeta, updateValue) =>
+        RefactorDate(value),
+    },
+  },
+
   {
     name: ApplicationTable.rejectPurpose.name,
     label: ApplicationTable.rejectPurpose.label,

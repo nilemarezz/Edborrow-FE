@@ -7,6 +7,8 @@ export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const SEARCH_ITEM_SUCCESS = "SEARCH_ITEM_SUCCESS ";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const CLEAR_CART = "CLEAR_CART"
+export const SET_FORM_DATE_CART = "SET_FORM_DATE_CART"
+export const SET_TO_DATE_CART = "SET_TO_DATE_CART"
 
 export const getAllItemSuccess = (data) => {
   return { type: GETALL_ITEM_SUCCESS, payload: data };
@@ -38,6 +40,12 @@ export const searchItem = (item) => {
 
 export const clearFilter = () => {
   return { type: CLEAR_FILTER }
+}
+export const setFormDateCart = (data) => {
+  return { type: SET_FORM_DATE_CART, payload: data }
+}
+export const setToDateCart = (data) => {
+  return { type: SET_TO_DATE_CART, payload: data }
 }
 export const clearCart = () => {
   return { type: CLEAR_CART }

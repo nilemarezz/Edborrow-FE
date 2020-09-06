@@ -10,7 +10,6 @@ const GetItemDetail = async (value) => {
     });
 
     const data = await item.json();
-    console.log(data)
     return data
   } else {
     return ItemAdmin

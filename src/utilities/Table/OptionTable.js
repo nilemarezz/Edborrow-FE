@@ -26,20 +26,20 @@ export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCart
   } else {
     disable = true;
   }
-  var found = R.contains(CartItem(tableMeta.rowData), cart);
+  var found = cart.findIndex(x => x.itemId === tableMeta.rowData[0]);
   return (
     <Button
       color="primary"
       variant="contained"
       size="small"
       onClick={() =>
-        found
+        found !== -1
           ? redirectToCartPage()
           : AddItemToCarts(tableMeta.rowData)
       }
       disabled={disable}
     >
-      {found ? "Cart" : "Add"}
+      {found !== -1 ? "Cart" : "Add"}
     </Button>
   );
 };

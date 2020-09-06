@@ -34,7 +34,6 @@ class DeparmentList extends React.Component {
 
   }
   deleteDepartment = () => {
-    console.log(this.state.department)
     const deletesuccess = this.props.DeleteDepartmnetThunk(this.state.department)
     if (deletesuccess) {
       this.props.enqueueSnackbar('Delete Item Success', {

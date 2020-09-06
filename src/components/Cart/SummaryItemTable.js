@@ -10,7 +10,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { renderDepartment } from "../../utilities/Table/renderItemTable";
 
-const columns = ["ID", "Name", "Picture", "Owner", "Number"]
+const columns = ["ID", "Name", "Picture", "Owner", "Date", "Number"]
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -63,7 +63,10 @@ export default function StickyHeadTable(props) {
                   <img src={item.itemImage} alt="imageEquipment" width={60} height={60} />
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {renderDepartment(item.departmentName)}
+                  {item.departmentId}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {item.date.from} to {item.date.to}
                 </TableCell>
                 <TableCell component="th" scope="row">
                   x 1

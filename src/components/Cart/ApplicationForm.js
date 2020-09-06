@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import AdvisorInput from './AdvisorInput'
 import DatePicker from './DatePicker'
 import { connect } from "react-redux";
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from "@material-ui/core/styles";
 import {
   setFormID, setFormName, setFormSurname,
   setFormAdvisor, setFormBorrowDate, setFormEmail,
@@ -22,7 +24,14 @@ const ItemContainer = styled(Grid)`
 const StyledPaper = styled(Paper)`
   margin-top:10px;
 `
-
+const DarkerDisabledTextField = withStyles({
+  root: {
+    marginRight: 8,
+    "& .MuiInputBase-root.Mui-disabled": {
+      color: "rgba(0, 0, 0, 0.6)"
+    }
+  }
+})(TextField);
 class ApplicationForm extends React.Component {
 
   render() {
@@ -55,18 +64,33 @@ class ApplicationForm extends React.Component {
             </Grid>
 
             <Grid item sm={4} xs={12}>
-              {<DatePicker label="Borrow Date" value={borrowDate} setTime={setBorrowDate} />}
+              <DarkerDisabledTextField
+                id="outlined-helperText"
+                label="Borrow Date"
+                defaultValue={borrowDate}
+                variant="outlined"
+                disabled
+                fullWidth
+              />
             </Grid>
             <span style={{ marginTop: 20 }}>-</span>
             <Grid item sm={4} xs={12}>
-              {<DatePicker label="Return Date" value={returnDate} setTime={setReturnDate} />}
+              <DarkerDisabledTextField
+                id="outlined-helperText"
+                label="Return Date"
+                defaultValue={returnDate}
+                variant="outlined"
+                disabled
+                fullWidth
+              />
             </Grid>
             <Grid item sm={8} xs={12}>
               <DebounceForm label="Purpose" placeholder="Enter your Purpose" value={purpose} setText={setPurpose} rows={4} />
             </Grid>
-            <Grid item sm={4} xs={12}>
+            <Grid item sm={3} xs={12}>
               <DebounceForm label="Use Place" placeholder="Enter place where to use" value={usePlace} setText={setusePlace} />
             </Grid>
+
           </ItemContainer>
         </Container>
       </StyledPaper>

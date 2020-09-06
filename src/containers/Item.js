@@ -10,7 +10,7 @@ import { compose } from 'recompose'
 import { withRouter } from "react-router-dom";
 import { withSnackbar } from "notistack";
 import { CartItem } from "../utilities/data/refactorMUIdata";
-import { addItemToCart } from "../actions/ItemAction";
+import { AddItemToCart } from "../thunk/Item/AddItemToCart";
 import {
   OptionItemTable,
   ItemColumns,
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   addItemToCart: async (item) => {
     let data = CartItem(item);
-    dispatch(addItemToCart(data));
+    dispatch(AddItemToCart(data));
   },
   getAllItem: async () => {
     dispatch(GetAllItemThunk())

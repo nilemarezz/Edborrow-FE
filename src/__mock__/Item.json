@@ -12,6 +12,16 @@
       "itemImage": null
     },
     {
+      "itemId": 20012,
+      "itemName": "Play station 5 ",
+      "itemBrand": "asd",
+      "itemModel": "Igloo Stainless Steel Cooler",
+      "departmentName": "SRM",
+      "ownerName": null,
+      "itemAvailability": 1,
+      "itemImage": "https://equipment-image.s3-ap-southeast-1.amazonaws.com/160351_2.jpg"
+    },
+    {
       "itemId": 20015,
       "itemName": "Cooler Stainless Steel",
       "itemBrand": "asd",

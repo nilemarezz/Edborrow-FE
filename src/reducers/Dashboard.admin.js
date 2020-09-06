@@ -20,7 +20,6 @@ export default function (state = initialState, action) {
     case "LOADING_DASHBOARD":
       return R.pipe(R.assocPath(["loading"], action.payload))(state);
     case "GET_DASHBOARD":
-      console.log(action.payload)
       return R.pipe(R.assocPath(["Data"], action.payload))(state);
     default:
       return state;

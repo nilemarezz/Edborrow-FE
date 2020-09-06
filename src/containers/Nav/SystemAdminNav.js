@@ -21,7 +21,7 @@ import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
 import ListIcon from '@material-ui/icons/List';
 import PermDataSettingIcon from '@material-ui/icons/PermDataSetting';
-
+import ComputerIcon from '@material-ui/icons/Computer';
 
 const drawerWidth = 240;
 
@@ -92,6 +92,10 @@ const SystemAdmin = (props) => {
             <ListItem button onClick={() => Redirect(route.systemadmin.syetemLog)}>
               <ListItemIcon><PermDataSettingIcon /> </ListItemIcon>
               <ListItemText primary={"System Logs"} />
+            </ListItem>
+            <ListItem button onClick={() => Redirect(route.systemadmin.systemos)}>
+              <ListItemIcon><ComputerIcon /> </ListItemIcon>
+              <ListItemText primary={"System Information"} />
             </ListItem>
             <Divider />
             <ListItem button onClick={() => Logout()}>

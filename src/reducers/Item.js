@@ -7,7 +7,9 @@ import {
   ADD_ITEM_TO_CART,
   SEARCH_ITEM_SUCCESS,
   CLEAR_FILTER,
-  CLEAR_CART
+  CLEAR_CART,
+  SET_FORM_DATE_CART,
+  SET_TO_DATE_CART
 } from "../actions/ItemAction";
 import * as R from "ramda";
 const initialState = {
@@ -16,6 +18,18 @@ const initialState = {
   loading: null,
   filter: [],
 };
+
+const updateFrom = (itemId, value, cart, type) => {
+  const newCart = cart;
+  newCart.forEach(item => {
+    if (item.itemId === itemId) {
+
+      item.date[type] = value
+    }
+
+  });
+  return newCart
+}
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -40,6 +54,10 @@ export default function (state = initialState, action) {
       return R.assocPath(["filter"], [])(state);
     case CLEAR_CART:
       return R.assocPath(["Cart"], [])(state);
+    case SET_FORM_DATE_CART:
+      return R.assocPath(["Cart"], updateFrom(action.payload.itemId, action.payload.from, state.Cart, "from"))(state);
+    case SET_TO_DATE_CART:
+      return R.assocPath(["Cart"], updateFrom(action.payload.itemId, action.payload.to, state.Cart, "to"))(state);
     default:
       return state;
   }

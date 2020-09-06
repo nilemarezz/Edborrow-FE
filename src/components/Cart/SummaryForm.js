@@ -60,11 +60,11 @@ class SummaryForm extends React.Component {
             </Typography>
           <FormContent container spacing={3}>
             <Grid item xs={12} sm={5}>
-              <TextField id="borrow date" label="Borrow Date" value={RefactorDateJS(form.borrowDate)} fullWidth disabled />
+              <TextField id="borrow date" label="Borrow Date" value={form.borrowDate} fullWidth disabled />
             </Grid>
             <span style={{ marginTop: 20 }}> <strong> _ </strong></span>
             <Grid item xs={12} sm={5}>
-              <TextField id="return date" label="Return Date" value={RefactorDateJS(form.returnDate)} fullWidth disabled />
+              <TextField id="return date" label="Return Date" value={form.returnDate} fullWidth disabled />
             </Grid>
           </FormContent>
 

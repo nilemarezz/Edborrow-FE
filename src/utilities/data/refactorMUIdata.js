@@ -4,6 +4,11 @@ export const CartItem = (item) => {
     itemName: item[1],
     itemImage: item[2],
     departmentId: item[3],
+    date: {
+      from: null,
+      to: null
+    },
+    dateUnavaliable: []
   };
   return data
 }

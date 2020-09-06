@@ -13,6 +13,7 @@ import AddDepartment from '../containers/AddDepartment.systemadmin'
 import Items from '../containers/Item.systemadmin'
 import DepartmentList from '../containers/DepartmentList.systemadmin'
 import SystemLogs from '../containers/SystemLogs.systemadmin'
+import SystemOS from '../containers/SystemOS.systemadmin'
 const SystemAdminRoute = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
@@ -60,6 +61,9 @@ const SystemAdminRoute = (props) => {
               <PrivateAdminRoute path={`${route.systemadmin.syetemLog}`} exact strict >
                 <SystemLogs />
               </PrivateAdminRoute >
+              <PrivateAdminRoute path={`${route.systemadmin.systemos}`} exact strict >
+                <SystemOS />
+              </PrivateAdminRoute >
             </>
             :
             <>
@@ -68,6 +72,7 @@ const SystemAdminRoute = (props) => {
               <Route path={`${route.systemadmin.items}`} component={Items} exact strict />
               <Route path={`${route.systemadmin.departmentList}`} component={DepartmentList} exact strict />
               <Route path={`${route.systemadmin.syetemLog}`} component={SystemLogs} exact strict />
+              <Route path={`${route.systemadmin.systemos}`} component={SystemOS} exact strict />
             </>
           }
         </AdminNav>
