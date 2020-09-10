@@ -78,8 +78,8 @@ export const ItemColumns = (department, deleteItems) => [
   },
 
   {
-    name: ItemTable.itemAvailability.name,
-    label: ItemTable.itemAvailability.label,
+    name: ItemTable.itemStatusTag.name,
+    label: ItemTable.itemStatusTag.label,
     options: {
       customBodyRender: (value) => renderStatus(value),
     },

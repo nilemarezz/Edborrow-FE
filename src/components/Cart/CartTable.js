@@ -13,6 +13,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import { renderImage } from '../../utilities/getImage'
+import { renderDepartment } from '../../utilities/Table/renderItemTable'
 import { RefactorDateJS } from '../../utilities/data/RefactorDateJS'
 class CartTable extends React.Component {
   redirectToDetailPage = (value) => {
@@ -64,7 +65,7 @@ class CartTable extends React.Component {
               <DateInputRange itemId={row.itemId} setFormDate={this.setFormDate} setToDate={this.setToDate}
                 from={row.date.from} to={row.date.to} disabledDate={row.dateUnavaliable} />
             </TableCell>
-            <TableCell >{row.departmentId}</TableCell>
+            <TableCell >{renderDepartment(row.departmentId, row.ownerName)}</TableCell>
             <TableCell >
               <Button variant="contained" color="primary" style={{ marginLeft: 20 }}>Detail</Button>
               <Button variant="contained" color="secondary" style={{ marginLeft: 20 }}

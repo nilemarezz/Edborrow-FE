@@ -17,12 +17,12 @@ export const renderStatus = (value) => {
   let label;
   let bgcolor;
 
-  if (value === ItemStatus.Avaliable.id) {
+  if (value === "Fixing") {
+    label = ItemStatus.Fixing.label;
+    bgcolor = ItemStatus.Fixing.color
+  } else {
     label = ItemStatus.Avaliable.label;
     bgcolor = ItemStatus.Avaliable.color
-  } else {
-    label = ItemStatus.NotAvaliable.label;
-    bgcolor = ItemStatus.NotAvaliable.color
   }
   return (
     <div>

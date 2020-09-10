@@ -8,6 +8,8 @@ import ItemAdmin from './Item.admin'
 import AddDepartment from './DepartmentList.systemadmin'
 import ItemsSystemAdmin from './Items.systemadmin'
 import Dashboard from './Dashboard.admin'
+import UserList from './User.systemadmin'
+
 export default combineReducers({
   User: UserReducer,
   Item: ItemReducer,
@@ -17,6 +19,7 @@ export default combineReducers({
   ADMIN_Item: ItemAdmin,
   SYSTEM_ADMIN_Department: AddDepartment,
   SYSTEM_ADMIN_Items: ItemsSystemAdmin,
-  Dashboard: Dashboard
+  Dashboard: Dashboard,
+  SYSTEM_ADMIN_UserList: UserList
 
 });

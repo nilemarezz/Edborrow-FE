@@ -53,7 +53,7 @@ class DeparmentList extends React.Component {
       <>
         <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ marginTop: -20, marginLeft: -37 }}>
-            <Title title="Department" />
+            <Title title="Departments" />
           </div>
           <div style={{ marginRight: 5 }}>
             <Button variant="contained" color="primary" onClick={() => this.props.history.push(route.systemadmin.addDepartment)}>

@@ -7,6 +7,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import { Role } from '../../systemdata/Role'
+
 class Form extends React.Component {
   state = {
     showPassword: false
@@ -16,8 +20,8 @@ class Form extends React.Component {
     this.props.sendData()
   }
   render() {
-    const { userId, firstName, lastName, password, departmentName, departmentTelNo, departmentEmail, placeBuilding, placeFloor, placeRoom } = this.props.data.form
-    const { setId, setName, setSurname, setPassword, setDepartmentName, setDepartmentTel, setDepartmentEmail, setDepartmentBuilding, setDepartmentFloor, setDepartmentRoom } = this.props.data
+    let { userId, firstName, lastName, password, email, telNo, role } = this.props.data
+    let { setuserId, setfirstName, setlastName, setEmail, setpassword, settelNo, setRole } = this.props
     return (
       <Paper style={{ padding: '10px 20px' }}>
         <h2>User Information</h2>
@@ -26,34 +30,12 @@ class Form extends React.Component {
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-helperText"
-                label="First Name"
+                label="User ID"
                 variant="outlined"
                 fullWidth
                 required
                 value={userId}
-                onChange={(e) => setId(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="outlined-helperText"
-                label="Last Name"
-                variant="outlined"
-                fullWidth
-                required
-                value={firstName}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="outlined-helperText"
-                label="User Id"
-                variant="outlined"
-                fullWidth
-                required
-                value={lastName}
-                onChange={(e) => setSurname(e.target.value)}
+                onChange={(e) => setuserId(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -64,33 +46,30 @@ class Form extends React.Component {
                   type={this.state.showPassword ? 'text' : 'password'}
                   labelWidth={70}
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setpassword(e.target.value)}
                 />
               </FormControl>
             </Grid>
-          </Grid>
-          <h2>Department Information</h2>
-          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-helperText"
-                label="Department Name"
-                required
+                label="First Name"
                 variant="outlined"
                 fullWidth
-                value={departmentName}
-                onChange={(e) => setDepartmentName(e.target.value)}
+                required
+                value={firstName}
+                onChange={(e) => setfirstName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-helperText"
-                label="Telephone No"
+                label="Last Name"
                 variant="outlined"
                 fullWidth
                 required
-                value={departmentTelNo}
-                onChange={(e) => setDepartmentTel(e.target.value)}
+                value={lastName}
+                onChange={(e) => setlastName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -98,46 +77,37 @@ class Form extends React.Component {
                 id="outlined-helperText"
                 label="Email"
                 variant="outlined"
+                type="email"
                 fullWidth
                 required
-                value={departmentEmail}
-                onChange={(e) => setDepartmentEmail(e.target.value)}
-              />
-            </Grid>
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              /></Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-helperText"
-                label="Building"
+                label="Telephone No."
                 variant="outlined"
                 fullWidth
                 required
-                value={placeBuilding}
-                onChange={(e) => setDepartmentBuilding(e.target.value)}
+                value={telNo}
+                onChange={(e) => settelNo(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                id="outlined-helperText"
-                label="Floor"
-                variant="outlined"
-                fullWidth
-                required
-                type="number"
-                min="0"
-                value={placeFloor}
-                onChange={(e) => setDepartmentFloor(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="outlined-helperText"
-                label="Room"
-                variant="outlined"
-                fullWidth
-                required
-                value={placeRoom}
-                onChange={(e) => setDepartmentRoom(e.target.value)}
-              />
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel id="demo-simple-select-filled-label">Role</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  {Role.map(item => {
+                    return <MenuItem value={item.id}>{item.label}</MenuItem>
+                  })}
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
           <div style={{ display: "flex", flexDirection: 'row', justifyContent: 'flex-end', marginTop: 30 }}>

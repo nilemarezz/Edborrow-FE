@@ -12,6 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { ItemCategory } from '../../systemdata/ItemCategory'
 import DepartmentForm from '../DepartmentFetchForm'
+import { ItemStatusLabel } from '../../systemdata/ItemStatus'
 class EditItem extends React.Component {
   submit = (e) => {
     e.preventDefault()
@@ -82,6 +83,21 @@ class EditItem extends React.Component {
           onChange={(e) => this.props.changeDescription(e.target.value)}
           disabled={this.props.disabled}
         />
+        <FormControl variant="outlined" fullWidth style={{ marginTop: 20 }}>
+          <InputLabel id="demo-simple-select-label">Status</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={parseInt(this.props.item.itemStatusId)}
+            defaultValue={this.props.item.itemStatusId}
+            onChange={(e) => this.props.changeStatusId(e.target.value)}
+            disabled={this.props.disabled}
+          >
+            {ItemStatusLabel.map(item => {
+              return <MenuItem value={item.id}>{item.label}</MenuItem>
+            })}
+          </Select>
+        </FormControl>
         {
           this.props.admin ? <Grid item xs={12} sm={4} style={{ marginTop: 20 }}>
             <DepartmentForm changeDepartmentId={this.props.changeDepartmentId} />
@@ -101,7 +117,6 @@ class EditItem extends React.Component {
           }
           label="Borrowable"
         />
-
         <Button type="submit" disabled={this.props.disabled} color="primary" variant="contained">Submit</Button>
       </form>
     )

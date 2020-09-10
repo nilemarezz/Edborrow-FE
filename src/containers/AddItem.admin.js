@@ -68,7 +68,7 @@ class AddItem extends React.Component {
       <>
         <WithLoading loading={item.loading} />
         <div style={{ marginTop: -20, }}>
-          <Title title={`Add Item`} />
+          <Title title={`Add Itemss`} />
         </div>
         <Grid container spacing={3} style={{ marginTop: 20 }} >
           <Grid item xs={12} sm={4} style={{ display: 'flex', flexDirection: 'column' }}>
@@ -76,7 +76,7 @@ class AddItem extends React.Component {
 
             <input
               accept="image/*"
-              style={{ display: "none" }}
+              // style={{ display: "none" }}
               id="raised-button-file"
               multiple
               type="file"

@@ -14,8 +14,7 @@ const Title = styled.h1`
 class TitleComponent extends React.Component {
   render() {
     return (
-
-      <Container >
+      <Container>
         <Title style={{ paddingLeft: 20 }}>{this.props.title}</Title>
       </Container>
     )

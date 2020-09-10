@@ -30,5 +30,7 @@ export const route = {
     departmentList: "/systemadmin/departmentlist",
     syetemLog: "/systemadmin/systemlog",
     systemos: "/systemadmin/osdata",
+    userList: "/systemadmin/userlist",
+    createUser: "/systemadmin/createUser",
   }
 }

@@ -24,8 +24,8 @@ export const OptionDrpartmentTable = {
                   <Grid item sm={3} xs={3}>
                     <div style={{ float: "right" }}>
                       <p>Name</p>
-                      <p>Telephone No : </p>
-                      <p>Building : </p>
+                      <p>Telephone No  </p>
+                      <p>Building </p>
                     </div>
                   </Grid>
                   <Grid item sm={6} xs={3}>

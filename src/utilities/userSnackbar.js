@@ -6,7 +6,7 @@ export const snackBarCheckLogin = (user) => {
     if (user.admin === false && user.department === false && user.staff === false) {
       return { text: "Login Success!", type: "success", redirect: route.user.items };
     } else if (user.admin === true) {
-      return { text: "Login Success!", type: "success", redirect: route.systemadmin.addItem };
+      return { text: "Login Success!", type: "success", redirect: route.systemadmin.items };
     } else {
       return { text: "Login Success!", type: "success", redirect: route.admin.dashboard };
     }

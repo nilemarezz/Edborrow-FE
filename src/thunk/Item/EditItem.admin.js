@@ -18,6 +18,7 @@ export const EditItemThunk = (value) => {
     );
     formData.append("categoryId", value.itemCategoryId === "" ? null : value.itemCategoryId);
     formData.append("itemDescription", value.itemDescription === "" ? null : value.itemDescription);
+    formData.append("itemStatusId", value.itemDescription === "" ? 1 : value.itemStatusId);
     try {
       const edit = await EditItemService(formData);
       if (edit === false) {
@@ -28,7 +29,6 @@ export const EditItemThunk = (value) => {
         return true
       }
     } catch (err) {
-      console.log(err)
       return false
     }
   }

@@ -21,10 +21,10 @@ export const OptionItemTable = {
 export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCartPage) => {
   let disable = false;
 
-  if (tableMeta.rowData[4] === ItemStatus.Avaliable.id) {
-    disable = false;
-  } else {
+  if (tableMeta.rowData[7] === "Fixing") {
     disable = true;
+  } else {
+    disable = false;
   }
   var found = cart.findIndex(x => x.itemId === tableMeta.rowData[0]);
   return (
@@ -81,8 +81,8 @@ export const ItemColumns = (
     },
 
     {
-      name: ItemTable.itemAvailability.name,
-      label: ItemTable.itemAvailability.label,
+      name: ItemTable.itemStatusTag.name,
+      label: ItemTable.itemStatusTag.label,
       options: {
         customBodyRender: (value) => renderStatus(value),
       },
@@ -120,6 +120,14 @@ export const ItemColumns = (
         searchable: false,
         sort: false,
         download: false,
+      },
+    },
+    {
+      name: ItemTable.itemStatusTag.name,
+      label: ItemTable.itemStatusTag.label,
+      options: {
+        display: false,
+        sort: false,
       },
     },
   ];

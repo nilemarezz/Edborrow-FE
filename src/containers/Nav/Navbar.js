@@ -183,14 +183,6 @@ const Nav = (props) => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <Link to={"/user/addItem"} style={{ textDecoration: "none", color: "black" }}>
-        <MenuItem onClick={handleMenuClose}>
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <AddIcon />
-          </IconButton>
-          <p>Add Item</p>
-        </MenuItem>
-      </Link>
       <MenuItem onClick={handleMenuClose}>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
@@ -256,15 +248,6 @@ const Nav = (props) => {
             >
               <HelpIcon />
             </IconButton>
-
-            <Link
-              to={"/user/addItem"}
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <IconButton aria-label="add" color="inherit">
-                <AddIcon />
-              </IconButton>
-            </Link>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />

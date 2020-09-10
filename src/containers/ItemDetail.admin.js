@@ -23,7 +23,8 @@ const initailFormState = {
   itemName: null,
   itemBorrowable: null,
   itemImage: null,
-  itemCategoryId: null
+  itemCategoryId: null,
+  itemStatusId: null
 }
 class ItemDetail extends React.Component {
   constructor(props) {
@@ -62,7 +63,8 @@ class ItemDetail extends React.Component {
         itemName: detail.itemName,
         itemBorrowable: detail.itemBorrowable,
         itemImage: detail.itemImage,
-        itemCategoryId: detail.categoryId
+        itemCategoryId: detail.categoryId,
+        itemStatusId: detail.itemStatusId
       }
     })
     this.props.onLoad(false)
@@ -137,6 +139,7 @@ class ItemDetail extends React.Component {
               changeDescription={(value) => this.setState({ Form: { ...this.state.Form, itemDescription: value } })}
               changeBorrowable={(value) => this.setState({ Form: { ...this.state.Form, itemBorrowable: value } })}
               changeCategoryId={(value) => this.setState({ Form: { ...this.state.Form, itemCategoryId: value } })}
+              changeStatusId={(value) => this.setState({ Form: { ...this.state.Form, itemStatusId: value } })}
             />
           </Grid>
         </Grid>

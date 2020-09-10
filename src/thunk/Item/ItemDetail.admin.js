@@ -18,6 +18,7 @@ export const GetItemDetail = (value) => {
         itemBorrowable: items.itemBorrowable,
         itemCategoryId: items.categoryId,
         itemImage: items.itemImage,
+        itemStatusId: items.itemStatusId
       }
       dispatch(getItemDetail(reObject));
       dispatch(itemLoading(false));

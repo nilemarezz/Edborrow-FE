@@ -54,4 +54,8 @@ export const ItemTable = {
   placeRoom: {
     name: "placeRoom"
   },
+  itemStatusTag: {
+    name: "itemStatusTag",
+    label: "Status"
+  }
 }

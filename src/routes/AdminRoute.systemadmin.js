@@ -14,6 +14,9 @@ import Items from '../containers/Item.systemadmin'
 import DepartmentList from '../containers/DepartmentList.systemadmin'
 import SystemLogs from '../containers/SystemLogs.systemadmin'
 import SystemOS from '../containers/SystemOS.systemadmin'
+import UserList from '../containers/UserList.systemadmin'
+import CreateUser from '../containers/CreateUser'
+
 const SystemAdminRoute = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
@@ -64,6 +67,12 @@ const SystemAdminRoute = (props) => {
               <PrivateAdminRoute path={`${route.systemadmin.systemos}`} exact strict >
                 <SystemOS />
               </PrivateAdminRoute >
+              <PrivateAdminRoute path={`${route.systemadmin.userList}`} exact strict >
+                <UserList />
+              </PrivateAdminRoute >
+              <PrivateAdminRoute path={`${route.systemadmin.createUser}`} exact strict >
+                <CreateUser />
+              </PrivateAdminRoute >
             </>
             :
             <>
@@ -73,6 +82,8 @@ const SystemAdminRoute = (props) => {
               <Route path={`${route.systemadmin.departmentList}`} component={DepartmentList} exact strict />
               <Route path={`${route.systemadmin.syetemLog}`} component={SystemLogs} exact strict />
               <Route path={`${route.systemadmin.systemos}`} component={SystemOS} exact strict />
+              <Route path={`${route.systemadmin.userList}`} component={UserList} exact strict />
+              <Route path={`${route.systemadmin.createUser}`} component={CreateUser} exact strict />
             </>
           }
         </AdminNav>

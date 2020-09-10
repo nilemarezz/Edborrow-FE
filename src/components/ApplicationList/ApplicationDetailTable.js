@@ -5,7 +5,6 @@ class ApplicationTable extends React.Component {
   render() {
     const columns = ApplicationDetailColumn()
     const item = this.props.itemList
-    console.log(item)
     return (
       <div style={{ padding: "20px 50px" }}>
 

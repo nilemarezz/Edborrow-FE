@@ -1,0 +1,95 @@
+{
+  "result": "success",
+  "data": [
+      {
+          "userId": "chawisa.game@gmail.com",
+          "Name": "Chawisa Lertaiwattakul",
+          "email": "chawisa.game@gmail.com",
+          "createDate": "2020-08-14T00:45:20.000Z",
+          "userTelNo": "0864142554",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "game.chawisa@gmail.com",
+          "Name": "Chawisa Lertaiwattakul",
+          "email": "game.chawisa@gmail.com",
+          "createDate": "2020-05-03T02:05:01.000Z",
+          "userTelNo": "0944444444",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "kasipan.boss@mail.kmutt.ac.th",
+          "Name": "Kasipan Amornsurakarn",
+          "email": "kasipan.boss@mail.kmutt.ac.th",
+          "createDate": "2020-05-03T08:07:58.000Z",
+          "userTelNo": "191191191191",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "pentorework@gmail.com",
+          "Name": "Mr.tuafat KinJu",
+          "email": "pentorework@gmail.com",
+          "createDate": "2020-09-01T21:32:28.000Z",
+          "userTelNo": "0655348114",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "puwadech.ball@mail.kmutt.ac.th",
+          "Name": "123 123",
+          "email": "puwadech.ball@mail.kmutt.ac.th",
+          "createDate": "2020-05-03T17:28:42.000Z",
+          "userTelNo": "1",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "test123",
+          "Name": "ww ww",
+          "email": "test123",
+          "createDate": "2020-05-03T17:27:38.000Z",
+          "userTelNo": "123",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "wanthanai.jai@mail.kmutt.ac.th",
+          "Name": "tor torrr",
+          "email": "wanthanai.jai@mail.kmutt.ac.th",
+          "createDate": "2020-08-31T09:12:49.000Z",
+          "userTelNo": "0233564532",
+          "roleTag": "Student",
+          "roleId": 10
+      },
+      {
+          "userId": "nilenon@gmail.com",
+          "Name": "Matas Paosriwong",
+          "email": "nilenon@gmail.com",
+          "createDate": "2020-06-20T05:28:39.000Z",
+          "userTelNo": "0999999999",
+          "roleTag": "Advisor",
+          "roleId": 20
+      },
+      {
+          "userId": "testAdvisor",
+          "Name": "Advisor Test",
+          "email": "torebored@gmail.com",
+          "createDate": "2020-05-03T01:34:50.000Z",
+          "userTelNo": "0999999999",
+          "roleTag": "Advisor",
+          "roleId": 20
+      },
+      {
+          "userId": "admin",
+          "Name": "Admin Admin",
+          "email": null,
+          "createDate": "2020-08-23T05:07:41.000Z",
+          "userTelNo": null,
+          "roleTag": "SuperAdmin",
+          "roleId": 99
+      }
+  ]
+}

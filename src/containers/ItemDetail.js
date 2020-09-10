@@ -13,6 +13,7 @@ import * as R from 'ramda'
 import { withRouter } from 'react-router-dom'
 import { route } from '../systemdata/route'
 import { renderImage } from '../utilities/getImage'
+import { AddItemToCart } from "../thunk/Item/AddItemToCart";
 
 const Image = styled.img`
   max-width:90%;
@@ -40,14 +41,12 @@ class ItemDetail extends React.Component {
     this.props.addItemToCart(this.state.item)
   }
   isItemInCart = () => {
-    let item = {
-      itemId: this.state.item.itemId,
-      itemName: this.state.item.itemName,
-      itemImage: this.state.item.itemImage,
-      departmentName: this.state.item.departmentName,
-    };
-    var found = R.contains(item, this.props.cart);
-    return found
+    var found = this.props.cart.findIndex(x => x.itemId === this.state.item.itemId);
+    if (found === -1) {
+      return false
+    } else {
+      return true
+    }
   }
   redirectToCart = () => {
     this.props.history.push(route.user.cart)
@@ -66,9 +65,11 @@ class ItemDetail extends React.Component {
             <Container>
               <Container>
                 <h1>{this.state.item.itemName} </h1>
-                <div style={{ marginLeft: 20 }}>{renderStatus(1)}</div>
+                <div style={{ marginLeft: 20 }}>{renderStatus(this.state.item.itemStatusTag)}</div>
               </Container>
-              <Button variant="contained" color="primary" onClick={() => this.isItemInCart() ? this.redirectToCart() : this.addItem()}>
+              <Button variant="contained" color="primary" disabled={this.state.item.itemStatusTag === "Fixing" ? true : false}
+
+                onClick={() => this.isItemInCart() ? this.redirectToCart() : this.addItem()}>
                 {this.isItemInCart() ? "Cart" : "Add"}
               </Button>
             </Container>
@@ -80,14 +81,15 @@ class ItemDetail extends React.Component {
   }
 }
 export const mapDispatchToProps = (dispatch, ownProps) => ({
-  addItemToCart: async ({ itemId, itemName, itemImage, departmentName }) => {
-    let data = {
-      itemId,
-      itemName,
-      itemImage,
-      departmentName,
-    };
-    dispatch(addItemToCart(data));
+  addItemToCart: async (value) => {
+    dispatch(AddItemToCart({
+      itemId: value.itemId, itemName: value.itemName, itemImage: value.itemImage,
+      departmentId: value.departmentName, date: {
+        from: null,
+        to: null
+      },
+      dateUnavaliable: []
+    }));
   },
 });
 

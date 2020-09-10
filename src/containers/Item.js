@@ -49,7 +49,6 @@ class Item extends React.Component {
     );
     return (
       <>
-        <Title title="Items" />
         <ItemContainer className="item-table-cotainer">
           {/* Close Feature Flag */}
           {/* <AdvanceSearch /> */}

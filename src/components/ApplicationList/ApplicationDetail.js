@@ -23,7 +23,6 @@ const FormContent = styled(Grid)`
 class ApplicationDetail extends React.Component {
 
   render() {
-    console.log(this.props.detail)
     return (
       < StyledPaper >
         <Container>

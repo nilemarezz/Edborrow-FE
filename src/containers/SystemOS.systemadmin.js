@@ -62,7 +62,7 @@ class SystemOS extends React.Component {
     const res = await fetch("http://localhost:3000/api/system/cpudata")
     const data = await res.json()
     this.setState({ memory: data.data.memory })
-    this.intervalID = setTimeout(this.getCPU, 5000);
+    // this.intervalID = setTimeout(this.getCPU, 5000);
 
   }
   render() {

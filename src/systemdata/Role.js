@@ -1,0 +1,1 @@
+export const Role = [{ id: 10, label: "Student" }, { id: 20, label: "Advisor" }, { id: 30, label: "Staff" }]
