@@ -3,7 +3,7 @@ import { ItemTable } from '../../systemdata/Item'
 describe("OptionTable.js", () => {
   describe("ItemColumns()", () => {
     it("should return 7 row", () => {
-      expect(ItemColumns().length).toEqual(7);
+      expect(ItemColumns().length).toEqual(8);
     });
     describe("first row is itemId", () => {
       it("should return itemId", () => {
@@ -27,7 +27,7 @@ describe("OptionTable.js", () => {
     })
     describe("fifth row is itemAvailability", () => {
       it("should return itemAvailability", () => {
-        expect(ItemColumns()[4]['name']).toEqual(ItemTable.itemAvailability.name);
+        expect(ItemColumns()[4]['name']).toEqual(ItemTable.itemStatusTag.name);
       })
     })
     describe("sixth row is itemId", () => {
