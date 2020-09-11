@@ -53,6 +53,7 @@ class CartTable extends React.Component {
   }
   render() {
     const columns = CartColumns(this.redirectToDetailPage, this.deleteItemInCart)
+    console.log(this.props.cart)
     return (
       <Table aria-label="simple table">
 
