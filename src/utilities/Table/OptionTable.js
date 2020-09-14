@@ -38,6 +38,7 @@ export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCart
           : AddItemToCarts(tableMeta.rowData)
       }
       disabled={disable}
+      style={found !== -1 ? { backgroundColor: color.yellow, color: "white" } : { backgroundColor: color.primary, color: "white" }}
     >
       {found !== -1 ? "Cart" : "Add"}
     </Button>

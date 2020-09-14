@@ -40,9 +40,15 @@ export default class DateInputRange extends React.Component {
   render() {
     const { from, to } = this.state;
     const unavaliableData = []
+
     this.props.disabledDate.map(date => {
-      unavaliableData.push(new Date(date))
+      const yesterday = new Date(date.borrowDate)
+      yesterday.setDate(yesterday.getDate() - 1)
+      const tomorrow = new Date(date.returnDate)
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      unavaliableData.push({ after: new Date(yesterday), before: new Date(tomorrow) })
     })
+    console.log(unavaliableData)
     return (
       <div className="InputFromTo" style={{ zIndex: 9999 }}>
         <DayPickerInput
@@ -71,7 +77,7 @@ export default class DateInputRange extends React.Component {
             dayPickerProps={{
               selectedDays: [from, { from, to }],
               modifiers: {
-                disabled: [...unavaliableData, { before: from }]
+                disabled: [...unavaliableData, { before: from }, { before: new Date() }]
               },
               month: from,
               fromMonth: from,
