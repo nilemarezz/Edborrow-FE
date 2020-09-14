@@ -217,7 +217,7 @@ const Nav = (props) => {
       ) : (
           <Link to={route.auth.login} className={classes.link}>
             <MenuItem onClick={handleMenuClose}>
-              <IconButton aria-label="show 11 new notifications" color="inherit">
+              <IconButton aria-label="show 11 new notifications " color="inherit">
                 <ExitToAppIcon />
               </IconButton>
               <p>Login</p>
