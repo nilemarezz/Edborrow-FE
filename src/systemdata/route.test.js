@@ -33,7 +33,9 @@ describe("get instruction correct", () => {
         items: "/systemadmin/items",
         departmentList: "/systemadmin/departmentlist",
         syetemLog: "/systemadmin/systemlog",
-        systemos: "/systemadmin/osdata"
+        systemos: "/systemadmin/osdata",
+        userList: "/systemadmin/userlist",
+        createUser: "/systemadmin/createUser",
       }
     }
     expect(route).toEqual(expectedroute);
