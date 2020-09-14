@@ -1,7 +1,6 @@
 {
   "name": "edorrow-fe",
   "version": "0.1.0",
-  "homepage": "/build",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "1.x",
