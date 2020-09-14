@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import Login from './containers/Login'
 const { store, persistor } = configureStore();
+console.log(`Environment : ${process.env.REACT_APP_ENV}`)
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
