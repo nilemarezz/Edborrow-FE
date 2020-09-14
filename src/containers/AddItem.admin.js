@@ -76,7 +76,7 @@ class AddItem extends React.Component {
 
             <input
               accept="image/*"
-              // style={{ display: "none" }}
+              style={{ display: "none" }}
               id="raised-button-file"
               multiple
               type="file"
