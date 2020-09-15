@@ -147,7 +147,7 @@ const Nav = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to="/user/profile" className={classes.link}>
+      <Link to={route.user.profile} className={classes.link}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
       <Link to={route.user.applicationList} className={classes.link}>

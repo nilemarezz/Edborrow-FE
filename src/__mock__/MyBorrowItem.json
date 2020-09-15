@@ -1,0 +1,30 @@
+{
+  "result": "false",
+  "data": [
+    {
+      "itemId": 1001,
+      "itemName": "Play station 5",
+      "itemImage": null,
+      "itemBorrowingStatusId": 1,
+      "returnDate": "2020-09-22T17:00:00.000Z",
+      "Owner" : "Infrastructure"
+    },
+    {
+      "itemId": 1002,
+      "itemName": "Play station 6",
+      "itemImage": null,
+      "itemBorrowingStatusId": 3,
+      "returnDate": "2020-09-19T17:00:00.000Z",
+      "Owner" : "Matas Paosriwong"
+    },
+    {
+      "itemId": 1003,
+      "itemName": "Play station 7",
+      "itemImage": null,
+      "itemBorrowingStatusId": 6,
+      "returnDate": "2020-09-23T17:00:00.000Z",
+      "Owner" : "Infrastructure"
+    
+    }
+  ]
+}

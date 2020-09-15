@@ -4,7 +4,8 @@ export const route = {
     items: "/user/items",
     cart: "/user/cart",
     applicationList: '/user/applicationlist',
-    itemDetail: '/user/itemdetail'
+    itemDetail: '/user/itemdetail',
+    profile: '/user/profile'
   },
   admin: {
     dashboard: "/admin/dashboard",

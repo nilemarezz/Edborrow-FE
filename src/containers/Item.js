@@ -15,7 +15,10 @@ import {
   OptionItemTable,
   ItemColumns,
 } from "../utilities/Table/OptionTable";
-
+import Button from '@material-ui/core/Button';
+import BookIcon from '@material-ui/icons/Book';
+import Modal from '../components/Modal'
+import MyBorrowTable from '../components/Item/MyBorrowTable'
 const ItemContainer = styled.div`
   padding: 20px;
 `;
@@ -23,6 +26,7 @@ const TableContainer = styled.div`
   margin-top: 10px;
 `;
 class Item extends React.Component {
+  state = { modal: false }
   componentDidMount() {
     this.props.getAllItem();
   }
@@ -38,6 +42,9 @@ class Item extends React.Component {
       variant: 'success',
     });
   }
+  handleClose = () => {
+    this.setState({ modal: false })
+  }
 
   render() {
     const { item } = this.props;
@@ -49,6 +56,13 @@ class Item extends React.Component {
     );
     return (
       <>
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
+
+          <div style={{ marginTop: 20, marginRight: 40 }}>
+            <Button variant="contained" color="primary" onClick={() => this.setState({ modal: true })}>
+              <BookIcon />My Borrow Items</Button>
+          </div>
+        </div>
         <ItemContainer className="item-table-cotainer">
           {/* Close Feature Flag */}
           {/* <AdvanceSearch /> */}
@@ -59,6 +73,11 @@ class Item extends React.Component {
             />
           </TableContainer>
         </ItemContainer>
+        <Modal open={this.state.modal} handleClose={this.handleClose}>
+          <MyBorrowTable
+
+          />
+        </Modal>
       </>
     );
   }

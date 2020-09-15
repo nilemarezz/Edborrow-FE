@@ -11,6 +11,8 @@ import Cart from '../containers/Cart'
 import ApplicationList from '../containers/ApplicationList'
 import { route } from '../systemdata/route'
 import Navbar from '../containers/Nav/Navbar'
+import Profile from '../containers/Profile'
+
 
 const UserRoute = (props) => {
   function PrivateRoute({ children, ...rest }) {
@@ -57,12 +59,16 @@ const UserRoute = (props) => {
             <PrivateRoute path={route.user.applicationList} exact strict>
               <ApplicationList />
             </PrivateRoute>
+            <PrivateRoute path={route.user.profile} exact strict>
+              <Profile />
+            </PrivateRoute>
           </>
           :
           <>
             <Route path={route.user.items} exact strict component={Item} />
             <Route path={route.user.cart} component={Cart} exact strict />
             <Route path={route.user.applicationList} component={ApplicationList} exact strict />
+            <Route path={route.user.profile} component={Profile} exact strict />
           </>
         }
       </Switch>
