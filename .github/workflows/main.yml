@@ -124,6 +124,8 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          REACT_APP_URL: ${{ secrets.REACT_APP_URL }}
+          REACT_APP_ENV: ${{ secrets.REACT_APP_ENV }}
         run: |
           yarn
           CI=false yarn build
