@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import { RefactorDate } from '../data/refactorDate'
 import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { renderStatus } from './renderItemTable'
 export const OptionItemTable = {
   filterType: "textField",
   selectableRowsOnClick: true,
@@ -152,6 +153,11 @@ export const ItemColumns = (deleteItems) => [
     name: ItemTable.placeRoom.name, options: {
       display: false,
     },
+  },
+  {
+    name: "itemStatusId", label: "Status", options: {
+      customBodyRender: (value, tableMeta) => renderStatus(value)
+    }
   },
 
   {
