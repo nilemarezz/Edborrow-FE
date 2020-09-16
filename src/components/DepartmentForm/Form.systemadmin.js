@@ -31,7 +31,7 @@ class Form extends React.Component {
                 fullWidth
                 required
                 value={userId}
-                onChange={(e) => setId(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -42,7 +42,7 @@ class Form extends React.Component {
                 fullWidth
                 required
                 value={firstName}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setSurname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -53,7 +53,7 @@ class Form extends React.Component {
                 fullWidth
                 required
                 value={lastName}
-                onChange={(e) => setSurname(e.target.value)}
+                onChange={(e) => setId(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
