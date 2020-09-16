@@ -22,7 +22,6 @@ export const submitForm = (form, cart) => {
         advisorEmail: form.advisor
       }
     }
-    console.log(summaryForm)
     const sendSuccess = await SendApplicationService(summaryForm);
     if (sendSuccess) {
       dispatch(resetForm())

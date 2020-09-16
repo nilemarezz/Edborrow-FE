@@ -29,7 +29,16 @@ const SystemAdminRoute = (props) => {
           />
         );
       } else {
-        if (props.user.staff === false && props.user.department === false && props.user.admin === false) {
+        if (props.user.admin !== true) {
+          if (props.user.department === true || props.user.staff === true) {
+            return (
+              <Redirect
+                to={{
+                  pathname: route.admin.dashboard,
+                }}
+              />
+            );
+          }
           return (
             <Redirect
               to={{
