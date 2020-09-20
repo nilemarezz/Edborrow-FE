@@ -41,12 +41,12 @@ class SystemOS extends React.Component {
   intervalID;
   state = { ...OSState }
   getSystemData = async () => {
-    const res = await fetch('http://localhost:3000/api/system/systemdata')
+    const res = await fetch('https://edborrow.ga/api/system/systemdata')
     const data = await res.json()
     this.setState({ systemdata: data.data[0] })
   }
   getOSData = async () => {
-    const res = await fetch('http://localhost:3000/api/system/osdata')
+    const res = await fetch('https://edborrow.ga/api/system/osdata')
     const data = await res.json()
     this.setState({ os: data.data })
   }
@@ -59,7 +59,7 @@ class SystemOS extends React.Component {
     clearTimeout(this.intervalID);
   }
   getCPU = async () => {
-    const res = await fetch("http://localhost:3000/api/system/cpudata")
+    const res = await fetch("https://edborrow.ga/api/system/cpudata")
     const data = await res.json()
     this.setState({ memory: data.data.memory })
     // this.intervalID = setTimeout(this.getCPU, 5000);
