@@ -56,8 +56,8 @@ class Item extends React.Component {
     );
     return (
       <>
-        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
-
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 0, justifyContent: 'space-between', alignItems: 'center' }}>
+          <div><Title title="Items" /></div>
           <div style={{ marginTop: 20, marginRight: 40 }}>
             <Button variant="contained" color="primary" onClick={() => this.setState({ modal: true })}>
               <BookIcon />My Borrow Items</Button>
