@@ -88,9 +88,9 @@ class EditItem extends React.Component {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={parseInt(this.props.item.itemStatusId)}
+            value={this.props.item.changeStatus}
             defaultValue={this.props.item.itemStatusId}
-            onChange={(e) => this.props.changeStatusId(e.target.value)}
+            onChange={(e) => this.props.changeStatus(e.target.value)}
             disabled={this.props.disabled}
           >
             {ItemStatusLabel.map(item => {
@@ -100,7 +100,7 @@ class EditItem extends React.Component {
         </FormControl>
         {
           this.props.admin ? <Grid item xs={12} sm={4} style={{ marginTop: 20 }}>
-            <DepartmentForm changeDepartmentId={this.props.changeDepartmentId} />
+            <DepartmentForm changeDepartmentId={this.props.changeDepartmentId} departmentId={this.props.item.departmentId} />
           </Grid> : null}
         <FormControlLabel
           style={{ marginTop: 10 }}

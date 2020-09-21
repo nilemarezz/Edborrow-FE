@@ -43,6 +43,7 @@ export default function Asynchronous(props) {
     }
   }, [open]);
 
+  console.log("department", props.departmentId)
   return (
     <Autocomplete
       id="asynchronous-demo"

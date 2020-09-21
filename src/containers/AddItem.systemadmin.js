@@ -20,6 +20,7 @@ const initailFormState = {
   itemImage: "",
   itemCategoryId: "",
   departmentId: "",
+  changeStatus: ""
 }
 class AddItem extends React.Component {
   constructor(props) {
@@ -32,7 +33,8 @@ class AddItem extends React.Component {
     };
   }
   sendData = () => {
-    const addRes = this.props.addItem(this.state.Form)
+    // const addRes = this.props.addItem(this.state.Form)
+    const addRes = true
     if (addRes) {
       this.props.enqueueSnackbar("Add Item Success", {
         variant: 'success',
@@ -63,6 +65,7 @@ class AddItem extends React.Component {
   render() {
     const { item } = this.props
     this.myRef = React.createRef();
+    console.log(this.state)
     return (
       <>
         <WithLoading loading={item.loading} />
@@ -94,7 +97,7 @@ class AddItem extends React.Component {
               changeModel={(value) => this.setState({ Form: { ...this.state.Form, itemModel: value } })}
               changeBrand={(value) => this.setState({ Form: { ...this.state.Form, itemBrand: value } })}
               changeDescription={(value) => this.setState({ Form: { ...this.state.Form, itemDescription: value } })}
-              changeBorrowable={(value) => this.setState({ Form: { ...this.state.Form, itemBorrowable: value } })}
+              changeStatus={(value) => this.setState({ Form: { ...this.state.Form, changeStatus: value } })}
               changeCategoryId={(value) => this.setState({ Form: { ...this.state.Form, itemCategoryId: value } })}
               changeDepartmentId={(value) => this.setState({ Form: { ...this.state.Form, departmentId: value } })}
               admin={true}
