@@ -60,7 +60,7 @@ class ApplicationDetail extends React.Component {
 
           </ContentContainer>
           <Typography variant="h6" component="h6" style={{ marginTop: 30 }}>
-            Advisor Reject Purpose : {this.props.detail.requestDetail ? this.props.detail.requestDetail[0].rejectPurpose ? this.props.detail.requestDetail.rejectPurpose : "-" : "-"}
+            Advisor Reject Purpose : {this.props.detail.requestDetail ? this.props.detail.requestDetail[0].rejectPurpose ? this.props.detail.requestDetail[0].rejectPurpose : "-" : "-"}
           </Typography>
 
           <Typography variant="h6" component="h6" style={{ marginTop: 30 }}>
