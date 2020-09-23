@@ -48,7 +48,6 @@ export default class DateInputRange extends React.Component {
       tomorrow.setDate(tomorrow.getDate() + 1)
       unavaliableData.push({ after: new Date(yesterday), before: new Date(tomorrow) })
     })
-
     return (
       <div className="InputFromTo" style={{ zIndex: 9999 }}>
         <DayPickerInput
