@@ -49,8 +49,6 @@ export default class DateInputRange extends React.Component {
       unavaliableData.push({ after: new Date(yesterday), before: new Date(tomorrow) })
     })
 
-    console.log(new Date(RefactorDateJS(this.state.from)) < new Date(RefactorDateJS(new Date())))
-
     return (
       <div className="InputFromTo" style={{ zIndex: 9999 }}>
         <DayPickerInput

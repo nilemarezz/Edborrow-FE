@@ -65,7 +65,6 @@ class AddItem extends React.Component {
   render() {
     const { item } = this.props
     this.myRef = React.createRef();
-    console.log(this.state)
     return (
       <>
         <WithLoading loading={item.loading} />
