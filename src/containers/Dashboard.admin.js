@@ -57,9 +57,9 @@ class Dashboard extends React.Component {
               <Grid item xs={12} sm={4}>
                 <RecentItem data={this.props.dashboard.Data.lastestBorrow} />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              {/* <Grid item xs={12} sm={4}>
                 <Doughnut />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} sm={8}>
                 <Barchart data={this.props.dashboard.Data.mostBorrow} />
               </Grid>

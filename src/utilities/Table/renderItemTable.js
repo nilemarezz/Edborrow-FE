@@ -53,10 +53,14 @@ export const renderApproveStatus = (value) => {
     label = ApproveStatus.Approve.label;
     bgcolor = ApproveStatus.Approve.color
     tool = ApproveStatus.Approve.tool
-  } else {
+  } else if (value === ApproveStatus.Reject.id) {
     label = ApproveStatus.Reject.label;
     bgcolor = ApproveStatus.Reject.color
     tool = ApproveStatus.Reject.tool
+  } else {
+    label = ApproveStatus.Expire.label;
+    bgcolor = ApproveStatus.Expire.color
+    tool = ApproveStatus.Expire.tool
   }
   return (
     <Chip
