@@ -33,8 +33,7 @@ class AddItem extends React.Component {
     };
   }
   sendData = () => {
-    // const addRes = this.props.addItem(this.state.Form)
-    const addRes = true
+    const addRes = this.props.addItem(this.state.Form)
     if (addRes) {
       this.props.enqueueSnackbar("Add Item Success", {
         variant: 'success',

@@ -9,7 +9,6 @@ export const AddItemToCart = (value) => {
     dispatch(itemLoading(true));
     const disabled = []
     const disabledRes = await AddItemToCartService(value.itemId);
-    console.log(disabledRes)
     if (disabledRes.result === "false") {
       dispatch(itemLoading(false));
       return false

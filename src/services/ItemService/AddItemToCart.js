@@ -2,7 +2,6 @@ import DisabledDate from '../../__mock__/DisabledDate.json'
 
 const AddItemToCart = async (value) => {
   if (process.env.REACT_APP_ENV === "production") {
-    console.log('production')
     const res = await fetch(`${process.env.REACT_APP_URL}items/getColumn/unavaliable?itemId=${value}`, {
       method: "GET",
       headers: {
