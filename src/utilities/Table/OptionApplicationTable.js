@@ -21,6 +21,7 @@ export const ApplicationColumn = (redirectToDetail) => [
     options: {
       filter: true,
       sort: true,
+      sortDirection: 'asc',
     },
 
   },
@@ -30,7 +31,6 @@ export const ApplicationColumn = (redirectToDetail) => [
     options: {
       filter: true,
       sort: true,
-      sortDirection: 'asc',
       customBodyRender: (value, tableMeta, updateValue) =>
         RefactorDate(value),
     },
