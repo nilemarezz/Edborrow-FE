@@ -15,6 +15,7 @@ export const AddItemToCart = (value) => {
       DisabledDate.data.unAvailable.map((date) => {
         disabled.push({ borrowDate: RefactorDate(date.borrowDate), returnDate: RefactorDate(date.returnDate) })
       })
+
       value.dateUnavaliable = disabled
       await dispatch(addItemToCart(value))
       dispatch(itemLoading(false));

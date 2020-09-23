@@ -51,23 +51,13 @@ class SummaryForm extends React.Component {
                 <TextField id="advisor" label="Advisor" value={form.advisor} fullWidth disabled />
               </Grid>
               <Grid item xs={12} sm={4}>
+                <TextField id="usePlace" label="Use Place" value={form.usePlace} fullWidth disabled />
+              </Grid>
+              <Grid item xs={12} sm={4}>
                 <TextField id="purpose" label="Purpose" variant="outlined" value={form.purpose} fullWidth rows={4} multiline disabled />
               </Grid>
             </FormContent>
           </ContentContainer>
-          <Typography variant="h6" component="h6">
-            Borrow {"&"} Return Date :
-            </Typography>
-          <FormContent container spacing={3}>
-            <Grid item xs={12} sm={5}>
-              <TextField id="borrow date" label="Borrow Date" value={form.borrowDate} fullWidth disabled />
-            </Grid>
-            <span style={{ marginTop: 20 }}> <strong> _ </strong></span>
-            <Grid item xs={12} sm={5}>
-              <TextField id="return date" label="Return Date" value={form.returnDate} fullWidth disabled />
-            </Grid>
-          </FormContent>
-
           <Typography variant="h6" component="h6" style={{ marginTop: 30 }}>
             Items :
             </Typography>

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Helmet from 'react-helmet';
-
+import { RefactorDateJS } from '../../utilities/data/RefactorDateJS'
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
@@ -48,6 +48,9 @@ export default class DateInputRange extends React.Component {
       tomorrow.setDate(tomorrow.getDate() + 1)
       unavaliableData.push({ after: new Date(yesterday), before: new Date(tomorrow) })
     })
+
+    console.log(new Date(RefactorDateJS(this.state.from)) < new Date(RefactorDateJS(new Date())))
+
     return (
       <div className="InputFromTo" style={{ zIndex: 9999 }}>
         <DayPickerInput
@@ -68,15 +71,20 @@ export default class DateInputRange extends React.Component {
         —{' '}
         <span className="InputFromTo-to">
           <DayPickerInput
-
+            inputProps={{ disabled: this.state.from ? false : true }}
             ref={el => (this.to = el)}
             value={this.props.to}
             placeholder="To"
             format="LL"
+
             dayPickerProps={{
               selectedDays: [from, { from, to }],
               modifiers: {
-                disabled: [...unavaliableData, { before: from }, { before: new Date() }]
+                disabled: [
+                  ...unavaliableData,
+                  { before: from }, { before: new Date() },
+                  { after: new Date(new Date(this.state.from).getTime() + (10 * 24 * 60 * 60 * 1000)) },
+                ]
               },
               month: from,
               fromMonth: from,

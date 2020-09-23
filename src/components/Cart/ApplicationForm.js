@@ -62,7 +62,7 @@ class ApplicationForm extends React.Component {
             <Grid item sm={4} xs={12}>
               <AdvisorInput value={advisor} setAdvisor={setAdvisor} />
             </Grid>
-
+            {/* 
             <Grid item sm={4} xs={12}>
               <DarkerDisabledTextField
                 id="outlined-helperText"
@@ -83,7 +83,7 @@ class ApplicationForm extends React.Component {
                 disabled
                 fullWidth
               />
-            </Grid>
+            </Grid> */}
             <Grid item sm={8} xs={12}>
               <DebounceForm label="Purpose" placeholder="Enter your Purpose" value={purpose} setText={setPurpose} rows={4} />
             </Grid>
