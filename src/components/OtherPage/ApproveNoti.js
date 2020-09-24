@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AdvisorRejectPurpose from '../../services/ApplicationService/AdvisorRejectPurpose'
 import { route } from '../../systemdata/route'
-
+import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -90,7 +90,7 @@ const Success = (props) => {
               <ReportProblemOutlinedIcon
                 style={{ width: "50%", height: "50%", color: "#ffc107" }}
               />
-              <h2>You Alraedy Approve this Request </h2>
+              <h2>You Already Approve this Request </h2>
               <Button
                 variant="contained"
                 color="primary"
@@ -103,6 +103,28 @@ const Success = (props) => {
         </Backdrop>
       </div>
     );
+  } else if (props.match.params.type === "expire") {
+    return (
+      <div>
+        <Backdrop className={classes.backdrop} open={true}>
+          <Paper style={{ padding: 20 }}>
+            <center>
+              <QueryBuilderIcon
+                style={{ width: "50%", height: "50%", color: "grey" }}
+              />
+              <h2>This Request was Expried</h2>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => props.history.push(route.home)}
+              >
+                Home
+              </Button>
+            </center>
+          </Paper>
+        </Backdrop>
+      </div>
+    )
   } else {
     return (
       <div>
