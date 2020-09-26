@@ -11,10 +11,20 @@ export const RejectApproveStatus = (text, itemId, requestId, value) => {
 
     })
     if (data === "true") {
-      dispatch(loadingApplicationList(false));
+      setTimeout(
+        () => {
+
+          dispatch(loadingApplicationList(false));
+
+        }, 1500)
       return true
     } else {
-      dispatch(loadingApplicationList(false));
+      setTimeout(
+        () => {
+
+          dispatch(loadingApplicationList(false));
+
+        }, 1500)
       return false
     }
   };

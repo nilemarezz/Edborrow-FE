@@ -9,6 +9,7 @@ import AddDepartment from './DepartmentList.systemadmin'
 import ItemsSystemAdmin from './Items.systemadmin'
 import Dashboard from './Dashboard.admin'
 import UserList from './User.systemadmin'
+import WebConfig from './WebConfig'
 
 export default combineReducers({
   User: UserReducer,
@@ -20,6 +21,7 @@ export default combineReducers({
   SYSTEM_ADMIN_Department: AddDepartment,
   SYSTEM_ADMIN_Items: ItemsSystemAdmin,
   Dashboard: Dashboard,
-  SYSTEM_ADMIN_UserList: UserList
+  SYSTEM_ADMIN_UserList: UserList,
+  WEB_CONFIG: WebConfig
 
 });

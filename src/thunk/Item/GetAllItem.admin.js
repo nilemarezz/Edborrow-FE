@@ -6,11 +6,17 @@ export const GetAllItemThunk = () => {
     dispatch(itemLoading(true));
     const items = await GetAllItemService();
     if (items.result === "false") {
-      console.error('Cannot connect to server')
-      dispatch(itemLoading(false));
+      setTimeout(
+        () => {
+          console.error('Cannot connect to server')
+          dispatch(itemLoading(false));
+        }, 1500)
     } else {
-      dispatch(getAllItems(items.data));
-      dispatch(itemLoading(false));
+      setTimeout(
+        () => {
+          dispatch(getAllItems(items.data));
+          dispatch(itemLoading(false));
+        }, 1500)
     }
   };
 };

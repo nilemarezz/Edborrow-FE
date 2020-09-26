@@ -23,7 +23,7 @@ const ItemContainer = styled.div`
   padding: 20px;
 `;
 const TableContainer = styled.div`
-  margin-top: 10px;
+  margin-top: 0px;
 `;
 class Item extends React.Component {
   state = { modal: false }
@@ -56,7 +56,7 @@ class Item extends React.Component {
     );
     return (
       <>
-        <div style={{ display: "flex", flexDirection: "row", lineHeight: 0, justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 0, justifyContent: 'space-between', alignItems: 'center', marginTop: 40 }}>
           <div><Title title="Items" /></div>
           <div style={{ marginTop: 20, marginRight: 40 }}>
             <Button variant="contained" color="primary" onClick={() => this.setState({ modal: true })}>
@@ -75,7 +75,7 @@ class Item extends React.Component {
         </ItemContainer>
         <Modal open={this.state.modal} handleClose={this.handleClose}>
           <MyBorrowTable
-
+            darkmode={this.props.theme}
           />
         </Modal>
       </>
@@ -84,7 +84,7 @@ class Item extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { item: state.Item };
+  return { item: state.Item, theme: state.WEB_CONFIG.darkmode };
 };
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   addItemToCart: async (item) => {

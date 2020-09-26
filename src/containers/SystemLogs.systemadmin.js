@@ -24,14 +24,14 @@ class SystemLogs extends React.Component {
   render() {
     const columns = LogsColumn()
     return (
-      <>
+      <div style={{ marginTop: '8%' }}>
         <MUIDataTable
           title="Logs"
           data={this.state.data}
           columns={columns}
           options={OptionLogsTable}
         />
-      </>
+      </div>
     )
   }
 }

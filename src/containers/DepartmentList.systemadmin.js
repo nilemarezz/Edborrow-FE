@@ -50,7 +50,7 @@ class DeparmentList extends React.Component {
   render() {
     const columns = DepartmentTable(this.handleModalOpen)
     return (
-      <>
+      <div style={{ marginTop: '5%' }}>
         <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ marginTop: -20, marginLeft: -37 }}>
             <Title title="Departments" />
@@ -60,16 +60,18 @@ class DeparmentList extends React.Component {
               <AddIcon />Department</Button>
           </div>
         </div>
-        <MUIDataTable
-          data={this.props.department.departmentList}
-          columns={columns}
-          options={OptionDrpartmentTable}
-        />
+        <div style={{ marginTop: 20 }}>
+          <MUIDataTable
+            data={this.props.department.departmentList}
+            columns={columns}
+            options={OptionDrpartmentTable}
+          />
+        </div>
         <Modal open={this.state.modal}>
           <ConfirmModal onDelete={this.deleteDepartment} cancel={this.handleModalClose} />
 
         </Modal>
-      </>
+      </div>
     )
   }
 }

@@ -8,8 +8,13 @@ export const ChangeBorrowingStatus = (itemId, requestId, value) => {
       itemId: itemId,
       itemBorrowingStatusId: value
     })
-    dispatch(changeBorrowingStatus({ itemId, requestId, value }))
-    dispatch(loadingApplicationList(false));
+    setTimeout(
+      () => {
+
+        dispatch(changeBorrowingStatus({ itemId, requestId, value }))
+        dispatch(loadingApplicationList(false));
+
+      }, 1500)
     return true
   };
 };

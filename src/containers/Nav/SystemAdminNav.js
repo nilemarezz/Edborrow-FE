@@ -23,6 +23,8 @@ import ListIcon from '@material-ui/icons/List';
 import PermDataSettingIcon from '@material-ui/icons/PermDataSetting';
 import ComputerIcon from '@material-ui/icons/Computer';
 import PersonIcon from '@material-ui/icons/Person';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const drawerWidth = 240;
 
@@ -47,6 +49,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  bottomPush: {
+    position: "fixed",
+    bottom: 0,
+    textAlign: "center",
+    paddingBottom: 10,
+    marginLeft: 20
+  }
 }));
 
 const SystemAdmin = (props) => {
@@ -109,6 +118,20 @@ const SystemAdmin = (props) => {
             </ListItem>
           </List>
           <Divider />
+          <div className={classes.bottomPush}>
+            <FormControlLabel
+              style={{ justifyContent: "center", alignItems: 'center' }}
+              control={
+                <Switch
+                  checked={props.darkmode}
+                  onChange={(e) => props.changeTheme(e)}
+                  name="checkedB"
+                  color="secondary"
+                />
+              }
+              label="Dark Mode"
+            />
+          </div>
         </div>
       </Drawer>
       <main className={classes.content}>
@@ -123,9 +146,12 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     clearToken();
     dispatch(logoutSuccess());
   },
+  changeTheme: async (e) => {
+    dispatch({ type: "CHANGE_THEME", payload: e.target.checked });
+  }
 });
 
 export const mapStateToProps = (state) => {
-  return { user: state.User }
+  return { user: state.User, darkmode: state.WEB_CONFIG.darkmode }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SystemAdmin))

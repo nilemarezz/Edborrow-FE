@@ -18,6 +18,7 @@ import Title from '../components/Title'
 import UserDetailService from '../services/UserService/UserDetail'
 import { getToken } from '../utilities/check/checkToken'
 import { setFormID, setFormSurname, setFormName } from '../actions/ApplicationFormAction'
+import Typography from '@material-ui/core/Typography';
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -81,7 +82,7 @@ const Cart = (props) => {
     setModalConfirm(false)
   }
   return (
-    <>
+    <div style={{ marginTop: '6%' }}>
       <WithLoading loading={props.form.loading} />
       <Title title="Cart" />
       <Container>
@@ -116,13 +117,15 @@ const Cart = (props) => {
           </div>
         </ButtonContainer>
         <Modal open={modalConfirm} >
-          <h2 style={{ textAlign: 'center' }}> Confirm Application?</h2>
+          <Typography variant="h4" component="h4" gutterBottom>
+            Confirm Sending ?
+      </Typography>
           <p>The Application will send to the Advisor that you enter in the form.</p>
-          <Button variant="contained" color="primary" onClick={() => submitForm()} >Confirm</Button>
-          <Button variant="contained" onClick={() => closeModal()} style={{ marginLeft: 10 }}>Cancel</Button>
+          <Button variant="contained" color="primary" onClick={() => submitForm()} style={{ marginTop: 20 }} >Confirm</Button>
+          <Button variant="contained" onClick={() => closeModal()} style={{ marginLeft: 10, marginTop: 20 }}>Cancel</Button>
         </Modal>
       </Container>
-    </>
+    </div>
 
   );
 }

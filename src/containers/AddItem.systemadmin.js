@@ -65,7 +65,7 @@ class AddItem extends React.Component {
     const { item } = this.props
     this.myRef = React.createRef();
     return (
-      <>
+      <div style={{ marginTop: '8%' }}>
         <WithLoading loading={item.loading} />
         <div style={{ marginTop: -20, }}>
           <Title title={`Add Item`} />
@@ -102,7 +102,7 @@ class AddItem extends React.Component {
             />
           </Grid>
         </Grid>
-      </>
+      </div>
     )
   }
 }

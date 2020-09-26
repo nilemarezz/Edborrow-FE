@@ -25,13 +25,22 @@ import HandleRedirect from './routes/HandleRedirect'
 import ItemDetail from './containers/ItemDetail.admin'
 import AdminDetail from './routes/DetailRoute.admin'
 import SystemAdminRoute from './routes/AdminRoute.systemadmin'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
 };
 const notistackRef = React.createRef();
 
 const App = (props) => {
+  const darkTheme = createMuiTheme({
+    palette: {
+      type: props.webConfig.darkmode ? "dark" : "light",
 
+    },
+
+
+  })
   const checkUser = async () => {
     if (checkToken()) {
       const user = await props.UserDetailThunk({ token: getToken(), type: "login" });
@@ -44,35 +53,37 @@ const App = (props) => {
     checkUser()
   }, []);
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <SnackbarProvider
-        ref={notistackRef}
-        action={(key) => <Button onClick={onClickDismiss(key)}>Dismiss</Button>}
-      >
-        <WithLoading loading={props.user.loading} />
-        <Router>
-          <MockNav />
-          <Switch>
-            <Route path="/" component={HandleRedirect} exact strict />
-            <Route path="/login" component={Login} exact strict />
-            <Route path="/register" component={Register} exact strict />
-            <Route path="/user/:section" component={UserRoute} exact strict />
-            <Route path="/admin/:section" component={AdminRoute} exact strict />
-            <Route path="/detail/:section/:id" component={DetailRoute} exact strict />
-            <Route path="/admin/detail/:section/:id" component={AdminDetail} exact strict />
-            <Route path="/systemadmin/:section" component={SystemAdminRoute} exact strict />
-            <Route path="/approve/type/:type" component={ApproveNoti} exact strict />
-            <Route component={ErrorPage} />
-          </Switch>
-        </Router>
-      </SnackbarProvider>
-    </MuiPickersUtilsProvider>
+    <ThemeProvider theme={darkTheme}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <SnackbarProvider
+          ref={notistackRef}
+          action={(key) => <Button onClick={onClickDismiss(key)}>Dismiss</Button>}
+        >
+          <WithLoading loading={props.user.loading} />
+          <Router>
+            {/* <MockNav /> */}
+            <Switch>
+              <Route path="/" component={HandleRedirect} exact strict />
+              <Route path="/login" component={Login} exact strict />
+              <Route path="/register" component={Register} exact strict />
+              <Route path="/user/:section" component={UserRoute} exact strict />
+              <Route path="/admin/:section" component={AdminRoute} exact strict />
+              <Route path="/detail/:section/:id" component={DetailRoute} exact strict />
+              <Route path="/admin/detail/:section/:id" component={AdminDetail} exact strict />
+              <Route path="/systemadmin/:section" component={SystemAdminRoute} exact strict />
+              <Route path="/approve/type/:type" component={ApproveNoti} exact strict />
+              <Route component={ErrorPage} />
+            </Switch>
+          </Router>
+        </SnackbarProvider>
+      </MuiPickersUtilsProvider>
+    </ThemeProvider>
   );
 };
 
 
 const mapStateToProps = (state) => {
-  return { user: state.User };
+  return { user: state.User, webConfig: state.WEB_CONFIG };
 };
 
 export default connect(mapStateToProps, { UserDetailThunk })(App);

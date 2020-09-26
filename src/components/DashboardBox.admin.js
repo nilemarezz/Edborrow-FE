@@ -16,10 +16,13 @@ const Content = styled.div`
 const Title = styled.p`
   border-left : 2px solid ${props => props.color};
   padding-left:10px;
+  margin-top:10px;
+  
 `
 const Value = styled.p`
   font-size:40px;
   line-height:0;
+  margin-top:30px;
 `
 const IconContainer = styled.div`
   display:flex;

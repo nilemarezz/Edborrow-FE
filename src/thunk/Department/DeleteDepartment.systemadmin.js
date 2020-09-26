@@ -5,11 +5,19 @@ export const DeleteDepartmnet = ({ departmentId, userId }) => {
     dispatch(loadingDepartmentList(true));
     const isSuccess = await DeleteDepartment(userId, departmentId)
     if (isSuccess) {
-      dispatch(deleteDepartment(departmentId))
-      dispatch(loadingDepartmentList(false));
+      setTimeout(
+        () => {
+          dispatch(deleteDepartment(departmentId))
+          dispatch(loadingDepartmentList(false));
+
+        }, 1500)
       return true
     } else {
-      dispatch(loadingDepartmentList(false));
+      setTimeout(
+        () => {
+          dispatch(loadingDepartmentList(false));
+
+        }, 1500)
       return false
     }
   }

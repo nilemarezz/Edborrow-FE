@@ -6,15 +6,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Fab from "@material-ui/core/Fab";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link, withRouter } from "react-router-dom";
@@ -23,13 +20,18 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Button from "@material-ui/core/Button";
 import { useSnackbar } from "notistack";
 import { logoutSuccess } from "../../actions/UserAction";
-import AddIcon from "@material-ui/icons/Add";
 import HelpIcon from "@material-ui/icons/Help";
 import Modal from "../../components/Modal";
 import { instruction } from '../../systemdata/instruction'
 import { clearToken } from '../../utilities/check/checkToken'
 import { route } from '../../systemdata/route'
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import styled from 'styled-components'
 
+const StyledMenuItem = styled(MenuItem)`
+  color : ${props => props.darkmode ? "white" : "black"};
+`
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
@@ -73,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: "none",
-    color: "black",
   },
 }));
 
@@ -148,15 +149,15 @@ const Nav = (props) => {
       onClose={handleMenuClose}
     >
       <Link to={route.user.profile} className={classes.link}>
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+        <StyledMenuItem darkmode={props.WEB_CONFIG.darkmode} onClick={handleMenuClose}>Profile</StyledMenuItem>
       </Link>
       <Link to={route.user.applicationList} className={classes.link}>
-        <MenuItem onClick={handleMenuClose}>Request</MenuItem>
+        <StyledMenuItem darkmode={props.WEB_CONFIG.darkmode} onClick={handleMenuClose}>Request</StyledMenuItem>
       </Link>
 
       {props.User.department === true || props.User.staff === true ?
         <Link to={route.admin.dashboard} className={classes.link}>
-          <MenuItem onClick={handleMenuClose}>Dashboard</MenuItem>
+          <StyledMenuItem darkmode={props.WEB_CONFIG.darkmode} onClick={handleMenuClose}>Profile</StyledMenuItem>
         </Link> : null}
       <MenuItem
         onClick={() => {
@@ -183,15 +184,7 @@ const Nav = (props) => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <Link to={route.user.cart} style={{ textDecoration: "none", color: "black" }}>
+      <Link to={route.user.cart} style={{ textDecoration: "none" }}>
         <MenuItem onClick={handleMenuClose}>
           <IconButton aria-label="show 11 new notifications" color="inherit">
             <Badge badgeContent={props.Item.Cart.length} color="secondary">
@@ -202,6 +195,22 @@ const Nav = (props) => {
           <p>Cart</p>
         </MenuItem>
       </Link>
+
+
+      <MenuItem onClick={handleMenuClose}>
+        <FormControlLabel
+          style={{ justifyContent: "center" }}
+          control={
+            <Switch
+              checked={props.WEB_CONFIG.darkmode}
+              onChange={(e) => props.changeTheme(e)}
+              name="checkedB"
+              color="secondary"
+            />
+          }
+          label="Dark Mode"
+        />
+      </MenuItem>
       {localStorage.getItem("userToken") ? (
         <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton
@@ -240,7 +249,18 @@ const Nav = (props) => {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* Item menu bar on desktop */}
-
+            <FormControlLabel
+              style={{ justifyContent: "center" }}
+              control={
+                <Switch
+                  checked={props.WEB_CONFIG.darkmode}
+                  onChange={(e) => props.changeTheme(e)}
+                  name="checkedB"
+                  color="secondary"
+                />
+              }
+              label="Dark Mode"
+            />
             <IconButton
               aria-label="add"
               color="inherit"
@@ -248,11 +268,6 @@ const Nav = (props) => {
             >
               <HelpIcon />
             </IconButton>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
             <Link to={route.user.cart} style={{ textDecoration: "none", color: "white" }}>
               <IconButton
                 aria-label="show 17 new notifications"
@@ -339,5 +354,8 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     clearToken();
     dispatch(logoutSuccess());
   },
+  changeTheme: async (e) => {
+    dispatch({ type: "CHANGE_THEME", payload: e.target.checked });
+  }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Nav));

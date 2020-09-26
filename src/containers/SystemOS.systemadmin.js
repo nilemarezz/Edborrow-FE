@@ -70,7 +70,7 @@ class SystemOS extends React.Component {
     const { arch, type, uptime, hostname, homedir, tmpdir } = this.state.os
 
     return (
-      <>
+      <div style={{ marginTop: '8%' }}>
         <Grid container spacing={3}>
           <Grid item xs={4} sm={4}>
             <DashboardBox title="Items" unit="items" color={color.blue} icon={<LibraryBooksIcon style={{ width: 50, height: 50, color: 'white' }} />} value={Items} />
@@ -89,7 +89,7 @@ class SystemOS extends React.Component {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           <Grid item xs={7} sm={7}>
             <Line data={data} height={120} />
           </Grid>
@@ -106,10 +106,10 @@ class SystemOS extends React.Component {
           </Grid>
         </Grid>
         <h2>Memory : 333 / 900</h2>
-        <LinearProgress variant="determinate" value={85} style={{ marginTop: 20, height: 20, borderRadius: 10 }} />
+        <LinearProgress variant="determinate" value={85} style={{ marginTop: 20, height: 20, borderRadius: 10 }} /> */}
 
 
-      </>
+      </div>
     )
   }
 }

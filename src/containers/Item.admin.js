@@ -64,7 +64,7 @@ class Item extends React.Component {
     const columns = ItemColumns(this.props.user.department, this.handleModalOpen)
     return (
       <>
-        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center', marginTop: '4%' }}>
           <div style={{ marginTop: -20, }}>
             <Title title="Items" />
           </div>

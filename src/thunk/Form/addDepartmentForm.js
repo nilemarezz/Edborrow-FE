@@ -5,13 +5,20 @@ export const AddDepartment = (value) => {
     dispatch(loadingSubmitForm(true));
     const sentData = await AddDepartmentService(value)
     if (sentData === true) {
-      dispatch(sendDepartmentForm())
+      setTimeout(
+        () => {
+          dispatch(sendDepartmentForm())
 
-      dispatch(resetForm())
-      dispatch(loadingSubmitForm(false));
+          dispatch(resetForm())
+          dispatch(loadingSubmitForm(false));
+        }, 1500)
       return true
     } else {
-      dispatch(loadingSubmitForm(false));
+      setTimeout(
+        () => {
+          dispatch(loadingSubmitForm(false));
+
+        }, 1500)
       return false
     }
   }

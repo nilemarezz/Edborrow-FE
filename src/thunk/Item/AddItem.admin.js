@@ -20,9 +20,13 @@ export const AddItemThunk = (value) => {
     formData.append("departmentId", value.departmentId === "" ? null : value.departmentId);
     const add = await AddItemService(formData);
     if (add === false) {
-      console.error('Cannot connect to server')
-      dispatch(itemLoading(false));
+      setTimeout(
+        () => {
+          dispatch(itemLoading(false));
+
+        }, 1500)
       return false
+
     } else {
       dispatch(itemLoading(false));
       return true

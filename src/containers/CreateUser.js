@@ -39,7 +39,7 @@ class AddDepartment extends React.Component {
   }
   render() {
     return (
-      <>
+      <div style={{ marginTop: "8%" }}>
         <div style={{ marginTop: -30 }}>
           <div style={{ marginLeft: -37 }}>
             <Title title="Add Users" />
@@ -54,7 +54,7 @@ class AddDepartment extends React.Component {
             setRole={(value) => this.setState({ role: value })}
           />
         </div>
-      </>
+      </div>
     )
   }
 }

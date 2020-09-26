@@ -11,8 +11,11 @@ export const LoginThunk = (data) => {
     try {
       const login = await LoginService(data);
       if (login.result === "false") {
-        dispatch(userLoginFail(false));
-        dispatch(loginLoading(false));
+        setTimeout(
+          () => {
+            dispatch(userLoginFail(false));
+            dispatch(loginLoading(false));
+          }, 1500)
       } else {
         const data = {
           userToken: login.accessToken,
@@ -23,14 +26,22 @@ export const LoginThunk = (data) => {
           department: login.department,
           student: login.student
         };
-
-        dispatch(loginLoading(false));
         dispatch(userLoginSuccess(data));
         setToken(login.accessToken);
+        setTimeout(
+          () => {
+            dispatch(loginLoading(false));
+
+
+          }, 1500)
         return data;
       }
     } catch (err) {
-      dispatch(loginLoading(false));
+      setTimeout(
+        () => {
+          dispatch(loginLoading(false));
+
+        }, 1500)
       return false
 
     }

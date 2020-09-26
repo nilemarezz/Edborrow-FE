@@ -65,6 +65,7 @@ export default function Asynchronous(props) {
       }}
       renderInput={(params) => (
         <TextField
+          style={{ width: '85%' }}
           {...params}
           placeholder="Select your advisor"
           label="Advisor"

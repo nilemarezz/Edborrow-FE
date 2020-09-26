@@ -52,7 +52,7 @@ class ApplicationList extends React.Component {
     const options = ApplicationOptions()
     const columns = ApplicationColumn(this.openConfirmModal, this.changeBorrowingStatus)
     return (
-      <>
+      <div style={{ marginTop: '5%' }}>
         <WithLoading loading={this.props.loading} />
         <MUIDataTable
           title={"Request List"}
@@ -67,7 +67,7 @@ class ApplicationList extends React.Component {
             handleClose={this.handleClose}
           />
         </Modal>
-      </>
+      </div>
     )
   }
 }
