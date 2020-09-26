@@ -91,7 +91,7 @@ class ItemDetail extends React.Component {
     const { item } = this.props
     this.myRef = React.createRef();
     return (
-      <>
+      <div style={{ marginTop: '5%' }}>
         <WithLoading loading={item.loading} />
         <div style={{ marginTop: -20, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
           <div>
@@ -143,7 +143,7 @@ class ItemDetail extends React.Component {
             />
           </Grid>
         </Grid>
-      </>
+      </div>
     )
   }
 }
@@ -156,7 +156,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(GetItemDetail(value));
   },
   editItem: async (value) => {
-    const isEditSuccess = dispatch(EditItemThunk(value))
+    const isEditSuccess = await dispatch(EditItemThunk(value))
     return isEditSuccess
 
   },

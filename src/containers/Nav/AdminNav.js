@@ -22,7 +22,9 @@ import { clearToken } from '../../utilities/check/checkToken'
 import { useSnackbar } from "notistack";
 import { connect } from 'react-redux'
 import Chip from '@material-ui/core/Chip';
-
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import styled from 'styled-components'
 
 const drawerWidth = 240;
 
@@ -47,6 +49,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  bottomPush: {
+    position: "fixed",
+    bottom: 0,
+    textAlign: "center",
+    paddingBottom: 10,
+    marginLeft: 20
+  }
 }));
 
 const AdminNav = (props) => {
@@ -72,6 +81,7 @@ const AdminNav = (props) => {
             Edborrow
           </Typography>
         </Toolbar>
+
       </AppBar>
       <Drawer
         className={classes.drawer}
@@ -106,8 +116,24 @@ const AdminNav = (props) => {
               <ListItemIcon><ExitToAppIcon /> </ListItemIcon>
               <ListItemText primary={"Logout"} />
             </ListItem>
+
+
           </List>
           <Divider />
+          <div className={classes.bottomPush}>
+            <FormControlLabel
+              style={{ justifyContent: "center", alignItems: 'center' }}
+              control={
+                <Switch
+                  checked={props.darkmode}
+                  onChange={(e) => props.changeTheme(e)}
+                  name="checkedB"
+                  color="secondary"
+                />
+              }
+              label="Dark Mode"
+            />
+          </div>
         </div>
       </Drawer>
       <main className={classes.content}>
@@ -122,9 +148,12 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     clearToken();
     dispatch(logoutSuccess());
   },
+  changeTheme: async (e) => {
+    dispatch({ type: "CHANGE_THEME", payload: e.target.checked });
+  }
 });
 
 export const mapStateToProps = (state) => {
-  return { user: state.User, dashboard: state.Dashboard.Data }
+  return { user: state.User, dashboard: state.Dashboard.Data, darkmode: state.WEB_CONFIG.darkmode }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminNav))

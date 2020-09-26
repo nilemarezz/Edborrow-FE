@@ -19,6 +19,7 @@ const theme = createMuiTheme({
     MuiTableCell: {
       root: {  //This can be referred from Material UI API documentation. 
         padding: '4px 8px',
+        margin: '20px'
       },
     },
   },
@@ -35,23 +36,27 @@ const ModalDiv = styled.div`
   `}
 `
 const HelpBox = styled.div`
-  border: 1px solid black ;  
-  float: right; 
+
+  float : right;
   display: flex ;  
-  flex-direction: column;
-  line-height: 0.2px;
+  flex-direction: row;
+  line-height: 1px;
 `
 const HelpContainer = styled.div`
   display: flex;
   flex-direction: row; 
   align-items: center;
   padding: 0px 10px;
+  margin-top : 20px;
 `
 const Status = styled.div`
   border-radius: 50%;
   width: 8px; 
   height: 8px;
   background-color: ${props => props.color};
+`
+const Text = styled.p`
+  color : ${props => props.darkmode ? "white" : "black"};
 `
 class MyBorrowTable extends React.Component {
   state = { items: [], loading: false }
@@ -79,6 +84,7 @@ class MyBorrowTable extends React.Component {
     }
   }
   render() {
+
     if (this.state.items.length === 0) {
       return (
         <ModalDiv isLoading={true}>
@@ -88,7 +94,7 @@ class MyBorrowTable extends React.Component {
     } else {
       return (
         <ModalDiv >
-          <HelpBox>
+          <HelpBox darkmode={this.props.darkmode}>
             <HelpContainer >
               <Status color={color.darkgrey}></Status>
               <p style={{ marginLeft: 10 }}>Not Pickup yet</p>
@@ -104,24 +110,24 @@ class MyBorrowTable extends React.Component {
           </HelpBox>
           <ThemeProvider theme={theme}>
             <TableContainer style={{ height: 600 }}>
-              <Table aria-label="simple table">
+              <Table aria-label="simple table" style={{ marginTop: 20 }}>
                 <TableHead>
                   <TableRow>
                     <TableCell padding='default'></TableCell>
-                    <TableCell padding='default'>Name</TableCell>
-                    <TableCell padding='default'>Image</TableCell>
-                    <TableCell padding='default'>Owner</TableCell>
-                    <TableCell padding='default'>Return date</TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Name</Text></TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Image</Text></TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Owner</Text></TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Return date</Text></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {this.state.items.map((row) => (
                     <TableRow key={row.itemId}>
                       <TableCell><Status color={this.checkStatus(row.itemBorrowingStatusId)} /></TableCell>
-                      <TableCell>{row.itemName}</TableCell>
+                      <TableCell><Text darkmode={this.props.darkmode}>{row.itemName}</Text></TableCell>
                       <TableCell><img src={renderImage(row.itemImage)} alt={row.itemName} width={50} height={50} /></TableCell>
-                      <TableCell>{row.Owner}</TableCell>
-                      <TableCell>{RefactorDate(row.returnDate)}</TableCell>
+                      <TableCell><Text darkmode={this.props.darkmode}>{row.Owner}</Text></TableCell>
+                      <TableCell><Text darkmode={this.props.darkmode}>{RefactorDate(row.returnDate)}</Text></TableCell>
 
                     </TableRow>
                   ))}

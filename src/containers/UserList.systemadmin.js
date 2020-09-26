@@ -79,7 +79,7 @@ class UserList extends React.Component {
   }
   render() {
     return (
-      <>
+      <div style={{ marginTop: '5%' }}>
         <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ marginTop: -20, marginLeft: -37 }}>
             <Title title="Users" />
@@ -89,16 +89,18 @@ class UserList extends React.Component {
               <AddIcon />User</Button>
           </div>
         </div>
-        <MUIDataTable
-          data={this.props.user.userList}
-          columns={column(this.handleModalOpen)}
-          options={options}
-        />
+        <div style={{ marginTop: 20 }}>
+          <MUIDataTable
+            data={this.props.user.userList}
+            columns={column(this.handleModalOpen)}
+            options={options}
+          />
+        </div>
         <Modal open={this.state.modal}>
           <ConfirmModal onDelete={this.deleteUser} cancel={this.handleModalClose} />
 
         </Modal>
-      </>
+      </div>
     )
   }
 }

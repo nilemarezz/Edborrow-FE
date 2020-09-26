@@ -54,7 +54,7 @@ class ItemDetail extends React.Component {
   render() {
     const id = this.props.match.params.id
     return (
-      <>
+      <div style={{ marginTop: '8%' }}>
         <WithLoading loading={this.state.loading} />
         <Title title={`Item ID : ${id}`} />
         <Grid container style={{ padding: '0px 30px' }}>
@@ -76,7 +76,7 @@ class ItemDetail extends React.Component {
             <Accordion item={this.state.item} />
           </Grid>
         </Grid>
-      </>
+      </div>
     )
   }
 }

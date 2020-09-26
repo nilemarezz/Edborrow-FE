@@ -22,10 +22,18 @@ export const EditItemThunk = (value) => {
     try {
       const edit = await EditItemService(formData);
       if (edit === false) {
-        dispatch(itemLoading(false));
+        setTimeout(
+          () => {
+            dispatch(itemLoading(false));
+
+          }, 1500)
         return false
       } else {
-        dispatch(itemLoading(false));
+        setTimeout(
+          () => {
+            dispatch(itemLoading(false));
+
+          }, 1500)
         return true
       }
     } catch (err) {

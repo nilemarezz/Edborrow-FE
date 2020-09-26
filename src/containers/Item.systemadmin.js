@@ -52,7 +52,7 @@ class Items extends React.Component {
     const columns = ItemColumns(this.handleModalOpen)
     return (
       <>
-        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: "flex", flexDirection: "row", lineHeight: 2, justifyContent: 'space-between', alignItems: 'center', marginTop: '5%' }}>
           <div style={{ marginTop: -20, marginLeft: -37 }}>
             <Title title="Items" />
           </div>
@@ -62,12 +62,14 @@ class Items extends React.Component {
           </div>
         </div>
         <WithLoading loading={this.props.loading} />
-        <MUIDataTable
-          title={"Items"}
-          columns={columns}
-          data={this.props.items}
-          options={OptionItemTable}
-        />
+        <div style={{ marginTop: 20 }}>
+          <MUIDataTable
+            columns={columns}
+            data={this.props.items}
+            options={OptionItemTable}
+
+          />
+        </div>
         <Modal open={this.state.modal}>
 
           <ConfirmModal onDelete={this.deleteItem} cancel={this.handleModalClose} />

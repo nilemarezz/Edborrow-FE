@@ -24,12 +24,20 @@ export const submitForm = (form, cart) => {
     }
     const sendSuccess = await SendApplicationService(summaryForm);
     if (sendSuccess) {
-      dispatch(resetForm())
-      dispatch(clearCart())
-      dispatch(loadingSubmitForm(false));
+      setTimeout(
+        () => {
+          dispatch(resetForm())
+          dispatch(clearCart())
+          dispatch(loadingSubmitForm(false));
+
+        }, 1500)
       return true
     } else {
-      dispatch(loadingSubmitForm(false));
+      setTimeout(
+        () => {
+          dispatch(loadingSubmitForm(false));
+
+        }, 1500)
       return false
     }
   };

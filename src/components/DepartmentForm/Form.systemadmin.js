@@ -21,7 +21,7 @@ class Form extends React.Component {
     return (
       <Paper style={{ padding: '10px 20px' }}>
         <h2>User Information</h2>
-        <form onSubmit={this.onSubmit} autocomplete="off">
+        <form onSubmit={this.onSubmit} autocomplete="off" style={{ marginTop: 20 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -69,8 +69,8 @@ class Form extends React.Component {
               </FormControl>
             </Grid>
           </Grid>
-          <h2>Department Information</h2>
-          <Grid container spacing={3}>
+          <h2 style={{ marginTop: 20 }}>Department Information</h2>
+          <Grid container spacing={3} style={{ marginTop: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="outlined-helperText"
@@ -146,7 +146,7 @@ class Form extends React.Component {
           </Button>
           </div>
         </form>
-      </Paper>
+      </Paper >
     )
   }
 }

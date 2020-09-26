@@ -17,7 +17,7 @@ class ApplicationList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: '8%' }}>
         <WithLoading loading={this.props.applicationList.loading} />
         <Title title="Request" />
         <ApplicationTable applicationList={this.props.applicationList.applicationList} redirectToDetailPage={this.redirectToDetailPage} />

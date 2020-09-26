@@ -23,9 +23,9 @@ class Form extends React.Component {
     let { userId, firstName, lastName, password, email, telNo, role } = this.props.data
     let { setuserId, setfirstName, setlastName, setEmail, setpassword, settelNo, setRole } = this.props
     return (
-      <Paper style={{ padding: '10px 20px' }}>
+      <Paper style={{ padding: '10px 20px', marginTop: 20 }}>
         <h2>User Information</h2>
-        <form onSubmit={this.onSubmit} autocomplete="off">
+        <form onSubmit={this.onSubmit} autocomplete="off" style={{ marginTop: 20 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField

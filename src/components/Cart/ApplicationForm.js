@@ -45,7 +45,7 @@ class ApplicationForm extends React.Component {
             </Typography>
           <ItemContainer container spacing={2}>
             <Grid item sm={4} xs={12}>
-              <DebounceForm label="ID" placeholder="Enter Your ID" value={id} setText={setId} disabled={true} />
+              <DebounceForm label="ID" placeholder="Enter Your ID" value={id} setText={setId} disabled />
             </Grid>
             <Grid item sm={4} xs={12}>
               <DebounceForm label="Name" placeholder="Enter your Name" value={name} setText={setName} disabled={true} />

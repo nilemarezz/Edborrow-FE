@@ -41,15 +41,15 @@ class AddDepartment extends React.Component {
   render() {
     const { loading } = this.props.form
     return (
-      <>
+      <div style={{ marginTop: '8%' }}>
         <WithLoading loading={loading} />
         <div style={{ marginTop: -30 }}>
           <div style={{ marginLeft: -37 }}>
             <Title title="Add Department" />
           </div>
-          <DepartmentForm data={this.props} sendData={this.sendData} />
+          <div style={{ marginTop: 20 }}><DepartmentForm data={this.props} sendData={this.sendData} /></div>
         </div>
-      </>
+      </div>
     )
   }
 }

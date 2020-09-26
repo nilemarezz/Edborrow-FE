@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
       return null
     } else {
       return (
-        <>
+        <div style={{ marginTop: '5%' }}>
           <WithLoading loading={this.props.dashboard.loading} />
           <Container>
             <DashboardBox title="Waiting for Approve" unit="Application"
@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
               </Grid>
             </Grid>
           </Container>
-        </>
+        </div>
       );
     }
   }

@@ -6,13 +6,22 @@ export const DeleteItemThunk = (value) => {
     dispatch(itemLoading(true));
     const deleteSuccess = await DeleteItemService(value);
     if (deleteSuccess === false) {
-      console.error('error')
-      dispatch(itemLoading(false));
+      setTimeout(
+        () => {
+          dispatch(itemLoading(false));
+
+        }, 1500)
       return false
+
     } else {
-      dispatch(deleteItem(value));
-      dispatch(itemLoading(false));
+      setTimeout(
+        () => {
+          dispatch(deleteItem(value));
+          dispatch(itemLoading(false));
+
+        }, 1500)
       return true
+
     }
   };
 };

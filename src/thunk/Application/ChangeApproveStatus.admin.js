@@ -9,11 +9,21 @@ export const ChangeApproveStatus = (itemId, requestId, value) => {
       itemApprove: value
     })
     if (data === true) {
-      dispatch(changeApproveStatus({ itemId, requestId, value }))
-      dispatch(loadingApplicationList(false));
+      setTimeout(
+        () => {
+
+          dispatch(changeApproveStatus({ itemId, requestId, value }))
+          dispatch(loadingApplicationList(false));
+
+        }, 1500)
       return true
     } else {
-      dispatch(loadingApplicationList(false));
+      setTimeout(
+        () => {
+
+          dispatch(loadingApplicationList(false));
+
+        }, 1500)
       return false
     }
   };

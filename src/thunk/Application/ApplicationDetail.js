@@ -3,10 +3,17 @@ import GetApplicationDetailService from '../../services/ApplicationService/GetAp
 
 export const GetApplicationDetail = (id) => {
   return async (dispatch, getState) => {
+
     dispatch(loadingApplicationList(true));
     const item = await GetApplicationDetailService(id)
     dispatch(getApplicationDetail(item))
-    dispatch(loadingApplicationList(false));
+    setTimeout(
+      () => {
+
+
+        dispatch(loadingApplicationList(false));
+
+      }, 1500)
     return true
   };
 };

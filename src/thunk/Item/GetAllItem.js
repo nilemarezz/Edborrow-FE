@@ -10,11 +10,20 @@ export const GetAllItemThunk = () => {
     dispatch(itemLoading(true));
     const items = await GetAllItemService();
     if (items.result === "false") {
-      dispatch(itemLoading(false));
-      dispatch(getAllItemFail());
+      setTimeout(
+        () => {
+          dispatch(itemLoading(false));
+          dispatch(getAllItemFail());
+        }, 1500)
     } else {
-      dispatch(getAllItemSuccess(items.data));
-      dispatch(itemLoading(false));
+      setTimeout(
+        () => {
+          dispatch(getAllItemSuccess(items.data));
+          dispatch(itemLoading(false));
+        },
+        1500
+      );
+
     }
   };
 };
