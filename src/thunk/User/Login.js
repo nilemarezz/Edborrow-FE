@@ -16,6 +16,7 @@ export const LoginThunk = (data) => {
             dispatch(userLoginFail(false));
             dispatch(loginLoading(false));
           }, 1500)
+        return false
       } else {
         const data = {
           userToken: login.accessToken,

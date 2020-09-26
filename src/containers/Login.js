@@ -42,19 +42,26 @@ class Login extends React.Component {
   onSumitForm = async (e) => {
     e.preventDefault();
 
-    await this.props.LoginThunk({
+    const data = await this.props.LoginThunk({
       username: this.state.username,
       password: this.state.password,
     });
-    this.redirectPage();
+    if (data === false) {
+      this.props.enqueueSnackbar('Login Fail', {
+        variant: 'error',
+      });
+    } else {
+      const snackLogin = snackBarCheckLogin(this.props.user);
+      this.props.enqueueSnackbar(snackLogin.text, {
+        variant: snackLogin.type,
+      });
+      this.props.history.push(snackLogin.redirect);
+
+    }
   };
 
   redirectPage = () => {
     const snackLogin = snackBarCheckLogin(this.props.user);
-    this.props.enqueueSnackbar(snackLogin.text, {
-      variant: snackLogin.type,
-    });
-
     this.props.history.push(snackLogin.redirect);
   };
   componentDidMount() {
