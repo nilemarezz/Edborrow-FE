@@ -36,7 +36,7 @@ const BoxContainer = styled.div`
   transform: translate3d(0, 0, 0);
   perspective: 1000px;
  }
-  /* @keyframes shake {
+  @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
   }
@@ -49,7 +49,7 @@ const BoxContainer = styled.div`
   }
   40%, 60% {
     transform: translate3d(2px, 0, 0);
-  } */
+  }
 `
 
 function Home(props) {
