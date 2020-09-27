@@ -88,7 +88,7 @@ const Cart = (props) => {
 
         {/* <Title title="Cart" /> */}
         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px 120px' }}>
-          <Typography variant="h4" gutterBottom style={{ borderLeft: '2px solid #3f50b5' }}>
+          <Typography variant="h4" gutterBottom style={{ borderLeft: '3px solid #3f50b5' }}>
             <span style={{ marginLeft: 10 }}> Cart</span>
           </Typography>
           <Stepper activeStep={activeStep} alternativeLabel style={{ background: 'none' }}>

@@ -24,6 +24,7 @@ const Container = styled.div`
   background-color : #3f50b5;
   position : absolute;
   width : 100%;
+  overflow: hidden;
 `
 const LogoContainer = styled.div`
 display : flex;

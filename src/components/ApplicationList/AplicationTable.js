@@ -7,6 +7,7 @@ class ApplicationTable extends React.Component {
     return (
       <div style={{ padding: "20px 50px" }}>
         <MUIDataTable
+          title="Request"
           data={this.props.applicationList}
           columns={columns}
           options={OptionApplicationTable}
