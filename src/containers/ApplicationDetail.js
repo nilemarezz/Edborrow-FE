@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from '../components/Title'
+import Title from '../components/NewTitle'
 import { connect } from 'react-redux'
 import ApplicationDetail from '../components/ApplicationList/ApplicationDetail'
 import { GetApplicationDetail } from '../thunk/Application/ApplicationDetail'
@@ -18,7 +18,7 @@ class ApplicationDeatail extends React.Component {
   render() {
     const id = this.props.match.params.id
     return (
-      <div style={{ marginTop: '8%' }}>
+      <div >
         <WithLoading loading={this.state.loading} />
         <Title title={`Application No. ${id}`} />
         <div style={{ padding: 20 }}>

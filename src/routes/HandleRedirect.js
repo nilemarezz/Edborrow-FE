@@ -9,7 +9,7 @@ const HandleRedirect = (props) => {
   } else if (props.user.admin === true) {
     return <Redirect to={route.systemadmin.addItem} />
   } else {
-    return <Redirect to={route.user.items} />
+    return <Redirect to={route.user.home} />
   }
 }
 

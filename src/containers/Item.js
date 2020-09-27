@@ -4,7 +4,7 @@ import { GetAllItemThunk } from "../thunk/Item/GetAllItem";
 import { connect } from "react-redux";
 import AdvanceSearch from "../components/Item/AdvanceSearch";
 import styled from "styled-components";
-import Title from '../components/Title'
+import Title from '../components/NewTitle'
 import { route } from '../systemdata/route'
 import { compose } from 'recompose'
 import { withRouter } from "react-router-dom";
@@ -21,6 +21,7 @@ import Modal from '../components/Modal'
 import MyBorrowTable from '../components/Item/MyBorrowTable'
 const ItemContainer = styled.div`
   padding: 20px;
+  margin-top : 2%;
 `;
 const TableContainer = styled.div`
   margin-top: 0px;
@@ -56,13 +57,7 @@ class Item extends React.Component {
     );
     return (
       <>
-        <div style={{ display: "flex", flexDirection: "row", lineHeight: 0, justifyContent: 'space-between', alignItems: 'center', marginTop: 40 }}>
-          <div><Title title="Items" /></div>
-          <div style={{ marginTop: 20, marginRight: 40 }}>
-            <Button variant="contained" color="primary" onClick={() => this.setState({ modal: true })}>
-              <BookIcon />My Borrow Items</Button>
-          </div>
-        </div>
+        {/* <Title title="Items" /> */}
         <ItemContainer className="item-table-cotainer">
           {/* Close Feature Flag */}
           {/* <AdvanceSearch /> */}

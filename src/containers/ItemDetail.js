@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from '../components/Title'
+import Title from '../components/NewTitle'
 import Grid from '@material-ui/core/Grid'
 import Accordion from '../components/ItemDetail/Accordion'
 import styled from 'styled-components'
@@ -54,7 +54,7 @@ class ItemDetail extends React.Component {
   render() {
     const id = this.props.match.params.id
     return (
-      <div style={{ marginTop: '8%' }}>
+      <div >
         <WithLoading loading={this.state.loading} />
         <Title title={`Item ID : ${id}`} />
         <Grid container style={{ padding: '0px 30px' }}>

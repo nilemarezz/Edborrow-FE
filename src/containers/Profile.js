@@ -14,6 +14,12 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import PersonIcon from '@material-ui/icons/Person';
 import UserDetail from '../services/UserService/UserDetail'
+import { clearToken } from '../utilities/check/checkToken'
+import { logoutSuccess } from "../actions/UserAction";
+import { withRouter } from 'react-router-dom'
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+
 const Profile = (props) => {
   const { enqueueSnackbar } = useSnackbar();
   const [password, setPassword] = useState("");
@@ -77,9 +83,9 @@ const Profile = (props) => {
   useEffect(() => {
     getUser()
   }, [])
-
+  console.log(props)
   return (
-    <Paper style={{ margin: '8% 30px' }}>
+    <div style={{ margin: '0% 30px' }}>
       <Grid container spacing={3} style={{ padding: 30 }}>
         <Grid item xs={12} sm={6}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
@@ -155,7 +161,19 @@ const Profile = (props) => {
                 ),
               }}
             />
+
           </div>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={props.web.darkmode}
+                onChange={(e) => props.changeTheme(e)}
+                name="checkedB"
+                color="secondary"
+              />
+            }
+            label="Dark Mode"
+          />
         </Grid>
         <Grid item xs={12} sm={6} style={{ borderLeft: '2px solid lightgrey' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
@@ -226,14 +244,36 @@ const Profile = (props) => {
                 Change Password
                 </Button>
             </form>
+
           </div>
+
         </Grid>
+        <Button variant="contained" color="secondary" style={{ marginTop: 30 }} fullWidth
+          onClick={() => {
+            props.Logout();
+            enqueueSnackbar("Logout Success!", {
+              variant: "success",
+            });
+            props.history.push("/login");
+          }}
+        >
+          Logout
+        </Button>
       </Grid>
-    </Paper>
+    </div>
   );
 };
 
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+  Logout: async (item) => {
+    clearToken();
+    dispatch(logoutSuccess());
+  },
+  changeTheme: async (e) => {
+    dispatch({ type: "CHANGE_THEME", payload: e.target.checked });
+  }
+});
 const mapStateToProps = (state) => {
-  return { User: state.User };
+  return { User: state.User, web: state.WEB_CONFIG };
 };
-export default connect(mapStateToProps, null)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profile));

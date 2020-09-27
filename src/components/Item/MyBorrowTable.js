@@ -1,6 +1,7 @@
 import React from 'react'
 import GetMyBorrow from '../../services/ItemService/GetMyBorrow'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,6 +15,10 @@ import { ThemeProvider } from '@material-ui/core'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { RefactorDate } from '../../utilities/data/refactorDate'
 import { renderDepartment } from '../../utilities/Table/renderItemTable'
+import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
+import WithLoading from '../../utilities/WithLoading'
 const theme = createMuiTheme({
   overrides: {
     MuiTableCell: {
@@ -25,8 +30,6 @@ const theme = createMuiTheme({
   },
 });
 const ModalDiv = styled.div`
-  width : 1200px;
-  height : 700px;
   ${(props) => props.isLoading &&
     `
     display: flex;
@@ -34,6 +37,7 @@ const ModalDiv = styled.div`
     justify-content:center;
     align-items: center;
   `}
+  margin : 0px 20px;
 `
 const HelpBox = styled.div`
 
@@ -55,7 +59,7 @@ const Status = styled.div`
   height: 8px;
   background-color: ${props => props.color};
 `
-const Text = styled.p`
+const Text = styled(Typography)`
   color : ${props => props.darkmode ? "white" : "black"};
 `
 class MyBorrowTable extends React.Component {
@@ -88,24 +92,34 @@ class MyBorrowTable extends React.Component {
     if (this.state.items.length === 0) {
       return (
         <ModalDiv isLoading={true}>
-          {this.state.loading ? <CircularProgress color="secondary" /> : <h2 style={{ fontSize: 40, color: 'lightgrey' }}>No Item Found</h2>}
+          {this.state.loading ? <WithLoading loading={true} /> :
+            <Typography variant="h2" component="h2" gutterBo0om style={{ marginTop: 29 }}>
+              No Item In Borrow
+      </Typography>}
         </ModalDiv>
       )
     } else {
       return (
+
         <ModalDiv >
           <HelpBox darkmode={this.props.darkmode}>
             <HelpContainer >
               <Status color={color.darkgrey}></Status>
-              <p style={{ marginLeft: 10 }}>Not Pickup yet</p>
+              <Typography variant="body1" component="h2" gutterBo0om style={{ marginLeft: 10 }}>
+                Not pickup yet
+      </Typography>
             </HelpContainer>
             <HelpContainer >
               <Status color={color.green}></Status>
-              <p style={{ marginLeft: 10 }}>On Borrow</p>
+              <Typography variant="body1" component="h2" gutterBo0om style={{ marginLeft: 10 }}>
+                On Borrow
+      </Typography>
             </HelpContainer>
             <HelpContainer >
               <Status color={color.red}></Status>
-              <p style={{ marginLeft: 10 }}>Late</p>
+              <Typography variant="body1" component="h2" gutterBo0om style={{ marginLeft: 10 }}>
+                Late
+      </Typography>
             </HelpContainer>
           </HelpBox>
           <ThemeProvider theme={theme}>
@@ -114,20 +128,22 @@ class MyBorrowTable extends React.Component {
                 <TableHead>
                   <TableRow>
                     <TableCell padding='default'></TableCell>
-                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Name</Text></TableCell>
-                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Image</Text></TableCell>
-                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Owner</Text></TableCell>
-                    <TableCell padding='default'><Text darkmode={this.props.darkmode}>Return date</Text></TableCell>
+                    <TableCell padding='default'>
+                      <Text darkmode={this.props.web.darkmode}>Name</Text>
+                    </TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Image</Text></TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Owner</Text></TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Return date</Text></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {this.state.items.map((row) => (
                     <TableRow key={row.itemId}>
                       <TableCell><Status color={this.checkStatus(row.itemBorrowingStatusId)} /></TableCell>
-                      <TableCell><Text darkmode={this.props.darkmode}>{row.itemName}</Text></TableCell>
+                      <TableCell><Text darkmode={this.props.web.darkmode}>{row.itemName}</Text></TableCell>
                       <TableCell><img src={renderImage(row.itemImage)} alt={row.itemName} width={50} height={50} /></TableCell>
-                      <TableCell><Text darkmode={this.props.darkmode}>{row.Owner}</Text></TableCell>
-                      <TableCell><Text darkmode={this.props.darkmode}>{RefactorDate(row.returnDate)}</Text></TableCell>
+                      <TableCell><Text darkmode={this.props.web.darkmode}>{row.Owner}</Text></TableCell>
+                      <TableCell><Text darkmode={this.props.web.darkmode}>{RefactorDate(row.returnDate)}</Text></TableCell>
 
                     </TableRow>
                   ))}
@@ -136,10 +152,14 @@ class MyBorrowTable extends React.Component {
             </TableContainer>
           </ThemeProvider>
         </ModalDiv>
+
       )
     }
 
   }
 }
 
-export default MyBorrowTable
+const mapStateToProps = (state) => {
+  return { web: state.WEB_CONFIG };
+};
+export default connect(mapStateToProps,)(withRouter(MyBorrowTable));

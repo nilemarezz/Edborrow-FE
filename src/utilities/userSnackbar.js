@@ -4,7 +4,7 @@ import { props } from "ramda";
 export const snackBarCheckLogin = (user) => {
   if (checkToken()) {
     if (user.admin === false && user.department === false && user.staff === false) {
-      return { text: "Login Success!", type: "success", redirect: route.user.items };
+      return { text: "Login Success!", type: "success", redirect: route.user.home };
     } else if (user.admin === true) {
       return { text: "Login Success!", type: "success", redirect: route.systemadmin.items };
     } else {
