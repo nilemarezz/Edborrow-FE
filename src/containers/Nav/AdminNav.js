@@ -107,7 +107,7 @@ const AdminNav = (props) => {
               <ListItemText primary={"Items"} />
             </ListItem >
             <Divider />
-            <ListItem button onClick={() => Redirect(route.user.items)}>
+            <ListItem button onClick={() => Redirect(route.user.home)}>
               <ListItemIcon><AccessibilityIcon /> </ListItemIcon>
               <ListItemText primary={"User Mode"} />
             </ListItem>

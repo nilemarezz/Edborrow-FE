@@ -62,7 +62,7 @@ const App = (props) => {
           <WithLoading loading={props.user.loading} />
           <Router>
             {/* <MockNav /> */}
-            <Switch>
+            < Switch >
               <Route path="/" component={HandleRedirect} exact strict />
               <Route path="/login" component={Login} exact strict />
               <Route path="/register" component={Register} exact strict />
@@ -73,7 +73,7 @@ const App = (props) => {
               <Route path="/systemadmin/:section" component={SystemAdminRoute} exact strict />
               <Route path="/approve/type/:type" component={ApproveNoti} exact strict />
               <Route component={ErrorPage} />
-            </Switch>
+            </ Switch>
           </Router>
         </SnackbarProvider>
       </MuiPickersUtilsProvider>

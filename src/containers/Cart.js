@@ -14,7 +14,6 @@ import { submitForm } from '../thunk/Form/SubmitForm'
 import WithLoading from "../utilities/WithLoading";
 import { withRouter } from 'react-router-dom'
 import { useSnackbar } from "notistack";
-import Title from '../components/Title'
 import UserDetailService from '../services/UserService/UserDetail'
 import { getToken } from '../utilities/check/checkToken'
 import { setFormID, setFormSurname, setFormName } from '../actions/ApplicationFormAction'
@@ -82,17 +81,25 @@ const Cart = (props) => {
     setModalConfirm(false)
   }
   return (
-    <div style={{ marginTop: '6%' }}>
+    <div>
       <WithLoading loading={props.form.loading} />
-      <Title title="Cart" />
+
       <Container>
-        <Stepper activeStep={activeStep} alternativeLabel style={{ background: 'none' }}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
+
+        {/* <Title title="Cart" /> */}
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px 120px' }}>
+          <Typography variant="h4" gutterBottom style={{ borderLeft: '2px solid #3f50b5' }}>
+            <span style={{ marginLeft: 10 }}> Cart</span>
+          </Typography>
+          <Stepper activeStep={activeStep} alternativeLabel style={{ background: 'none' }}>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+        </div>
+
         <div className='stepper-content'>
           <Grid container>
             <Grid item xs={1} />
