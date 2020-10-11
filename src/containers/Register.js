@@ -25,13 +25,16 @@ const Container = styled.div`
   position : absolute;
   width : 100%;
   overflow: hidden;
+  display : flex;
+  justify-content : center;
+  align-items : center;
 `
 const LogoContainer = styled.div`
 display : flex;
 flex-direction : row;
 align-items : center;
-padding-top : 30px;
-padding-left : 20px;
+margin-bottom : -30px;
+margin-top : 20px;
 `
 class Register extends React.Component {
   state = {
@@ -64,16 +67,17 @@ class Register extends React.Component {
         <WithLoading loading={this.props.user.loading} />
         <CssBaseline />
         <Container >
-          <Paper style={{ margin: '5%' }}>
-            <LogoContainer >
-              <img src={process.env.PUBLIC_URL + '/inventory.png'} alt="loading" width={40} height={40} />
-              <Typography variant="h5" component="h5" gutterBottom style={{ marginLeft: 10 }}>
-                Edborrow
-              </Typography>
-            </LogoContainer>
-            <Grid container spacing={1} style={{ margin: '0px 10px' }}>
+          <Paper style={{ width: '90%' }}>
+
+            <Grid container spacing={1} style={{ margin: '0px 10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Grid item xs={0} sm={6} display={{ xs: 'none' }}>
                 <Box display={{ xs: 'none', sm: 'none', md: 'block', }}>
+                  <LogoContainer >
+                    <img src={process.env.PUBLIC_URL + '/inventory.png'} alt="loading" width={40} height={40} />
+                    <Typography variant="h5" component="h5" gutterBottom style={{ marginLeft: 10 }}>
+                      Edborrow
+              </Typography>
+                  </LogoContainer>
                   <img src={process.env.PUBLIC_URL + '/cover2.svg'} alt="cover" width={450} height={600} style={{ marginLeft: 20 }} />
                 </Box>
               </Grid>
