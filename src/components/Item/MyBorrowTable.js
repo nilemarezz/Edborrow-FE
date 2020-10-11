@@ -93,7 +93,7 @@ class MyBorrowTable extends React.Component {
       return (
         <ModalDiv isLoading={true}>
           {this.state.loading ? <WithLoading loading={true} /> :
-            <Typography variant="h2" component="h2" gutterBo0om style={{ marginTop: 29 }}>
+            <Typography variant="h3" component="h3" gutterBo0om style={{ marginTop: 29, color: 'grey' }}>
               No Item In Borrow
       </Typography>}
         </ModalDiv>
@@ -124,7 +124,7 @@ class MyBorrowTable extends React.Component {
           </HelpBox>
           <ThemeProvider theme={theme}>
             <TableContainer style={{ height: 600 }}>
-              <Table aria-label="simple table" style={{ marginTop: 20 }}>
+              <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell padding='default'></TableCell>

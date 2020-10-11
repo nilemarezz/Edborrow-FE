@@ -86,10 +86,10 @@ const Profile = (props) => {
   console.log(props)
   return (
     <div style={{ margin: '0% 30px' }}>
-      <Grid container spacing={3} style={{ padding: 30 }}>
+      <Grid container spacing={3} >
         <Grid item xs={12} sm={6}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-            <img src={process.env.PUBLIC_URL + '/profile.svg'} alt="cover" width={100} height={100} style={{ marginLeft: 20 }} />
+            <img src={process.env.PUBLIC_URL + '/profile.svg'} alt="cover" width={90} height={90} style={{ marginLeft: 20 }} />
             <Typography variant="h5" component="h5" gutterBottom style={{ marginLeft: 20 }}>
               Profile
               </Typography>
@@ -101,7 +101,6 @@ const Profile = (props) => {
               required
               value={name}
               variant="outlined"
-              style={{ marginTop: 20 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -118,7 +117,7 @@ const Profile = (props) => {
               value={email}
               required
               variant="outlined"
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 15 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -135,7 +134,7 @@ const Profile = (props) => {
               required
               value={userTelNo}
               variant="outlined"
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 15 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -152,7 +151,7 @@ const Profile = (props) => {
               disabled
               required
               variant="outlined"
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 15 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">

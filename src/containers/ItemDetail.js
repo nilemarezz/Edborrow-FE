@@ -59,7 +59,7 @@ class ItemDetail extends React.Component {
         <Title title={`Item ID : ${id}`} />
         <Grid container style={{ padding: '0px 30px' }}>
           <Grid item xs={12} sm={5}>
-            <Image src={renderImage(this.state.item.itemImage)} alt="itemImage" style={{ marginTop: 20 }} />
+            <Image src={renderImage(this.state.item.itemImage)} alt="itemImage" style={{ marginTop: 20, width: 500, height: 300 }} />
           </Grid>
           <Grid item xs={12} sm={7}>
             <Container>

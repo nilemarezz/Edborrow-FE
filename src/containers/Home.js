@@ -13,15 +13,16 @@ import { withRouter } from 'react-router-dom'
 const Container = styled.div`
  display: flex ; 
  flex-direction: row ; 
- justify-content: space-around;
  flex-wrap: wrap;  
  padding-bottom: 50px; 
  padding-top : 1.5%;
+ margin-left : 4%;
 `
 const BoxContainer = styled.div`
  background-color: ${props => props.color}; 
  border-radius: 20px;  
- margin: 10px; 
+ margin-top: 10px; 
+ margin-left : 40px;
  display: flex; 
  cursor : pointer;
  flex-direction: column; 
@@ -36,7 +37,7 @@ const BoxContainer = styled.div`
   transform: translate3d(0, 0, 0);
   perspective: 1000px;
  }
-  @keyframes shake {
+  /* @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
   }
@@ -49,7 +50,7 @@ const BoxContainer = styled.div`
   }
   40%, 60% {
     transform: translate3d(2px, 0, 0);
-  }
+  } */
 `
 
 function Home(props) {
@@ -69,7 +70,7 @@ function Home(props) {
             {...(true ? { timeout: 1000 } : {})}
           >
             <BoxContainer color='#3949ab' onClick={() => props.history.push(route.user.items)}>
-              <PlaylistAddIcon style={{ fontSize: window.innerWidth < 600 ? 150 : 250, color: 'white' }} />
+              <PlaylistAddIcon style={{ fontSize: window.innerWidth < 600 ? 150 : 220, color: 'white' }} />
               <Typography variant="h5" gutterBottom style={{ color: 'white' }}>
                 Items
             </Typography>
@@ -81,7 +82,7 @@ function Home(props) {
             {...(true ? { timeout: 1500 } : {})}
           >
             <BoxContainer color='#1e88e5' onClick={() => props.history.push(route.user.applicationList)}>
-              <DescriptionIcon style={{ fontSize: window.innerWidth < 600 ? 150 : 250, color: 'white' }} />
+              <DescriptionIcon style={{ fontSize: window.innerWidth < 600 ? 150 : 220, color: 'white' }} />
               <Typography variant="h5" gutterBottom style={{ color: 'white' }}>
                 Request
       </Typography>
@@ -93,7 +94,7 @@ function Home(props) {
             {...(true ? { timeout: 2000 } : {})}
           >
             <BoxContainer color='#00acc1' onClick={() => props.history.push(route.user.myBorrow)}>
-              <CachedIcon style={{ fontSize: window.innerWidth < 600 ? 150 : 250, color: 'white' }} />
+              <CachedIcon style={{ fontSize: window.innerWidth < 600 ? 150 : 220, color: 'white' }} />
               <Typography variant="h5" gutterBottom style={{ color: 'white' }} >
                 On Borrow
       </Typography>

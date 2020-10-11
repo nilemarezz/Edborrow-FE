@@ -20,8 +20,8 @@ import BookIcon from '@material-ui/icons/Book';
 import Modal from '../components/Modal'
 import MyBorrowTable from '../components/Item/MyBorrowTable'
 const ItemContainer = styled.div`
-  padding: 20px;
-  margin-top : 2%;
+  padding-top: 5px;
+  margin-top : 0%;
 `;
 const TableContainer = styled.div`
   margin-top: 0px;

@@ -5,9 +5,9 @@ import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 const Container = styled(Paper)`
   display : flex;
   flex-direction : row;
-  width:350px;
+  width:300px;
   height:105px;
-  margin:10px;
+  margin:5px;
   border-radius:5px;
 `
 const Content = styled.div`

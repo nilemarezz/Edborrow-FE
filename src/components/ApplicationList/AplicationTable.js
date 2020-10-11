@@ -5,7 +5,7 @@ class ApplicationTable extends React.Component {
   render() {
     const columns = ApplicationColumn(this.props.redirectToDetailPage)
     return (
-      <div style={{ padding: "20px 50px" }}>
+      <div style={{ padding: "0px 50px" }}>
         <MUIDataTable
           title="Request"
           data={this.props.applicationList}

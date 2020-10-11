@@ -28,7 +28,7 @@ position: absolute;
  
 `
 const StyledPaper = styled(Paper)`
-margin: 25px;
+margin: 20px;
 border-radius : 20px;
  height: 95%;  overflow: scroll;
  ${props => props.mobile ? null : `

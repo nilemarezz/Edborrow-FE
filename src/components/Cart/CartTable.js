@@ -15,6 +15,9 @@ import Button from '@material-ui/core/Button';
 import { renderImage } from '../../utilities/getImage'
 import { renderDepartment } from '../../utilities/Table/renderItemTable'
 import { RefactorDateJS } from '../../utilities/data/RefactorDateJS'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 class CartTable extends React.Component {
   redirectToDetailPage = (value) => {
     this.props.history.push(`${route.detail.itemDetail}/${value}`);
@@ -54,26 +57,55 @@ class CartTable extends React.Component {
   render() {
     const columns = CartColumns(this.redirectToDetailPage, this.deleteItemInCart)
     return (
-      <Table aria-label="simple table">
 
-        {this.props.cart.map((row) => (
-          <TableRow>
-            <TableCell>{row.itemId}</TableCell>
-            <TableCell >{row.itemName}</TableCell>
-            <TableCell ><img src={renderImage(row.itemImage)} alt={row.itemId} height={50} width={50} /></TableCell>
-            <TableCell >
-              <DateInputRange itemId={row.itemId} setFormDate={this.setFormDate} setToDate={this.setToDate}
-                from={row.date.from} to={row.date.to} disabledDate={row.dateUnavaliable} />
-            </TableCell>
-            <TableCell >{renderDepartment(row.departmentId, row.ownerName)}</TableCell>
-            <TableCell >
-              <Button variant="contained" color="primary" style={{ marginLeft: 20 }}>Detail</Button>
-              <Button variant="contained" color="secondary" style={{ marginLeft: 20 }}
-                onClick={() => this.deleteItemInCart(row.itemId)}>Delete</Button></TableCell>
-            <TableCell ></TableCell>
-          </TableRow>
-        ))}
-      </Table>
+      <>
+        {this.props.cart.map((row) => {
+          return (
+            <Paper style={{ marginTop: 10, padding: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+              {/* <Typography variant="p">
+                {row.itemId}
+              </Typography>
+              <Typography variant="p" style={{ width: 400 }}>
+                {row.itemName}
+              </Typography>
+              <Typography variant="p">
+                <DateInputRange itemId={row.itemId} setFormDate={this.setFormDate} setToDate={this.setToDate}
+                  from={row.date.from} to={row.date.to} disabledDate={row.dateUnavaliable} />
+              </Typography>
+              <Typography variant="p">
+                {renderDepartment(row.departmentId, row.ownerName)}
+              </Typography>
+              <div>
+                <Button variant="contained" color="primary" size="small" style={{ marginLeft: 20 }}>Detail</Button>
+                <Button variant="contained" color="secondary" size="small" style={{ marginLeft: 20 }}
+                  onClick={() => this.deleteItemInCart(row.itemId)}>Delete</Button>
+              </div> */}
+              <Grid container spacing={1}>
+                <Grid item xs={1}>
+                  {row.itemId}
+                </Grid>
+                <Grid item xs={3}>
+                  {row.itemName}
+                </Grid>
+                <Grid item xs={4}>
+                  <DateInputRange itemId={row.itemId} setFormDate={this.setFormDate} setToDate={this.setToDate}
+                    from={row.date.from} to={row.date.to} disabledDate={row.dateUnavaliable} />
+                </Grid>
+                <Grid item xs={1}>
+                  {renderDepartment(row.departmentId, row.ownerName)}
+                </Grid>
+                <Grid item xs={3}>
+                  <Button variant="contained" color="primary" size="small" style={{ marginLeft: 20 }}>Detail</Button>
+                  <Button variant="contained" color="secondary" size="small" style={{ marginLeft: 20 }}
+                    onClick={() => this.deleteItemInCart(row.itemId)}>Delete</Button>
+                </Grid>
+              </Grid>
+            </Paper>
+
+          )
+        }
+        )}
+      </>
     )
   }
 }
