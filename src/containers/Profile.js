@@ -83,7 +83,6 @@ const Profile = (props) => {
   useEffect(() => {
     getUser()
   }, [])
-  console.log(props)
   return (
     <div style={{ margin: '0% 30px' }}>
       <Grid container spacing={3} >

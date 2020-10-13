@@ -15,6 +15,12 @@ export default function (state = initialState, action) {
       return R.assocPath(["applicationDetail"], action.payload)(state);
     case LOADING_APPLICATION_LIST:
       return R.assocPath(["loading"], action.payload)(state);
+    case "CHANGE_STATUS":
+      console.log(action.payload)
+      let newApplicationDetail = state.applicationDetail.requestItem
+      let value = newApplicationDetail.findIndex(item => item.itemId = action.payload.itemId)
+      newApplicationDetail[value].itemBorrowingStatusId = action.payload.itemBorrowingStatusId
+      return R.assocPath(["applicationDetail", "requestItem"], newApplicationDetail)(state);
     default:
       return state
   }

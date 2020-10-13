@@ -4,14 +4,21 @@ import { connect } from 'react-redux'
 import ApplicationDetail from '../components/ApplicationList/ApplicationDetail'
 import { GetApplicationDetail } from '../thunk/Application/ApplicationDetail'
 import WithLoading from '../utilities/WithLoading'
+import socketIOClient from "socket.io-client";
+
+const ENDPOINT = "http://localhost:3000";
 class ApplicationDeatail extends React.Component {
   state = { loading: false }
   componentDidMount() {
     this.setState({ loading: true })
-    this.props.GetApplicationDetail(this.props.match.params.id)
+    this.props.getApplication(this.props.match.params.id)
     setTimeout(
       () => {
-        this.setState({ loading: false })
+        this.setState({ loading: false });
+        const socket = socketIOClient(ENDPOINT);
+        socket.on("changeStatus", data => {
+          this.props.setStatus(data)
+        });
       }, 1500)
   }
 
@@ -33,4 +40,12 @@ const mapStateToProps = (state) => {
   return { applicaiton: state.ApplicationList.applicationDetail }
 }
 
-export default connect(mapStateToProps, { GetApplicationDetail })(ApplicationDeatail)
+export const mapDispatchToProps = (dispatch, ownProps) => ({
+  setStatus: async (value) => {
+    dispatch({ type: "CHANGE_STATUS", payload: value });
+  },
+  getApplication: async (value) => {
+    dispatch(GetApplicationDetail(value))
+  }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationDeatail)
