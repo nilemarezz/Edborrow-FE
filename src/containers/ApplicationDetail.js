@@ -6,7 +6,7 @@ import { GetApplicationDetail } from '../thunk/Application/ApplicationDetail'
 import WithLoading from '../utilities/WithLoading'
 import socketIOClient from "socket.io-client";
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = "https://edborrow.ga";
 class ApplicationDeatail extends React.Component {
   state = { loading: false }
   componentDidMount() {

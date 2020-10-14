@@ -18,7 +18,7 @@ import WithLoading from "../utilities/WithLoading";
 import { snackBarCheckLogin } from "../utilities/userSnackbar";
 import socketIOClient from "socket.io-client";
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = "https://edborrow.ga";
 const Container = styled.div`
   margin : 0px;
   height : 100%;
