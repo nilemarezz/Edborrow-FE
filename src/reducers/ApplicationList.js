@@ -21,6 +21,11 @@ export default function (state = initialState, action) {
       let value = newApplicationDetail.findIndex(item => item.itemId = action.payload.itemId)
       newApplicationDetail[value].itemBorrowingStatusId = action.payload.itemBorrowingStatusId
       return R.assocPath(["applicationDetail", "requestItem"], newApplicationDetail)(state);
+    case "CHANGE_APPROVE":
+      let changenewapprove = state.applicationDetail.requestItem
+      let newapprove = changenewapprove.findIndex(item => item.itemId = action.payload.itemId)
+      changenewapprove[newapprove].itemApprove = action.payload.itemApprove
+      return R.assocPath(["applicationDetail", "itemApprove"], changenewapprove)(state);
     default:
       return state
   }

@@ -19,6 +19,10 @@ import Button from '@material-ui/core/Button';
 import BookIcon from '@material-ui/icons/Book';
 import Modal from '../components/Modal'
 import MyBorrowTable from '../components/Item/MyBorrowTable'
+import socketIOClient from "socket.io-client";
+import { deleteItem } from '../actions/ItemAction.systemadmin'
+
+const ENDPOINT = "http://localhost:3000";
 const ItemContainer = styled.div`
   padding-top: 5px;
   margin-top : 0%;
@@ -29,7 +33,12 @@ const TableContainer = styled.div`
 class Item extends React.Component {
   state = { modal: false }
   componentDidMount() {
+
     this.props.getAllItem();
+    const socket = socketIOClient(ENDPOINT);
+    socket.on("removeItemById", data => {
+      this.props.deleteItem(data)
+    });
   }
   redirectToDetailPage = (value) => {
     this.props.history.push(`${route.detail.itemDetail}/${value}`);
@@ -88,6 +97,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   getAllItem: async () => {
     dispatch(GetAllItemThunk())
+  },
+  deleteItem: async (id) => {
+    dispatch(deleteItem({ itemId: id }))
   }
 });
 
