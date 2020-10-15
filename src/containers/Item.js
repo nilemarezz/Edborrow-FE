@@ -21,8 +21,7 @@ import Modal from '../components/Modal'
 import MyBorrowTable from '../components/Item/MyBorrowTable'
 import socketIOClient from "socket.io-client";
 import { deleteItem } from '../actions/ItemAction.systemadmin'
-
-const ENDPOINT = "http://localhost:3000";
+import config from '../env'
 const ItemContainer = styled.div`
   padding-top: 5px;
   margin-top : 0%;
@@ -35,9 +34,12 @@ class Item extends React.Component {
   componentDidMount() {
 
     this.props.getAllItem();
-    const socket = socketIOClient(ENDPOINT);
+    const socket = socketIOClient(config.socket);
     socket.on("removeItemById", data => {
       this.props.deleteItem(data)
+    });
+    socket.on("updateItem", data => {
+      this.props.updateItem(data)
     });
   }
   redirectToDetailPage = (value) => {
@@ -100,6 +102,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   deleteItem: async (id) => {
     dispatch(deleteItem({ itemId: id }))
+  },
+  updateItem: async (value) => {
+    dispatch({ type: "UPDATE_ITEM", payload: value })
   }
 });
 

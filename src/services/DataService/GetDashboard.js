@@ -1,9 +1,10 @@
 
 import DashboardMock from '../../__mock__/Dashboard.json'
+import env from '../../env'
 const GetDashboard = async (formData) => {
   if (process.env.REACT_APP_ENV === "production") {
     try {
-      const res = await fetch(`${process.env.REACT_APP_URL}data/dashboard`, {
+      const res = await fetch(`${env.url}data/dashboard`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,

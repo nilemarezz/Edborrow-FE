@@ -19,7 +19,7 @@ import { logoutSuccess } from "../actions/UserAction";
 import { withRouter } from 'react-router-dom'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-
+import env from '../env'
 const Profile = (props) => {
   const { enqueueSnackbar } = useSnackbar();
   const [password, setPassword] = useState("");
@@ -42,7 +42,7 @@ const Profile = (props) => {
         newPassword,
       };
 
-      const res = await fetch(`${process.env.REACT_APP_URL}users/`, {
+      const res = await fetch(`${env.url}users/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

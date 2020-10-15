@@ -5,8 +5,8 @@ import ApplicationDetail from '../components/ApplicationList/ApplicationDetail'
 import { GetApplicationDetail } from '../thunk/Application/ApplicationDetail'
 import WithLoading from '../utilities/WithLoading'
 import socketIOClient from "socket.io-client";
+import config from '../env'
 
-const ENDPOINT = "http://localhost:3000";
 class ApplicationDeatail extends React.Component {
   state = { loading: false }
   componentDidMount() {
@@ -15,7 +15,7 @@ class ApplicationDeatail extends React.Component {
     setTimeout(
       async () => {
         this.setState({ loading: false });
-        const socket = socketIOClient(ENDPOINT);
+        const socket = socketIOClient(config.socket);
         await socket.on("changeStatus", data => {
           this.props.setStatus(data)
         });
@@ -23,6 +23,11 @@ class ApplicationDeatail extends React.Component {
           console.log('...', data)
           this.props.setApprove(data)
         });
+        await socket.on("rejectPurpose", data => {
+          console.log('...', data)
+          this.props.setPurpose(data)
+        });
+
       }, 1500)
   }
 
@@ -53,6 +58,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   setApprove: async (value) => {
     dispatch({ type: "CHANGE_APPROVE", payload: value });
+  },
+  setPurpose: async (value) => {
+    dispatch({ type: "SET_PURPOSE_REJECT_ITEM", payload: value });
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ApplicationDeatail)

@@ -1,7 +1,8 @@
+import env from '../../env'
 const AddDepartment = async (value) => {
   if (process.env.REACT_APP_ENV === "production") {
     try {
-      const res = await fetch(`${process.env.REACT_APP_URL}admin/department`, {
+      const res = await fetch(`${env.url}admin/department`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

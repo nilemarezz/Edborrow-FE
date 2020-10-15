@@ -17,8 +17,7 @@ import { LoginThunk } from "../thunk/User/Login";
 import WithLoading from "../utilities/WithLoading";
 import { snackBarCheckLogin } from "../utilities/userSnackbar";
 import socketIOClient from "socket.io-client";
-
-const ENDPOINT = "http://localhost:3000";
+import config from '../env'
 const Container = styled.div`
   margin : 0px;
   height : 100%;
@@ -73,7 +72,7 @@ class Login extends React.Component {
   };
   componentDidMount() {
     this.redirectPage();
-    const socket = socketIOClient(ENDPOINT);
+    const socket = socketIOClient(config.socket);
     socket.on("FromAPI", data => {
       console.log(data)
     });

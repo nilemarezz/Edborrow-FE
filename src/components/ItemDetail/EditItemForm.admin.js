@@ -85,12 +85,13 @@ class EditItem extends React.Component {
         />
         <FormControl variant="outlined" fullWidth style={{ marginTop: 20 }}>
           <InputLabel id="demo-simple-select-label">Status</InputLabel>
+          {console.log(this.props)}
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={this.props.item.changeStatus}
             defaultValue={this.props.item.itemStatusId}
-            onChange={(e) => this.props.changeStatus(e.target.value)}
+            onChange={(e) => this.props.changeStatusId(e.target.value)}
             disabled={this.props.disabled}
           >
             {ItemStatusLabel.map(item => {

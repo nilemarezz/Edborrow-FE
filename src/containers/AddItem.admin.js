@@ -20,7 +20,8 @@ const initailFormState = {
   itemBorrowable: 1,
   itemImage: "",
   itemCategoryId: "",
-  departmentId: ""
+  departmentId: "",
+  itemStatusId: "",
 }
 class AddItem extends React.Component {
   constructor(props) {

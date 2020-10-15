@@ -1,8 +1,9 @@
+import env from '../../env'
 import Mock from '../../__mock__/DepartmentList.systemadmin.json'
 const GetDepartmentList = async () => {
   if (process.env.REACT_APP_ENV === "production") {
     try {
-      const res = await fetch(`${process.env.REACT_APP_URL}admin/department`, {
+      const res = await fetch(`${env.url}admin/department`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,

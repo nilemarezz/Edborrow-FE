@@ -42,7 +42,9 @@
     "test:coverage": "yarn test --coverage --watchAll",
     "test-connection": "yarn test -- connection.test.js",
     "eject": "react-scripts eject",
-    "dev": "REACT_APP_ENV=development react-scripts start"
+    "mock": "REACT_APP_ENV=development react-scripts start",
+    "local": "REACT_APP_URL=http://localhost:3000/api/ REACT_APP_SOCKET=http://localhost:3000 react-scripts start",
+    "server": "REACT_APP_URL=https://edborrow.ga/api/ REACT_APP_SOCKET=https://edborrow.ga react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"

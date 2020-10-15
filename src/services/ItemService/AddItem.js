@@ -1,8 +1,9 @@
 
+import env from '../../env'
 const AddItem = async (formData) => {
   if (process.env.REACT_APP_ENV === "production") {
     try {
-      const res = await fetch(`${process.env.REACT_APP_URL}items`, {
+      const res = await fetch(`${env.url}items`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
