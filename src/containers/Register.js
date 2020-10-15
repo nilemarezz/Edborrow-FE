@@ -18,6 +18,8 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import AdvisorInput from '../components/Cart/AdvisorInput'
 import { RegisterThunk } from "../thunk/User/Register";
 import Sign from '../components/sign/Sign'
+import socketIOClient from "socket.io-client";
+import config from '../env'
 const Container = styled.div`
   margin : 0px;
   height : 100%;
@@ -45,6 +47,12 @@ class Register extends React.Component {
     register: false,
     advisor: null
   };
+  componentDidMount() {
+    const socket = socketIOClient(config.socket);
+    socket.on("FromAPI", data => {
+      console.log(data)
+    });
+  }
   submitForm = (e) => {
     e.preventDefault();
     const dataUser = {
