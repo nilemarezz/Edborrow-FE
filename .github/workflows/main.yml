@@ -126,6 +126,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           REACT_APP_URL: ${{ secrets.REACT_APP_URL }}
           REACT_APP_ENV: ${{ secrets.REACT_APP_ENV }}
+          REACT_APP_SOCKET: ${{ secrets.REACT_APP_SOCKET }}
         run: |
           yarn
           CI=false yarn build
