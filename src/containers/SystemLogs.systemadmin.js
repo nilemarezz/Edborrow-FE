@@ -3,6 +3,8 @@ import GetLogs from '../services/DataService/SystemLogs'
 import MUIDataTable from "mui-datatables";
 import { withSnackbar } from "notistack"
 import { LogsColumn, OptionLogsTable } from '../utilities/Table/OptionSystemLogs.systemadmin'
+import config from '../env'
+import socketIOClient from "socket.io-client";
 class SystemLogs extends React.Component {
   state = { data: [], loading: false }
   getLogs = async () => {
@@ -19,7 +21,13 @@ class SystemLogs extends React.Component {
     }
   }
   componentDidMount() {
+
     this.getLogs()
+    const socket = socketIOClient(config.socket);
+    socket.on("updateLogs", data => {
+      console.log('logs')
+      this.getLogs()
+    });
   }
   render() {
     const columns = LogsColumn()

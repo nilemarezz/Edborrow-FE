@@ -17,11 +17,17 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import { compose } from 'recompose'
 import { withSnackbar } from "notistack";
+import config from '../env'
+import socketIOClient from "socket.io-client";
 class ApplicationList extends React.Component {
   state = { modal: false, itemId: null, requestId: null, value: null }
 
   componentDidMount() {
     this.props.GetApplicationList()
+    const socket = socketIOClient(config.socket);
+    socket.on("changeApproveAll", data => {
+      this.props.GetApplicationList()
+    });
   }
   changeApproveStatus = (text) => {
     this.props.ChangeApproveStatus(this.state.itemId, this.state.requestId, this.state.value)

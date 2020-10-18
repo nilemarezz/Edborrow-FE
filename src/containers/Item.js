@@ -2,9 +2,7 @@ import React from "react";
 import ItemTable from "../components/Item/ItemTable";
 import { GetAllItemThunk } from "../thunk/Item/GetAllItem";
 import { connect } from "react-redux";
-import AdvanceSearch from "../components/Item/AdvanceSearch";
 import styled from "styled-components";
-import Title from '../components/NewTitle'
 import { route } from '../systemdata/route'
 import { compose } from 'recompose'
 import { withRouter } from "react-router-dom";
@@ -15,13 +13,12 @@ import {
   OptionItemTable,
   ItemColumns,
 } from "../utilities/Table/OptionTable";
-import Button from '@material-ui/core/Button';
-import BookIcon from '@material-ui/icons/Book';
 import Modal from '../components/Modal'
 import MyBorrowTable from '../components/Item/MyBorrowTable'
 import socketIOClient from "socket.io-client";
 import { deleteItem } from '../actions/ItemAction.systemadmin'
 import config from '../env'
+import { updateItem } from '../actions/SocketAction'
 const ItemContainer = styled.div`
   padding-top: 5px;
   margin-top : 0%;
@@ -36,9 +33,10 @@ class Item extends React.Component {
     this.props.getAllItem();
     const socket = socketIOClient(config.socket);
     socket.on("removeItemById", data => {
-      this.props.deleteItem(data)
+      this.props.getAllItem();
     });
     socket.on("updateItem", data => {
+      console.log(data)
       this.props.updateItem(data)
     });
   }
@@ -104,7 +102,25 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(deleteItem({ itemId: id }))
   },
   updateItem: async (value) => {
-    dispatch({ type: "UPDATE_ITEM", payload: value })
+    console.log(value.itemStatusId)
+    const status = (statusId) => {
+      if (statusId == 1) {
+        return "Avaliable"
+      } else {
+        return "Fixing"
+      }
+    }
+    const setValue = {
+      departmentName: value.userId,
+      itemBrand: value.itemBrand,
+      itemId: parseInt(value.itemId),
+      itemImage: value.image,
+      itemModel: value.itemModel,
+      itemName: value.itemName,
+      itemStatusTag: status(value.itemStatusId),
+      ownerName: null
+    }
+    dispatch(updateItem(setValue))
   }
 });
 

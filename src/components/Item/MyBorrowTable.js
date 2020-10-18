@@ -18,7 +18,9 @@ import { renderDepartment } from '../../utilities/Table/renderItemTable'
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
-import WithLoading from '../../utilities/WithLoading'
+import WithLoading from '../../utilities/WithLoading';
+import config from '../../env'
+import socketIOClient from "socket.io-client";
 const theme = createMuiTheme({
   overrides: {
     MuiTableCell: {
@@ -77,6 +79,11 @@ class MyBorrowTable extends React.Component {
       data.sort((a, b) => (a.returnDate > b.returnDate) ? 1 : -1)
       this.setState({ items: data, loading: false })
     }
+    const socket = socketIOClient(config.socket);
+    socket.on("changeStatus", async () => {
+      const data = await this.getMyBorrowItems()
+      this.setState({ items: data })
+    });
   }
   checkStatus = (value) => {
     if (value === 1) {

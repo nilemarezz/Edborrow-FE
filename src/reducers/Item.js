@@ -59,10 +59,13 @@ export default function (state = initialState, action) {
     case SET_TO_DATE_CART:
       return R.assocPath(["Cart"], updateFrom(action.payload.itemId, action.payload.to, state.Cart, "to"))(state);
     case "UPDATE_ITEM":
+      console.log(action.payload)
       let item = state.Items;
       let index = item.findIndex(item => item.itemId === action.payload.itemId)
-      item.splice(index, 0, 'is');
-      return state
+      console.log(index)
+      item.splice(index, 1, action.payload);
+      console.log(item)
+      return R.assocPath(["Items"], item)(state);
     default:
       return state;
   }

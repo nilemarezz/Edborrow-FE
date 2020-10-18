@@ -14,7 +14,8 @@ import Doughnut from '../components/Chart/Doughnut'
 import WithLoading from '../utilities/WithLoading'
 import GetDashboardService from '../services/DataService/GetDashboard'
 import { connect } from 'react-redux'
-
+import config from '../env'
+import socketIOClient from "socket.io-client";
 
 
 const Container = styled.div`
@@ -29,6 +30,11 @@ class Dashboard extends React.Component {
   componentDidMount() {
 
     this.props.getData()
+    const socket = socketIOClient(config.socket);
+    socket.on("updateDashboard", data => {
+      console.log('update dashboard')
+      this.props.getData()
+    });
   }
   // getDashboardData = async () => {
   //   this.setState({ loading: true })

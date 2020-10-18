@@ -81,6 +81,7 @@ const Profile = (props) => {
   }
 
   useEffect(() => {
+    
     getUser()
   }, [])
   return (

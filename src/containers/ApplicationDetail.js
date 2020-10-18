@@ -6,7 +6,7 @@ import { GetApplicationDetail } from '../thunk/Application/ApplicationDetail'
 import WithLoading from '../utilities/WithLoading'
 import socketIOClient from "socket.io-client";
 import config from '../env'
-
+import { changeApplicationStatus, changeApproveStatus, setRejectPurpose } from '../actions/SocketAction'
 class ApplicationDeatail extends React.Component {
   state = { loading: false }
   componentDidMount() {
@@ -20,11 +20,9 @@ class ApplicationDeatail extends React.Component {
           this.props.setStatus(data)
         });
         await socket.on("changeItemApprove", data => {
-          console.log('...', data)
           this.props.setApprove(data)
         });
         await socket.on("rejectPurpose", data => {
-          console.log('...', data)
           this.props.setPurpose(data)
         });
 
@@ -51,16 +49,16 @@ const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   setStatus: async (value) => {
-    dispatch({ type: "CHANGE_STATUS", payload: value });
+    dispatch(changeApplicationStatus(value));
   },
   getApplication: async (value) => {
     dispatch(GetApplicationDetail(value))
   },
   setApprove: async (value) => {
-    dispatch({ type: "CHANGE_APPROVE", payload: value });
+    dispatch(changeApproveStatus(value));
   },
   setPurpose: async (value) => {
-    dispatch({ type: "SET_PURPOSE_REJECT_ITEM", payload: value });
+    dispatch(setRejectPurpose(value));
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ApplicationDeatail)

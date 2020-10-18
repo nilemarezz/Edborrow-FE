@@ -8,8 +8,6 @@ import config from './env'
 
 import Login from './containers/Login'
 const { store, persistor } = configureStore();
-console.log(config.url)
-console.log(config.socket)
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

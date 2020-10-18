@@ -18,10 +18,17 @@ import Title from '../components/Title'
 import AddIcon from '@material-ui/icons/Add';
 import { withRouter } from 'react-router-dom'
 import { route } from '../systemdata/route'
+import config from '../env'
+import socketIOClient from "socket.io-client";
 class Items extends React.Component {
   state = { modal: false, item: null }
   componentDidMount() {
     this.props.getItem()
+    const socket = socketIOClient(config.socket);
+    socket.on("updateItem", data => {
+      console.log(data)
+      this.props.getItem()
+    });
   }
   handleModalOpen = (id) => {
     this.setState({ modal: true })
