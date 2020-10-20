@@ -72,7 +72,7 @@ class Login extends React.Component {
   };
   componentDidMount() {
     this.redirectPage();
-    const socket = socketIOClient('https://edborrow.ga/');
+    const socket = socketIOClient(config.socket);
     socket.on("FromAPI", data => {
       console.log(data)
     });
