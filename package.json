@@ -44,7 +44,7 @@
     "eject": "react-scripts eject",
     "mock": "REACT_APP_ENV=development react-scripts start",
     "local": "REACT_APP_URL=http://localhost:3000/api/ REACT_APP_SOCKET=http://localhost:3000 react-scripts start",
-    "server": "REACT_APP_URL=https://edborrow.ga/api/ REACT_APP_SOCKET=http://54.169.138.171:3000 react-scripts start"
+    "server": "REACT_APP_URL=http://54.169.138.171:3000/api/ REACT_APP_SOCKET=http://54.169.138.171:3000 react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
