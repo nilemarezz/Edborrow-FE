@@ -71,6 +71,8 @@ class Login extends React.Component {
     this.props.history.push(snackLogin.redirect);
   };
   componentDidMount() {
+    console.log(config.socket)
+    console.log(config.url)
     this.redirectPage();
     const socket = socketIOClient(config.socket);
     socket.on("FromAPI", data => {
