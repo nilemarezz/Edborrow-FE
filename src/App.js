@@ -26,6 +26,7 @@ import ItemDetail from './containers/ItemDetail.admin'
 import AdminDetail from './routes/DetailRoute.admin'
 import SystemAdminRoute from './routes/AdminRoute.systemadmin'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import config from './env'
 
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
@@ -50,6 +51,8 @@ const App = (props) => {
     }
   }
   useEffect(() => {
+    console.log(config.socket)
+    console.log(config.url)
     checkUser()
   }, []);
   return (
