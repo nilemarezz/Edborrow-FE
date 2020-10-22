@@ -11,7 +11,10 @@ import {
   SET_FORM_DATE_CART,
   SET_TO_DATE_CART
 } from "../actions/ItemAction";
+
+import { UPDATE_DATE } from '../actions/SocketAction'
 import * as R from "ramda";
+import { RefactorDate } from '../utilities/data/refactorDate'
 const initialState = {
   Items: [],
   Cart: [],
@@ -66,6 +69,8 @@ export default function (state = initialState, action) {
       item.splice(index, 1, action.payload);
       console.log(item)
       return R.assocPath(["Items"], item)(state);
+    case "SET_CART":
+      return R.assocPath(["Cart"], action.payload)(state);
     default:
       return state;
   }

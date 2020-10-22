@@ -19,6 +19,7 @@ import socketIOClient from "socket.io-client";
 import { deleteItem } from '../actions/ItemAction.systemadmin'
 import config from '../env'
 import { updateItem } from '../actions/SocketAction'
+import { addItemToCart } from '../actions/ItemAction'
 const ItemContainer = styled.div`
   padding-top: 5px;
   margin-top : 0%;
@@ -93,7 +94,7 @@ const mapStateToProps = (state) => {
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   addItemToCart: async (item) => {
     let data = CartItem(item);
-    dispatch(AddItemToCart(data));
+    dispatch(addItemToCart(data));
   },
   getAllItem: async () => {
     dispatch(GetAllItemThunk())

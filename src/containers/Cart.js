@@ -18,6 +18,10 @@ import UserDetailService from '../services/UserService/UserDetail'
 import { getToken } from '../utilities/check/checkToken'
 import { setFormID, setFormSurname, setFormName } from '../actions/ApplicationFormAction'
 import Typography from '@material-ui/core/Typography';
+import { AddItemToCart } from '../thunk/Item/AddItemToCart'
+import socketIOClient from "socket.io-client";
+import config from '../env'
+import { updateDate } from '../actions/SocketAction'
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -46,8 +50,13 @@ const Cart = (props) => {
   }
 
   useEffect(() => {
+    const socket = socketIOClient(config.socket);
+    socket.on("dateUpdate", data => {
+      props.getUnavaliableDate(props.cart)
+    });
     if (getToken()) {
       getUserData()
+      props.getUnavaliableDate(props.cart)
     }
   }, [])
 
@@ -151,6 +160,13 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   setSurname: async (value) => {
     dispatch(setFormSurname(value));
   },
+  getUnavaliableDate: async (value) => {
+    console.log('call ')
+    dispatch(AddItemToCart(value))
+  },
+  updateDate: async (value) => {
+    dispatch(updateDate(value))
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Cart))
