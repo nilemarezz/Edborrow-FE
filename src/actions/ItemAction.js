@@ -9,7 +9,7 @@ export const CLEAR_FILTER = "CLEAR_FILTER";
 export const CLEAR_CART = "CLEAR_CART"
 export const SET_FORM_DATE_CART = "SET_FORM_DATE_CART"
 export const SET_TO_DATE_CART = "SET_TO_DATE_CART"
-
+export const SET_AMOUNT = "SET_AMOUNT"
 export const getAllItemSuccess = (data) => {
   return { type: GETALL_ITEM_SUCCESS, payload: data };
 };
@@ -49,4 +49,7 @@ export const setToDateCart = (data) => {
 }
 export const clearCart = () => {
   return { type: CLEAR_CART }
+}
+export const setSelectAmount = (value) => {
+  return { type: SET_AMOUNT, payload: value }
 }

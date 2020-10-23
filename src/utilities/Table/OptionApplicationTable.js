@@ -46,8 +46,8 @@ export const ApplicationColumn = (redirectToDetail) => [
     },
   },
   {
-    name: "itemAmount",
-    label: "Amount",
+    name: "totalAmount",
+    label: "Total Amount",
   },
   {
     name: ApplicationTable.requestId.name,

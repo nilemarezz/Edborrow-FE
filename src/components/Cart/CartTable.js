@@ -1,6 +1,6 @@
 import React from 'react'
 import { CartColumns } from '../../utilities/Table/OptionCartTable'
-import { deleteItemInCart, setFormDateCart, setToDateCart } from '../../actions/ItemAction'
+import { deleteItemInCart, setFormDateCart, setToDateCart, setSelectAmount } from '../../actions/ItemAction'
 import { setFormBorrowDate, setFormReturnDate } from '../../actions/ApplicationFormAction'
 import { connect } from 'react-redux'
 import { route } from '../../systemdata/route'
@@ -18,6 +18,7 @@ import { RefactorDateJS } from '../../utilities/data/RefactorDateJS'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 class CartTable extends React.Component {
   redirectToDetailPage = (value) => {
     this.props.history.push(`${route.detail.itemDetail}/${value}`);
@@ -42,7 +43,6 @@ class CartTable extends React.Component {
         return
       }
     }
-
   }
   setToDate = (to) => {
     this.props.setTo(to)
@@ -54,6 +54,9 @@ class CartTable extends React.Component {
       }
     }
   }
+  setAmountSelect = amount => {
+    this.props.setSelectAmount(amount)
+  }
   render() {
     const columns = CartColumns(this.redirectToDetailPage, this.deleteItemInCart)
     return (
@@ -62,24 +65,6 @@ class CartTable extends React.Component {
         {this.props.cart.map((row) => {
           return (
             <Paper style={{ marginTop: 10, padding: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-              {/* <Typography variant="p">
-                {row.itemId}
-              </Typography>
-              <Typography variant="p" style={{ width: 400 }}>
-                {row.itemName}
-              </Typography>
-              <Typography variant="p">
-                <DateInputRange itemId={row.itemId} setFormDate={this.setFormDate} setToDate={this.setToDate}
-                  from={row.date.from} to={row.date.to} disabledDate={row.dateUnavaliable} />
-              </Typography>
-              <Typography variant="p">
-                {renderDepartment(row.departmentId, row.ownerName)}
-              </Typography>
-              <div>
-                <Button variant="contained" color="primary" size="small" style={{ marginLeft: 20 }}>Detail</Button>
-                <Button variant="contained" color="secondary" size="small" style={{ marginLeft: 20 }}
-                  onClick={() => this.deleteItemInCart(row.itemId)}>Delete</Button>
-              </div> */}
               <Grid container spacing={1}>
                 <Grid item xs={1}>
                   {row.itemId}
@@ -92,9 +77,19 @@ class CartTable extends React.Component {
                     from={row.date.from} to={row.date.to} disabledDate={row.dateUnavaliable} />
                 </Grid>
                 <Grid item xs={1}>
+                  <TextField
+                    id="standard-read-only-input"
+                    type="number"
+                    style={{ width: '25px' }}
+                    value={row.amountSelect}
+                    InputProps={{ inputProps: { min: 1, max: row.amount } }}
+                    onChange={(e) => this.setAmountSelect({ id: row.itemId, amount: e.target.value === "" ? 1 : e.target.value })}
+                  /> of {row.amount}
+                </Grid>
+                <Grid item xs={1}>
                   {renderDepartment(row.departmentId, row.ownerName)}
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                   <Button variant="contained" color="primary" size="small" style={{ marginLeft: 20 }}>Detail</Button>
                   <Button variant="contained" color="secondary" size="small" style={{ marginLeft: 20 }}
                     onClick={() => this.deleteItemInCart(row.itemId)}>Delete</Button>
@@ -139,6 +134,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   setReturnDate: async (value) => {
     dispatch(setFormReturnDate(value))
+  },
+  setSelectAmount: async (value) => {
+    dispatch(setSelectAmount(value))
   }
 })
 

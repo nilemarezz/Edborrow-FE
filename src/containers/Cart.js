@@ -21,7 +21,7 @@ import Typography from '@material-ui/core/Typography';
 import { AddItemToCart } from '../thunk/Item/AddItemToCart'
 import socketIOClient from "socket.io-client";
 import config from '../env'
-import { updateDate } from '../actions/SocketAction'
+import { updateDate, updateAmount } from '../actions/SocketAction'
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,6 +37,7 @@ const BackButton = styled(Button)`
 `
 
 const Cart = (props) => {
+  const [cart, setCart] = React.useState(props.cart)
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const [modalConfirm, setModalConfirm] = React.useState(false)
@@ -51,6 +52,10 @@ const Cart = (props) => {
 
   useEffect(() => {
     const socket = socketIOClient(config.socket);
+    socket.on("amountUpdate", data => {
+      console.log('updateAmount')
+      props.updateAmount(data)
+    });
     socket.on("dateUpdate", data => {
       props.getUnavaliableDate(props.cart)
     });
@@ -161,12 +166,15 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(setFormSurname(value));
   },
   getUnavaliableDate: async (value) => {
-    console.log('call ')
     dispatch(AddItemToCart(value))
   },
   updateDate: async (value) => {
     dispatch(updateDate(value))
+  },
+  updateAmount: async (value) => {
+    dispatch(updateAmount(value))
   }
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Cart))

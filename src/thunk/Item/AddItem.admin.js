@@ -18,6 +18,7 @@ export const AddItemThunk = (value) => {
     formData.append("categoryId", value.itemCategoryId === "" ? null : value.itemCategoryId);
     formData.append("itemDescription", value.itemDescription === "" ? null : value.itemDescription);
     formData.append("departmentId", value.departmentId === "" ? null : value.departmentId);
+    formData.append("amount", value.amount);
     const add = await AddItemService(formData);
     if (add === false) {
       setTimeout(

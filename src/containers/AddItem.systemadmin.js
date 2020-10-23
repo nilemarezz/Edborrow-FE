@@ -20,7 +20,8 @@ const initailFormState = {
   itemImage: "",
   itemCategoryId: "",
   departmentId: "",
-  changeStatus: ""
+  changeStatus: "",
+  amount: 1
 }
 class AddItem extends React.Component {
   constructor(props) {
@@ -95,9 +96,10 @@ class AddItem extends React.Component {
               changeModel={(value) => this.setState({ Form: { ...this.state.Form, itemModel: value } })}
               changeBrand={(value) => this.setState({ Form: { ...this.state.Form, itemBrand: value } })}
               changeDescription={(value) => this.setState({ Form: { ...this.state.Form, itemDescription: value } })}
-              changeStatus={(value) => this.setState({ Form: { ...this.state.Form, changeStatus: value } })}
+              changeStatusId={(value) => this.setState({ Form: { ...this.state.Form, changeStatus: value } })}
               changeCategoryId={(value) => this.setState({ Form: { ...this.state.Form, itemCategoryId: value } })}
               changeDepartmentId={(value) => this.setState({ Form: { ...this.state.Form, departmentId: value } })}
+              changeAmount={(value) => this.setState({ Form: { ...this.state.Form, amount: value } })}
               admin={true}
             />
           </Grid>

@@ -9,12 +9,12 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import { BorrowingStatus } from '../../systemdata/BorrowingStatus'
 import { ApproveStatus } from '../../systemdata/ApproveStatus'
-
+import { renderImage } from '../getImage'
 const ItemApproveToogle = (props) => {
   const { value, tableMeta, changeApproveStatus } = props
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
-  const itemApprove = tableMeta.rowData[4]
+  const itemApprove = tableMeta.rowData[5]
   const disabled = itemApprove === 1 || itemApprove === 0 ? true : false
   return (
     <>
@@ -70,10 +70,19 @@ const ItemApproveToogle = (props) => {
 
 const ItemStatusToogle = (props) => {
   const { value, tableMeta, changeBorrowingStatus } = props
-  const itemApprove = tableMeta.rowData[4]
+  const itemApprove = tableMeta.rowData[5]
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
   const disabled = itemApprove === 2 || itemApprove === 0 ? true : false
+  const checkDisabled = () => {
+    if (itemApprove === 2 || itemApprove === 0) {
+      return true
+    } else if (value === 2) {
+      return true
+    } else {
+      return false
+    }
+  }
   return (
     <>
       <ToggleButtonGroup
@@ -93,7 +102,7 @@ const ItemStatusToogle = (props) => {
             backgroundColor: value === BorrowingStatus.NotPickUp.id ? BorrowingStatus.NotPickUp.color : "",
             color: value === BorrowingStatus.NotPickUp.id ? "white" : "",
           }}
-          disabled={disabled}
+          disabled={checkDisabled()}
         >
           <p>{BorrowingStatus.NotPickUp.label}</p>
         </ToggleButton>
@@ -105,7 +114,7 @@ const ItemStatusToogle = (props) => {
             color: value === BorrowingStatus.InUse.id ? "white" : "",
             width: 70
           }}
-          disabled={disabled}
+          disabled={checkDisabled()}
 
         >
           <p>{BorrowingStatus.InUse.label}</p>
@@ -118,7 +127,7 @@ const ItemStatusToogle = (props) => {
             color: value === BorrowingStatus.Return.id ? "white" : "",
             width: 70
           }}
-          disabled={disabled}
+          disabled={checkDisabled()}
 
         >
           <p>{BorrowingStatus.Return.label}</p>
@@ -131,7 +140,7 @@ const ItemStatusToogle = (props) => {
             color: value === BorrowingStatus.Late.id ? "white" : "",
             width: 70
           }}
-          disabled={disabled}
+          disabled={checkDisabled()}
         >
           <p>{BorrowingStatus.Late.label}</p>
         </ToggleButton>
@@ -175,9 +184,9 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
                     </Grid>
                     <Grid item sm={6} xs={3}>
                       <div style={{ paddingLeft: 20 }}>
-                        <p>: &nbsp;&nbsp;{rowData[6] || "-"}</p>
-                        <p>: &nbsp;&nbsp;{rowData[11] || "-"}</p>
                         <p>: &nbsp;&nbsp;{rowData[7] || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[12] || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[8] || "-"}</p>
                       </div>
                     </Grid>
                   </Grid>
@@ -193,9 +202,9 @@ export const ApplicationOptions = (userId, name, location, purpose, transactiond
                     </Grid>
                     <Grid item sm={9} xs={6}>
                       <div style={{ paddingLeft: 20 }}>
-                        <p>: &nbsp;&nbsp;{rowData[8] || "-"}</p>
                         <p>: &nbsp;&nbsp;{rowData[9] || "-"}</p>
                         <p>: &nbsp;&nbsp;{rowData[10] || "-"}</p>
+                        <p>: &nbsp;&nbsp;{rowData[11] || "-"}</p>
                         {/* <h4>
                         : {rowData[10].substring(0, 10)}{" "}
                         {rowData[10].substring(11, 19)}
@@ -224,11 +233,18 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
   },
   { name: ApplicationTable.itemName.name, label: ApplicationTable.itemName.label },
   {
-    name: ApplicationTable.transactionDate.name, label: ApplicationTable.transactionDate.label, options: {
+    name: "itemImage", label: "Image", options: {
       sort: true,
       sortDirection: 'asc',
-      customBodyRender: (value, tableMeta) => (RefactorDate(value)
-      ),
+      customBodyRender: (value, tableMeta) => <img src={renderImage(value)} alt={"image"} width={60} height={60} />
+
+    }
+  },
+  {
+    name: "amount",
+    label: "Amount",
+    options: {
+      customBodyRender: (value, tableMeta) => <p>x {value}</p>
     }
   },
   {

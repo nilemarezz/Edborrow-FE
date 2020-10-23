@@ -25,7 +25,6 @@ class SystemLogs extends React.Component {
     this.getLogs()
     const socket = socketIOClient(config.socket);
     socket.on("updateLogs", data => {
-      console.log('logs')
       this.getLogs()
     });
   }

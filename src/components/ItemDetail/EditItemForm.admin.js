@@ -66,6 +66,7 @@ class EditItem extends React.Component {
               </Select>
             </FormControl>
           </Grid>
+
         </Grid>
 
         <TextField
@@ -98,10 +99,29 @@ class EditItem extends React.Component {
             })}
           </Select>
         </FormControl>
-        {
-          this.props.admin ? <Grid item xs={12} sm={4} style={{ marginTop: 20 }}>
-            <DepartmentForm changeDepartmentId={this.props.changeDepartmentId} departmentId={this.props.item.departmentId} />
-          </Grid> : null}
+        <Grid container>
+          {
+            this.props.admin ?
+              <Grid item xs={12} sm={6} style={{ marginTop: 20 }}>
+                <DepartmentForm changeDepartmentId={this.props.changeDepartmentId} departmentId={this.props.item.departmentId} />
+              </Grid>
+              : null}
+          <Grid item xs={12} sm={4} style={{ marginTop: 20 }}>
+            <TextField label={this.props.admin ? "Amount" : "Add Amount"}
+              type="number"
+              value={this.props.item.amount} variant="outlined" fullWidth
+              InputLabelProps={{
+                shrink: true,
+                inputProps: { min: 1 }
+              }}
+              InputProps={{ inputProps: { min: 1 } }}
+              onChange={(e) => this.props.changeAmount(e.target.value)}
+              disabled={this.props.disabled}
+              helperText={this.props.admin ? "" : "* This number will add the total amount of this item"}
+            />
+          </Grid>
+        </Grid>
+
         <FormControlLabel
           style={{ marginTop: 10 }}
           control={

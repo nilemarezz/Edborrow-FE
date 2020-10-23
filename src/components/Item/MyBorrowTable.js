@@ -139,6 +139,7 @@ class MyBorrowTable extends React.Component {
                       <Text darkmode={this.props.web.darkmode}>Name</Text>
                     </TableCell>
                     <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Image</Text></TableCell>
+                    <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Amount</Text></TableCell>
                     <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Owner</Text></TableCell>
                     <TableCell padding='default'><Text darkmode={this.props.web.darkmode}>Return date</Text></TableCell>
                   </TableRow>
@@ -149,6 +150,7 @@ class MyBorrowTable extends React.Component {
                       <TableCell><Status color={this.checkStatus(row.itemBorrowingStatusId)} /></TableCell>
                       <TableCell><Text darkmode={this.props.web.darkmode}>{row.itemName}</Text></TableCell>
                       <TableCell><img src={renderImage(row.itemImage)} alt={row.itemName} width={50} height={50} /></TableCell>
+                      <TableCell><Text darkmode={this.props.web.darkmode}>x {row.amount}</Text></TableCell>
                       <TableCell><Text darkmode={this.props.web.darkmode}>{row.Owner}</Text></TableCell>
                       <TableCell><Text darkmode={this.props.web.darkmode}>{RefactorDate(row.returnDate)}</Text></TableCell>
 

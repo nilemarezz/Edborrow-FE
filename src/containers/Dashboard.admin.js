@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
     this.props.getData()
     const socket = socketIOClient(config.socket);
     socket.on("updateDashboard", data => {
-      console.log('update dashboard')
       this.props.getData()
     });
   }

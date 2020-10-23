@@ -69,7 +69,7 @@ export default function StickyHeadTable(props) {
                   {item.date.from} to {item.date.to}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  x 1
+                  x {item.amountSelect}
                 </TableCell>
               </TableRow>
             ))}

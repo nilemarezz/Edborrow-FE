@@ -23,7 +23,7 @@ export const OptionItemTable = {
 export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCartPage) => {
   let disable = false;
 
-  if (tableMeta.rowData[4] === ItemStatus.Avaliable.id) {
+  if (tableMeta.rowData[5] === ItemStatus.Avaliable.id) {
     disable = false;
   } else {
     disable = true;
@@ -67,6 +67,7 @@ export const ItemColumns = (department, deleteItems) => [
       ),
     },
   },
+  { name: 'amount', label: 'Amount' },
   {
     name: ItemTable.createDate.name,
     label: ItemTable.createDate.label,

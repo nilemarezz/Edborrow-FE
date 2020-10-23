@@ -11,7 +11,7 @@ const initialState = {
 }
 
 export function updateApproveStatus({ itemId, requestId, value }, list) {
-  const newList = list;
+  const newList = [...list];
   newList.forEach(item => {
     if (item.requestId === requestId && item.itemId === itemId) {
 
@@ -22,7 +22,7 @@ export function updateApproveStatus({ itemId, requestId, value }, list) {
   return newList
 }
 export function updateBorrowingStatus({ itemId, requestId, value }, list) {
-  const newList = list;
+  const newList = [...list];
   newList.forEach(item => {
     if (item.requestId === requestId && item.itemId === itemId) {
 

@@ -9,10 +9,11 @@ import {
   CLEAR_FILTER,
   CLEAR_CART,
   SET_FORM_DATE_CART,
-  SET_TO_DATE_CART
+  SET_TO_DATE_CART,
+  SET_AMOUNT
 } from "../actions/ItemAction";
 
-import { UPDATE_DATE } from '../actions/SocketAction'
+import { UPDATE_DATE, UPDATE_AMOUNT } from '../actions/SocketAction'
 import * as R from "ramda";
 import { RefactorDate } from '../utilities/data/refactorDate'
 const initialState = {
@@ -35,6 +36,7 @@ const updateFrom = (itemId, value, cart, type) => {
 }
 
 export default function (state = initialState, action) {
+  let cart = [...state.Cart];
   switch (action.type) {
     case GETALL_ITEM_SUCCESS:
       return R.pipe(R.assocPath(["Items"], action.payload))(state);
@@ -62,15 +64,28 @@ export default function (state = initialState, action) {
     case SET_TO_DATE_CART:
       return R.assocPath(["Cart"], updateFrom(action.payload.itemId, action.payload.to, state.Cart, "to"))(state);
     case "UPDATE_ITEM":
-      console.log(action.payload)
       let item = state.Items;
       let index = item.findIndex(item => item.itemId === action.payload.itemId)
-      console.log(index)
       item.splice(index, 1, action.payload);
-      console.log(item)
       return R.assocPath(["Items"], item)(state);
     case "SET_CART":
       return R.assocPath(["Cart"], action.payload)(state);
+    case SET_AMOUNT:
+      let cartIndex = cart.findIndex(item => item.itemId == action.payload.id)
+      cart[cartIndex].amountSelect = action.payload.amount
+      return R.assocPath(["Cart"], cart)(state);
+    case UPDATE_AMOUNT:
+      action.payload.data.map(item => {
+        let index = state.Cart.findIndex(cartItem => cartItem.itemId == item.itemId)
+        if (index === -1) {
+          return state
+        } else {
+          cart[index].amount = item.type === "minus" ? cart[index].amount - parseInt(item.amount) : cart[index].amount + parseInt(item.amount)
+          cart[index].amountSelect = 1
+        }
+
+      })
+      return R.assocPath(["Cart"], cart)(state);
     default:
       return state;
   }

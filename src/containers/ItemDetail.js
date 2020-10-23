@@ -67,7 +67,7 @@ class ItemDetail extends React.Component {
                 <h1>{this.state.item.itemName} </h1>
                 <div style={{ marginLeft: 20 }}>{renderStatus(this.state.item.itemStatusTag)}</div>
               </Container>
-              <Button variant="contained" color="primary" disabled={this.state.item.itemStatusTag === "Fixing" ? true : false}
+              <Button variant="contained" color="primary" disabled={this.state.item.itemStatusTag === "Out of Stock" || this.state.item.itemStatusTag === "Fixing" ? true : false}
 
                 onClick={() => this.isItemInCart() ? this.redirectToCart() : this.addItem()}>
                 {this.isItemInCart() ? "Cart" : "Add"}

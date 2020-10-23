@@ -9,26 +9,6 @@ export const AddItemToCart = (value) => {
     const newValue = [...value]
     let disabled = []
     dispatch(itemLoading(true));
-    // newValue.map(async item => {
-    //   // const disabledRes = await AddItemToCartService(item.itemId);
-    //   // if (disabledRes.result === "false") {
-    //   //   console.log('false')
-    //   //   dispatch(itemLoading(false));
-    //   //   return false
-    //   // } else {
-
-    //   //   disabledRes.data.unAvailable.map((date) => {
-    //   //     disabled.push({ borrowDate: RefactorDate(date.borrowDate), returnDate: RefactorDate(date.returnDate) })
-    //   //   })
-    //   //   item.dateUnavaliable = disabled
-    //   //   dispatch(itemLoading(false));
-
-    //     // await dispatch(addItemToCart(value))
-    //     // dispatch(itemLoading(false));
-    //     // return true
-
-    // //   }
-    //  })
     for (let i = 0; i < newValue.length; i++) {
       const disabledRes = await AddItemToCartService(newValue[i].itemId);
       disabledRes.data.unAvailable.map((date) => {
@@ -38,7 +18,7 @@ export const AddItemToCart = (value) => {
       disabled = []
     }
     dispatch({ type: 'SET_CART', payload: newValue })
-    console.log('...', newValue)
+    dispatch(itemLoading(false));
   };
 };
 

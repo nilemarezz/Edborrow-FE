@@ -27,21 +27,21 @@ export const ApplicationDetailColumn = () => [
       sort: true,
     },
   },
-  {
-    name: ApplicationTable.itemImage.name,
-    label: ApplicationTable.itemImage.label,
-    options: {
-      filter: true,
-      sort: true,
-      customBodyRender: (value, tableMeta, updateValue) => (
-        <img
-          src={renderImage(value)}
-          style={{ width: 50, height: 50 }}
-          alt="equipment"
-        />
-      ),
-    },
-  },
+  // {
+  //   name: ApplicationTable.itemImage.name,
+  //   label: ApplicationTable.itemImage.label,
+  //   options: {
+  //     filter: true,
+  //     sort: true,
+  //     customBodyRender: (value, tableMeta, updateValue) => (
+  //       <img
+  //         src={renderImage(value)}
+  //         style={{ width: 50, height: 50 }}
+  //         alt="equipment"
+  //       />
+  //     ),
+  //   },
+  // },
   {
     name: ApplicationTable.itemApprove.name,
     label: ApplicationTable.itemApprove.label,
@@ -81,6 +81,10 @@ export const ApplicationDetailColumn = () => [
       customBodyRender: (value, tableMeta, updateValue) =>
         RefactorDate(value),
     },
+  },
+  {
+    name: "amount",
+    label: "Amount"
   },
 
   {

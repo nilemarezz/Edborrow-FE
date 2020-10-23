@@ -43,10 +43,10 @@ export const OptionItemTable = {
                   </Grid>
                   <Grid item sm={6} xs={3}>
                     <div style={{ paddingLeft: 20 }}>
-                      <p>: &nbsp;&nbsp;{rowData[4] || "-"}</p>
                       <p>: &nbsp;&nbsp;{rowData[5] || "-"}</p>
+                      <p>: &nbsp;&nbsp;{rowData[6] || "-"}</p>
+                      <p>: &nbsp;&nbsp;{rowData[9] || "-"}</p>
                       <p>: &nbsp;&nbsp;{rowData[8] || "-"}</p>
-                      <p>: &nbsp;&nbsp;{rowData[7] || "-"}</p>
                     </div>
                   </Grid>
                 </Grid>
@@ -63,10 +63,10 @@ export const OptionItemTable = {
                   </Grid>
                   <Grid item sm={9} xs={6}>
                     <div style={{ paddingLeft: 20 }}>
-                      <p>: &nbsp;&nbsp;{rowData[6] || "-"}</p>
-                      <p>: &nbsp;&nbsp;{rowData[9] || "-"}</p>
+                      <p>: &nbsp;&nbsp;{rowData[7] || "-"}</p>
                       <p>: &nbsp;&nbsp;{rowData[10] || "-"}</p>
-                      <p>: &nbsp;&nbsp;{rowData[11] || "-"} , {rowData[12] || "-"} , {rowData[13] || "-"}</p>
+                      <p>: &nbsp;&nbsp;{rowData[11] || "-"}</p>
+                      <p>: &nbsp;&nbsp;{rowData[12] || "-"} , {rowData[13] || "-"} , {rowData[14] || "-"}</p>
                     </div>
                   </Grid>
                 </Grid>
@@ -102,6 +102,7 @@ export const ItemColumns = (deleteItems) => [
     },
   },
   { name: ItemTable.departmentName.name, label: ItemTable.departmentName.label },
+  { name: "amount", label: "Amount" },
   {
     name: ItemTable.itemBrand.name, options: {
       display: false,

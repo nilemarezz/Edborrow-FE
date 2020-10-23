@@ -37,8 +37,10 @@ class Item extends React.Component {
       this.props.getAllItem();
     });
     socket.on("updateItem", data => {
-      console.log(data)
       this.props.updateItem(data)
+    });
+    socket.on("amountUpdate", data => {
+      this.props.getAllItem();
     });
   }
   redirectToDetailPage = (value) => {
@@ -103,11 +105,13 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(deleteItem({ itemId: id }))
   },
   updateItem: async (value) => {
-    console.log(value.itemStatusId)
     const status = (statusId) => {
       if (statusId == 1) {
         return "Avaliable"
-      } else {
+      } else if (statusId == 4) {
+        return "Out of Stock"
+      }
+      else {
         return "Fixing"
       }
     }

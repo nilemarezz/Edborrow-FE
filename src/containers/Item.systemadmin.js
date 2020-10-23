@@ -26,7 +26,6 @@ class Items extends React.Component {
     this.props.getItem()
     const socket = socketIOClient(config.socket);
     socket.on("updateItem", data => {
-      console.log(data)
       this.props.getItem()
     });
   }

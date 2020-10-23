@@ -20,7 +20,11 @@ export const renderStatus = (value) => {
   if (value === "Fixing") {
     label = ItemStatus.Fixing.label;
     bgcolor = ItemStatus.Fixing.color
-  } else {
+  } else if (value === "Out of Stock") {
+    label = "Out of Stock";
+    bgcolor = "grey"
+  }
+  else {
     label = ItemStatus.Avaliable.label;
     bgcolor = ItemStatus.Avaliable.color
   }
