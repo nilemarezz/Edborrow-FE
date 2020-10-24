@@ -78,9 +78,14 @@ export const renderItemStatus = (value) => {
   let label;
   let bgcolor;
   let tool;
-  if (value === BorrowingStatus.InUse.id) {
+  if (value === null) {
+    label = "Waiting";
+    bgcolor = themeColor.yellow;
+    tool = "Waiting for advisor approve";
+  }
+  else if (value === BorrowingStatus.InUse.id) {
     label = BorrowingStatus.InUse.label;
-    bgcolor = BorrowingStatus.InUse.label;
+    bgcolor = themeColor.blue
     tool = BorrowingStatus.InUse.tool;
   } else if (value === BorrowingStatus.Return.id) {
     label = BorrowingStatus.Return.label;
