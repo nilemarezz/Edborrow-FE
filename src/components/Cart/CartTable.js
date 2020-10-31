@@ -82,8 +82,8 @@ class CartTable extends React.Component {
                     type="number"
                     style={{ width: '25px' }}
                     value={row.amountSelect}
-                    InputProps={{ inputProps: { min: 1, max: row.amount } }}
-                    onChange={(e) => this.setAmountSelect({ id: row.itemId, amount: e.target.value === "" ? 1 : e.target.value })}
+                    InputProps={{ inputProps: { min: 0, max: row.amount } }}
+                    onChange={(e) => this.setAmountSelect({ id: row.itemId, amount: e.target.value === "" ? 0 : e.target.value })}
                   /> of {row.amount}
                 </Grid>
                 <Grid item xs={1}>

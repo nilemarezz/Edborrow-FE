@@ -21,7 +21,7 @@ export const OptionItemTable = {
 export const renderItemButton = (tableMeta, cart, AddItemToCarts, redirectToCartPage) => {
   let disable = false;
 
-  if (tableMeta.rowData[8] === "Fixing" || tableMeta.rowData[8] === "Out of Stock") {
+  if (tableMeta.rowData[8] === "Fixing") {
     disable = true;
   } else {
     disable = false;
@@ -91,6 +91,9 @@ export const ItemColumns = (
     {
       name: "amount",
       label: "Amount",
+      options: {
+        display: false
+      }
     },
     {
       name: ItemTable.itemId.name,

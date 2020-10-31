@@ -6,7 +6,7 @@ export const CartItem = (item) => {
     departmentId: item[3],
     ownerName: item[6],
     amount: item[5],
-    amountSelect: 1,
+    amountSelect: 0,
     date: {
       from: null,
       to: null
