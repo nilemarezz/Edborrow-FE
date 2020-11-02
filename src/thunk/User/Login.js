@@ -7,6 +7,7 @@ import {
 } from "../../actions/UserAction";
 export const LoginThunk = (data) => {
   return async (dispatch, getState) => {
+    console.log('LoginThunk')
     dispatch(loginLoading(true));
     try {
       const login = await LoginService(data);
@@ -38,6 +39,7 @@ export const LoginThunk = (data) => {
         return data;
       }
     } catch (err) {
+      console.log(err)
       setTimeout(
         () => {
           dispatch(loginLoading(false));

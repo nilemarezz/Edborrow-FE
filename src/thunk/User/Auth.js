@@ -7,6 +7,7 @@ import {
 } from "../../actions/UserAction";
 export const AuthThunk = (code) => {
   return async (dispatch, getState) => {
+    console.log('AuthThunk')
     dispatch(loginLoading(true));
     try {
       console.log(code)
@@ -40,6 +41,7 @@ export const AuthThunk = (code) => {
         return true;
       }
     } catch (err) {
+      console.log(err)
       setTimeout(
         () => {
           dispatch(loginLoading(false));
