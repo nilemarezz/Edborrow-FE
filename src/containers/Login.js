@@ -74,17 +74,20 @@ class Login extends React.Component {
   };
 
   getAuth = async () => {
-    if (window.location.href.substring(35, 45).length === 10) {
+    let str = [];
+    if (process.env.REACT_APP_ENV === "develop") {
+      str.push(23)
+      str.push(38)
+      str.push(28)
+    } else {
+      str.push(30)
+      str.push(45)
+      str.push(35)
+    }
+    const fullCode = window.location.href.substring(str[0], str[1])
+    if (fullCode.includes("code")) {
       console.log(window.location.href)
-      let str = [];
-      if (process.env.REACT_APP_ENV === "develop") {
-        str.push(28)
-        str.push(38)
-      } else {
-        str.push(35)
-        str.push(45)
-      }
-      const data = await this.props.AuthThunk(window.location.href.substring(str[0], str[1]))
+      const data = await this.props.AuthThunk(window.location.href.substring(str[2], str[1]))
       if (data) {
         await this.props.history.push('/user/home')
       } else {
