@@ -29,7 +29,10 @@ export const LoginThunk = (data) => {
           student: login.student
         };
         dispatch(userLoginSuccess(data));
-        setToken(login.accessToken);
+        if (data !== undefined) {
+          setToken(login.accessToken);
+        }
+
         setTimeout(
           () => {
             dispatch(loginLoading(false));
