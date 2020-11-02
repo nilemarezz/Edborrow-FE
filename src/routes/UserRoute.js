@@ -78,38 +78,28 @@ const UserRoute = (props) => {
           <Router>
             {/* <Navbar /> */}
             <Switch>
-              {process.env.REACT_APP_ENV === "production" ?
-                <>
-                  <PrivateRoute path={route.user.items} exact strict>
-                    <Item />
-                  </PrivateRoute>
-                  <PrivateRoute path={route.user.cart} exact strict>
-                    <Cart />
-                  </PrivateRoute>
-                  <PrivateRoute path={route.user.applicationList} exact strict>
-                    <ApplicationList />
-                  </PrivateRoute>
-                  <PrivateRoute path={route.user.profile} exact strict>
-                    <Profile />
-                  </PrivateRoute>
-                  <PrivateRoute path={route.user.home} exact strict>
-                    <Home />
-                  </PrivateRoute>
-                  <PrivateRoute path={route.user.myBorrow} exact strict>
-                    <MyBorrow />
-                  </PrivateRoute>
-                </>
-                :
-                <>
-                  <Route path={route.user.home} exact strict component={Home} />
-                  <Route path={route.user.items} exact strict component={Item} />
-                  <Route path={route.user.cart} component={Cart} exact strict />
-                  <Route path={route.user.applicationList} component={ApplicationList} exact strict />
-                  <Route path={route.user.profile} component={Profile} exact strict />
-                  <Route path={route.user.myBorrow} component={MyBorrow} exact strict />
 
-                </>
-              }
+              <>
+                <PrivateRoute path={route.user.items} exact strict>
+                  <Item />
+                </PrivateRoute>
+                <PrivateRoute path={route.user.cart} exact strict>
+                  <Cart />
+                </PrivateRoute>
+                <PrivateRoute path={route.user.applicationList} exact strict>
+                  <ApplicationList />
+                </PrivateRoute>
+                <PrivateRoute path={route.user.profile} exact strict>
+                  <Profile />
+                </PrivateRoute>
+                <PrivateRoute path={route.user.home} exact strict>
+                  <Home />
+                </PrivateRoute>
+                <PrivateRoute path={route.user.myBorrow} exact strict>
+                  <MyBorrow />
+                </PrivateRoute>
+              </>
+
             </Switch>
 
           </Router>

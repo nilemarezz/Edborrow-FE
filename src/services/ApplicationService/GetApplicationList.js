@@ -1,18 +1,15 @@
 import env from '../../env'
 import ApplicationList from '../../__mock__/RequestList.json'
 const GetApplicationList = async () => {
-  if (process.env.REACT_APP_ENV === "production") {
-    const response = await fetch(`${env.url}request`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-      },
-    });
-    const data = await response.json();
-    return data.data
-  } else {
-    return ApplicationList.data
-  }
+
+  const response = await fetch(`${env.url}request`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+    },
+  });
+  const data = await response.json();
+  return data.data
 }
 
 export default GetApplicationList

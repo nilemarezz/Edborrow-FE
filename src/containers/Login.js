@@ -75,7 +75,16 @@ class Login extends React.Component {
 
   getAuth = async () => {
     if (window.location.href.substring(28, 38).length === 10) {
-      const data = await this.props.AuthThunk(window.location.href.substring(28, 38))
+      console.log(window.location.href)
+      let str = [];
+      if (process.env.REACT_APP_ENV === "develop") {
+        str.push(28)
+        str.push(38)
+      } else {
+        str.push(35)
+        str.push(45)
+      }
+      const data = await this.props.AuthThunk(window.location.href.substring(str[0], str[1]))
       if (data) {
         await this.props.history.push('/user/home')
       } else {
@@ -165,7 +174,7 @@ class Login extends React.Component {
                 </Button>
 
                   </form> : null}
-                  <a href="https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=WNS8RCIb&redirect_uri=http://localhost:3001&state=edborrow" style={{ textDecoration: 'none' }}>
+                  <a href={`https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=WNS8RCIb&redirect_uri=${process.env.REACT_APP_ENV === "production" ? 'https://edborrow.netlify.app' : 'http://localhost:3001'}&state=edborrow"=`} style={{ textDecoration: 'none' }}>
 
                     <Button variant="contained" color="secondary" style={{ marginTop: 30, width: '85%' }} type="submit">Login As User</Button>
                   </a>
