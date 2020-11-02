@@ -16,7 +16,7 @@ import { withRouter } from 'react-router-dom'
 import { useSnackbar } from "notistack";
 import UserDetailService from '../services/UserService/UserDetail'
 import { getToken } from '../utilities/check/checkToken'
-import { setFormID, setFormSurname, setFormName } from '../actions/ApplicationFormAction'
+import { setFormID, setFormSurname, setFormName, setFormEmail } from '../actions/ApplicationFormAction'
 import Typography from '@material-ui/core/Typography';
 import { AddItemToCart } from '../thunk/Item/AddItemToCart'
 import socketIOClient from "socket.io-client";
@@ -45,9 +45,11 @@ const Cart = (props) => {
 
   const getUserData = async () => {
     const userData = await UserDetailService(getToken())
+    console.log(userData)
     props.setId(userData.data.userId)
     props.setName(userData.data.firstName)
     props.setSurname(userData.data.lastName)
+    props.setEmail(userData.data.email)
   }
 
   useEffect(() => {
@@ -164,6 +166,9 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   setSurname: async (value) => {
     dispatch(setFormSurname(value));
+  },
+  setEmail: async (value) => {
+    dispatch(setFormEmail(value));
   },
   getUnavaliableDate: async (value) => {
     dispatch(AddItemToCart(value))

@@ -167,7 +167,7 @@ class Login extends React.Component {
                   </form> : null}
                   <a href="https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=WNS8RCIb&redirect_uri=http://localhost:3001&state=edborrow" style={{ textDecoration: 'none' }}>
 
-                    <Button variant="contained" color="secondary" style={{ marginTop: 30, width: '85%' }} type="submit">Login As Student</Button>
+                    <Button variant="contained" color="secondary" style={{ marginTop: 30, width: '85%' }} type="submit">Login As User</Button>
                   </a>
                   {this.state.openForm ? null : <Button variant="contained" color="primary" style={{ marginTop: 30, width: '85%' }} type="submit" onClick={() => this.setState({ openForm: true })}>Login As Admin</Button>}
                 </div>
