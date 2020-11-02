@@ -14,10 +14,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withSnackbar } from "notistack";
 import { LoginThunk } from "../thunk/User/Login";
+import { AuthThunk } from '../thunk/User/Auth'
 import WithLoading from "../utilities/WithLoading";
 import { snackBarCheckLogin } from "../utilities/userSnackbar";
 import socketIOClient from "socket.io-client";
 import config from '../env'
+import { Auth } from '../services/UserService/Authentication'
 const Container = styled.div`
   margin : 0px;
   height : 100%;
@@ -37,7 +39,7 @@ margin-bottom : -30px;
 margin-top : 20px;
 `
 class Login extends React.Component {
-  state = { username: "", password: "" };
+  state = { username: "", password: "", loading: false, openForm: false };
 
   onHandleUsername = (e) => {
     this.setState({ username: e.target.value });
@@ -70,12 +72,26 @@ class Login extends React.Component {
     const snackLogin = snackBarCheckLogin(this.props.user);
     this.props.history.push(snackLogin.redirect);
   };
+
+  getAuth = async () => {
+    if (window.location.href.substring(28, 38).length === 10) {
+      const data = await this.props.AuthThunk(window.location.href.substring(28, 38))
+      if (data) {
+        await this.props.history.push('/user/home')
+      } else {
+        return
+      }
+    }
+  }
   componentDidMount() {
     this.redirectPage();
     const socket = socketIOClient(config.socket);
     socket.on("FromAPI", data => {
       console.log(data)
     });
+
+    // window.location.href.substring(28,38)
+    this.getAuth()
   }
   render() {
     return (
@@ -102,10 +118,10 @@ class Login extends React.Component {
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginRight: '20%' }}>
                     <img src={process.env.PUBLIC_URL + '/profile.svg'} alt="cover" width={100} height={100} style={{ marginLeft: 20 }} />
                     <Typography variant="h4" component="h4" gutterBottom style={{ marginLeft: 20 }}>
-                      Welcome !
+                      Welcome {this.state.openForm ? "Administrator" : null}!
               </Typography>
                   </div>
-                  <form noValidate
+                  {this.state.openForm ? <form noValidate
                     autoComplete="off"
                     onSubmit={(e) => this.onSumitForm(e)}>
                     <TextField
@@ -147,13 +163,21 @@ class Login extends React.Component {
                     <Button variant="contained" color="primary" style={{ marginTop: 30, width: '85%' }} type="submit">
                       Login
                 </Button>
-                  </form>
+
+                  </form> : null}
+                  <a href="https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=WNS8RCIb&redirect_uri=http://localhost:3001&state=edborrow" style={{ textDecoration: 'none' }}>
+
+                    <Button variant="contained" color="secondary" style={{ marginTop: 30, width: '85%' }} type="submit">Login As Student</Button>
+                  </a>
+                  {this.state.openForm ? null : <Button variant="contained" color="primary" style={{ marginTop: 30, width: '85%' }} type="submit" onClick={() => this.setState({ openForm: true })}>Login As Admin</Button>}
                 </div>
-                <p style={{ marginTop: 20 }}>Don't have an account?
+                {/* <p style={{ marginTop: 20 }}>Don't have an account?
                 <Link to="/register" style={this.props.darkmode ? { color: "white", marginTop: 20 } : { marginTop: 20 }}>
                     &nbsp;Sign Up
                 </Link>
-                </p>
+                </p> */}
+
+
 
               </Grid>
             </Grid>
@@ -167,4 +191,4 @@ const mapStateToProps = (state) => {
   return { user: state.User, darkmode: state.WEB_CONFIG.darkmode };
 };
 
-export default connect(mapStateToProps, { LoginThunk })(withSnackbar(Login));
+export default connect(mapStateToProps, { LoginThunk, AuthThunk })(withSnackbar(Login));

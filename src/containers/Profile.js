@@ -81,7 +81,7 @@ const Profile = (props) => {
   }
 
   useEffect(() => {
-    
+
     getUser()
   }, [])
   return (
@@ -253,7 +253,7 @@ const Profile = (props) => {
             enqueueSnackbar("Logout Success!", {
               variant: "success",
             });
-            props.history.push("/login");
+            // window.location.href = "http://localhost:3001/login";
           }}
         >
           Logout
@@ -266,7 +266,9 @@ const Profile = (props) => {
 export const mapDispatchToProps = (dispatch, ownProps) => ({
   Logout: async (item) => {
     clearToken();
+
     dispatch(logoutSuccess());
+    window.location.href = "http://localhost:3001/#/login";
   },
   changeTheme: async (e) => {
     dispatch({ type: "CHANGE_THEME", payload: e.target.checked });

@@ -66,15 +66,15 @@ const App = (props) => {
           <Router>
             {/* <MockNav /> */}
             < Switch >
-              <Route path="/" component={HandleRedirect} exact strict />
-              <Route path="/login" component={Login} exact strict />
-              <Route path="/register" component={Register} exact strict />
-              <Route path="/user/:section" component={UserRoute} exact strict />
-              <Route path="/admin/:section" component={AdminRoute} exact strict />
-              <Route path="/detail/:section/:id" component={DetailRoute} exact strict />
-              <Route path="/admin/detail/:section/:id" component={AdminDetail} exact strict />
-              <Route path="/systemadmin/:section" component={SystemAdminRoute} exact strict />
-              <Route path="/approve/type/:type" component={ApproveNoti} exact strict />
+              <Route path="/" component={HandleRedirect} exact />
+              <Route path="/login" component={Login} exact />
+              <Route path="/register" component={Register} exact />
+              <Route path="/user/:section" component={UserRoute} exact />
+              <Route path="/admin/:section" component={AdminRoute} exact />
+              <Route path="/detail/:section/:id" component={DetailRoute} exact />
+              <Route path="/admin/detail/:section/:id" component={AdminDetail} exact />
+              <Route path="/systemadmin/:section" component={SystemAdminRoute} exact />
+              <Route path="/approve/type/:type" component={ApproveNoti} exact />
               <Route component={ErrorPage} />
             </ Switch>
           </Router>

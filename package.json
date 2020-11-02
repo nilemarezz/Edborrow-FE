@@ -19,6 +19,7 @@
     "moment": "^2.27.0",
     "mui-datatables": "^3.0.1",
     "notistack": "^0.9.17",
+    "query-string": "^6.13.6",
     "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
