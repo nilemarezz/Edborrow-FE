@@ -43,11 +43,13 @@ const App = (props) => {
 
   })
   const checkUser = async () => {
-    if (checkToken()) {
+    if (localStorage.getItem('userItem') !== undefined) {
       const user = await props.UserDetailThunk({ token: getToken(), type: "login" });
       if (user === false) {
         return <Redirect to="/error" />
       }
+    } else {
+      localStorage.removeItem('userItem')
     }
   }
   useEffect(() => {
