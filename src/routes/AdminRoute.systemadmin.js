@@ -56,45 +56,33 @@ const SystemAdminRoute = (props) => {
     <Router>
       <Switch>
         <AdminNav>
-          {process.env.REACT_APP_ENV === "production" ?
-            <>
-              <PrivateAdminRoute path={`${route.systemadmin.addItem}`} exact strict >
-                <AddItem />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.addDepartment}`} exact strict >
-                <AddDepartment />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.items}`} exact strict >
-                <Items />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.departmentList}`} exact strict >
-                <DepartmentList />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.syetemLog}`} exact strict >
-                <SystemLogs />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.systemos}`} exact strict >
-                <SystemOS />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.userList}`} exact strict >
-                <UserList />
-              </PrivateAdminRoute >
-              <PrivateAdminRoute path={`${route.systemadmin.createUser}`} exact strict >
-                <CreateUser />
-              </PrivateAdminRoute >
-            </>
-            :
-            <>
-              <Route path={`${route.systemadmin.addItem}`} component={AddItem} exact strict />
-              <Route path={`${route.systemadmin.addDepartment}`} component={AddDepartment} exact strict />
-              <Route path={`${route.systemadmin.items}`} component={Items} exact strict />
-              <Route path={`${route.systemadmin.departmentList}`} component={DepartmentList} exact strict />
-              <Route path={`${route.systemadmin.syetemLog}`} component={SystemLogs} exact strict />
-              <Route path={`${route.systemadmin.systemos}`} component={SystemOS} exact strict />
-              <Route path={`${route.systemadmin.userList}`} component={UserList} exact strict />
-              <Route path={`${route.systemadmin.createUser}`} component={CreateUser} exact strict />
-            </>
-          }
+
+          <>
+            <PrivateAdminRoute path={`${route.systemadmin.addItem}`} exact strict >
+              <AddItem />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.addDepartment}`} exact strict >
+              <AddDepartment />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.items}`} exact strict >
+              <Items />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.departmentList}`} exact strict >
+              <DepartmentList />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.syetemLog}`} exact strict >
+              <SystemLogs />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.systemos}`} exact strict >
+              <SystemOS />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.userList}`} exact strict >
+              <UserList />
+            </PrivateAdminRoute >
+            <PrivateAdminRoute path={`${route.systemadmin.createUser}`} exact strict >
+              <CreateUser />
+            </PrivateAdminRoute >
+          </>
         </AdminNav>
       </Switch>
     </Router>

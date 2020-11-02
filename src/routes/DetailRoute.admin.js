@@ -53,17 +53,12 @@ const AdminDetail = (props) => {
     <Router>
       <Switch>
         <AdminNav>
-          {process.env.REACT_APP_ENV === "production" ?
-            <>
-              <PrivateAdminRoute path={`${route.adminDetail.itemDetailAdmin}/:id`} exact strict >
-                <ItemDetail />
-              </PrivateAdminRoute >
-            </>
-            :
-            <>
-              <Route path={`${route.adminDetail.itemDetailAdmin}/:id`} component={ItemDetail} exact strict />
-            </>
-          }
+
+          <>
+            <PrivateAdminRoute path={`${route.adminDetail.itemDetailAdmin}/:id`} exact strict >
+              <ItemDetail />
+            </PrivateAdminRoute >
+          </>
         </AdminNav>
       </Switch>
     </Router>

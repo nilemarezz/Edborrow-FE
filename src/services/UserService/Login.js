@@ -7,7 +7,7 @@ const LoginService = async (user) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("userToken")}`,
       },
-      body: JSON.stringify({ userId: user.username, password: user.password }),
+      body: JSON.stringify(user),
     });
     const datares = await res.json();
     return datares;

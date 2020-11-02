@@ -19,6 +19,7 @@
     "moment": "^2.27.0",
     "mui-datatables": "^3.0.1",
     "notistack": "^0.9.17",
+    "query-string": "^6.13.6",
     "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
@@ -43,7 +44,7 @@
     "test-connection": "yarn test -- connection.test.js",
     "eject": "react-scripts eject",
     "mock": "REACT_APP_ENV=development react-scripts start",
-    "local": "REACT_APP_URL=http://localhost:3000/api/ REACT_APP_SOCKET=http://localhost:3000 react-scripts start",
+    "local": "REACT_APP_ENV=develop REACT_APP_URL=http://localhost:3000/api/ REACT_APP_SOCKET=http://localhost:3000 react-scripts start",
     "server": "REACT_APP_URL=http://54.169.138.171:3000/api/ REACT_APP_SOCKET=http://54.169.138.171:3000 react-scripts start"
   },
   "eslintConfig": {
