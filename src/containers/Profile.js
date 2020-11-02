@@ -268,7 +268,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => ({
     clearToken();
 
     dispatch(logoutSuccess());
-    window.location.href = "http://localhost:3001/#/login";
+    window.location.href = process.env.REACT_APP_ENV === "develop" ? "http://localhost:3001/#/login" : "https://edborrow.netlify.app/#/login"
   },
   changeTheme: async (e) => {
     dispatch({ type: "CHANGE_THEME", payload: e.target.checked });
