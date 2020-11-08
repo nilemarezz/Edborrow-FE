@@ -17,7 +17,7 @@ import AddItem from '../containers/AddItem.admin'
 const AdminDetail = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
-      if (localStorage.getItem("userToken") === null) {
+      if (localStorage.getItem("userToken") === undefined || localStorage.getItem("userToken") === "undefined" || localStorage.getItem("userToken") === null) {
         return (
           <Redirect
             to={{
