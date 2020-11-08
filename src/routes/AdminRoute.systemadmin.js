@@ -20,7 +20,7 @@ import CreateUser from '../containers/CreateUser'
 const SystemAdminRoute = (props) => {
   function PrivateAdminRoute({ admin, children, ...rest }) {
     const render = () => {
-      if (localStorage.getItem("userToken") === undefined || localStorage.getItem("userToken") === "undefined" || localStorage.getItem("userToken") === null) {
+      if (localStorage.getItem("userToken") === "undefined" || localStorage.getItem("userToken") === null) {
         return (
           <Redirect
             to={{

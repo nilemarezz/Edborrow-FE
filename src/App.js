@@ -43,7 +43,7 @@ const App = (props) => {
 
   })
   const checkUser = async () => {
-    if (localStorage.getItem('userItem') !== undefined) {
+    if (localStorage.getItem('userItem') !== "undefined" || localStorage.getItem('userItem') !== null) {
       const user = await props.UserDetailThunk({ token: getToken(), type: "login" });
       if (user === false) {
         return <Redirect to="/error" />

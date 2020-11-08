@@ -2,7 +2,7 @@ import { checkToken } from "./check/checkToken";
 import { route } from '../systemdata/route'
 import { props } from "ramda";
 export const snackBarCheckLogin = (user) => {
-  if (localStorage.getItem('userToken')) {
+  if (localStorage.getItem('userToken') !== "undefined" && localStorage.getItem('userToken') !== null) {
     if (user.admin === false && user.department === false && user.staff === false) {
       return { text: "Login Success!", type: "success", redirect: route.user.home };
     } else if (user.admin === true) {
@@ -11,7 +11,7 @@ export const snackBarCheckLogin = (user) => {
       return { text: "Login Success!", type: "success", redirect: route.admin.dashboard };
     }
   } else {
-    return { text: "Login Fail!, Please try Again", type: "error" };
+    return { text: "Login Fail!, Please try Again", type: "error", redirect: null };
   }
 };
 

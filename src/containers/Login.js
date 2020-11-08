@@ -70,7 +70,10 @@ class Login extends React.Component {
 
   redirectPage = () => {
     const snackLogin = snackBarCheckLogin(this.props.user);
-    this.props.history.push(snackLogin.redirect);
+    if (snackLogin.redirect !== null) {
+      this.props.history.push(snackLogin.redirect);
+    }
+
   };
 
   getAuth = async () => {
