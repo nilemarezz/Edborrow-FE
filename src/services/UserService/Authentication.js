@@ -6,7 +6,7 @@ export const Auth = async (code) => {
     const url = 'https://gatewayservice.sit.kmutt.ac.th/api/oauth/token'
     const secret = '1vb7GiFApXLOVhCDN9UqajEK8'
     const clientId = "WNS8RCIb"
-    const resFromSSO = await fetch(`${url}?client_secret=${secret}&client_id=${clientId}&code=${code}&redirect_uri=http://localhost:3001`)
+    const resFromSSO = await fetch(`${url}?client_secret=${secret}&client_id=${clientId}&code=${code}&redirect_uri=${process.env.REACT_APP_ENV === "develop" ? "http://localhost:3001/#/" : "https://edborrow.netlify.app/#/"}`)
     // const user = await Login(await resFromSSO.json())
     const resFromSSOData = await resFromSSO.json()
     console.log(resFromSSOData)
