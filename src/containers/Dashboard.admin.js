@@ -28,7 +28,10 @@ const Container = styled.div`
 class Dashboard extends React.Component {
   state = { loading: false, data: { lastestBorrow: [], mostBorrow: {}, countmonth: [], waiting: 0, items: 0, late: 0 } }
   componentDidMount() {
-
+    if (localStorage.getItem('userToken') === "undefined" || localStorage.getItem('userToken') === undefined) {
+      localStorage.removeItem('userToken')
+      window.location.replace(process.env.REACT_APP_ENV === "develop" ? "http://localhost:3001" : "https://edborrow.netlify.app")
+    }
     this.props.getData()
     const socket = socketIOClient(config.socket);
     socket.on("updateDashboard", data => {
