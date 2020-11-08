@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     if (localStorage.getItem('userToken') === "undefined" || localStorage.getItem('userToken') === undefined) {
       localStorage.removeItem('userToken')
-      window.location.replace(process.env.REACT_APP_ENV === "develop" ? "http://localhost:3001" : "https://edborrow.netlify.app")
+      window.location.replace(process.env.REACT_APP_ENV === "develop" ? "http://localhost:3001/#/login" : "https://edborrow.netlify.app/#/login")
     }
     this.props.getData()
     const socket = socketIOClient(config.socket);
