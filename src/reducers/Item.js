@@ -74,7 +74,7 @@ export default function (state = initialState, action) {
       return R.assocPath(["Cart"], action.payload)(state);
     case SET_AMOUNT:
       let cartIndex = cart.findIndex(item => item.itemId == action.payload.id)
-      cart[cartIndex].amount = action.payload.amount
+      cart[cartIndex].amount = parseInt(action.payload.amount)
       return R.assocPath(["Cart"], cart)(state);
     case UPDATE_AMOUNT:
       action.payload.data.map(item => {

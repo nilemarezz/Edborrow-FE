@@ -7,7 +7,7 @@ export const submitForm = (form, cart) => {
     dispatch(loadingSubmitForm(true));
     const item = [];
     cart.forEach((cartItem) => {
-      item.push({ itemId: cartItem.itemId, borrowDate: cartItem.date.from, returnDate: cartItem.date.to, amount: cartItem.amountSelect });
+      item.push({ itemId: cartItem.itemId, borrowDate: cartItem.date.from, returnDate: cartItem.date.to, amount: cartItem.amount });
     });
     const summaryForm = {
       items: item,

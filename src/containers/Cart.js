@@ -75,6 +75,7 @@ const Cart = (props) => {
 
   const submitForm = async () => {
     const res = await props.submit(props.form, props.cart)
+    console.log(props.form, props.cart)
     closeModal()
     if (res) {
       props.history.push('/user/applicationList')

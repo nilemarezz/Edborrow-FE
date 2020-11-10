@@ -98,10 +98,10 @@ class CartTable extends React.Component {
           return (
             <Paper style={{ marginTop: 10, padding: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
               <Grid container spacing={1}>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                   {row.itemName}
                 </Grid>
-                <Grid item xs={1}>
+                <Grid item xs={2}>
                   {renderDepartment(row.departmentId, row.ownerName)}
                 </Grid>
                 <Grid item xs={4}>
@@ -121,7 +121,7 @@ class CartTable extends React.Component {
                       type="number"
                       style={{ width: '25px' }}
                       value={row.amount}
-                      InputProps={{ inputProps: { min: 0, max: row.amount } }}
+                      InputProps={{ inputProps: { min: 1, max: row.amountLeft } }}
                       onChange={(e) => this.setAmountSelect({ id: row.itemId, amount: e.target.value === "" ? 0 : e.target.value })}
                     /> of {row.amountLeft}
                   </Grid>
