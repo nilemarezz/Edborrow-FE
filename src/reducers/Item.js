@@ -10,7 +10,9 @@ import {
   CLEAR_CART,
   SET_FORM_DATE_CART,
   SET_TO_DATE_CART,
-  SET_AMOUNT
+  SET_AMOUNT,
+  SET_AMOUNT_LEFT,
+  SET_LOADING_AMOUNT
 } from "../actions/ItemAction";
 
 import { UPDATE_DATE, UPDATE_AMOUNT } from '../actions/SocketAction'
@@ -72,7 +74,7 @@ export default function (state = initialState, action) {
       return R.assocPath(["Cart"], action.payload)(state);
     case SET_AMOUNT:
       let cartIndex = cart.findIndex(item => item.itemId == action.payload.id)
-      cart[cartIndex].amountSelect = action.payload.amount
+      cart[cartIndex].amount = action.payload.amount
       return R.assocPath(["Cart"], cart)(state);
     case UPDATE_AMOUNT:
       action.payload.data.map(item => {
@@ -80,11 +82,22 @@ export default function (state = initialState, action) {
         if (index === -1) {
           return state
         } else {
-          cart[index].amount = item.type === "minus" ? cart[index].amount - parseInt(item.amount) : cart[index].amount + parseInt(item.amount)
-          cart[index].amountSelect = 1
+          cart[index].amountLeft = item.type === "minus" ? cart[index].amount - parseInt(item.amount) : cart[index].amount + parseInt(item.amount)
+          cart[index].amount = 1
         }
 
       })
+      return R.assocPath(["Cart"], cart)(state);
+    case SET_AMOUNT_LEFT:
+      console.log(action.payload)
+      let indexItem = state.Cart.findIndex(cartItem => cartItem.itemId == action.payload.itemId)
+      cart[indexItem].amountLeft = action.payload.amountLeft
+      cart[indexItem].amount = action.payload.amount
+      console.log(cart)
+      return R.assocPath(["Cart"], cart)(state);
+    case SET_LOADING_AMOUNT:
+      let indexItemLoading = state.Cart.findIndex(cartItem => cartItem.itemId == action.payload.itemId)
+      cart[indexItemLoading].loading = action.payload.loading
       return R.assocPath(["Cart"], cart)(state);
     default:
       return state;

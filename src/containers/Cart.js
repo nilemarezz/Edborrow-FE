@@ -45,7 +45,6 @@ const Cart = (props) => {
 
   const getUserData = async () => {
     const userData = await UserDetailService(getToken())
-    console.log(userData)
     props.setId(userData.data.userId)
     props.setName(userData.data.firstName)
     props.setSurname(userData.data.lastName)
@@ -55,7 +54,6 @@ const Cart = (props) => {
   useEffect(() => {
     const socket = socketIOClient(config.socket);
     socket.on("amountUpdate", data => {
-      console.log('updateAmount')
       props.updateAmount(data)
     });
     socket.on("dateUpdate", data => {

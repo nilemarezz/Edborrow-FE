@@ -53,8 +53,6 @@ const App = (props) => {
     }
   }
   useEffect(() => {
-    console.log(config.socket)
-    console.log(config.url)
     checkUser()
   }, []);
   return (

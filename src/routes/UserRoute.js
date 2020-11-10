@@ -45,7 +45,6 @@ const UserRoute = (props) => {
         {...rest}
         render={({ location }) => {
           if (localStorage.getItem("userToken") !== undefined && localStorage.getItem("userToken") !== "undefined" && localStorage.getItem("userToken") !== null) {
-            console.log(localStorage.getItem("userToken"))
             if (props.user.admin === false) {
               return children
             } else {

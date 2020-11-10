@@ -5,13 +5,14 @@ export const CartItem = (item) => {
     itemImage: item[2],
     departmentId: item[3],
     ownerName: item[6],
-    amount: item[5],
-    amountSelect: 0,
+    amountLeft: null,
+    amount: null,
     date: {
       from: null,
       to: null
     },
-    dateUnavaliable: []
+    dateUnavaliable: [],
+    loading: false
   };
   return data
 }

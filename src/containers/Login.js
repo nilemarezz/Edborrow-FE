@@ -10,7 +10,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import EmailIcon from '@material-ui/icons/Email';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withSnackbar } from "notistack";
 import { LoginThunk } from "../thunk/User/Login";
@@ -19,7 +18,6 @@ import WithLoading from "../utilities/WithLoading";
 import { snackBarCheckLogin } from "../utilities/userSnackbar";
 import socketIOClient from "socket.io-client";
 import config from '../env'
-import { Auth } from '../services/UserService/Authentication'
 const Container = styled.div`
   margin : 0px;
   height : 100%;
@@ -89,7 +87,6 @@ class Login extends React.Component {
     }
     const fullCode = window.location.href.substring(str[0], str[1])
     if (fullCode.includes("code")) {
-      console.log(window.location.href)
       const data = await this.props.AuthThunk(window.location.href.substring(str[2], str[1]))
       if (data) {
         await this.props.history.push('/user/home')
@@ -104,8 +101,6 @@ class Login extends React.Component {
     socket.on("FromAPI", data => {
       console.log(data)
     });
-
-    // window.location.href.substring(28,38)
     this.getAuth()
   }
   render() {
@@ -186,14 +181,6 @@ class Login extends React.Component {
                   </a>
                   {this.state.openForm ? null : <Button variant="contained" color="primary" style={{ marginTop: 30, width: '85%' }} type="submit" onClick={() => this.setState({ openForm: true })}>Login As Admin</Button>}
                 </div>
-                {/* <p style={{ marginTop: 20 }}>Don't have an account?
-                <Link to="/register" style={this.props.darkmode ? { color: "white", marginTop: 20 } : { marginTop: 20 }}>
-                    &nbsp;Sign Up
-                </Link>
-                </p> */}
-
-
-
               </Grid>
             </Grid>
           </Paper>

@@ -10,6 +10,8 @@ export const CLEAR_CART = "CLEAR_CART"
 export const SET_FORM_DATE_CART = "SET_FORM_DATE_CART"
 export const SET_TO_DATE_CART = "SET_TO_DATE_CART"
 export const SET_AMOUNT = "SET_AMOUNT"
+export const SET_AMOUNT_LEFT = "SET_AMOUNT_LEFT"
+export const SET_LOADING_AMOUNT = "SET_LOADING_AMOUNT"
 export const getAllItemSuccess = (data) => {
   return { type: GETALL_ITEM_SUCCESS, payload: data };
 };
@@ -52,4 +54,10 @@ export const clearCart = () => {
 }
 export const setSelectAmount = (value) => {
   return { type: SET_AMOUNT, payload: value }
+}
+export const setAmountLeft = (value) => {
+  return { type: SET_AMOUNT_LEFT, payload: value }
+}
+export const setloadingAmount = (value) => {
+  return { type: SET_LOADING_AMOUNT, payload: value }
 }

@@ -7,7 +7,6 @@ import {
 } from "../../actions/UserAction";
 export const LoginThunk = (data) => {
   return async (dispatch, getState) => {
-    console.log('LoginThunk')
     dispatch(loginLoading(true));
     try {
       const login = await LoginService(data);

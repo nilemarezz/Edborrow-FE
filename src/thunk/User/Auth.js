@@ -7,12 +7,9 @@ import {
 } from "../../actions/UserAction";
 export const AuthThunk = (code) => {
   return async (dispatch, getState) => {
-    console.log('AuthThunk')
     dispatch(loginLoading(true));
     try {
-      console.log(code)
       const login = await Auth(code);
-      console.log(login)
       if (login.result === "false") {
         setTimeout(
           () => {
