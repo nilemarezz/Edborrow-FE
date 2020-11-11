@@ -53,9 +53,6 @@ const Cart = (props) => {
 
   useEffect(() => {
     const socket = socketIOClient(config.socket);
-    socket.on("amountUpdate", data => {
-      props.updateAmount(data)
-    });
     socket.on("dateUpdate", data => {
       props.getUnavaliableDate(props.cart)
     });

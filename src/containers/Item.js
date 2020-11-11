@@ -39,9 +39,6 @@ class Item extends React.Component {
     socket.on("updateItem", data => {
       this.props.updateItem(data)
     });
-    socket.on("amountUpdate", data => {
-      this.props.getAllItem();
-    });
   }
   redirectToDetailPage = (value) => {
     this.props.history.push(`${route.detail.itemDetail}/${value}`);

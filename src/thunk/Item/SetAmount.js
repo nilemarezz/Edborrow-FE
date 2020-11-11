@@ -1,14 +1,14 @@
 import { setAmountLeft, setloadingAmount } from '../../actions/ItemAction'
-
+import GetAmount from '../../services/ItemService/getAmount'
 export const SetAmountThunk = (value) => {
   return async (dispatch, getState) => {
     console.log('call amount')
     dispatch(setloadingAmount({ itemId: value.itemId, loading: true }))
     try {
-
-      let data = { itemId: value.itemId, amountLeft: 5 }
+      console.log(value)
+      const res = await GetAmount({ itemId: value.itemId, borrowDate: value.borrowData, returnDate: value.returnDate })
+      let data = { itemId: res.itemId, amountLeft: res.amount, amount: 1 }
       if (data) {
-        data.amount = 1
         dispatch(setAmountLeft(data))
         dispatch(setloadingAmount({ itemId: value.itemId, loading: false }))
         return true
