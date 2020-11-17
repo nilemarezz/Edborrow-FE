@@ -58,7 +58,7 @@ export default class DateInputRange extends React.Component {
             selectedDays: [from, { from, to }],
             toMonth: to,
             modifiers: {
-              disabled: [...unavaliableData, { before: new Date(), after: to }]
+              disabled: [{ before: new Date(), after: to }]
             },
             numberOfMonths: 2,
             onDayClick: () => this.to.getInput().focus(),
@@ -78,7 +78,6 @@ export default class DateInputRange extends React.Component {
               selectedDays: [from, { from, to }],
               modifiers: {
                 disabled: [
-                  ...unavaliableData,
                   { before: from }, { before: new Date() },
                   { after: new Date(new Date(this.state.from).getTime() + (10 * 24 * 60 * 60 * 1000)) },
                 ]

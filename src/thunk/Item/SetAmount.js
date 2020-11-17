@@ -7,7 +7,7 @@ export const SetAmountThunk = (value) => {
     try {
       console.log(value)
       const res = await GetAmount({ itemId: value.itemId, borrowDate: value.borrowData, returnDate: value.returnDate })
-      let data = { itemId: res.itemId, amountLeft: res.amount, amount: 1 }
+      let data = { itemId: res.itemId, amountLeft: res.amount, amount: 0 }
       if (data) {
         dispatch(setAmountLeft(data))
         dispatch(setloadingAmount({ itemId: value.itemId, loading: false }))

@@ -6,6 +6,8 @@ export const isCompletedForm = (step, field, cart) => {
         if (item.date.from === null || item.date.to === null) {
           console.log('return')
           complete = false
+        } else if (item.amount === 0) {
+          complete = false
         }
       })
       return complete
