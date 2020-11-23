@@ -10,12 +10,34 @@ const initialState = {
   loading: false
 }
 
+const getApproveLabel = (value) => {
+  if (value === 0) {
+    return "Reject"
+  } else if (value === 1) {
+    return "Approve"
+  } else {
+    return "Waiting"
+  }
+}
+
+const getItemStatus = (value) => {
+  if (value === 6) {
+    return "NOT PICKUP"
+  } else if (value === 1) {
+    return "IN USE"
+  } else if (value === 2) {
+    return "RETURN"
+  } else if (value === 3) {
+    return "LATE"
+  }
+}
+
 export function updateApproveStatus({ itemId, requestId, value }, list) {
   const newList = [...list];
   newList.forEach(item => {
     if (item.requestId === requestId && item.itemId === itemId) {
 
-      item.itemApprove = value
+      item.itemApprove = getApproveLabel(value)
     }
 
   });
@@ -26,7 +48,7 @@ export function updateBorrowingStatus({ itemId, requestId, value }, list) {
   newList.forEach(item => {
     if (item.requestId === requestId && item.itemId === itemId) {
 
-      item.itemBorrowingStatusId = value
+      item.itemBorrowingStatusId = getItemStatus(value)
     }
 
   });

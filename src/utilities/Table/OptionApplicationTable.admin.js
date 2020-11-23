@@ -10,18 +10,43 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import { BorrowingStatus } from '../../systemdata/BorrowingStatus'
 import { ApproveStatus } from '../../systemdata/ApproveStatus'
 import { renderImage } from '../getImage'
+
+const getApproveId = (value) => {
+  if (value === "Approve") {
+    return 1
+  } else if (value === "Reject") {
+    return 0
+  } else {
+    return 2
+  }
+}
+
+const getItemStatus = (value) => {
+  if (value === "NOT PICKUP") {
+    return 6
+  } else if (value === "IN USE") {
+    return 1
+  } else if (value === "RETURN") {
+    return 2
+  } else if (value === "LATE") {
+    return 3
+  }
+}
 const ItemApproveToogle = (props) => {
   const { value, tableMeta, changeApproveStatus } = props
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
-  const itemApprove = tableMeta.rowData[5]
+  const itemApprove = getApproveId(tableMeta.rowData[5])
+  console.log(itemApprove)
+  // const itemApprove = tableMeta.rowData[5]
   const disabled = itemApprove === 1 || itemApprove === 0 ? true : false
+
   return (
     <>
       <ToggleButtonGroup
         exclusive
         aria-label="text alignment"
-        value={value}
+        value={getApproveId(value)}
 
         onChange={(event, newAlignment) => {
           changeApproveStatus(itemId, requestId, newAlignment)
@@ -33,8 +58,8 @@ const ItemApproveToogle = (props) => {
           value={ApproveStatus.Waiting.id}
           aria-label="left aligned"
           style={{
-            backgroundColor: value === ApproveStatus.Waiting.id ? ApproveStatus.Waiting.color : "",
-            color: value === ApproveStatus.Waiting.id ? "white" : "",
+            backgroundColor: getApproveId(value) === ApproveStatus.Waiting.id ? ApproveStatus.Waiting.color : "",
+            color: getApproveId(value) === ApproveStatus.Waiting.id ? "white" : "",
           }}
           disabled={disabled}
         >
@@ -44,8 +69,8 @@ const ItemApproveToogle = (props) => {
           value={ApproveStatus.Approve.id}
           aria-label="centered"
           style={{
-            backgroundColor: value === ApproveStatus.Approve.id ? ApproveStatus.Approve.color : "",
-            color: value === ApproveStatus.Approve.id ? "white" : "",
+            backgroundColor: getApproveId(value) === ApproveStatus.Approve.id ? ApproveStatus.Approve.color : "",
+            color: getApproveId(value) === ApproveStatus.Approve.id ? "white" : "",
           }}
           disabled={disabled}
         >
@@ -55,8 +80,8 @@ const ItemApproveToogle = (props) => {
           value={ApproveStatus.Reject.id}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === ApproveStatus.Reject.id ? ApproveStatus.Reject.color : "",
-            color: value === ApproveStatus.Reject.id ? "white" : "",
+            backgroundColor: getApproveId(value) === ApproveStatus.Reject.id ? ApproveStatus.Reject.color : "",
+            color: getApproveId(value) === ApproveStatus.Reject.id ? "white" : "",
           }}
           disabled={disabled}
         >
@@ -74,6 +99,7 @@ const ItemStatusToogle = (props) => {
   const requestId = tableMeta.rowData[0]
   const itemId = tableMeta.rowData[1]
   const disabled = itemApprove === 2 || itemApprove === 0 ? true : false
+
   const checkDisabled = () => {
     if (itemApprove === 2 || itemApprove === 0) {
       return true
@@ -99,8 +125,8 @@ const ItemStatusToogle = (props) => {
           value={BorrowingStatus.NotPickUp.id}
           aria-label="left aligned"
           style={{
-            backgroundColor: value === BorrowingStatus.NotPickUp.id ? BorrowingStatus.NotPickUp.color : "",
-            color: value === BorrowingStatus.NotPickUp.id ? "white" : "",
+            backgroundColor: getItemStatus(value) === BorrowingStatus.NotPickUp.id ? BorrowingStatus.NotPickUp.color : "",
+            color: getItemStatus(value) === BorrowingStatus.NotPickUp.id ? "white" : "",
           }}
           disabled={checkDisabled()}
         >
@@ -110,8 +136,8 @@ const ItemStatusToogle = (props) => {
           value={BorrowingStatus.InUse.id}
           aria-label="centered"
           style={{
-            backgroundColor: value === BorrowingStatus.InUse.id ? BorrowingStatus.InUse.color : "",
-            color: value === BorrowingStatus.InUse.id ? "white" : "",
+            backgroundColor: getItemStatus(value) === BorrowingStatus.InUse.id ? BorrowingStatus.InUse.color : "",
+            color: getItemStatus(value) === BorrowingStatus.InUse.id ? "white" : "",
             width: 70
           }}
           disabled={checkDisabled()}
@@ -123,8 +149,8 @@ const ItemStatusToogle = (props) => {
           value={BorrowingStatus.Return.id}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === BorrowingStatus.Return.id ? BorrowingStatus.Return.color : "",
-            color: value === BorrowingStatus.Return.id ? "white" : "",
+            backgroundColor: getItemStatus(value) === BorrowingStatus.Return.id ? BorrowingStatus.Return.color : "",
+            color: getItemStatus(value) === BorrowingStatus.Return.id ? "white" : "",
             width: 70
           }}
           disabled={checkDisabled()}
@@ -136,8 +162,8 @@ const ItemStatusToogle = (props) => {
           value={BorrowingStatus.Late.id}
           aria-label="right aligned"
           style={{
-            backgroundColor: value === BorrowingStatus.Late.id ? BorrowingStatus.Late.color : "",
-            color: value === BorrowingStatus.Late.id ? "white" : "",
+            backgroundColor: getItemStatus(value) === BorrowingStatus.Late.id ? BorrowingStatus.Late.color : "",
+            color: getItemStatus(value) === BorrowingStatus.Late.id ? "white" : "",
             width: 70
           }}
           disabled={checkDisabled()}
@@ -236,6 +262,7 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
     name: "itemImage", label: "Image", options: {
       sort: true,
       sortDirection: 'asc',
+      filter: false,
       customBodyRender: (value, tableMeta) => <img src={renderImage(value)} alt={"image"} width={60} height={60} />
 
     }
@@ -249,13 +276,16 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
   },
   {
     name: ApplicationTable.itemApprove.name, label: ApplicationTable.itemApprove.label,
+
     options: {
+      filterType: "dropdown",
       customBodyRender: (value, tableMeta) => (<ItemApproveToogle value={value} tableMeta={tableMeta} changeApproveStatus={changeApproveStatus} />)
     }
   },
   {
     name: ApplicationTable.itemBorrowingStatusId.name, label: ApplicationTable.itemBorrowingStatusId.label,
     options: {
+      filterType: "dropdown",
       customBodyRender: (value, tableMeta) => (<ItemStatusToogle value={value} tableMeta={tableMeta} changeBorrowingStatus={changeBorrowingStatus} />)
     }
   },
@@ -267,11 +297,13 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
   {
     name: ApplicationTable.usePlace.name, label: ApplicationTable.usePlace.label, options: {
       display: false,
+      filter: false
     },
   },
   {
     name: ApplicationTable.borrowPurpose.name, label: ApplicationTable.borrowPurpose.label, options: {
       display: false,
+      filter: false
     },
   },
   {
@@ -290,6 +322,7 @@ export const ApplicationColumn = (changeApproveStatus, changeBorrowingStatus) =>
   {
     name: "Name", label: "Name", options: {
       display: false,
+      filter: false
     },
   },
 
