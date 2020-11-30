@@ -131,6 +131,7 @@ class ItemDetail extends React.Component {
               onClick={this.clickToChangeImage}>Change Image</Button>
           </Grid>
           <Grid item xs={12} sm={8}>
+            {console.log(this.state.Form)}
             <EditItem
               item={this.state.EnableEdit ? this.state.Form : item.Detail}
               disabled={!this.state.EnableEdit}

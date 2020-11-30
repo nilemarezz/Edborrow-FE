@@ -13,6 +13,7 @@ const initialState = {
     itemDescription: null,
     itemName: null,
     itemImage: null,
+    amount: null
   },
   activeEdit: false
 }
